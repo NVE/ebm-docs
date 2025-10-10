@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.energy_requirement module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.model.energy_use module" href="ebm.model.energy_use.html" />
+    <link rel="prev" title="ebm.model.energy_purpose module" href="ebm.model.energy_purpose.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.model.html">ebm.model package</a></li>
+      <li class="breadcrumb-item active">ebm.model.energy_requirement module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.model.energy_requirement.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.model.energy_requirement">
+<span id="ebm-model-energy-requirement-module"></span><h1>ebm.model.energy_requirement module<a class="headerlink" href="#module-ebm.model.energy_requirement" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.yearly_reduction">
+<span class="sig-name descname"><span class="pre">yearly_reduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#yearly_reduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.yearly_reduction" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EnergyRequirement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">YearRange(start=2010,</span> <span class="pre">end=2050)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calibration_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">YearRange(start=2010,</span> <span class="pre">end=2050)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calibration_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1999</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_for_building_category">
+<span class="sig-name descname"><span class="pre">calculate_for_building_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager" title="ebm.model.database_manager.DatabaseManager"><span class="pre">DatabaseManager</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_for_building_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_for_building_category" title="Link to this definition"></a></dt>
+<dd><p>Calculates energy requirements for a single building category</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>database_manager: DatabaseManager</dt><dd><p>optional database_manager used to load input parameters</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Iterable of pd.Series</dt><dd><p>indexed by year, building_category, TEK, purpose, building_condition
+column kwh_m2 representing energy requirement</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_energy_requirement">
+<span class="sig-name descname"><span class="pre">calculate_energy_requirement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_building_categories</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_purpose</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_building_codes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_requirement_original_condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_years</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">most_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_energy_requirement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_energy_requirement" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_energy_reduction">
+<span class="sig-name descname"><span class="pre">calculate_energy_reduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_requirements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_improvement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction_per_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_improvement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_energy_reduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_energy_reduction" title="Link to this definition"></a></dt>
+<dd><p>Calculate and combine all reduction factors for energy needs into a single Dataframe.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>energy_requirements : pd.DataFrame
+model_years : YearRange
+policy_improvement : pd.DataFrame
+reduction_per_condition : pd.DataFrame
+yearly_improvement : pd.DataFrame</p>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.merge_energy_requirement_reductions">
+<span class="sig-name descname"><span class="pre">merge_energy_requirement_reductions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_improvements</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction_policy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.merge_energy_requirement_reductions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.merge_energy_requirement_reductions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_yearly">
+<span class="sig-name descname"><span class="pre">calculate_reduction_yearly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_improvement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_reduction_yearly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_yearly" title="Link to this definition"></a></dt>
+<dd><p>Calculate factor for yearly reduction for each entry in the DataFrame yearly_improvement.</p>
+<p>This method merges the yearly improvement data with the policy improvement data, adjusts the
+efficiency start year if the period end year is greater, and calculates the yearly reduction
+based on the yearly efficiency improvement.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df_years<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame containing all years for which to calculate factors. Must include column ‘year’.</p>
+</dd>
+<dt>yearly_improvement<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame containing yearly improvement information. Must include columns ‘yearly_efficiency_improvement’, and ‘efficiency_start_year’.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>DataFrame with the calculated ‘reduction_yearly’ column and updated entries.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_policy">
+<span class="sig-name descname"><span class="pre">calculate_reduction_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_improvement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_things</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_reduction_policy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_policy" title="Link to this definition"></a></dt>
+<dd><p>Calculate the reduction policy for each entry in the DataFrame.</p>
+<p>This method computes the reduction policy by first calculating the number of years since the
+start of the period. It then applies the <cite>yearly_reduction</cite> function to each relevant entry
+to determine the reduction policy.</p>
+<section id="id5">
+<h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>policy_improvement<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame containing policy improvement information. Must include columns ‘year’ and ‘period_start_year’.</p>
+</dd>
+<dt>all_things: pd.DataFrame</dt><dd><p>DataFrame containing every combination of building_category, TEK, purpose, year</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>DataFrame with the calculated ‘reduction_policy’ column and updated entries.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_condition">
+<span class="sig-name descname"><span class="pre">calculate_reduction_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction_per_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_reduction_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_condition" title="Link to this definition"></a></dt>
+<dd><p>Calculate the reduction condition for each entry in the DataFrame.</p>
+<p>This method computes the reduction condition by subtracting the reduction share from 1.0.
+It also fills any NaN values in the ‘reduction_condition’ column with 1.0.</p>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>reduction_per_condition<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame containing the reduction share information. Must include columns ‘reduction_share’ and ‘building_code’.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>DataFrame with the calculated ‘reduction_condition’ column and filtered entries.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.calculate_energy_requirements">
+<span class="sig-name descname"><span class="pre">calculate_energy_requirements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.calculate_energy_requirements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.calculate_energy_requirements" title="Link to this definition"></a></dt>
+<dd><p>Calculates energy requirements for building categories</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_categories<span class="classifier">Iterable[BuildingCategory]</span></dt><dd><p>Iterable containing building categories on which to calculate energy requirements.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Iterable of pd.Series</dt><dd><p>indexed by year, building_category, TEK, purpose, building_condition
+column kwh_m2 representing energy requirement</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.EnergyRequirement.new_instance">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">new_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calibration_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#EnergyRequirement.new_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.EnergyRequirement.new_instance" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_requirement.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_requirement.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_requirement.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.model.energy_purpose.html" class="btn btn-neutral float-left" title="ebm.model.energy_purpose module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.model.energy_use.html" class="btn btn-neutral float-right" title="ebm.model.energy_use module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

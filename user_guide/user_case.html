@@ -1,0 +1,2167 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User case &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calibrating the model" href="calibrating_the_model.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User case</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-input">Working with input</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-input-directory-for-a-scenario">Creating an input directory for a scenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-input-directory">Using the input directory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-case-add-a-new-building-code">User case: Add a new building code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-new-building-code">Add the new building code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#define-energy-needs-for-tek30">Define energy needs for TEK30</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specify-heating-system-shares">Specify heating system shares</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extra-credit">Extra credit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html">Calibrating the model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html#assumptions">Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Model configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical_distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User Guide</a></li>
+      <li class="breadcrumb-item active">User case</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_guide/user_case.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-case">
+<h1>User case<a class="headerlink" href="#user-case" title="Link to this heading"></a></h1>
+<p>This guide demonstrates how to create and configure a new scenario in EBM by introducing a hypothetical future building code: <em>TEK30</em>.
+Scenario-based modeling in EBM allows users to explore alternative planning assumptions, regulatory changes, and energy performance impacts by managing separate input directories.</p>
+<dl class="simple">
+<dt>The TEK30 scenario showcases how to:</dt><dd><ul class="simple">
+<li><p>Create a dedicated input directory for scenario data</p></li>
+<li><p>Define a new building code and its timeline</p></li>
+<li><p>Specify energy needs across building categories</p></li>
+<li><p>Configure heating system shares</p></li>
+<li><p>Optionally adjust lighting improvements</p></li>
+</ul>
+</dd>
+</dl>
+<section id="working-with-input">
+<h2>Working with input<a class="headerlink" href="#working-with-input" title="Link to this heading"></a></h2>
+<p>EBM supports scenario-based modeling by allowing users to create and manage separate input directories. This enables
+flexible experimentation with different assumptions and configurations.</p>
+<section id="creating-an-input-directory-for-a-scenario">
+<h3>Creating an input directory for a scenario<a class="headerlink" href="#creating-an-input-directory-for-a-scenario" title="Link to this heading"></a></h3>
+<p>To create a new scenario in EBM, open your preferred terminal and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--create-input<span class="w"> </span>--input<span class="o">=</span>user-case-tek30
+</pre></div>
+</div>
+<p>The input directory will be created path defined after <cite>–input==</cite>. In this case the files will be added to the
+subdirectory <cite>user-case-tek30</cite>.
+If the directory you name does not already exist, the program will attempt to create it. All input files necessary to run ebm will be created, with their default values, in the supplied path.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can choose any valid directory name, but it is a good idea to limit to letters, numbers, and underscore. Avoid using space.</p>
+</div>
+</section>
+<section id="using-the-input-directory">
+<h3>Using the input directory<a class="headerlink" href="#using-the-input-directory" title="Link to this heading"></a></h3>
+<p>Once the input directory is ready, you can run the model using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--input<span class="o">=</span>user-case-tek30
+</pre></div>
+</div>
+<p>The model result as defined in with user-case-tek30 will be written to the subdirectory <code class="docutils literal notranslate"><span class="pre">output</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><span class="xref std std-ref">Results</span></p>
+</div>
+</section>
+</section>
+<section id="user-case-add-a-new-building-code">
+<h2>User case: Add a new building code<a class="headerlink" href="#user-case-add-a-new-building-code" title="Link to this heading"></a></h2>
+<p>This example demonstrates how to use EBM’s scenario functionality by adding a new building code. TEK30 represents
+a hypothetical future building code introduced as part of a user case to demonstrate how EBM handles scenario-based
+modeling.</p>
+<dl class="simple">
+<dt>To add TEK30 to ebm you will need to</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#add-the-new-building-code"><span class="std std-ref">Add the new building code to the model in building_code_parameters.csv</span></a></p></li>
+<li><p><a class="reference internal" href="#define-energy-needs-for-tek30"><span class="std std-ref">Define energy needs for TEK30 in energy_need_original_condition.csv</span></a></p></li>
+<li><p><a class="reference internal" href="#specify-heating-system-shares"><span class="std std-ref">Specify heating system shares in heating_system_initial_shares.csv</span></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>This process showcases how EBM can be extended to simulate future regulations or alternative planning assumptions.</p>
+<section id="add-the-new-building-code">
+<h3>Add the new building code<a class="headerlink" href="#add-the-new-building-code" title="Link to this heading"></a></h3>
+<p>The timeline and classification of building codes used by EBM are defined in the csv file <code class="docutils literal notranslate"><span class="pre">building_code_parameters.csv</span></code>.
+To include TEK30 in your scenario, you must first define it in that file.</p>
+<p>You can edit building_code_parameters.csv using a
+plain text editor (e.g., Notepad) or spreadsheet software such as Microsoft Excel or LibreOffice Calc.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<dl class="simple">
+<dt>When using spreadsheet software, ensure the correct formatting is preserved when saving as CSV.</dt><dd><ul class="simple">
+<li><p>Use comma <code class="docutils literal notranslate"><span class="pre">,</span></code> as the delimiter</p></li>
+<li><p>Use full stop <code class="docutils literal notranslate"><span class="pre">.</span></code> as the decimal separator</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<p>Add the following line to building_code_parameters.csv to define TEK30 as a new building code entry:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TEK30,2030,2030,2050
+</pre></div>
+</div>
+<p>EBM does not allow overlapping periods in building_code_parameters.csv. Since TEK17 currently ends in 2050, we must adjust the end year for TEK17 as well:</p>
+<blockquote>
+<div><p>To avoid overlapping periods, update the TEK17 entry in <code class="docutils literal notranslate"><span class="pre">building_code_parameters.csv</span></code> as follows:</p>
+</div></blockquote>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TEK17,2025,2020,2029
+</pre></div>
+</div>
+<p>When done correctly <code class="docutils literal notranslate"><span class="pre">building_code_parameters.csv</span></code> should look like the example below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Formatted table</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Raw CSV</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Download</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Below is the updated content of building_code_parameters.csv. The new TEK30 entry and the adjusted end period for TEK17 are outlined in bold.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Complete building_code_parameters.csv</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 37.9%" />
+<col style="width: 20.7%" />
+<col style="width: 20.7%" />
+<col style="width: 20.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_code</p></th>
+<th class="head"><p>building_year</p></th>
+<th class="head"><p>period_start_year</p></th>
+<th class="head"><p>period_end_year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PRE_TEK49</p></td>
+<td><p>1945</p></td>
+<td><p>0</p></td>
+<td><p>1948</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEK49</p></td>
+<td><p>1962</p></td>
+<td><p>1949</p></td>
+<td><p>1968</p></td>
+</tr>
+<tr class="row-even"><td><p>TEK  69</p></td>
+<td><p>1977</p></td>
+<td><p>1969</p></td>
+<td><p>1986</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEK87</p></td>
+<td><p>1991</p></td>
+<td><p>1987</p></td>
+<td><p>1996</p></td>
+</tr>
+<tr class="row-even"><td><p>TEK97</p></td>
+<td><p>2002</p></td>
+<td><p>1997</p></td>
+<td><p>2006</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEK07</p></td>
+<td><p>2012</p></td>
+<td><p>2007</p></td>
+<td><p>2010</p></td>
+</tr>
+<tr class="row-even"><td><p>TEK10</p></td>
+<td><p>2018</p></td>
+<td><p>2011</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEK17</p></td>
+<td><p>2025</p></td>
+<td><p>2020</p></td>
+<td><p><strong>2029</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TEK30</strong></p></td>
+<td><p><strong>2030</strong></p></td>
+<td><p><strong>2030</strong></p></td>
+<td><p><strong>2050</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>You can add the raw excel content at the end of building_code_parameters.csv using notepad or a similar text editor.</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>building_code,building_year,period_start_year,period_end_year
+PRE_TEK49,1945,0,1948
+TEK49,1962,1949,1968
+TEK69,1977,1969,1986
+TEK87,1991,1987,1996
+TEK97,2002,1997,2006
+TEK07,2012,2007,2010
+TEK10,2018,2011,2019
+TEK17,2025,2020,2029
+TEK30,2030,2030,2050
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Optionally, <a class="reference external" href="_static/user_case/tek30/building_code_parameters.csv">Download building_code_parameters.csv</a> working example.</p>
+</div></div>
+</section>
+<section id="define-energy-needs-for-tek30">
+<h3>Define energy needs for TEK30<a class="headerlink" href="#define-energy-needs-for-tek30" title="Link to this heading"></a></h3>
+<p>All building codes must have it’s energy need defined in <a class="reference internal" href="#energy-need-original-condition"><span class="std std-ref">energy_need_original_condition.csv</span></a>. For this scenario we assume a TEK30 have a 2/3 energy need reduction for heating_rv and 1/4 reduction for heating_dhw, cooling, fans_and_pumps and electrical_equipment.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Summary table</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Formatted table</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Raw csv</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">Download</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Open <em>formatted table</em> and <em>raw csv</em> for complete listings</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Summary energy_need_original_condition.csv</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>kwh_m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>15.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>16.76</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>3.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>9.86</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>25.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>5.64</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>8.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>13.22</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>8.16</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>You should be able to paste the content of this table into energy_need_original_condition.csv when using Excel</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Excerpt energy_need_original_condition.csv</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>kwh_m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>15.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>16.76</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>3.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>9.86</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>9.61</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>16.75</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>4.26</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>9.86</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>16.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>5.9</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>22.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>2.1</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>16.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>8.63</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>2.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>9.14</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>19.38</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>8.68</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>24.74</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>5.64</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>12.64</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>2.94</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>15.34</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>5.51</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>13.45</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>7.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>8.53</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>2.82</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>10.96</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>19.38</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>10.82</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>26.01</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>16.75</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>24.4</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>26.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>17.31</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>30.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>16.76</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>27.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>13.14</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>16.94</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>16.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>15.96</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>3.28</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>11.77</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>18.26</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>27.57</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>9.92</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>1.46</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>19.5</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>5.64</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>11.42</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>1.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>8.96</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_rv</p></td>
+<td><p>25.27</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>5.64</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>8.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>13.22</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>cooling</p></td>
+<td><p>8.16</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>You can add the raw excel content at the end of energy_need_original_condition.csv using notepad or a similar text editor.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>house,TEK30,heating_rv,15.83
+house,TEK30,heating_dhw,16.76
+house,TEK30,fans_and_pumps,3.61
+house,TEK30,electrical_equipment,9.86
+house,TEK30,cooling,0.0
+apartment_block,TEK30,heating_rv,9.61
+apartment_block,TEK30,heating_dhw,16.75
+apartment_block,TEK30,fans_and_pumps,4.26
+apartment_block,TEK30,electrical_equipment,9.86
+apartment_block,TEK30,cooling,0.0
+retail,TEK30,heating_rv,16.56
+retail,TEK30,heating_dhw,5.9
+retail,TEK30,fans_and_pumps,22.38
+retail,TEK30,electrical_equipment,2.1
+retail,TEK30,cooling,16.82
+office,TEK30,heating_rv,8.63
+office,TEK30,heating_dhw,2.82
+office,TEK30,fans_and_pumps,9.14
+office,TEK30,electrical_equipment,19.38
+office,TEK30,cooling,8.68
+kindergarten,TEK30,heating_rv,24.74
+kindergarten,TEK30,heating_dhw,5.64
+kindergarten,TEK30,fans_and_pumps,12.64
+kindergarten,TEK30,electrical_equipment,2.94
+kindergarten,TEK30,cooling,0.0
+school,TEK30,heating_rv,15.34
+school,TEK30,heating_dhw,5.51
+school,TEK30,fans_and_pumps,13.45
+school,TEK30,electrical_equipment,7.26
+school,TEK30,cooling,0.0
+university,TEK30,heating_rv,8.53
+university,TEK30,heating_dhw,2.82
+university,TEK30,fans_and_pumps,10.96
+university,TEK30,electrical_equipment,19.38
+university,TEK30,cooling,10.82
+hospital,TEK30,heating_rv,26.01
+hospital,TEK30,heating_dhw,16.75
+hospital,TEK30,fans_and_pumps,24.4
+hospital,TEK30,electrical_equipment,26.28
+hospital,TEK30,cooling,17.31
+nursing_home,TEK30,heating_rv,30.01
+nursing_home,TEK30,heating_dhw,16.76
+nursing_home,TEK30,fans_and_pumps,27.26
+nursing_home,TEK30,electrical_equipment,13.14
+nursing_home,TEK30,cooling,0.0
+hotel,TEK30,heating_rv,16.94
+hotel,TEK30,heating_dhw,16.76
+hotel,TEK30,fans_and_pumps,15.96
+hotel,TEK30,electrical_equipment,3.28
+hotel,TEK30,cooling,11.77
+sports,TEK30,heating_rv,18.26
+sports,TEK30,heating_dhw,27.57
+sports,TEK30,fans_and_pumps,9.92
+sports,TEK30,electrical_equipment,1.46
+sports,TEK30,cooling,0.0
+culture,TEK30,heating_rv,19.5
+culture,TEK30,heating_dhw,5.64
+culture,TEK30,fans_and_pumps,11.42
+culture,TEK30,electrical_equipment,1.61
+culture,TEK30,cooling,8.96
+storage_repairs,TEK30,heating_rv,25.27
+storage_repairs,TEK30,heating_dhw,5.64
+storage_repairs,TEK30,fans_and_pumps,8.5
+storage_repairs,TEK30,electrical_equipment,13.22
+storage_repairs,TEK30,cooling,8.16
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><p>Download <a class="reference external" href="_static/user_case/tek30/energy_need_original_condition.csv">energy_need_original_condition.csv</a> complete with all building codes.</p>
+</div></div>
+<p>For clarity, all energy needs have been sorted and rounded to two decimal places.</p>
+</section>
+<section id="specify-heating-system-shares">
+<h3>Specify heating system shares<a class="headerlink" href="#specify-heating-system-shares" title="Link to this heading"></a></h3>
+<p>Finally <span class="xref std std-ref">heating_system_initial_shares.csv</span> must have heating system share defined for TEK30.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Summary table</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">formatted table</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">raw csv</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Summary heating_system_initial_shares.csv</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>heating_systems</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>heating_system_share</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Excerpt heating_system_initial_shares.csv</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>heating_systems</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>heating_system_share</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0992947318980815</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Bio - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.5649908788840201</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.2247326376682365</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0521984906804366</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0003008594060781</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0256775930931896</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0076580066831269</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.0213315113565833</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0038152903302471</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.1487089355849942</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0086647944512573</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0073046316982173</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.1128016818166627</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.4560101624930742</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0003390668680222</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0560170260057814</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0033946606308616</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.2067590404511287</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler - Solar</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002493794096936</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Gas</p></td>
+<td><p>2023</p></td>
+<td><p>7.196160696758601e-05</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH</p></td>
+<td><p>2023</p></td>
+<td><p>0.3182453573763764</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0002142250969049</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.0596845137090352</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.0706818896188211</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>2023</p></td>
+<td><p>0.364043511904947</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP Central heating - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.00019362655741</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>HP - Electricity</p></td>
+<td><p>2023</p></td>
+<td><p>0.1632849356867121</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>2023</p></td>
+<td><p>0.0216740945571909</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>Gas</p></td>
+<td><p>2023</p></td>
+<td><p>0.0016565044759408</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>sports,TEK30,DH,2023,0.3182453573763764
+office,TEK30,DH,2023,0.3182453573763764
+nursing_home,TEK30,DH - Bio,2023,0.0002142250969049
+office,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+school,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+school,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+school,TEK30,HP Central heating - Bio,2023,0.00019362655741
+school,TEK30,HP - Electricity,2023,0.1632849356867121
+school,TEK30,Gas,2023,0.0016565044759408
+school,TEK30,Electricity - Bio,2023,0.0216740945571909
+school,TEK30,Electricity,2023,0.0706818896188211
+school,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+school,TEK30,Electric boiler,2023,0.0596845137090352
+school,TEK30,DH - Bio,2023,0.0002142250969049
+school,TEK30,DH,2023,0.3182453573763764
+retail,TEK30,DH,2023,0.3182453573763764
+retail,TEK30,DH - Bio,2023,0.0002142250969049
+retail,TEK30,Electric boiler,2023,0.0596845137090352
+retail,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+retail,TEK30,Electricity,2023,0.0706818896188211
+retail,TEK30,Electricity - Bio,2023,0.0216740945571909
+retail,TEK30,Gas,2023,0.0016565044759408
+retail,TEK30,HP - Electricity,2023,0.1632849356867121
+retail,TEK30,HP Central heating - Bio,2023,0.00019362655741
+retail,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+retail,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+office,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+nursing_home,TEK30,DH,2023,0.3182453573763764
+office,TEK30,HP Central heating - Bio,2023,0.00019362655741
+office,TEK30,Gas,2023,0.0016565044759408
+nursing_home,TEK30,Electric boiler,2023,0.0596845137090352
+nursing_home,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+nursing_home,TEK30,Electricity,2023,0.0706818896188211
+nursing_home,TEK30,Electricity - Bio,2023,0.0216740945571909
+nursing_home,TEK30,Gas,2023,0.0016565044759408
+nursing_home,TEK30,HP - Electricity,2023,0.1632849356867121
+nursing_home,TEK30,HP Central heating - Bio,2023,0.00019362655741
+nursing_home,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+nursing_home,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+house,TEK30,HP - Electricity,2023,0.0992947318980815
+house,TEK30,HP - Bio - Electricity,2023,0.5649908788840201
+house,TEK30,Electricity - Bio,2023,0.2247326376682365
+house,TEK30,Electricity,2023,0.0521984906804366
+house,TEK30,Electric boiler - Solar,2023,0.0003008594060781
+house,TEK30,Electric boiler,2023,0.0256775930931896
+house,TEK30,DH - Bio,2023,0.0076580066831269
+house,TEK30,DH,2023,0.0213315113565833
+sports,TEK30,DH - Bio,2023,0.0002142250969049
+office,TEK30,DH - Bio,2023,0.0002142250969049
+office,TEK30,Electric boiler,2023,0.0596845137090352
+office,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+office,TEK30,Electricity,2023,0.0706818896188211
+office,TEK30,Electricity - Bio,2023,0.0216740945571909
+office,TEK30,HP - Electricity,2023,0.1632849356867121
+sports,TEK30,Electric boiler,2023,0.0596845137090352
+storage_repairs,TEK30,DH,2023,0.3182453573763764
+sports,TEK30,Electricity,2023,0.0706818896188211
+hospital,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+hospital,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+university,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+university,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+university,TEK30,HP Central heating - Bio,2023,0.00019362655741
+university,TEK30,HP - Electricity,2023,0.1632849356867121
+university,TEK30,Gas,2023,0.0016565044759408
+university,TEK30,Electricity - Bio,2023,0.0216740945571909
+university,TEK30,Electricity,2023,0.0706818896188211
+university,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+university,TEK30,Electric boiler,2023,0.0596845137090352
+university,TEK30,DH - Bio,2023,0.0002142250969049
+university,TEK30,DH,2023,0.3182453573763764
+hospital,TEK30,HP Central heating - Bio,2023,0.00019362655741
+hotel,TEK30,DH,2023,0.3182453573763764
+hotel,TEK30,Electric boiler,2023,0.0596845137090352
+hotel,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+hotel,TEK30,Electricity,2023,0.0706818896188211
+hotel,TEK30,Electricity - Bio,2023,0.0216740945571909
+hotel,TEK30,Gas,2023,0.0016565044759408
+hotel,TEK30,HP - Electricity,2023,0.1632849356867121
+hotel,TEK30,HP Central heating - Bio,2023,0.00019362655741
+sports,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+hotel,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+house,TEK30,HP Central heating - Electric boiler,2023,0.0038152903302471
+storage_repairs,TEK30,Gas,2023,0.0016565044759408
+storage_repairs,TEK30,HP - Electricity,2023,0.1632849356867121
+storage_repairs,TEK30,HP Central heating - Bio,2023,0.00019362655741
+hotel,TEK30,DH - Bio,2023,0.0002142250969049
+hospital,TEK30,HP - Electricity,2023,0.1632849356867121
+hospital,TEK30,Gas,2023,0.0016565044759408
+hospital,TEK30,Electricity - Bio,2023,0.0216740945571909
+storage_repairs,TEK30,Electric boiler,2023,0.0596845137090352
+storage_repairs,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+storage_repairs,TEK30,Electricity,2023,0.0706818896188211
+storage_repairs,TEK30,Electricity - Bio,2023,0.0216740945571909
+culture,TEK30,DH,2023,0.3182453573763764
+culture,TEK30,DH - Bio,2023,0.0002142250969049
+culture,TEK30,Electric boiler,2023,0.0596845137090352
+culture,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+culture,TEK30,Electricity,2023,0.0706818896188211
+culture,TEK30,Electricity - Bio,2023,0.0216740945571909
+culture,TEK30,Gas,2023,0.0016565044759408
+culture,TEK30,HP - Electricity,2023,0.1632849356867121
+culture,TEK30,HP Central heating - Bio,2023,0.00019362655741
+culture,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+culture,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+apartment_block,TEK30,HP Central heating - Electric boiler,2023,0.1487089355849942
+apartment_block,TEK30,HP Central heating - Bio,2023,0.0086647944512573
+apartment_block,TEK30,HP - Electricity,2023,0.0073046316982173
+apartment_block,TEK30,Electricity - Bio,2023,0.1128016818166627
+apartment_block,TEK30,Electricity,2023,0.4560101624930742
+apartment_block,TEK30,Electric boiler - Solar,2023,0.0003390668680222
+apartment_block,TEK30,Electric boiler,2023,0.0560170260057814
+apartment_block,TEK30,DH - Bio,2023,0.0033946606308616
+apartment_block,TEK30,DH,2023,0.2067590404511287
+hospital,TEK30,DH,2023,0.3182453573763764
+hospital,TEK30,DH - Bio,2023,0.0002142250969049
+hospital,TEK30,Electric boiler,2023,0.0596845137090352
+hospital,TEK30,Electric boiler - Solar,2023,0.0002493794096936
+hospital,TEK30,Electricity,2023,0.0706818896188211
+storage_repairs,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+storage_repairs,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+hotel,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+sports,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+sports,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+kindergarten,TEK30,HP Central heating - Gas,2023,7.196160696758601e-05
+kindergarten,TEK30,Gas,2023,0.0016565044759408
+kindergarten,TEK30,HP - Electricity,2023,0.1632849356867121
+storage_repairs,TEK30,DH - Bio,2023,0.0002142250969049
+kindergarten,TEK30,DH,2023,0.3182453573763764
+kindergarten,TEK30,DH - Bio,2023,0.0002142250969049
+kindergarten,TEK30,Electric boiler,2023,0.0596845137090352
+kindergarten,TEK30,Electricity - Bio,2023,0.0216740945571909
+kindergarten,TEK30,Electricity,2023,0.0706818896188211
+kindergarten,TEK30,HP Central heating - Bio,2023,0.00019362655741
+kindergarten,TEK30,HP Central heating - Electric boiler,2023,0.364043511904947
+sports,TEK30,HP Central heating - Bio,2023,0.00019362655741
+sports,TEK30,HP - Electricity,2023,0.1632849356867121
+sports,TEK30,Electricity - Bio,2023,0.0216740945571909
+sports,TEK30,Gas,2023,0.0016565044759408
+</pre></div>
+</div>
+</div></div>
+<p>Similarly to TEK17, there is no need to add TEK30 to <a class="reference internal" href="../area/index.html#area"><span class="std std-ref">area.csv</span></a> as all the area in both TEKs will be built after the start year 2020.</p>
+</section>
+<section id="extra-credit">
+<h3>Extra credit<a class="headerlink" href="#extra-credit" title="Link to this heading"></a></h3>
+<p>The input files <span class="xref std std-ref">energy_need_improvements.csv</span>, <span class="xref std std-ref">heating_system_forecast.csv</span>, <span class="xref std std-ref">improvement_building_upgrade.csv</span> and <span class="xref std std-ref">energy_need_behaviour_factor.csv</span>
+have defined default values under the column building_code that will apply to TEK30. For extra credit you may override the defaults with your own values.</p>
+<section id="energy-need-improvements">
+<h4>energy need improvements<a class="headerlink" href="#energy-need-improvements" title="Link to this heading"></a></h4>
+<p>Optionally, you can add a line to <span class="xref std std-ref">energy_need_improvements.csv</span> if you think that there is no yearly reduction lighting with TEK30 .</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>default,TEK30,lighting,yearly_reduction,2031,0.0,2050
+</pre></div>
+</div>
+</section>
+<section id="energy-need-behaviour-factor">
+<h4>energy need behaviour factor<a class="headerlink" href="#energy-need-behaviour-factor" title="Link to this heading"></a></h4>
+<p>In <span class="xref std std-ref">energy_need_behaviour_factor.csv</span> add TEK30 to the house row’s building_code column:</p>
+<p>This row:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="p">,</span><span class="n">TEK07</span><span class="o">+</span><span class="n">TEK10</span><span class="o">+</span><span class="n">TEK17</span><span class="p">,</span><span class="n">lighting</span><span class="p">,</span><span class="mf">0.85</span><span class="p">,</span><span class="mi">2020</span><span class="p">,</span><span class="n">noop</span><span class="p">,</span><span class="mi">2050</span>
+</pre></div>
+</div>
+<p>Becomes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="p">,</span><span class="n">TEK07</span><span class="o">+</span><span class="n">TEK10</span><span class="o">+</span><span class="n">TEK17</span><span class="o">+</span><span class="n">TEK30</span><span class="p">,</span><span class="n">lighting</span><span class="p">,</span><span class="mf">0.85</span><span class="p">,</span><span class="mi">2020</span><span class="p">,</span><span class="n">noop</span><span class="p">,</span><span class="mi">2050</span>
+</pre></div>
+</div>
+</section>
+<section id="energy-need-original-condition">
+<h4>energy_need_original_condition<a class="headerlink" href="#energy-need-original-condition" title="Link to this heading"></a></h4>
+<p>While the default values for lighting in <cite>energy_need_original_condition.csv&lt;energy_need_original_condition&gt;</cite> are handy for editing, you might want to set explicit values for TEK30.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">default values</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">explicit TEK30</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">grouping with TEK17</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><table class="docutils align-default" id="id6">
+<caption><span class="caption-text">default values in energy_need_original_condition.csv</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>kwh_m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>8.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>8.2</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>50.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>22.55</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>18.79</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>19.35</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>22.55</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>42.05</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>42.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>42.05</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>18.58</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>20.67</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>16.91</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Excerpt TEK30 lighting energy_need_original_condition.csv</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>kwh_m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>office</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-odd"><td><p>school</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-even"><td><p>university</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-odd"><td><p>hospital</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-even"><td><p>nursing_home</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>hotel</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-even"><td><p>sports</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>TEK30</p></td>
+<td><p>lighting</p></td>
+<td><p>16</p></td>
+</tr>
+</tbody>
+</table>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><p>Plus (+) can be used to combine the definition for multiple building categories and building codes</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Excerpt TEK30+TEK17 lighting energy_need_original_condition.csv</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>kwh_m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>apartment_block+house</strong></p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>8.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>50.2</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>22.55</p></td>
+</tr>
+<tr class="row-odd"><td><p>kindergarten</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>18.79</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>19.35</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>22.55</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>hospital+nursing_home+hotel</strong></p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>42.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>18.58</p></td>
+</tr>
+<tr class="row-even"><td><p>culture</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>20.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>storage_repairs</p></td>
+<td><p><em>TEK17+TEK30</em></p></td>
+<td><p>lighting</p></td>
+<td><p>16.91</p></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<p>Last Updated on 2025-10-10</p>
+<p>Version: 1.2.10.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calibrating_the_model.html" class="btn btn-neutral float-right" title="Calibrating the model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

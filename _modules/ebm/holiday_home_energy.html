@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.holiday_home_energy &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.holiday_home_energy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.holiday_home_energy</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
+
+
+<div class="viewcode-block" id="HolidayHomeEnergy">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">HolidayHomeEnergy</span><span class="p">:</span>
+<div class="viewcode-block" id="HolidayHomeEnergy.__init__">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">population</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                 <span class="n">holiday_homes_by_category</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                 <span class="n">electricity_usage_stats</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                 <span class="n">fuelwood_usage_stats</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                 <span class="n">fossil_fuel_usage_stats</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">=</span> <span class="n">population</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fossil_fuel_usage_stats</span> <span class="o">=</span> <span class="n">fossil_fuel_usage_stats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fuelwood_usage_stats</span> <span class="o">=</span> <span class="n">fuelwood_usage_stats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">electricity_usage_stats</span> <span class="o">=</span> <span class="n">electricity_usage_stats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">holiday_homes_by_category</span> <span class="o">=</span> <span class="n">holiday_homes_by_category</span></div>
+
+
+<div class="viewcode-block" id="HolidayHomeEnergy.calculate_energy_usage">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.calculate_energy_usage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate projected energy usage for holiday homes.</span>
+
+<span class="sd">        This method projects future energy usage for electricity, fuelwood, and fossil fuels</span>
+<span class="sd">        based on historical data and combines these projections with existing statistics.</span>
+
+<span class="sd">        Yields</span>
+<span class="sd">        ------</span>
+<span class="sd">        Iterable[pd.Series]</span>
+<span class="sd">            A series of projected energy usage values for electricity, fuelwood, and fossil fuels,</span>
+<span class="sd">            with NaN values filled from the existing statistics.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">electricity_projection</span> <span class="o">=</span> <span class="n">project_electricity_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">electricity_usage_stats</span><span class="p">,</span>
+                                                           <span class="bp">self</span><span class="o">.</span><span class="n">holiday_homes_by_category</span><span class="p">,</span>
+                                                           <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">electricity_projection</span><span class="o">.</span><span class="n">combine_first</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">electricity_usage_stats</span><span class="p">)</span>
+
+        <span class="n">fuelwood_projection</span> <span class="o">=</span> <span class="n">project_fuelwood_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fuelwood_usage_stats</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">holiday_homes_by_category</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">fuelwood_projection</span><span class="o">.</span><span class="n">combine_first</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fuelwood_usage_stats</span><span class="p">)</span>
+
+        <span class="n">fossil_fuel_projection</span> <span class="o">=</span> <span class="n">project_fossil_fuel_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fossil_fuel_usage_stats</span><span class="p">,</span>
+                                                           <span class="bp">self</span><span class="o">.</span><span class="n">holiday_homes_by_category</span><span class="p">,</span>
+                                                           <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">fossil_fuel_projection</span></div>
+
+
+<div class="viewcode-block" id="HolidayHomeEnergy.new_instance">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.new_instance">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">new_instance</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;HolidayHomeEnergy&#39;</span><span class="p">:</span>
+        <span class="n">dm</span> <span class="o">=</span> <span class="n">database_manager</span> <span class="ow">or</span> <span class="n">DatabaseManager</span><span class="p">()</span>
+        <span class="n">holiday_homes</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">get_holiday_home_by_year</span><span class="p">()</span>
+
+        <span class="c1"># 02 Elektrisitet i fritidsboliger statistikk (GWh) (input)</span>
+        <span class="n">electricity_usage_stats</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">get_holiday_home_electricity_consumption</span><span class="p">()</span>
+
+        <span class="c1"># 04 Ved i fritidsboliger statistikk (GWh)</span>
+        <span class="n">fuelwood_usage_stats</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">get_holiday_home_fuelwood_consumption</span><span class="p">()</span>
+        
+        <span class="c1"># 06 Fossilt brensel i fritidsboliger statistikk (GWh)</span>
+        <span class="n">fossil_fuel_usage_stats</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">get_holiday_home_fossilfuel_consumption</span><span class="p">()</span>
+
+        <span class="c1"># logging.warning(&#39;Loading fossil_fuel_usage_stats from hard coded data&#39;)</span>
+        <span class="c1"># fossil_fuel_usage_stats = pd.Series(data=[100], index=YearRange(2006, 2006).to_index(), name=&#39;kwh&#39;)</span>
+
+        <span class="n">population</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">POPULATION_FORECAST</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">population</span>
+
+        <span class="k">return</span> <span class="n">HolidayHomeEnergy</span><span class="p">(</span><span class="n">population</span><span class="p">,</span>
+                                 <span class="n">holiday_homes</span><span class="p">,</span>
+                                 <span class="n">electricity_usage_stats</span><span class="p">,</span>
+                                 <span class="n">fuelwood_usage_stats</span><span class="p">,</span>
+                                 <span class="n">fossil_fuel_usage_stats</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="project_electricity_usage">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_electricity_usage">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">project_electricity_usage</span><span class="p">(</span><span class="n">electricity_usage_stats</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                              <span class="n">holiday_homes_by_category</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                              <span class="n">population</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the projected electricity usage for holiday homes.</span>
+
+<span class="sd">    This function projects the future electricity usage for holiday homes based on historical</span>
+<span class="sd">    electricity usage statistics, the number of holiday homes by category, and population data.</span>
+
+<span class="sd">    Population is used to work out what years are needed in the projection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    electricity_usage_stats : pd.Series</span>
+<span class="sd">        A pandas Series containing historical electricity usage statistics.</span>
+<span class="sd">    holiday_homes_by_category : pd.DataFrame</span>
+<span class="sd">        A pandas DataFrame containing the number of holiday homes by year. Each column is considered as a category.</span>
+<span class="sd">    population : pd.Series</span>
+<span class="sd">        A pandas Series containing population data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.Series</span>
+<span class="sd">        A pandas Series with the projected electricity usage in gigawatt-hours (GWh) for future years.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the input Series do not meet the expected criteria.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">total_holiday_homes_by_year</span> <span class="o">=</span> <span class="n">sum_holiday_homes</span><span class="p">(</span><span class="n">holiday_homes_by_category</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                                                    <span class="n">holiday_homes_by_category</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">people_per_holiday_home</span> <span class="o">=</span> <span class="n">population_over_holiday_homes</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">total_holiday_homes_by_year</span><span class="p">)</span>
+    <span class="n">projected_holiday_homes_by_year</span> <span class="o">=</span> <span class="n">projected_holiday_homes</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">people_per_holiday_home</span><span class="p">)</span>
+
+    <span class="n">usage_by_homes</span> <span class="o">=</span> <span class="n">energy_usage_by_holiday_homes</span><span class="p">(</span><span class="n">electricity_usage_stats</span><span class="p">,</span> <span class="n">total_holiday_homes_by_year</span><span class="p">)</span>
+    <span class="n">nan_padded_usage_by_homes</span> <span class="o">=</span> <span class="n">usage_by_homes</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">projected_electricity_usage</span> <span class="o">=</span> <span class="n">projected_electricity_usage_holiday_homes</span><span class="p">(</span><span class="n">nan_padded_usage_by_homes</span><span class="p">)</span>
+
+    <span class="n">projected_electricity_usage_gwh</span> <span class="o">=</span> <span class="n">projected_holiday_homes_by_year</span> <span class="o">*</span> <span class="n">projected_electricity_usage</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+    <span class="n">projected_electricity_usage_gwh</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gwh&#39;</span>
+
+    <span class="k">return</span> <span class="n">projected_electricity_usage_gwh</span></div>
+
+
+
+<div class="viewcode-block" id="project_fuelwood_usage">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_fuelwood_usage">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">project_fuelwood_usage</span><span class="p">(</span><span class="n">fuelwood_usage_stats</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                           <span class="n">holiday_homes_by_category</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                           <span class="n">population</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    <span class="n">total_holiday_homes_by_year</span> <span class="o">=</span> <span class="n">sum_holiday_homes</span><span class="p">(</span><span class="n">holiday_homes_by_category</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                                                    <span class="n">holiday_homes_by_category</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">people_per_holiday_home</span> <span class="o">=</span> <span class="n">population_over_holiday_homes</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">total_holiday_homes_by_year</span><span class="p">)</span>
+    <span class="n">projected_holiday_homes_by_year</span> <span class="o">=</span> <span class="n">projected_holiday_homes</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">people_per_holiday_home</span><span class="p">)</span>
+
+    <span class="n">usage_by_homes</span> <span class="o">=</span> <span class="n">energy_usage_by_holiday_homes</span><span class="p">(</span><span class="n">fuelwood_usage_stats</span><span class="p">,</span> <span class="n">total_holiday_homes_by_year</span><span class="p">)</span>
+    <span class="n">nan_padded_usage_by_homes</span> <span class="o">=</span> <span class="n">usage_by_homes</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">projected_fuelwood_usage</span> <span class="o">=</span> <span class="n">projected_fuelwood_usage_holiday_homes</span><span class="p">(</span><span class="n">nan_padded_usage_by_homes</span><span class="p">)</span>
+
+    <span class="n">projected_fuelwood_usage_gwh</span> <span class="o">=</span> <span class="n">projected_holiday_homes_by_year</span> <span class="o">*</span> <span class="n">projected_fuelwood_usage</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+    <span class="n">projected_fuelwood_usage_gwh</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gwh&#39;</span>
+
+    <span class="k">return</span> <span class="n">projected_fuelwood_usage_gwh</span></div>
+
+
+
+<div class="viewcode-block" id="project_fossil_fuel_usage">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_fossil_fuel_usage">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">project_fossil_fuel_usage</span><span class="p">(</span><span class="n">fossil_fuel_usage_stats</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                              <span class="n">holiday_homes_by_category</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                              <span class="n">population</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    <span class="n">projection</span> <span class="o">=</span> <span class="n">fossil_fuel_usage_stats</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">not_na</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">projection</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">projection_filter</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">not_na</span><span class="p">)</span>
+    <span class="n">projection</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">projection_filter</span><span class="p">]</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">not_na</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">projection</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gwh&#39;</span>
+    <span class="k">return</span> <span class="n">projection</span></div>
+
+
+
+<div class="viewcode-block" id="sum_holiday_homes">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.sum_holiday_homes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sum_holiday_homes</span><span class="p">(</span><span class="o">*</span><span class="n">holiday_homes</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">holiday_homes</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="population_over_holiday_homes">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.population_over_holiday_homes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">population_over_holiday_homes</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                                  <span class="n">holiday_homes</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Average number of holiday homes by population.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    population : pd.Series</span>
+<span class="sd">    holiday_homes : pd.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.Series</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">population</span> <span class="o">/</span> <span class="n">holiday_homes</span></div>
+
+
+
+<div class="viewcode-block" id="projected_holiday_homes">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_holiday_homes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">projected_holiday_homes</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                            <span class="n">holiday_homes</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Projects future number of holiday homes based on the population and historical average number of holiday homes</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    population : pd.Series</span>
+<span class="sd">        population in every year of the projection</span>
+<span class="sd">    holiday_homes : pd.Series</span>
+<span class="sd">        historical number of holiday homes</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.Series</span>
+<span class="sd">        population over average number of holiday homes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">population</span> <span class="o">/</span> <span class="n">holiday_homes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="energy_usage_by_holiday_homes">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.energy_usage_by_holiday_homes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_usage_by_holiday_homes</span><span class="p">(</span>
+    <span class="n">energy_usage</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+    <span class="n">holiday_homes</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    (08) 14 Elektrisitet pr fritidsbolig staitsikk (kWh) in Energibruk fritidsboliger.xlsx</span>
+<span class="sd">    (10) 16 Ved pr fritidsbolig statistikk (kWh) 2019 - 2023</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    energy_usage : pd.Series</span>
+<span class="sd">        Electricity usage by year from SSB https://www.ssb.no/statbank/sq/10103348 2001 - 2023</span>
+<span class="sd">    holiday_homes : pd.Series</span>
+<span class="sd">        Total number of holiday homes of any category from SSB https://www.ssb.no/statbank/sq/10103336</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">energy_usage</span> <span class="o">*</span> <span class="mi">1_000_000</span> <span class="o">/</span> <span class="n">holiday_homes</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;kwh&#39;</span>
+    <span class="k">return</span> <span class="n">s</span></div>
+
+
+
+<div class="viewcode-block" id="projected_fuelwood_usage_holiday_homes">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_fuelwood_usage_holiday_homes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">projected_fuelwood_usage_holiday_homes</span><span class="p">(</span><span class="n">historical_fuelwood_usage</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Projects future fuelwood usage for holiday homes based on historical data. The projection</span>
+<span class="sd">        is calculated as the mean of the last 5 years of historical_fuelwood_usage.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    historical_fuelwood_usage : pd.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.Series</span>
+<span class="sd">        A pandas Series with with NaN values in fuelwood usage replaced by projected use. Years present</span>
+<span class="sd">            in historical_fuelwood_usage is returned as NaN</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">projected_fuelwood_usage</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">historical_fuelwood_usage</span><span class="p">),</span>
+                                         <span class="n">index</span><span class="o">=</span><span class="n">historical_fuelwood_usage</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">not_na</span> <span class="o">=</span> <span class="n">historical_fuelwood_usage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">historical_fuelwood_usage</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="n">historical_fuelwood_usage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">not_na</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">projection_filter</span> <span class="o">=</span> <span class="n">projected_fuelwood_usage</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">not_na</span><span class="p">)</span>
+    <span class="n">projected_fuelwood_usage</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">projection_filter</span><span class="p">]</span> <span class="o">=</span> <span class="n">average</span>
+    <span class="k">return</span> <span class="n">projected_fuelwood_usage</span></div>
+
+
+
+<div class="viewcode-block" id="projected_electricity_usage_holiday_homes">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_electricity_usage_holiday_homes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">projected_electricity_usage_holiday_homes</span><span class="p">(</span><span class="n">electricity_usage</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Project future electricity usage for holiday homes based on historical data.</span>
+
+<span class="sd">    This function projects future electricity usage by creating three ranges of projections</span>
+<span class="sd">    and padding the series with NaN values and the last projection value as needed.</span>
+
+<span class="sd">    15 (09) Elektrisitet pr fritidsbolig framskrevet (kWh) in Energibruk fritidsboliger.xlsx</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    electricity_usage : pd.Series</span>
+<span class="sd">        A pandas Series containing historical electricity usage data. The index should include the year 2019,</span>
+<span class="sd">        and the Series should contain at least 40 years of data with some NaN values for projection.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.Series</span>
+<span class="sd">        A pandas Series with with NaN values in electricity usage replaced by projected energy use. Years with</span>
+<span class="sd">            values in energy_usage has a projected usage of NaN</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the year 2019 is not in the index of the provided Series.</span>
+<span class="sd">        If there are no NaN values in the provided Series.</span>
+<span class="sd">        If the length of the Series is less than or equal to 40.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="mi">2019</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">electricity_usage</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;The required year 2019 is not in the index of electricity_usage for the electricity projection&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">electricity_usage</span><span class="o">.</span><span class="n">isna</span><span class="p">()):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expected empty energy_usage for projection&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">electricity_usage</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;At least 41 years of electricity_usage is required to predict future electricity use&#39;</span><span class="p">)</span>
+    <span class="n">left_pad_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">electricity_usage</span><span class="p">)</span> <span class="o">-</span> <span class="n">electricity_usage</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="n">initial_e_u</span> <span class="o">=</span> <span class="n">electricity_usage</span><span class="p">[</span><span class="mi">2019</span><span class="p">]</span>
+    <span class="n">first_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_e_u</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">75</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+
+    <span class="n">second_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">first_range</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+
+    <span class="n">third_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">second_range</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+
+    <span class="n">right_pad_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">electricity_usage</span><span class="p">)</span> <span class="o">-</span> <span class="n">left_pad_len</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_range</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">second_range</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">third_range</span><span class="p">)</span>
+    <span class="n">right_padding</span> <span class="o">=</span> <span class="p">[</span><span class="n">third_range</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">right_pad_len</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">left_pad_len</span><span class="p">)</span> <span class="o">+</span>
+                     <span class="n">first_range</span> <span class="o">+</span>
+                     <span class="n">second_range</span> <span class="o">+</span>
+                     <span class="n">third_range</span> <span class="o">+</span>
+                     <span class="n">right_padding</span><span class="p">,</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;projected_electricity_usage_kwh&#39;</span><span class="p">,</span>
+                     <span class="n">index</span><span class="o">=</span><span class="n">electricity_usage</span><span class="o">.</span><span class="n">index</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">holiday_home_energy</span> <span class="o">=</span> <span class="n">HolidayHomeEnergy</span><span class="o">.</span><span class="n">new_instance</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">energy_usage</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">holiday_home_energy</span><span class="o">.</span><span class="n">calculate_energy_usage</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span> <span class="s1">&#39;fuelwood&#39;</span><span class="p">,</span> <span class="s1">&#39;fossil fuel&#39;</span><span class="p">]):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;====&#39;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="s1">&#39;====&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">energy_usage</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="calculate_energy_use">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.calculate_energy_use">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_use</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates holiday home energy use by from HolidayHomeEnergy.calculate_energy_usage()</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    database_manager : DatabaseManager</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">holiday_home_energy</span> <span class="o">=</span> <span class="n">HolidayHomeEnergy</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
+    <span class="n">el</span><span class="p">,</span> <span class="n">wood</span><span class="p">,</span> <span class="n">fossil</span> <span class="o">=</span> <span class="p">[</span><span class="n">e_u</span> <span class="k">for</span> <span class="n">e_u</span> <span class="ow">in</span> <span class="n">holiday_home_energy</span><span class="o">.</span><span class="n">calculate_energy_usage</span><span class="p">()]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">el</span><span class="p">,</span> <span class="n">wood</span><span class="p">,</span> <span class="n">fossil</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;holiday_home&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;energy_type&#39;</span><span class="p">,</span> <span class="s1">&#39;n/a&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;holiday_home&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;energy_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;electricity&#39;</span><span class="p">,</span> <span class="s1">&#39;fuelwood&#39;</span><span class="p">,</span> <span class="s1">&#39;fossil&#39;</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;unit&#39;</span><span class="p">})</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_type&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+
+
+<div class="viewcode-block" id="transform_holiday_homes_to_horizontal">
+<a class="viewcode-back" href="../../modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.transform_holiday_homes_to_horizontal">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">transform_holiday_homes_to_horizontal</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;energy_type&#39;</span><span class="p">:</span> <span class="s1">&#39;energy_source&#39;</span><span class="p">})</span>
+    <span class="n">columns_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_source&#39;</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">columns_to_keep</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;energy_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;energy_source&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Elektrisitet&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;electricity&#39;</span> <span class="k">else</span> <span class="s1">&#39;Bio&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;fuelwood&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Fritidsboliger&#39;</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

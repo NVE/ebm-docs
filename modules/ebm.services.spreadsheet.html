@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.services.spreadsheet module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.energy_consumption module" href="ebm.energy_consumption.html" />
+    <link rel="prev" title="ebm.services.files module" href="ebm.services.files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.services.html">ebm.services package</a></li>
+      <li class="breadcrumb-item active">ebm.services.spreadsheet module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.services.spreadsheet.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.services.spreadsheet">
+<span id="ebm-services-spreadsheet-module"></span><h1>ebm.services.spreadsheet module<a class="headerlink" href="#module-ebm.services.spreadsheet" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SpreadsheetCell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#SpreadsheetCell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a cell in a spreadsheet.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>column<span class="classifier">int</span></dt><dd><p>The column number of the cell.</p>
+</dd>
+<dt>row<span class="classifier">int</span></dt><dd><p>The row number of the cell.</p>
+</dd>
+<dt>value<span class="classifier">object</span></dt><dd><p>The value contained in the cell.</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>spreadsheet_cell() -&gt; str</dt><dd><p>Returns the cell’s address in A1 notation.</p>
+</dd>
+<dt>replace(<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs) -&gt; ‘SpreadsheetCell’</dt><dd><p>Returns a new SpreadsheetCell with updated attributes.</p>
+</dd>
+<dt>first_row(cell_range) -&gt; tuple</dt><dd><p>Returns the first row of cells in the given range.</p>
+</dd>
+<dt>first_column(cell_range) -&gt; tuple</dt><dd><p>Returns the first column of cells in the given range.</p>
+</dd>
+<dt>submatrix(cell_range) -&gt; tuple</dt><dd><p>Returns the submatrix excluding the first row and column.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.column">
+<span class="sig-name descname"><span class="pre">column</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.column" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.row">
+<span class="sig-name descname"><span class="pre">row</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.row" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span></em><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.spreadsheet_cell">
+<span class="sig-name descname"><span class="pre">spreadsheet_cell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#SpreadsheetCell.spreadsheet_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.spreadsheet_cell" title="Link to this definition"></a></dt>
+<dd><p>Returns the cell’s address in A1 notation.</p>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>str</dt><dd><p>The cell’s address in A1 notation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.replace">
+<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ebm.services.spreadsheet.SpreadsheetCell" title="ebm.services.spreadsheet.SpreadsheetCell"><span class="pre">SpreadsheetCell</span></a></span></span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#SpreadsheetCell.replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.replace" title="Link to this definition"></a></dt>
+<dd><p>Returns a new SpreadsheetCell with updated attributes.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs<span class="classifier">dict</span></dt><dd><p>The attributes to update.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>SpreadsheetCell</dt><dd><p>A new SpreadsheetCell with updated attributes.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.first_row">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cell_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#SpreadsheetCell.first_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.first_row" title="Link to this definition"></a></dt>
+<dd><p>Returns the first row of cells in the given range.</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>cell_range<span class="classifier">str</span></dt><dd><p>The range of cells in A1 notation.</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple of SpreadsheetCell objects representing the first row.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.first_column">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cell_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#SpreadsheetCell.first_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.first_column" title="Link to this definition"></a></dt>
+<dd><p>Returns the first column of cells in the given range.</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>cell_range<span class="classifier">str</span></dt><dd><p>The range of cells in A1 notation.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Returns<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple of SpreadsheetCell objects representing the first column.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.submatrix">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">submatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cell_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#SpreadsheetCell.submatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.submatrix" title="Link to this definition"></a></dt>
+<dd><p>Returns the submatrix excluding the first row and column.</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>cell_range<span class="classifier">str</span></dt><dd><p>The range of cells in A1 notation.</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>tuple</dt><dd><p>A tuple of SpreadsheetCell objects representing the submatrix.</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<p>the_range = “A1:C3”
+submatrix = SpreadsheetCell.submatrix(the_range)
+for cell in submatrix:</p>
+<blockquote>
+<div><p>print(cell.spreadsheet_cell(), cell.column, cell.row)</p>
+</div></blockquote>
+<p>B2 2 2
+C2 3 2
+B3 2 3
+C3 3 3</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.SpreadsheetCell.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ebm.services.spreadsheet.SpreadsheetCell.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.iter_cells">
+<span class="sig-name descname"><span class="pre">iter_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'E'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_padding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#iter_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.iter_cells" title="Link to this definition"></a></dt>
+<dd><p>Returns spreadsheet column names from A up to ZZ
+Parameters:
+- first_column Letter of the first column to return. Default (E)
+- left_padding Padding added in front of single letter columns. Default empty
+Returns:
+- Generator supplying a column name</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.detect_format_from_values">
+<span class="sig-name descname"><span class="pre">detect_format_from_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#detect_format_from_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.detect_format_from_values" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.find_max_column_width">
+<span class="sig-name descname"><span class="pre">find_max_column_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Cell</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#find_max_column_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.find_max_column_width" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.add_top_row_filter">
+<span class="sig-name descname"><span class="pre">add_top_row_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workbook_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workbook</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Workbook</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#add_top_row_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.add_top_row_filter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.services.spreadsheet.make_pretty">
+<span class="sig-name descname"><span class="pre">make_pretty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workbook_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/services/spreadsheet.html#make_pretty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.services.spreadsheet.make_pretty" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.services.files.html" class="btn btn-neutral float-left" title="ebm.services.files module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.energy_consumption.html" class="btn btn-neutral float-right" title="ebm.energy_consumption module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

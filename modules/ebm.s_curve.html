@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.s_curve module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.temp_calc module" href="ebm.temp_calc.html" />
+    <link rel="prev" title="ebm.holiday_home_energy module" href="ebm.holiday_home_energy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+      <li class="breadcrumb-item active">ebm.s_curve module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.s_curve.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.s_curve">
+<span id="ebm-s-curve-module"></span><h1>ebm.s_curve module<a class="headerlink" href="#module-ebm.s_curve" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.original_condition">
+<span class="sig-name descname"><span class="pre">original_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_and_small_measure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/s_curve.html#original_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.original_condition" title="Link to this definition"></a></dt>
+<dd><p>Calculates buildings remaining as original condition by subtracting every other condition</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_renovation : pandas.Series
+s_curve_renovation_and_small_measure : pandas.Series
+s_curve_small_measure : pandas.Series</p>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>buildings remaining as original condition</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.small_measure">
+<span class="sig-name descname"><span class="pre">small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_and_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.small_measure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the remaining small measure share by subtracting renovation and small measure values from
+the total small measure curve.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>s_curve_renovation_and_small_measure : Series
+s_curve_small_measure_total : Series</p>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Series</dt><dd><p>s_curve_small_measure</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This function currently does not implement logic to zero out values before the building year.</p></li>
+<li><p>Assumes both input Series are aligned on the index year.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.renovation_and_small_measure">
+<span class="sig-name descname"><span class="pre">renovation_and_small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#renovation_and_small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.renovation_and_small_measure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the remaining renovation_and_small_measure share by subtracting renovation
+from the total renovation total curve.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_renovation<span class="classifier">pandas.Series</span></dt><dd><p>A time series representing the S-curve of exclusive renovation condition.</p>
+</dd>
+<dt>s_curve_renovation_total<span class="classifier">pandas.Series</span></dt><dd><p>A time series representing the total S-curve for the total renovation condition.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>A time series representing the difference between the total and renovation-only S-curves.
+Values before the building year should be set to 0 (not yet implemented).</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h2>Notes<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This function currently does not implement logic to zero out values before the building year.</p></li>
+<li><p>Assumes both input Series are aligned on index year.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.trim_renovation_from_renovation_total">
+<span class="sig-name descname"><span class="pre">trim_renovation_from_renovation_total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scurve_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#trim_renovation_from_renovation_total"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.trim_renovation_from_renovation_total" title="Link to this definition"></a></dt>
+<dd><p>Adjust the renovation S-curve by incorporating values from the total renovation curve
+where the total share is less than the maximum renovation share.</p>
+<p>This function identifies time points where the total S-curve (<cite>scurve_total</cite>) is less than
+the maximum renovation S-curve (<cite>s_curve_renovation_max</cite>). For those points, it replaces
+the corresponding values in <cite>s_curve_renovation</cite> with values from <cite>s_curve_renovation_total</cite>.</p>
+<section id="id6">
+<h2>Parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_renovation<span class="classifier">pandas.Series</span></dt><dd><p>The original renovation S-curve to be adjusted.</p>
+</dd>
+<dt>s_curve_renovation_max<span class="classifier">pandas.Series</span></dt><dd><p>The maximum allowed values for the renovation S-curve.</p>
+</dd>
+<dt>s_curve_renovation_total<span class="classifier">pandas.Series</span></dt><dd><p>The total renovation S-curve including all measures.</p>
+</dd>
+<dt>scurve_total<span class="classifier">pandas.Series</span></dt><dd><p>The actual total S-curve values to compare against the max renovation curve.</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h2>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>The adjusted renovation S-curve with values merged from the total renovation curve
+where the total share is less than the maximum renovation share.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Notes<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Assumes all input Series are aligned on the index year.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.renovation_from_small_measure">
+<span class="sig-name descname"><span class="pre">renovation_from_small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#renovation_from_small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.renovation_from_small_measure" title="Link to this definition"></a></dt>
+<dd><p>Calculate the renovation S-curve by subtracting small measures from the max renovation curve.</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_renovation_max<span class="classifier">pandas.Series</span></dt><dd><p>The maximum yearly values for the renovation S-curve.</p>
+</dd>
+<dt>s_curve_small_measure_total<span class="classifier">pandas.Series</span></dt><dd><p>The yearly total S-curve for small measures.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>The resulting renovation S-curve with values clipped at 0</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.total">
+<span class="sig-name descname"><span class="pre">total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#total"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.total" title="Link to this definition"></a></dt>
+<dd><p>Calculates the yearly sum of renovation and small_measure</p>
+<section id="id11">
+<h2>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>s_curve_renovation_total : pandas.Series
+s_curve_small_measure_total : pandas.Series</p>
+</section>
+<section id="id12">
+<h2>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>yearly sum of renovation and small_measure</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.trim_max_value">
+<span class="sig-name descname"><span class="pre">trim_max_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#trim_max_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.trim_max_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.small_measure_max">
+<span class="sig-name descname"><span class="pre">small_measure_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/s_curve.html#small_measure_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.small_measure_max" title="Link to this definition"></a></dt>
+<dd><p>Calculates the maximum possible value for small_measure condition</p>
+<section id="id13">
+<h2>Parameters<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_small_measure_never_share : pandas.Series</p>
+</section>
+<section id="id14">
+<h2>Returns<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>Yearly maximum possible value for small_measure</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.renovation_max">
+<span class="sig-name descname"><span class="pre">renovation_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/s_curve.html#renovation_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.renovation_max" title="Link to this definition"></a></dt>
+<dd><p>Calculates the maximum possible value for renovation condition</p>
+<section id="id15">
+<h2>Parameters<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_renovation_never_share : pandas.Series</p>
+</section>
+<section id="id16">
+<h2>Returns<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>Yearly maximum possible value for renovation</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.cumulative_renovation">
+<span class="sig-name descname"><span class="pre">cumulative_renovation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_with_building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#cumulative_renovation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.cumulative_renovation" title="Link to this definition"></a></dt>
+<dd><p>Return the  yearly cumulative sum of renovation condition.</p>
+<section id="id17">
+<h2>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<p>s_curves_with_building_code : pandas.Series
+years : pandas.Series</p>
+</section>
+<section id="id18">
+<h2>Returns<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>cumulative sum of renovation</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h2>Notes<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<p>NaN values are replaced by float 0.0</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.cumulative_small_measure">
+<span class="sig-name descname"><span class="pre">cumulative_small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_with_building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#cumulative_small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.cumulative_small_measure" title="Link to this definition"></a></dt>
+<dd><p>Return the  yearly cumulative sum of small_measure condition.</p>
+<section id="id20">
+<h2>Parameters<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p>s_curves_with_building_code : pandas.Series
+years : YearRange</p>
+</section>
+<section id="id21">
+<h2>Returns<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>cumulative sum of small_measure</p>
+</dd>
+</dl>
+</section>
+<section id="id22">
+<h2>Notes<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<p>NaN values are replaced by float 0.0</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.transform_demolition">
+<span class="sig-name descname"><span class="pre">transform_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#transform_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.transform_demolition" title="Link to this definition"></a></dt>
+<dd><p>Filter yearly demolition for years
+Parameters
+———-
+demolition : pandas.Series
+years : YearRange</p>
+<section id="id23">
+<h2>Returns<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<p>demolition for years</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.transform_to_cumulative_demolition">
+<span class="sig-name descname"><span class="pre">transform_to_cumulative_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#transform_to_cumulative_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.transform_to_cumulative_demolition" title="Link to this definition"></a></dt>
+<dd><p>Filter yearly cumulative demolition for years
+Parameters
+———-
+cumulative_demolition : pandas.DataFrame
+years : YearRange</p>
+<section id="id24">
+<h2>Returns<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>cumulative demolition for years</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.scurve_parameters_to_never_share">
+<span class="sig-name descname"><span class="pre">scurve_parameters_to_never_share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#scurve_parameters_to_never_share"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.scurve_parameters_to_never_share" title="Link to this definition"></a></dt>
+<dd><p>Transform scurve_parameters with s_curve to never_share.
+Parameters
+———-
+s_curves : pandas.DataFrame
+scurve_parameters : pandas.DataFrame</p>
+<section id="id25">
+<h2>Returns<a class="headerlink" href="#id25" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+<section id="id26">
+<h2>Notes<a class="headerlink" href="#id26" title="Link to this heading"></a></h2>
+<p>Age is padded from -max age to 0</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.scurve_parameters_to_scurve">
+<span class="sig-name descname"><span class="pre">scurve_parameters_to_scurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#scurve_parameters_to_scurve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.scurve_parameters_to_scurve" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Create scurve new dataframe from scurve_parameters using ebm.model.area.building_condition_scurves and</dt><dd><p>ebm.model.area.building_condition_accumulated_scurves</p>
+</dd>
+</dl>
+<p>Each row represent a building_category and building_condition at a certain age.</p>
+<section id="id27">
+<h2>Parameters<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
+<p>scurve_parameters : pandas.DataFrame</p>
+</section>
+<section id="id28">
+<h2>Returns<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<p>pandas.Series</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.accumulate_demolition">
+<span class="sig-name descname"><span class="pre">accumulate_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_long</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#accumulate_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.accumulate_demolition" title="Link to this definition"></a></dt>
+<dd><p>Sets demolition in year 0 (2020) to 0.0 and sums up the yearly demolition using years</p>
+<section id="id29">
+<h2>Parameters<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<p>s_curves_long : pandas.DataFrame
+years : YearRange</p>
+</section>
+<section id="id30">
+<h2>Returns<a class="headerlink" href="#id30" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.merge_s_curves_and_building_code">
+<span class="sig-name descname"><span class="pre">merge_s_curves_and_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#merge_s_curves_and_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.merge_s_curves_and_building_code" title="Link to this definition"></a></dt>
+<dd><p>Cross merge s_curves and df_never_share with all building_code in building_code_parameters</p>
+<section id="id31">
+<h2>Parameters<a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
+<p>s_curves : pandas.DataFrame
+df_never_share : pandas.DataFrame
+building_code_parameters : pandas.DataFrame</p>
+</section>
+<section id="id32">
+<h2>Returns<a class="headerlink" href="#id32" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.transform_to_dataframe">
+<span class="sig-name descname"><span class="pre">transform_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_original_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_and_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#transform_to_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.transform_to_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Creates a pandas DataFrame from the parameters</p>
+<section id="id33">
+<h2>Parameters<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_original_condition : pandas.Series
+s_curve_renovation : pandas.Series
+s_curve_renovation_and_small_measure : pandas.Series
+s_curve_small_measure : pandas.Series
+s_curve_demolition : pandas.Series</p>
+</section>
+<section id="id34">
+<h2>Returns<a class="headerlink" href="#id34" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.transform_to_long">
+<span class="sig-name descname"><span class="pre">transform_to_long</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_by_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/s_curve.html#transform_to_long"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.transform_to_long" title="Link to this definition"></a></dt>
+<dd><section id="id35">
+<h2>Parameters<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
+<p>s_curves_by_condition : pandas.DataFrame</p>
+</section>
+<section id="id36">
+<h2>Returns<a class="headerlink" href="#id36" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>transformed to long, on condition for each row</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.s_curve.calculate_s_curves">
+<span class="sig-name descname"><span class="pre">calculate_s_curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/s_curve.html#calculate_s_curves"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.s_curve.calculate_s_curves" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.holiday_home_energy.html" class="btn btn-neutral float-left" title="ebm.holiday_home_energy module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.temp_calc.html" class="btn btn-neutral float-right" title="ebm.temp_calc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

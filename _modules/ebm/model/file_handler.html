@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.file_handler &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.model.file_handler</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.model.file_handler</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandera.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaErrors</span><span class="p">,</span> <span class="n">SchemaError</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ebm.validators</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">validators</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.defaults</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_calibrate_heating_rv</span><span class="p">,</span> <span class="n">default_calibrate_energy_consumption</span>
+
+
+<div class="viewcode-block" id="FileHandler">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FileHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles file operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Filenames</span>
+    <span class="n">BUILDING_CONDITIONS</span> <span class="o">=</span> <span class="s1">&#39;building_conditions.csv&#39;</span>
+    <span class="n">BUILDING_CODE_PARAMS</span> <span class="o">=</span> <span class="s1">&#39;building_code_parameters.csv&#39;</span>
+    <span class="n">S_CURVE</span> <span class="o">=</span> <span class="s1">&#39;s_curve.csv&#39;</span>
+    <span class="n">POPULATION_FORECAST</span> <span class="o">=</span> <span class="s1">&#39;population_forecast.csv&#39;</span>
+    <span class="n">NEW_BUILDINGS_RESIDENTIAL</span> <span class="o">=</span> <span class="s1">&#39;new_buildings_residential.csv&#39;</span>
+    <span class="n">AREA_NEW_RESIDENTIAL_BUILDINGS</span> <span class="o">=</span> <span class="s1">&#39;area_new_residential_buildings.csv&#39;</span>
+    <span class="n">AREA</span> <span class="o">=</span> <span class="s1">&#39;area.csv&#39;</span>
+    <span class="n">BEHAVIOUR_FACTOR</span> <span class="o">=</span> <span class="s1">&#39;energy_need_behaviour_factor.csv&#39;</span>
+    <span class="n">ENERGY_NEED_ORIGINAL_CONDITION</span> <span class="o">=</span> <span class="s1">&#39;energy_need_original_condition.csv&#39;</span>
+    <span class="n">IMPROVEMENT_BUILDING_UPGRADE</span> <span class="o">=</span> <span class="s1">&#39;improvement_building_upgrade.csv&#39;</span>
+    <span class="n">ENERGY_NEED_YEARLY_IMPROVEMENTS</span> <span class="o">=</span> <span class="s1">&#39;energy_need_improvements.csv&#39;</span>
+    <span class="n">HOLIDAY_HOME_STOCK</span> <span class="o">=</span> <span class="s1">&#39;holiday_home_stock.csv&#39;</span>
+    <span class="n">HOLIDAY_HOME_ENERGY_CONSUMPTION</span> <span class="o">=</span> <span class="s1">&#39;holiday_home_energy_consumption.csv&#39;</span>
+    <span class="n">AREA_PER_PERSON</span> <span class="o">=</span> <span class="s1">&#39;area_per_person.csv&#39;</span>
+    <span class="n">HEATING_SYSTEM_INITIAL_SHARES</span> <span class="o">=</span> <span class="s1">&#39;heating_system_initial_shares.csv&#39;</span>
+    <span class="n">HEATING_SYSTEMS_EFFICIENCIES</span> <span class="o">=</span> <span class="s1">&#39;heating_systems_efficiencies.csv&#39;</span>
+    <span class="n">HEATING_SYSTEM_FORECAST</span> <span class="o">=</span> <span class="s1">&#39;heating_system_forecast.csv&#39;</span>
+    <span class="n">CALIBRATE_ENERGY_REQUIREMENT</span> <span class="o">=</span> <span class="s1">&#39;calibrate_heating_rv.xlsx&#39;</span>
+    <span class="n">CALIBRATE_ENERGY_CONSUMPTION</span> <span class="o">=</span> <span class="s1">&#39;calibrate_energy_consumption.xlsx&#39;</span>
+
+    <span class="n">input_directory</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>
+
+<div class="viewcode-block" id="FileHandler.__init__">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor for FileHandler Object. Sets FileHandler.input_directory.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        directory : pathlib.Path | None | (str)</span>
+<span class="sd">            When directory is None the constructor will attempt to read directory location from</span>
+<span class="sd">                environment variable EBM_INPUT_DIRECTORY</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">directory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Use &#39;input&#39; as fall back when EBM_INPUT_DIRECTORY is not set in environment.</span>
+            <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EBM_INPUT_DIRECTORY&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">=</span> <span class="n">directory</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">files_to_check</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">BUILDING_CODE_PARAMS</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">S_CURVE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">POPULATION_FORECAST</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">NEW_BUILDINGS_RESIDENTIAL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AREA_NEW_RESIDENTIAL_BUILDINGS</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">AREA</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">BEHAVIOUR_FACTOR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ENERGY_NEED_ORIGINAL_CONDITION</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">IMPROVEMENT_BUILDING_UPGRADE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ENERGY_NEED_YEARLY_IMPROVEMENTS</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">HOLIDAY_HOME_ENERGY_CONSUMPTION</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">HOLIDAY_HOME_STOCK</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">AREA_PER_PERSON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">HEATING_SYSTEM_INITIAL_SHARES</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">HEATING_SYSTEMS_EFFICIENCIES</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">HEATING_SYSTEM_FORECAST</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;FileHandler(input_directory=&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="si">}</span><span class="s1">&quot;)&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FileHandler.default_data_directory">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.default_data_directory">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_data_directory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the path for ebm default data. The function is used when content is needed for a new input directory.</span>
+<span class="sd">        Not to be confused with FileHandler.input_directory.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pathlib.Path</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        create_missing_input_files</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_file">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_file">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds and returns a file by searching in the folder defined by self.input_folder.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - file_name (str): Name of the file to retrieve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - file_df (pd.DataFrame): DataFrame containing file data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;get_file </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">file_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="p">)</span> <span class="o">/</span> <span class="n">file_name</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file_path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.xlsx&#39;</span><span class="p">:</span>
+                <span class="n">file_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">file_path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.csv&#39;</span><span class="p">:</span>
+                <span class="n">file_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1"> is not of type xlsx or csv&#39;</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">file_df</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Current directory is </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to open </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">. File not found.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span>
+        <span class="k">except</span> <span class="ne">PermissionError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to open </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">. Permission denied.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span>
+        <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to open </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">. Unable to read file.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_building_code">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_building_code">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_building_code</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get TEK parameters DataFrame.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - building_code_params (pd.DataFrame): DataFrame containing TEK parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">building_code_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BUILDING_CODE_PARAMS</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">building_code_params</span></div>
+
+    
+<div class="viewcode-block" id="FileHandler.get_s_curve">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_s_curve">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_s_curve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get S-curve parameters DataFrame.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - scurve_params (pd.DataFrame): DataFrame containing S-curve parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">scurve_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S_CURVE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scurve_params</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_construction_population">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_construction_population">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_construction_population</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get population and household size DataFrame from a file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
+<span class="sd">          year population household_size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">POPULATION_FORECAST</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_population">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_population">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_population</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads population data from population.csv as float64</span>
+
+<span class="sd">        Should probably be merged with get_construction_population</span>
+
+<span class="sd">        Returns population : pd.DataFrame</span>
+<span class="sd">            dataframe with population</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">POPULATION_FORECAST</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;household_size&quot;</span><span class="p">:</span> <span class="s2">&quot;float64&quot;</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_construction_building_category_share">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_construction_building_category_share">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_construction_building_category_share</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get building category share by year DataFrame from a file.</span>
+
+<span class="sd">        The number can be used in conjunction with number of households to calculate total number</span>
+<span class="sd">        of buildings of category house and apartment block</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
+<span class="sd">          &quot;year&quot;, &quot;Andel nye småhus&quot;, &quot;Andel nye leiligheter&quot;, &quot;Areal nye småhus&quot;, &quot;Areal nye leiligheter&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">NEW_BUILDINGS_RESIDENTIAL</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_building_category_area">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_building_category_area">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_building_category_area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get population and household size DataFrame from a file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
+<span class="sd">          &quot;area&quot;,&quot;type of building&quot;,&quot;2010&quot;,&quot;2011&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">AREA_NEW_RESIDENTIAL_BUILDINGS</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span>
+                           <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_area_parameters">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_area_parameters">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_area_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get dataframe with area parameters.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - area_parameters (pd.DataFrame): Dataframe containing total area (m^2) per</span>
+<span class="sd">                                          building category and TEK.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AREA</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="FileHandler.get_energy_req_original_condition">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_energy_req_original_condition">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_req_original_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get dataframe with energy requirement (kWh/m^2) for floor area in original condition.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            Dataframe containing energy requirement (kWh/m^2) for floor area in original condition,</span>
+<span class="sd">            per building category and purpose.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ENERGY_NEED_ORIGINAL_CONDITION</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="FileHandler.get_energy_req_reduction_per_condition">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_energy_req_reduction_per_condition">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_req_reduction_per_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get dataframe with shares for reducing the energy requirement of the different building conditions.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            Dataframe containing energy requirement reduction shares for the different building conditions, </span>
+<span class="sd">            per building category, TEK and purpose.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">IMPROVEMENT_BUILDING_UPGRADE</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="FileHandler.get_energy_need_yearly_improvements">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_energy_need_yearly_improvements">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_need_yearly_improvements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get dataframe with yearly efficiency rates for energy requirement improvements.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            Dataframe containing yearly efficiency rates (%) for energy requirement improvements,</span>
+<span class="sd">            per building category, tek and purpose.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ENERGY_NEED_YEARLY_IMPROVEMENTS</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_holiday_home_energy_consumption">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_holiday_home_energy_consumption">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_holiday_home_energy_consumption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HOLIDAY_HOME_ENERGY_CONSUMPTION</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_holiday_home_by_year">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_holiday_home_by_year">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_holiday_home_by_year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HOLIDAY_HOME_STOCK</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_area_per_person">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_area_per_person">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_area_per_person</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AREA_PER_PERSON</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_calibrate_heating_rv">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_calibrate_heating_rv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_calibrate_heating_rv</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">calibrate_heating_rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALIBRATE_ENERGY_REQUIREMENT</span>
+        <span class="k">if</span> <span class="n">calibrate_heating_rv</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">calibrate_heating_rv</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">default_calibrate_heating_rv</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_calibrate_heating_systems">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_calibrate_heating_systems">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_calibrate_heating_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">calibrate_energy_consumption</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALIBRATE_ENERGY_CONSUMPTION</span>
+        <span class="k">if</span> <span class="n">calibrate_energy_consumption</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">calibrate_energy_consumption</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">default_calibrate_energy_consumption</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_heating_systems_shares_start_year">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_heating_systems_shares_start_year">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_heating_systems_shares_start_year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HEATING_SYSTEM_INITIAL_SHARES</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="FileHandler.get_heating_systems_efficiencies">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_heating_systems_efficiencies">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_heating_systems_efficiencies</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HEATING_SYSTEMS_EFFICIENCIES</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.get_heating_systems_projection">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_heating_systems_projection">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_heating_systems_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HEATING_SYSTEM_FORECAST</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_is_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the filename is a file in self.input_folder</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        file_exists : bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="p">)</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span>
+
+<div class="viewcode-block" id="FileHandler.check_for_missing_files">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.check_for_missing_files">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_for_missing_files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of required files that are not present in self.input_folder</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        missing_files : List[str]</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        FileNotFoundError</span>
+<span class="sd">            If FileHandler::input_directory not found</span>
+<span class="sd">        NotADirectoryError</span>
+<span class="sd">            If FileHandler::input_directory is not a directory</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No such directory </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">NotADirectoryError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="si">}</span><span class="s1"> is not a directory&#39;</span><span class="p">)</span>
+
+        <span class="n">missing_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_check</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_is_file</span><span class="p">(</span><span class="n">file</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">missing_files</span><span class="p">:</span>
+            <span class="n">plural</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_files</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">missing_files</span><span class="p">)</span><span class="si">}</span><span class="s1"> required file</span><span class="si">{</span><span class="n">plural</span><span class="si">}</span><span class="s1"> missing from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">missing_files</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">missing_files</span></div>
+
+
+
+<div class="viewcode-block" id="FileHandler.create_missing_input_files">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.create_missing_input_files">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_missing_input_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_directory</span><span class="p">:</span> <span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates any input files missing in self.input_directory. When source is omitted FileHandler</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        source_directory : pathlib.Path, optional</span>
+<span class="sd">                           Optional directory for sourcing files to copy.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        default_data_directory : default source for data files</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">FileHandler</span><span class="o">.</span><span class="n">default_data_directory</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">source_directory</span> <span class="k">else</span> <span class="n">source_directory</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">source</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">NotADirectoryError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="si">}</span><span class="s1"> is not a directory&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating directory </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_check</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Create input file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_input_file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">source_directory</span><span class="o">=</span><span class="n">source</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.create_input_file">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.create_input_file">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_input_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">source_directory</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">source_directory</span> <span class="o">=</span> <span class="n">FileHandler</span><span class="o">.</span><span class="n">default_data_directory</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">source_directory</span> <span class="k">else</span> <span class="n">source_directory</span>
+
+        <span class="n">source_file</span> <span class="o">=</span> <span class="n">source_directory</span> <span class="o">/</span> <span class="n">file</span>
+        <span class="n">target_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="n">file</span>
+        <span class="k">if</span> <span class="n">target_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Skipping existing file </span><span class="si">{</span><span class="n">target_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">source_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Source file </span><span class="si">{</span><span class="n">source_file</span><span class="si">}</span><span class="s1"> does not exist!&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">target_file</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span> <span class="sa">f</span><span class="s1">&#39;Creating missing file  </span><span class="si">{</span><span class="n">target_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.validate_input_files">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.validate_input_files">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_input_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the input files for correct formatting and content using the validators module</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        pa.errors.SchemaErrors</span>
+<span class="sd">            If any invalid data for formatting is found when validating files. The validation is lazy, meaning</span>
+<span class="sd">            multiple errors may be listed in the exception.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">file_to_validate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_check</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">file_to_validate</span><span class="p">)</span>
+            <span class="n">validator</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">validators</span><span class="p">,</span> <span class="n">file_to_validate</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">validator</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="n">SchemaErrors</span><span class="p">,</span> <span class="n">SchemaError</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got error while validating </span><span class="si">{</span><span class="n">file_to_validate</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">raise</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

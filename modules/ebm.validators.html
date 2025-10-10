@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.validators module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../contributing.html" />
+    <link rel="prev" title="ebm.temp_calc module" href="ebm.temp_calc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+      <li class="breadcrumb-item active">ebm.validators module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.validators.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.validators">
+<span id="ebm-validators-module"></span><h1>ebm.validators module<a class="headerlink" href="#module-ebm.validators" title="Link to this heading"></a></h1>
+<p>Pandera validators for ebm input files.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_building_category">
+<span class="sig-name descname"><span class="pre">check_building_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_building_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_building_category" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the series value contains values that are corresponding to a BuildingCategory</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>value: pd.Series</dt><dd><p>A series of str that will be checked against BuildingCategory</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<p>pd.Series of bool values</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_default_building_category">
+<span class="sig-name descname"><span class="pre">check_default_building_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_default_building_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_default_building_category" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the series value contains values that are corresponding to a BuildingCategory or default</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>value: pd.Series</dt><dd><p>A series of str that will be checked against BuildingCategory and ‘default’</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>pd.Series of bool values</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_default_building_category_with_group">
+<span class="sig-name descname"><span class="pre">check_default_building_category_with_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_default_building_category_with_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_default_building_category_with_group" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the series value contains values that are corresponding to a BuildingCategory,
+BuildingCategory group (RESIDENTIAL or NON_RESIDENTIAL) or ‘default’</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>value: pd.Series</dt><dd><p>A series of str that will be checked against BuildingCategory, RESIDENTIAL, NON_RESIDENTIAL and ‘default’</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>pd.Series of bool values</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_building_condition">
+<span class="sig-name descname"><span class="pre">check_building_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_building_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_building_condition" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the series value contains values that are corresponding to a BuildingCondition</p>
+<section id="id5">
+<h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>value: pd.Series</dt><dd><p>A series of str that will be checked against BuildingCondition</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>pd.Series of bool values</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_existing_building_conditions">
+<span class="sig-name descname"><span class="pre">check_existing_building_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_existing_building_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_existing_building_conditions" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the series contains values that are corresponding to ‘existing’ building conditions.</p>
+<p>Existing building conditions are all members (conditions) of BuildingCondition, except of DEMOLITION.</p>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>value: pd.Series</dt><dd><p>A series of str that will be checked against ‘existing’ BuildingCondition members</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>pd.Series of bool values</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_all_existing_building_conditions_present">
+<span class="sig-name descname"><span class="pre">check_all_existing_building_conditions_present</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/validators.html#check_all_existing_building_conditions_present"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_all_existing_building_conditions_present" title="Link to this definition"></a></dt>
+<dd><p>Ensures that all ‘existing’ building conditions are present in the ‘building_conditions’ column for
+each unique combination of ‘building_category’, ‘building_code’, and ‘purpose’.</p>
+<p>Existing building conditions are all members (conditions) of BuildingCondition, except of DEMOLITION.</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>df: pd.Dataframe</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_energy_purpose">
+<span class="sig-name descname"><span class="pre">check_energy_purpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_energy_purpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_energy_purpose" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the value contains one of the valid purpose values: ‘Cooling’, ‘Electrical equipment’, ‘Fans and pumps’, ‘HeatingDHW’, ‘HeatingRV’, or ‘Lighting’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – Input value to check against the valid purpose values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Series of bool values indicating if each value matches a valid purpose</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_default_energy_purpose">
+<span class="sig-name descname"><span class="pre">check_default_energy_purpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_default_energy_purpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_default_energy_purpose" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the value contains one of the default or purpose values: ‘Cooling’, ‘Electrical equipment’, ‘Fans and pumps’, ‘HeatingDHW’, ‘HeatingRV’, or ‘Lighting’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> – Input value to check against the valid purpose values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Series of bool values indicating if each value matches a valid purpose</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_building_code">
+<span class="sig-name descname"><span class="pre">check_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_building_code" title="Link to this definition"></a></dt>
+<dd><p>A crude check to determine if value is a ‘building_code’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – A string to check if it’s a building_code</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True when the function thinks that value might be a building_code</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_default_building_code">
+<span class="sig-name descname"><span class="pre">check_default_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_default_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_default_building_code" title="Link to this definition"></a></dt>
+<dd><p>A crude check to determine if value is a ‘building_code’ or default</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – A string to check if it’s a TEK or default</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True when the function thinks that value might be a TEK</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_overlapping_building_code_periods">
+<span class="sig-name descname"><span class="pre">check_overlapping_building_code_periods</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_overlapping_building_code_periods"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_overlapping_building_code_periods" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_building_category_share">
+<span class="sig-name descname"><span class="pre">check_building_category_share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_building_category_share"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_building_category_share" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the sum of values in values.new_house_share + values.new_apartment_block_share is 1.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>values</strong> (<em>pd.DataFrame</em>) – A dataframe with new_house_share and new_apartment_block_share</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A series of bool with the truth value of new_house_share + new_apartment_block_share equals 1.0</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.create_residential_area_checks">
+<span class="sig-name descname"><span class="pre">create_residential_area_checks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/validators.html#create_residential_area_checks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.create_residential_area_checks" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Creates a list of checks used for house and apartment_block categories.</dt><dd><ul class="simple">
+<li><p>Checks that the first two rows are not empty</p></li>
+<li><p>Checks that the next (3) rows are empty</p></li>
+<li><p>Checks that non-empty rows are not negative</p></li>
+</ul>
+</dd>
+</dl>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p>List[pa.Check]</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_heating_systems">
+<span class="sig-name descname"><span class="pre">check_heating_systems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#check_heating_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_heating_systems" title="Link to this definition"></a></dt>
+<dd><p>Makes sure that the series contains values that corresponds to a HeatingSystems</p>
+<section id="id11">
+<h2>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>value: pd.Series</dt><dd><p>A series of str that will be checked against HeatingSystems</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h2>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>pd.Series of bool values</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.check_sum_of_heating_system_shares_equal_1">
+<span class="sig-name descname"><span class="pre">check_sum_of_heating_system_shares_equal_1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/validators.html#check_sum_of_heating_system_shares_equal_1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.check_sum_of_heating_system_shares_equal_1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.make_building_purpose">
+<span class="sig-name descname"><span class="pre">make_building_purpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#make_building_purpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.make_building_purpose" title="Link to this definition"></a></dt>
+<dd><p>Returns a dataframe of all combinations building_categories, building_codes, original_condition, purposes
+and optionally years.</p>
+<section id="id13">
+<h2>Parameters<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<p>years : YearRange, optional</p>
+</section>
+<section id="id14">
+<h2>Returns<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.behaviour_factor_parser">
+<span class="sig-name descname"><span class="pre">behaviour_factor_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/validators.html#behaviour_factor_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.behaviour_factor_parser" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.validators.calculate_yearly_reduction">
+<span class="sig-name descname"><span class="pre">calculate_yearly_reduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/validators.html#calculate_yearly_reduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.validators.calculate_yearly_reduction" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ebm.validators.heating_system_forecast">
+<span class="sig-name descname"><span class="pre">heating_system_forecast</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Schema</span> <span class="pre">DataFrameSchema(columns={'building_category':</span> <span class="pre">&lt;Schema</span> <span class="pre">Column(name=building_category,</span> <span class="pre">type=DataType(str))&gt;,</span> <span class="pre">'building_code':</span> <span class="pre">&lt;Schema</span> <span class="pre">Column(name=building_code,</span> <span class="pre">type=DataType(str))&gt;,</span> <span class="pre">'heating_systems':</span> <span class="pre">&lt;Schema</span> <span class="pre">Column(name=heating_systems,</span> <span class="pre">type=DataType(str))&gt;,</span> <span class="pre">'new_heating_systems':</span> <span class="pre">&lt;Schema</span> <span class="pre">Column(name=new_heating_systems,</span> <span class="pre">type=DataType(str))&gt;},</span> <span class="pre">checks=[],</span> <span class="pre">parsers=[],</span> <span class="pre">index=None,</span> <span class="pre">dtype=None,</span> <span class="pre">coerce=False,</span> <span class="pre">strict=False,</span> <span class="pre">name=None,</span> <span class="pre">ordered=False,</span> <span class="pre">unique=['building_category',</span> <span class="pre">'building_code',</span> <span class="pre">'heating_systems',</span> <span class="pre">'new_heating_systems'],</span> <span class="pre">report_duplicates=all,</span> <span class="pre">unique_column_names=False,</span> <span class="pre">add_missing_columns=False,</span> <span class="pre">title=None,</span> <span class="pre">description=None,</span> <span class="pre">metadata=None,</span> <span class="pre">drop_invalid_rows=False)&gt;</span></em><a class="headerlink" href="#ebm.validators.heating_system_forecast" title="Link to this definition"></a></dt>
+<dd><p>how to check columns that are heating systems (but not in enum) and ‘energivare’. Columns:
+‘Grunnlast’: pa.Column(str),
+‘Spisslast’: pa.Column(str),
+‘Ekstralast’: pa.Column(str),
+‘Grunnlast energivare’: pa.Column(str),
+‘Spisslast energivare’: pa.Column(str),
+‘Ekstralast energivare’: pa.Column(str),</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TODO</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.temp_calc.html" class="btn btn-neutral float-left" title="ebm.temp_calc module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

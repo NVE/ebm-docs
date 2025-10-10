@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculations/methods &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Calculations/methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/calculations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="calculations-methods">
+<h1>Calculations/methods<a class="headerlink" href="#calculations-methods" title="Link to this heading"></a></h1>
+<section id="forecasting-of-area">
+<h2>Forecasting of area<a class="headerlink" href="#forecasting-of-area" title="Link to this heading"></a></h2>
+<p>New area in the model is added in two ways. Either by replacing demolished area or by building new area. When area is replaced by demolishion
+the total amount of area does not change, but it gets updated to the newest building code standard. Demolishion is controlled by the s-curve.
+When constructing new area the total amount of area grows.The model has two different methods for forecasting area newly built area.
+One method for residental area and another for non-residental area.</p>
+<section id="non-residental-area">
+<h3>Non-residental area<a class="headerlink" href="#non-residental-area" title="Link to this heading"></a></h3>
+<p>Population growth is the driver for new area in non-residential buildings. If the population growth is 0 then the total area is held constant.
+We assume that each person requires a specific amount of area from the various non-residental building categories. This is a constant factor calculated
+by taking the total non-residental building area per category and dividing it by the population.
+The total area in a given year is the sum of the area in the previous year minus the demolished amount the previous year plus new construction.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Total area} (\text{year } x) = &amp;\text{ total area} (\text{year } x-1) \\
+                      &amp;- \text{demolished area} (\text{year } x-1) \\
+                      &amp;+ \text{new construction} (\text{year } x)\end{split}\]</div>
+<p>Where new construction is calculated the following way:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{New construction} (\text{year } x) = &amp;\text{ total area} (\text{year } x) \\
+                      &amp;- \text{total area} (\text{year } x-1) \\
+                      &amp;+ \text{new construction} (\text{year } x-1)\end{split}\]</div>
+<p>Combining the two:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{New construction} (\text{year } x) = &amp;\text{ area/person} \times \text{population} (\text{year } x) \\
+                      &amp;-\text{area/person} \times \text{population} (\text{year } x-1) \\
+                      &amp;+ \text{ demolished}(\text{year }x-1)\end{split}\]</div>
+<p>The area per person is different for each of the non-residental building categories. It can also change from year to year, but currently it is a constant.</p>
+</section>
+<section id="residential-area">
+<h3>Residential area<a class="headerlink" href="#residential-area" title="Link to this heading"></a></h3>
+<p>New construction in residential area is based on population, but with some key differences compared to the non-residential area. Instead of forecasting square-meters per person
+as is done in non-residential area, we first have to calculate the required number of new dwellings. Number of new new dwellings is calculated from the “population_forecast” input file which contains
+both the popluation forecast and average household size. The new dwellings can be either apartments or houses and the ratio between them, and the area per dwelling, is given
+in the input file “new_buildings_residential”.</p>
+</section>
+</section>
+<section id="calibration">
+<h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading"></a></h2>
+<p>To get a good starting point the model needs to be calibrated. The starting point is either energy use per energy carrier
+in a given year from temperature corrected statistics or a constructed year based on statistics. The calibration is based
+on the <a class="reference external" href="https://www.ssb.no/statbank/table/11561/">Norwegian energy balance</a> published by Statistics Norway. The energy
+balance contains yearly consumption numbers per energy carrier on households and private and public services,
+including military.</p>
+<section id="what-is-calibrated">
+<h3>What is calibrated?<a class="headerlink" href="#what-is-calibrated" title="Link to this heading"></a></h3>
+<p>Calibration is done through an input file called “Kalibreringsark.xlsx” and “energy_requirement_original_condition”.
+“energy_requirement_original_condition” contains a column called “behaviour_factor”. The factor modifies the
+corresponding energy requirement as given by a specific TEK and building category. It is also possible to modify the
+factors given in “heating_systems_efficiencies” to fine tune the coverage of various heating technologies and their
+efficiencies.
+In the excel file “Kalibreringsark.xlsx” you can adjust various factors which can modify the following:</p>
+<ul class="simple">
+<li><p>Change one heating system for another.</p></li>
+<li><p>Energy need for space heating and hot tap water.</p></li>
+<li><p>Energy need for lighting and other electrical equipment.</p></li>
+</ul>
+<p>When the model is run the excel file updates without having to close the file.</p>
+</section>
+</section>
+<section id="energy-need">
+<h2>Energy need<a class="headerlink" href="#energy-need" title="Link to this heading"></a></h2>
+<p>Last Updated on 2025-10-10.</p>
+<p>Version: 1.2.10.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

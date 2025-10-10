@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input files &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/tabs.js?v=3030b3cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Result files" href="results.html" />
+    <link rel="prev" title="Geographical_distribution" href="user_guide/geographical_distribution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Input files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-constraints">Input constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-of-default">Use of “default”</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Input files</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/input_description.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="input-files">
+<h1>Input files<a class="headerlink" href="#input-files" title="Link to this heading"></a></h1>
+<p>Each input file is described here. The heading is the file name, followed by a short description of its contents. Constraints are given in the tab
+formatted box after the descriptions.</p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong>area.csv</strong> <br>
+Useful floor area in the start year 2020 distributed by building category and building code.</p>
+<p><strong>area_new_residential_buildings.csv</strong> <br>
+New useful floor area for residential buildings in 2020 and 2021 from statistics.Statistics source is Statistics Norway.</p>
+<p><strong>area_per_person.csv</strong> <br>
+Useful floor area for new non-residential buildings based on population growth.</p>
+<p><strong>building_code.csv</strong> <br>
+Year of operation for the different building codes in Norway.</p>
+<p><strong>new_buildings_residential.csv</strong> <br>
+Average size of new apartments and houses. Proportion of new homes that are apartments and houses per year.</p>
+<p><strong>population_forecast.csv</strong> <br>
+Population forecast from Statistics Norway and average household size.</p>
+<p><strong>s_curve.csv</strong> <br>
+Parameters to create S-curves. Parameters are given for small measures, renovation and demolition for each building category.</p>
+<p><strong>energy_need_original_condition.csv</strong> <br>
+Energy need per square meter for various energy purposes differentiated by building code and building category. The given energy need is only for a buildings original purpose.</p>
+<p><strong>improvement_building_upgrade.csv</strong> <br>
+Reduction in heating energy need from completed small measures, renovation and small measures + renovation. Percentage reduction compared to the original condition.</p>
+<p><strong>energy_need_behaviour_factor.csv</strong> <br>
+Changes in energy need not related to the improvements in heating need from the s-curves.</p>
+<p><strong>energy_need_improvements.csv</strong> <br>
+Reduction in lighting and equipment energy need from implementation of ecodesign.</p>
+<p><strong>holiday_home_stock.csv</strong> <br>
+Stock of holiday homes per year from 2001. Statistics from Statistics Norway.</p>
+<p><strong>holiday_home_energy_consumption.csv</strong> <br>
+Historical energy use of fuel wood, electricity and fossil fuel in holiday homes.</p>
+<p><strong>heating_system_forecast.csv</strong> <br>
+Defines the rate of change in heating systems towards 2050. The change is made on a percentage basis compared with the start year.</p>
+<p><strong>heating_system_initial_shares.csv</strong> <br>
+Distribution of heating systems per building category and building code in the start year.</p>
+<p><strong>heating_systems_efficiencies</strong> <br>
+Parameters of the various heating technologies. Includes load shares, efficiencies and the related energy product.</p>
+</section>
+<section id="input-constraints">
+<h2>Input constraints<a class="headerlink" href="#input-constraints" title="Link to this heading"></a></h2>
+<p>The input constraints, datatypes and accepted values are listed per input file in the respective tabs. Text in orange is the column name.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Area</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Energy need</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Holiday home</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">Heating systems</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">Other</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">area</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">area_new_residential_buildings</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">area_per_person</button><button aria-controls="panel-1-1-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-3" name="1-3" role="tab" tabindex="-1">new_buildings_residential</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">area</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>≥</strong> 0.0</p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">year</span></code>
+- required
+- integer
+- Values outside of model start year and model start year +1 might not be supported (2020, 2021)</p>
+<p><code class="docutils literal notranslate"><span class="pre">house</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>≥</strong> 0.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">apartment_block</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>≥</strong> 0.0</p>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs</p>
+<p><code class="docutils literal notranslate"><span class="pre">area_per_person</span></code>
+- required
+- value <strong>≥</strong> 0
+- float using a decimal point (‘.’) as the separator</p>
+</div><div aria-labelledby="tab-1-1-3" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-3" name="1-3" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">year</span></code>
+- required
+- integer value
+- <strong>≥</strong> 0
+- <strong>≤</strong> 2070</p>
+<p><code class="docutils literal notranslate"><span class="pre">new_house_share</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>≥</strong> 0.0
+- <strong>≤</strong> 1.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">new_apartment_block_share</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- 0.0 <strong>≤</strong> value <strong>≤</strong> 1.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">floor_area_new_house</span></code>
+- required
+- Integer
+- 0 <strong>≤</strong> value <strong>≤</strong> 1000</p>
+<p><code class="docutils literal notranslate"><span class="pre">floor_area_new_apartment_block</span></code>
+- required
+- Integer
+- 0 <strong>≤</strong> value <strong>≤</strong> 1000</p>
+</div></div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">energy_need_original_condition</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">improvement_building_upgrade</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">energy_need_behaviour_factor</button><button aria-controls="panel-2-2-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-3" name="2-3" role="tab" tabindex="-1">energy_need_improvements</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs, default, residential, non_residential</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
+- required
+- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">kwh_m2</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- value <strong>≥</strong> 0.0</p>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs, default, residential, non_residential</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
+- required
+- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">condition</span></code>
+- required
+- values: original_condition, small_measure, renovation, renovation_and_small_measure, demolition</p>
+<p><code class="docutils literal notranslate"><span class="pre">reduction_share</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs, default, residential, non_residential</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
+- required
+- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">period_start_year</span></code>
+- required
+- integer value
+- value <strong>≥</strong> 0</p>
+<p><code class="docutils literal notranslate"><span class="pre">period_end_year</span></code>
+- required
+- integer value
+- value <strong>≥</strong> 0</p>
+<p><code class="docutils literal notranslate"><span class="pre">improvement_at_period_end</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
+</div><div aria-labelledby="tab-2-2-3" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-3" name="2-3" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs, default, residential, non_residential</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
+- required
+- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">start_year</span></code>
+- integer
+- <strong>0</strong> ≤ value ≤ <strong>end_year</strong>
+- default 2020</p>
+<p><code class="docutils literal notranslate"><span class="pre">function</span></code>
+- required
+- values: yearly_reduction, improvement_at_end_year</p>
+<p><code class="docutils literal notranslate"><span class="pre">value</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> ≤ value</p>
+<p><code class="docutils literal notranslate"><span class="pre">end_year</span></code>
+- required
+- integer
+- <strong>start_year</strong> ≤ value ≤ <strong>2070</strong>
+- default 2050</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">input/energy_need_improvements.csv</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>function</p></th>
+<th class="head"><p>start_year</p></th>
+<th class="head"><p>value</p></th>
+<th class="head"><p>end_year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>cooling</p></td>
+<td><p>yearly_reduction</p></td>
+<td><p>2020</p></td>
+<td><p>0.0</p></td>
+<td><p>2050</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>yearly_reduction</p></td>
+<td><p>2021</p></td>
+<td><p>0.01</p></td>
+<td><p>2050</p></td>
+</tr>
+<tr class="row-even"><td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>yearly_reduction</p></td>
+<td><p>2020</p></td>
+<td><p>0.0</p></td>
+<td><p>2050</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>yearly_reduction</p></td>
+<td><p>2020</p></td>
+<td><p>0.0</p></td>
+<td><p>2050</p></td>
+</tr>
+<tr class="row-even"><td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>improvement_at_end_year</p></td>
+<td><p>2020</p></td>
+<td><p>0.5555555555555556</p></td>
+<td><p>2030</p></td>
+</tr>
+<tr class="row-odd"><td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>lighting</p></td>
+<td><p>yearly_reduction</p></td>
+<td><p>2031</p></td>
+<td><p>0.005</p></td>
+<td><p>2050</p></td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">holiday_home_stock</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">holiday_home_energy_consumption</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">year</span></code>
+- required
+- integer</p>
+<p><code class="docutils literal notranslate"><span class="pre">Existing</span> <span class="pre">buildings</span> <span class="pre">Chalet,</span> <span class="pre">summerhouses</span> <span class="pre">and</span> <span class="pre">other</span> <span class="pre">holiday</span> <span class="pre">houses</span></code>
+- required
+- integer</p>
+<p><code class="docutils literal notranslate"><span class="pre">Existing</span> <span class="pre">buildings</span> <span class="pre">Detached</span> <span class="pre">houses</span> <span class="pre">and</span> <span class="pre">farmhouses</span> <span class="pre">used</span> <span class="pre">as</span> <span class="pre">holiday</span> <span class="pre">houses</span></code>
+- required
+- integer</p>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">year</span></code>
+- required
+- integer</p>
+<p><code class="docutils literal notranslate"><span class="pre">electricity</span></code>
+- integer</p>
+<p><code class="docutils literal notranslate"><span class="pre">fuelwood</span></code>
+- integer or empty</p>
+<p><code class="docutils literal notranslate"><span class="pre">fossilfuel</span></code>
+- integer or empty</p>
+</div></div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">heating_system_forecast</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">heating_system_initial_shares</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">heating_systems_efficiencies</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs, default, residential, non_residential</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
+<p><code class="docutils literal notranslate"><span class="pre">heating_systems</span></code>
+- required
+- string
+- value: ‘DH’, ‘DH - Bio’, ‘HP Central heating - Bio’, ‘HP Central heating - Electric boiler’, ‘HP Central heating - Gas’, ‘Electric boiler’, ‘Electric boiler - Solar’, ‘Gas’, ‘Electricity’, ‘Electricity - Bio’, ‘HP - Bio - Electricity’, ‘HP - Electricity’</p>
+<p><code class="docutils literal notranslate"><span class="pre">new_heating_systems</span></code>
+- required
+- string
+- value: ‘DH’, ‘DH - Bio’, ‘HP Central heating - Bio’, ‘HP Central heating - Electric boiler’, ‘HP Central heating - Gas’, ‘Electric boiler’, ‘Electric boiler - Solar’, ‘Gas’, ‘Electricity’, ‘Electricity - Bio’, ‘HP - Bio - Electricity’, ‘HP - Electricity’</p>
+<p>Year columns: <code class="docutils literal notranslate"><span class="pre">2024-2050</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>0</strong> ≤ value ≤ <strong>1</strong></p>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs</p>
+<p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">year</span></code>
+- required
+- integer</p>
+<p><code class="docutils literal notranslate"><span class="pre">heating_systems</span></code>
+- required
+- string
+- value: ‘DH’, ‘DH - Bio’, ‘HP Central heating - Bio’, ‘HP Central heating - Electric boiler’, ‘HP Central heating - Gas’, ‘Electric boiler’, ‘Electric boiler - Solar’, ‘Gas’, ‘Electricity’, ‘Electricity - Bio’, ‘HP - Bio - Electricity’, ‘HP - Electricity’</p>
+<p><code class="docutils literal notranslate"><span class="pre">heating_system_share</span></code>
+- required
+- float
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> ≤ value</p>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">heating_systems</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span> <span class="pre">energivare</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span> <span class="pre">energivare</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span> <span class="pre">energivare</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span> <span class="pre">andel</span></code>
+- required
+- float
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span> <span class="pre">andel</span></code>
+- required
+- float
+- <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span> <span class="pre">andel</span></code>
+- required
+- float
+- <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span> <span class="pre">virkningsgrad</span></code>
+- required
+- float
+- value &gt; <strong>0.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span> <span class="pre">virkningsgrad</span></code>
+- required
+- float
+- value &gt; <strong>0.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span> <span class="pre">virkningsgrad</span></code>
+- required
+- float
+- value &gt; <strong>0.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Tappevann</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Tappevann</span> <span class="pre">energivare</span></code>
+- required
+- string</p>
+<p><code class="docutils literal notranslate"><span class="pre">Tappevann</span> <span class="pre">virkningsgrad</span></code>
+- required
+- float
+- value &gt; <strong>0.0</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Spesifikt</span> <span class="pre">elforbruk</span></code>
+- required
+- float</p>
+<p><code class="docutils literal notranslate"><span class="pre">Kjoling</span> <span class="pre">virkningsgrad</span></code>
+- required
+- float
+- value &gt; <strong>0.0</strong></p>
+</div></div>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">building_code</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">population_forecast</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">s_curve</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+- required
+- values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">building_year</span></code>
+- required
+- integer value
+- <strong>≥</strong> 1940
+- <strong>≤</strong> 2070</p>
+<p><code class="docutils literal notranslate"><span class="pre">period_start_year</span></code>
+- required
+- integer value
+- <strong>≥</strong> 0
+- <strong>≤</strong> 2070
+- &lt; period_end_year
+- = previous period_end_year + 1</p>
+<p><code class="docutils literal notranslate"><span class="pre">period_end_year</span></code>
+- required
+- integer value
+- <strong>≥</strong> 0
+- <strong>≤</strong> 2070
+- &gt; period_start_year
+- = next period_start_year -1</p>
+<p>must cover all years within lowest period_start_year to highest period_end_year</p>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">year</span></code>
+- required
+- Integer value
+- 1900 <strong>≤</strong> year <strong>≤</strong> 2070</p>
+<p><code class="docutils literal notranslate"><span class="pre">population</span></code>
+- Required
+- Integer value
+- population <strong>≥</strong> 0</p>
+<p><code class="docutils literal notranslate"><span class="pre">household_size</span></code>
+- required
+- value <strong>≥</strong> 0
+- float using a decimal point (‘.’) as the separator.</p>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+- required
+- values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs</p>
+<p><code class="docutils literal notranslate"><span class="pre">condition</span></code>
+- required
+- values: original_condition, small_measure, renovation, renovation_and_small_measure, demolition</p>
+<p><code class="docutils literal notranslate"><span class="pre">earliest_age_for_measure</span></code>
+- required
+- value <strong>≥</strong> 0.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">average_age_for_measure</span></code>
+- required
+- value <strong>≥</strong> 0.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">rush_period_years</span></code>
+- required
+- integer
+- value <strong>≥</strong> 0.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">last_age_for_measure</span></code>
+- required
+- integer
+- value <strong>≥</strong> 0.0</p>
+<p><code class="docutils literal notranslate"><span class="pre">rush_share</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> &lt; value ≤ <strong>1.0</strong> (not including zero)</p>
+<p><code class="docutils literal notranslate"><span class="pre">never_share</span></code>
+- required
+- float using a decimal point (‘.’) as the separator
+- <strong>0.0</strong> &lt; value ≤ <strong>1.0</strong> (not including zero)</p>
+</div></div>
+</div></div>
+</section>
+<section id="use-of-default">
+<h2>Use of “default”<a class="headerlink" href="#use-of-default" title="Link to this heading"></a></h2>
+<p>When making changes to an input file, for example <strong>energy_need_improvements</strong>, you can use aggregated
+commands instead of specifying each individual <em>building category</em>, <em>building code</em> and <em>purpose</em>. The common aggregated
+command is <strong>default</strong>. When <strong>default</strong> is input the model chooses all valid options. For example <strong>default</strong>
+building code means all building codes.</p>
+<p><em>Building category</em> has two additional categories: <strong>residential</strong> and
+<strong>non-residental</strong>. <strong>residential</strong> consists of houses and apartment blocks and <strong>non-residential</strong> are the other
+building categories. In the input constraint overview these aggregated categories are specified when available.</p>
+<p>Last Updated on 2025-10-10.</p>
+<blockquote>
+<div><p>Version: 1.2.10.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide/geographical_distribution.html" class="btn btn-neutral float-left" title="Geographical_distribution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="results.html" class="btn btn-neutral float-right" title="Result files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
