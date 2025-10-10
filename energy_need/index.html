@@ -194,52 +194,22 @@ building code and condition for each year. The calculations are done separately 
 <h3>Heating Domestic Hot Water (heating_dhw)<a class="headerlink" href="#heating-domestic-hot-water-heating-dhw" title="Link to this heading"></a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{energy need heating_dhw} = &amp; \text{ energy need heating_dhw original condition}_\text{buidling code} \\
-                               &amp; * \text{1-yearly reduction heating_dhw}^\text{year-start year} \\
-                               &amp; * \text{improvment heating_dhw end year}_\text{year}\end{split}\]</div>
+                                 &amp;-\text{upgrade heating_dhw}\end{split}\]</div>
 <p>Where</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\text{energy need heating_dhw original condition}_\text{buidling code}\)</span> code refers to the energy need for heating_dhw as determined by the building code.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\text{yearly reduction heating_dhw}\)</span> refers to a yearly reduction in energy need for heating_dhw as a result of energy measures e.g. transition to LED bulbs.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(^\text{year}\)</span> refers to the year of the calculated energy need.</p></li>
-<li><p><span class="math notranslate nohighlight">\(^\text{start year}\)</span> refers to the start of the energy measure.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p><span class="math notranslate nohighlight">\(\text{improvment heating_dhw end year}_\text{year}\)</span> refers to an assumed reduction in energy need by a specific end year and how much of this is achieved in the year of the calculated energy need.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(_\text{year}\)</span> refers to the year of the calculated enery need.</p></li>
-</ul>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{energy need heating_dhw original condition}_\text{buidling code}\)</span> refers to the energy need for heating domestic hot water as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{upgrade domestic hot water}\)</span> refers to the reduction in energy need for heating domestic hot water as a result of energy measures. Currently, no reduction is defined for heating_dhw in EBM.</p></li>
 </ul>
 </section>
 <section id="fans-and-pumps">
 <h3>Fans and pumps<a class="headerlink" href="#fans-and-pumps" title="Link to this heading"></a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{energy need fans_and_pumps} = &amp; \text{ energy need fans_and_pumps original condition}_\text{buidling code} \\
-                               &amp; * \text{1-yearly reduction fans_and_pumps}^\text{year-start year} \\
-                               &amp; * \text{improvment fans_and_pumps end year}_\text{year}\end{split}\]</div>
+                                    &amp;-\text{upgrade fans_and_pumps}\end{split}\]</div>
 <p>Where</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\text{energy need fans_and_pumps original condition}_\text{buidling code}\)</span> code refers to the energy need for fans_and_pumps as determined by the building code.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\text{yearly reduction fans_and_pumps}\)</span> refers to a yearly reduction in energy need for fans_and_pumps as a result of energy measures e.g. transition to LED bulbs.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(^\text{year}\)</span> refers to the year of the calculated energy need.</p></li>
-<li><p><span class="math notranslate nohighlight">\(^\text{start year}\)</span> refers to the start of the energy measure e.g. improved ventilation.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p><span class="math notranslate nohighlight">\(\text{improvment fans_and_pumps end year}_\text{year}\)</span> refers to an assumed reduction in energy need by a specific end year and how much of this is achieved in the year of the calculated energy need.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(_\text{year}\)</span> refers to the year of the calculated enery need.</p></li>
-</ul>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{energy need fans_and_pumps original condition}_\text{buidling code}\)</span> refers to the energy need for fans and pumps as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{upgrade fans_and_pumps}\)</span> refers to the reduction in energy need for fans and pumps as a result of energy measures. Currently, no reduction is defined for fans and pumps in EBM.</p></li>
 </ul>
 </section>
 <section id="lighting">
@@ -259,7 +229,7 @@ building code and condition for each year. The calculations are done separately 
 </ul>
 </div></blockquote>
 </li>
-<li><p><span class="math notranslate nohighlight">\(\text{improvment lighting end year}_\text{year}\)</span> refers to an assumed reduction in energy need by a specific end year and how much of this is achieved in the year of the calculated energy need.</p>
+<li><p><span class="math notranslate nohighlight">\(\text{improvment lighting end year}_{\text_year}\)</span> refers to an assumed reduction in energy need by a specific year and how much of this is released year by year.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(_\text{year}\)</span> refers to the year of the calculated enery need.</p></li>
@@ -272,26 +242,11 @@ building code and condition for each year. The calculations are done separately 
 <h3>Cooling<a class="headerlink" href="#cooling" title="Link to this heading"></a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{energy need cooling} = &amp; \text{ energy need cooling original condition}_\text{buidling code} \\
-                               &amp; * \text{1-yearly reduction cooling}^\text{year-start year} \\
-                               &amp; * \text{improvment cooling end year}_\text{year}\end{split}\]</div>
+                             &amp;-\text{upgrade cooling}\end{split}\]</div>
 <p>Where</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\text{energy need cooling original condition}_\text{buidling code}\)</span> code refers to the energy need for cooling as determined by the building code.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\text{yearly reduction cooling}\)</span> refers to a yearly reduction in energy need for cooling as a result of energy measures e.g. transition to LED bulbs.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(^\text{year}\)</span> refers to the year of the calculated energy need.</p></li>
-<li><p><span class="math notranslate nohighlight">\(^\text{start year}\)</span> refers to the start of the energy measure.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p><span class="math notranslate nohighlight">\(\text{improvment cooling end year}_\text{year}\)</span> refers to an assumed reduction in energy need by a specific end year and how much of this is achieved in the year of the calculated energy need.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(_\text{year}\)</span> refers to the year of the calculated enery need.</p></li>
-</ul>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{energy need cooling original condition}_\text{buidling code}\)</span> refers to the energy need for cooling as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{upgrade fans_and_pumps}\)</span> refers to the reduction in energy need for cooling as a result of energy measures. Currently, no reduction is defined for cooling in EBM.</p></li>
 </ul>
 </section>
 <section id="summarised">
@@ -357,7 +312,7 @@ you can define any energy efficiency measure, by specifying the energy purpose, 
 and end year of the measure and the energy improvement by the end year. By default, the model uses a 60 % improvement by
 the year 2030 for lighting. Lighting is expected to decrease by 0.5 % yearly after 2030. Electrical equipment has a yearly reduction of 1 %.</p>
 <p>Last Updated on 2025-10-10</p>
-<p>Version: 1.2.10.</p>
+<p>Version: 1.2.15.</p>
 </section>
 </section>
 </section>
