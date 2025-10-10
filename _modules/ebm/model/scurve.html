@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.scurve &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.model.scurve</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.model.scurve</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+
+<div class="viewcode-block" id="SCurve">
+<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SCurve</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates S-curve per building condition.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        When any of the arguments are less than zero</span>
+<span class="sd">        </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
+<span class="sd">    multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
+<span class="sd">    still return percent as a value between 0 and 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+
+    <span class="c1"># TODO:</span>
+    <span class="c1"># - add check to control that defined periods match building lifetime index in get_rates_per_year</span>
+
+    <span class="n">earliest_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">average_age</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">last_age</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">rush_years</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">rush_share</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">never_share</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">building_lifetime</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">130</span>
+
+<div class="viewcode-block" id="SCurve.__init__">
+<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                 <span class="n">earliest_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">average_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">last_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">rush_years</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">rush_share</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                 <span class="n">never_share</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                 <span class="n">building_lifetime</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">130</span><span class="p">):</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">earliest_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">earliest_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;earliest_age&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">average_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">average_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;average_age&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">last_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">last_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;last_age&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rush_share</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">rush_share</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;rush_share&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">never_share</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">never_share</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;never_share&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Illegal value for </span><span class="si">{</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">=</span> <span class="n">building_lifetime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">=</span> <span class="n">earliest_age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">=</span> <span class="n">average_age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_age</span> <span class="o">=</span> <span class="n">last_age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span> <span class="o">=</span> <span class="n">rush_years</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">=</span> <span class="n">rush_share</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_never_share</span> <span class="o">=</span> <span class="n">never_share</span> <span class="o">*</span> <span class="mi">100</span>
+
+        <span class="c1"># Calculate yearly rates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pre_rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_pre_rush_rate</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_rush_rate</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_post_rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_post_rush_rate</span><span class="p">()</span>
+        
+        <span class="c1"># Calculate S-curves</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scurve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_scurve</span><span class="p">()</span> </div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calc_pre_rush_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the yearly measure rate for the pre-rush period.</span>
+
+<span class="sd">        The pre-rush rate represents the percentage share of building area that has </span>
+<span class="sd">        undergone a measure per year during the period before the rush period begins.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Yearly measure rate in the pre-rush period.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
+<span class="sd">        multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
+<span class="sd">        still return percent as a value between 0 and 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">remaining_share</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_never_share</span><span class="p">)</span>
+        <span class="n">age_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)))</span>
+        <span class="n">pre_rush_rate</span> <span class="o">=</span> <span class="n">remaining_share</span> <span class="o">*</span> <span class="n">age_range</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">pre_rush_rate</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calc_rush_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the yearly measure rate for the rush period.</span>
+
+<span class="sd">        The rush rate represents the percentage share of building area that has </span>
+<span class="sd">        undergone a measure per year during the rush period.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Yearly rate in the rush period.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
+<span class="sd">        multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
+<span class="sd">        still return percent as a value between 0 and 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">rush_rate</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calc_post_rush_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the yearly measure rate for the post-rush period.</span>
+
+<span class="sd">        The post-rush rate represents the percentage share of building area that has </span>
+<span class="sd">        undergone a measure per year during the period after the rush period ends.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Yearly rate in the post-rush period.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
+<span class="sd">        multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
+<span class="sd">        still return percent as a value between 0 and 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">remaining_share</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_never_share</span><span class="p">)</span>
+        <span class="n">age_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)))</span>
+        <span class="n">post_rush_rate</span> <span class="o">=</span> <span class="n">remaining_share</span> <span class="o">*</span> <span class="n">age_range</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">post_rush_rate</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SCurve.get_rates_per_year_over_building_lifetime">
+<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.get_rates_per_year_over_building_lifetime">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_rates_per_year_over_building_lifetime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a series that holds the yearly measure rates over the building lifetime.</span>
+
+<span class="sd">        This method defines the periods in the S-curve, adds the yearly measure rates to</span>
+<span class="sd">        the corresponding periods, and stores them in a pandas Series.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.Series</span>
+<span class="sd">            A Series containing the yearly measure rates over the building lifetime</span>
+<span class="sd">            with an index representing the age from 1 to the building lifetime.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Define the length of the different periods in the S-curve</span>
+        <span class="n">earliest_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">pre_rush_years</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">rush_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span>
+        <span class="n">post_rush_years</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">last_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">-</span> <span class="n">earliest_years</span> <span class="o">-</span> <span class="n">pre_rush_years</span> <span class="o">-</span> <span class="n">rush_years</span> <span class="o">-</span> <span class="n">post_rush_years</span>
+        
+        <span class="c1"># Redefine periods for Demolition, as the post_rush_year calculation isn&#39;t the same as for Small measures and</span>
+        <span class="c1"># rehabilitation</span>
+        <span class="k">if</span> <span class="n">last_years</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">last_years</span> <span class="o">=</span> <span class="mi">0</span> 
+            <span class="n">post_rush_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">-</span> <span class="n">earliest_years</span> <span class="o">-</span> <span class="n">pre_rush_years</span> <span class="o">-</span> <span class="n">rush_years</span>
+
+        <span class="c1"># Create list where the yearly rates are placed according to their corresponding period in the buildings</span>
+        <span class="c1"># lifetime</span>
+
+        <span class="n">rates_per_year</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">earliest_years</span> <span class="o">+</span> 
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_pre_rush_rate</span><span class="p">]</span> <span class="o">*</span> <span class="n">pre_rush_years</span> <span class="o">+</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_rate</span><span class="p">]</span> <span class="o">*</span> <span class="n">rush_years</span> <span class="o">+</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_post_rush_rate</span><span class="p">]</span> <span class="o">*</span> <span class="n">post_rush_years</span> <span class="o">+</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">last_years</span>
+        <span class="p">)</span>  
+        
+        <span class="c1"># Create a pd.Series with an index from 1 to building_lifetime </span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rates_per_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rates_per_year</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;scurve&#39;</span><span class="p">)</span>
+        <span class="n">rates_per_year</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;age&#39;</span>
+
+        <span class="k">return</span> <span class="n">rates_per_year</span></div>
+
+
+<div class="viewcode-block" id="SCurve.calc_scurve">
+<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.calc_scurve">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_scurve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the S-curve by accumulating the yearly measure rates over the building&#39;s lifetime.</span>
+
+<span class="sd">        This method returns a pandas Series representing the S-curve, where each value corresponds </span>
+<span class="sd">        to the accumulated rate up to that age.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.Series</span>
+<span class="sd">            A Series containing the accumulated rates of the S-curve with an index representing the age from 1 to the</span>
+<span class="sd">                building lifetime.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get rates_per_year and accumulate them over the building lifetime</span>
+        <span class="n">rates_per_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates_per_year_over_building_lifetime</span><span class="p">()</span> 
+        <span class="n">scurve</span> <span class="o">=</span> <span class="n">rates_per_year</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">scurve</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate all scurves from data/s_curve.csv&#39;</span><span class="p">)</span>
+    <span class="n">area_parameters_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data/s_curve.csv&#39;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">area_parameters_path</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">scurve</span> <span class="o">=</span> <span class="n">SCurve</span><span class="p">(</span><span class="n">earliest_age</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">earliest_age_for_measure</span><span class="p">,</span>
+                        <span class="n">average_age</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">average_age_for_measure</span><span class="p">,</span>
+                        <span class="n">last_age</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">last_age_for_measure</span><span class="p">,</span>
+                        <span class="n">rush_years</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">rush_period_years</span><span class="p">,</span>
+                        <span class="n">never_share</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">never_share</span><span class="p">,</span>
+                        <span class="n">rush_share</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">rush_share</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">scurve</span><span class="o">.</span><span class="n">calc_scurve</span><span class="p">())</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

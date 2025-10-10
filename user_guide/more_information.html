@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setting-up your first model (tutorial) &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setting-up your first model (tutorial)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_guide/more_information.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setting-up-your-first-model-tutorial">
+<h1>Setting-up your first model (tutorial)<a class="headerlink" href="#setting-up-your-first-model-tutorial" title="Link to this heading"></a></h1>
+<p>This is a step-by-step guide on how to set up your first model using the EBM model.</p>
+<section id="how-to-run-the-program-from-the-command-line">
+<h2>1. How to run the program from the command line?<a class="headerlink" href="#how-to-run-the-program-from-the-command-line" title="Link to this heading"></a></h2>
+<p>For the commands to be excuted locally or in an IDE, it must be launched as a module rather than a program.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ebm</span> <span class="n">heating</span><span class="o">-</span><span class="n">systems</span>
+</pre></div>
+</div>
+<p>should be excuted like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>ebm<span class="w"> </span>heating-systems
+</pre></div>
+</div>
+</section>
+<section id="additional-arguments">
+<span id="user-guide-additional-arguments"></span><h2>2. Additional arguments<a class="headerlink" href="#additional-arguments" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ebm</span> <span class="o">&lt;--</span><span class="n">switch</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">step</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output</span> <span class="n">filename</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The parameters listed above are optional. The default choice for the <code class="docutils literal notranslate"><span class="pre">step</span></code> parameter is <code class="docutils literal notranslate"><span class="pre">energy-use</span></code>, and the default output filename is <code class="docutils literal notranslate"><span class="pre">output/ebm_output.xlsx</span></code>.</p>
+</section>
+<section id="example-of-how-to-run-your-first-model-test">
+<h2>3. Example of how to run your first model: test<a class="headerlink" href="#example-of-how-to-run-your-first-model-test" title="Link to this heading"></a></h2>
+<section id="help-command">
+<h3>Help command<a class="headerlink" href="#help-command" title="Link to this heading"></a></h3>
+<p>Typing <cite>ebm –help</cite> will give you a list of most parameters:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--help
+
+<span class="w">  </span>usage:<span class="w"> </span>ebm<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>--categories<span class="w"> </span><span class="o">[</span>CATEGORIES<span class="w"> </span>...<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--input<span class="w"> </span><span class="o">[</span>INPUT<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span><span class="w"> </span><span class="o">[</span>--open<span class="o">]</span><span class="w"> </span><span class="o">[</span>--csv-delimiter<span class="w"> </span>CSV_DELIMITER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--create-input<span class="o">]</span><span class="w"> </span><span class="o">[</span>--horizontal-years<span class="o">]</span><span class="w"> </span><span class="o">[{</span>area-forecast,energy-requirements,heating-systems,energy-use<span class="o">}]</span><span class="w"> </span><span class="o">[</span>output_file<span class="o">]</span>
+
+Calculate<span class="w"> </span>EBM<span class="w"> </span>energy<span class="w"> </span>use<span class="w"> </span><span class="m">1</span>.1.10
+
+positional<span class="w"> </span>arguments:
+<span class="w">  </span><span class="o">{</span>area-forecast,energy-requirements,heating-systems,energy-use<span class="o">}</span>
+
+<span class="w">                        </span>The<span class="w"> </span>calculation<span class="w"> </span>step<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>run.<span class="w"> </span>The<span class="w"> </span>steps<span class="w"> </span>are<span class="w"> </span>sequential.<span class="w"> </span>Any<span class="w"> </span>prerequisite<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>chosen<span class="w"> </span>step<span class="w"> </span>will<span class="w"> </span>run
+<span class="w">                            </span>automatically.
+<span class="w">  </span>output_file<span class="w">           </span>The<span class="w"> </span>location<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>written.<span class="w"> </span>default:<span class="w"> </span>output<span class="se">\e</span>bm_output.xlsx
+<span class="w">                            </span>If<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span>the<span class="w"> </span>program<span class="w"> </span>will<span class="w"> </span>terminate<span class="w"> </span>without<span class="w"> </span>overwriting.
+<span class="w">                            </span>Use<span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>console<span class="w"> </span>instead
+
+options:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>--version,<span class="w"> </span>-v<span class="w">         </span>show<span class="w"> </span>program<span class="w"> </span>version<span class="w"> </span>number<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>--debug<span class="w">               </span>Run<span class="w"> </span><span class="k">in</span><span class="w"> </span>debug<span class="w"> </span>mode.<span class="w"> </span><span class="o">(</span>Extra<span class="w"> </span>information<span class="w"> </span>written<span class="w"> </span>to<span class="w"> </span>stdout<span class="o">)</span>
+<span class="w">  </span>--categories<span class="w"> </span><span class="o">[</span>CATEGORIES<span class="w"> </span>...<span class="o">]</span>,<span class="w"> </span>--building-categories<span class="w"> </span><span class="o">[</span>CATEGORIES<span class="w"> </span>...<span class="o">]</span>,<span class="w"> </span>-c<span class="w"> </span><span class="o">[</span>CATEGORIES<span class="w"> </span>...<span class="o">]</span>
+
+<span class="w">                        </span>One<span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>building<span class="w"> </span>categories:
+<span class="w">                            </span>house,<span class="w"> </span>apartment_block,<span class="w"> </span>kindergarten,<span class="w"> </span>school,<span class="w"> </span>university,<span class="w"> </span>office,<span class="w"> </span>retail,<span class="w"> </span>hotel,<span class="w"> </span>hospital,<span class="w"> </span>nursing_home,<span class="w"> </span>culture,<span class="w"> </span>sports,<span class="w"> </span>storage_repairs.
+<span class="w">                            </span>The<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>all<span class="w"> </span>categories.
+<span class="w">  </span>--input<span class="w"> </span><span class="o">[</span>INPUT<span class="o">]</span>,<span class="w"> </span>--input-directory<span class="w"> </span><span class="o">[</span>INPUT<span class="o">]</span>,<span class="w"> </span>-i<span class="w"> </span><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">                        </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span>with<span class="w"> </span>input<span class="w"> </span>files
+<span class="w">  </span>--force,<span class="w"> </span>-f<span class="w">           </span>Write<span class="w"> </span>to<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>it<span class="w"> </span>already<span class="w"> </span>exists
+<span class="w">  </span>--open,<span class="w"> </span>-o<span class="w">            </span>Open<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>with<span class="w"> </span>default<span class="w"> </span>application<span class="w"> </span>after<span class="w"> </span>writing.<span class="w"> </span><span class="o">(</span>Usually<span class="w"> </span>Excel<span class="o">)</span>
+<span class="w">  </span>--csv-delimiter<span class="w"> </span>CSV_DELIMITER,<span class="w"> </span>--delimiter<span class="w"> </span>CSV_DELIMITER,<span class="w"> </span>-e<span class="w"> </span>CSV_DELIMITER
+<span class="w">                        </span>A<span class="w"> </span>single<span class="w"> </span>character<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>separating<span class="w"> </span>columns<span class="w"> </span>when<span class="w"> </span>writing<span class="w"> </span>csv.<span class="w"> </span>Default:<span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span>Special<span class="w"> </span>characters<span class="w"> </span>like<span class="w"> </span><span class="p">;</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>quoted<span class="w"> </span><span class="s2">&quot;;&quot;</span>
+<span class="w">  </span>--create-input
+<span class="w">                        </span>Create<span class="w"> </span>input<span class="w"> </span>directory<span class="w"> </span>containing<span class="w"> </span>all<span class="w"> </span>required<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>working<span class="w"> </span>directory
+<span class="w">  </span>--horizontal-years,<span class="w"> </span>--horizontal,<span class="w"> </span>--horisontal
+<span class="w">                        </span>Show<span class="w"> </span>years<span class="w"> </span>horizontal<span class="w"> </span><span class="o">(</span>left<span class="w"> </span>to<span class="w"> </span>right<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="calculate-the-projected-annual-area-requiring-heating">
+<span id="calculate-area-projection"></span><h3>4. Calculate the projected annual area requiring heating<a class="headerlink" href="#calculate-the-projected-annual-area-requiring-heating" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the default cammand, where the output file is area-forecast-vertical.xlsx located</span>
+<span class="c1"># in the output directory</span>
+<span class="c1"># The output file will be written in vertical format</span>
+ebm<span class="w"> </span>area-forecast<span class="w"> </span>output/area-forecast-vertical.xlsx
+</pre></div>
+</div>
+<p>If the user wants the output file in horizontal format, the user can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will write the output file in horizontal format with the name area-forecast.xlsx</span>
+ebm<span class="w"> </span>--horizontal<span class="w"> </span>area-forecast<span class="w"> </span>output/area-forecast.xlsx
+</pre></div>
+</div>
+</section>
+<section id="calculate-energy-requirements">
+<h3>5. Calculate energy-requirements<a class="headerlink" href="#calculate-energy-requirements" title="Link to this heading"></a></h3>
+<p>The energy-requirements is calculated by multiplying the heating demand per square meter by the area from the previous step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the default cammand, where the output file is energy-requirements-vertical.xlsx located</span>
+<span class="c1"># in the output directory</span>
+ebm<span class="w"> </span>energy-requirements<span class="w"> </span>output/energy-requirements-vertical.xlsx
+</pre></div>
+</div>
+<p>If the user wants the output file in horizontal format, the user can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will write the output file in horizontal format with the name energy-requirements.xlsx</span>
+ebm<span class="w"> </span>--horizontal<span class="w"> </span>energy-requirements<span class="w"> </span>output/energy-requirements.xlsx
+</pre></div>
+</div>
+</section>
+<section id="energy-consumption">
+<h3>6. Energy consumption<a class="headerlink" href="#energy-consumption" title="Link to this heading"></a></h3>
+<p>The energy consumption is calculated by multiplying the energy requirements from the previous step by the efficiency factor.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the default command, where the output file is heating-systems-vertical.xlsx located</span>
+<span class="c1"># in the output directory</span>
+ebm<span class="w"> </span>heating-systems<span class="w"> </span>output/heating-systems-vertical.xlsx
+</pre></div>
+</div>
+</section>
+<section id="holiday-homes-energy-consumption">
+<h3>7. Holiday homes energy consumption<a class="headerlink" href="#holiday-homes-energy-consumption" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the default command, where the output file is energy-use-vertical.xlsx located</span>
+<span class="c1"># in the output directory</span>
+ebm<span class="w"> </span>energy-use<span class="w"> </span>output/energy-use-vertical.xlsx
+</pre></div>
+</div>
+</section>
+<section id="example-case">
+<h3>8. Example case<a class="headerlink" href="#example-case" title="Link to this heading"></a></h3>
+<p>If the user wants to run the program with input files located in another directory, for instance the “calibration” directory, the user can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will run the program with input files located in the &quot;calibration&quot; directory</span>
+ebm<span class="w"> </span>--input<span class="w"> </span>calibration<span class="w"> </span>energy-use<span class="w"> </span>output/energy-use.xlsx
+</pre></div>
+</div>
+<p>Last Updated on 2025-10-10.</p>
+<p>Version: 1.2.10.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

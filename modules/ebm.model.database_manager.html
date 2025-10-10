@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.database_manager module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.model.dataframemodels module" href="ebm.model.dataframemodels.html" />
+    <link rel="prev" title="ebm.model.data_classes module" href="ebm.model.data_classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.model.html">ebm.model package</a></li>
+      <li class="breadcrumb-item active">ebm.model.database_manager module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.model.database_manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.model.database_manager">
+<span id="ebm-model-database-manager-module"></span><h1>ebm.model.database_manager module<a class="headerlink" href="#module-ebm.model.database_manager" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DatabaseManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.file_handler.html#ebm.model.file_handler.FileHandler" title="ebm.model.file_handler.FileHandler"><span class="pre">FileHandler</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages database operations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_TEK">
+<span class="sig-name descname"><span class="pre">COL_TEK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'building_code'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_TEK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_TEK_BUILDING_YEAR">
+<span class="sig-name descname"><span class="pre">COL_TEK_BUILDING_YEAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'building_year'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_TEK_BUILDING_YEAR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_TEK_START_YEAR">
+<span class="sig-name descname"><span class="pre">COL_TEK_START_YEAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'period_start_year'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_TEK_START_YEAR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_TEK_END_YEAR">
+<span class="sig-name descname"><span class="pre">COL_TEK_END_YEAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'period_end_year'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_TEK_END_YEAR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_BUILDING_CATEGORY">
+<span class="sig-name descname"><span class="pre">COL_BUILDING_CATEGORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'building_category'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_BUILDING_CATEGORY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_BUILDING_CONDITION">
+<span class="sig-name descname"><span class="pre">COL_BUILDING_CONDITION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'building_condition'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_BUILDING_CONDITION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_AREA">
+<span class="sig-name descname"><span class="pre">COL_AREA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'area'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_AREA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_ENERGY_REQUIREMENT_PURPOSE">
+<span class="sig-name descname"><span class="pre">COL_ENERGY_REQUIREMENT_PURPOSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'purpose'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_ENERGY_REQUIREMENT_PURPOSE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_ENERGY_REQUIREMENT_VALUE">
+<span class="sig-name descname"><span class="pre">COL_ENERGY_REQUIREMENT_VALUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kwh_m2'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_ENERGY_REQUIREMENT_VALUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.COL_HEATING_REDUCTION">
+<span class="sig-name descname"><span class="pre">COL_HEATING_REDUCTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reduction_share'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.COL_HEATING_REDUCTION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.DEFAULT_VALUE">
+<span class="sig-name descname"><span class="pre">DEFAULT_VALUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></em><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.DEFAULT_VALUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.file_handler.html#ebm.model.file_handler.FileHandler" title="ebm.model.file_handler.FileHandler"><span class="pre">FileHandler</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_building_code_list">
+<span class="sig-name descname"><span class="pre">get_building_code_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_building_code_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_building_code_list" title="Link to this definition"></a></dt>
+<dd><p>Get a list of building_code.</p>
+<p>Returns:
+- building_code_list (list): List of building_code.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.make_building_purpose">
+<span class="sig-name descname"><span class="pre">make_building_purpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.make_building_purpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.make_building_purpose" title="Link to this definition"></a></dt>
+<dd><p>Returns a dataframe of all combinations building_categories, teks, original_condition, purposes
+and optionally years.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>years : YearRange, optional</p>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_building_codes">
+<span class="sig-name descname"><span class="pre">get_building_codes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_building_codes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_building_codes" title="Link to this definition"></a></dt>
+<dd><p>Retrieve building_code_parameters</p>
+<section id="id1">
+<h2>Returns<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Pandas Dataframe containing building_code with parameters</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_building_code_params">
+<span class="sig-name descname"><span class="pre">get_building_code_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_building_code_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_building_code_params" title="Link to this definition"></a></dt>
+<dd><p>Retrieve building_codeparameters for a list of building_code.</p>
+<p>This method fetches building_codeparameters for each building_codeID in the provided list,
+converts the relevant data to a dictionary, and maps these values to the
+corresponding attributes of the TEKParameters dataclass. The resulting
+dataclass instances are stored in a dictionary with building_code as keys.</p>
+<p>Parameters:
+- building_code_list (list of str): List of building_code.</p>
+<p>Returns:
+- building_code_params (dict): Dictionary where each key is a building_codeID and each value</p>
+<blockquote>
+<div><p>is a TEKParameters dataclass instance containing the
+parameters for that building_codeID.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_scurve_params">
+<span class="sig-name descname"><span class="pre">get_scurve_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_scurve_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_scurve_params" title="Link to this definition"></a></dt>
+<dd><p>Get input dataframe with S-curve parameters/assumptions.</p>
+<p>Returns:
+- scurve_params (pd.DataFrame): DataFrame with S-curve parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_construction_population">
+<span class="sig-name descname"><span class="pre">get_construction_population</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_construction_population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_construction_population" title="Link to this definition"></a></dt>
+<dd><p>Get construction population DataFrame.</p>
+<p>Returns:
+- construction_population (pd.DataFrame): Dataframe containing population numbers</p>
+<blockquote>
+<div><p>year population household_size</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_new_buildings_category_share">
+<span class="sig-name descname"><span class="pre">get_new_buildings_category_share</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_new_buildings_category_share"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_new_buildings_category_share" title="Link to this definition"></a></dt>
+<dd><p>Get building category share by year as a DataFrame.</p>
+<p>The number can be used in conjunction with number of households to calculate total number
+of buildings of category house and apartment block</p>
+<p>Returns:
+- new_buildings_category_share (pd.DataFrame): Dataframe containing population numbers</p>
+<blockquote>
+<div><p>“year”, “Andel nye småhus”, “Andel nye leiligheter”, “Areal nye småhus”, “Areal nye leiligheter”</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_building_category_floor_area">
+<span class="sig-name descname"><span class="pre">get_building_category_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_building_category_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_building_category_floor_area" title="Link to this definition"></a></dt>
+<dd><p>Get population and household size DataFrame from a file.</p>
+<p>Returns:
+- construction_population (pd.DataFrame): Dataframe containing population numbers</p>
+<blockquote>
+<div><p>“area”,”type of building”,”2010”,”2011”</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_area_parameters">
+<span class="sig-name descname"><span class="pre">get_area_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_area_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_area_parameters" title="Link to this definition"></a></dt>
+<dd><p>Get total area (m^2) per building category and TEK.</p>
+<p>Parameters:
+- building_category (str): Optional parameter that filter the returned dataframe by building_category</p>
+<p>Returns:
+- area_parameters (pd.DataFrame): Dataframe containing total area (m^2) per</p>
+<blockquote>
+<div><p>building category and TEK.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_area_start_year">
+<span class="sig-name descname"><span class="pre">get_area_start_year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Series</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_area_start_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_area_start_year" title="Link to this definition"></a></dt>
+<dd><p>Retrieve total floor area in the model start year for each TEK within a building category.</p>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl>
+<dt>dict</dt><dd><p>A dictionary where:
+- keys are <cite>BuildingCategory</cite> objects derived from the building category string.
+- values are <cite>pandas.Series</cite> with the ‘tek’ column as the index and the corresponding</p>
+<blockquote>
+<div><p>‘area’ column as the values.</p>
+</div></blockquote>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_behaviour_factor">
+<span class="sig-name descname"><span class="pre">get_behaviour_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_behaviour_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_behaviour_factor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_energy_req_original_condition">
+<span class="sig-name descname"><span class="pre">get_energy_req_original_condition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_energy_req_original_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_energy_req_original_condition" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Get dataframe with energy requirement (kWh/m^2) for floor area in original condition. The result will be</dt><dd><p>calibrated using the dataframe from DatabaseManger.get_calibrate_heating_rv</p>
+</dd>
+</dl>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing energy requirement (kWh/m^2) for floor area in original condition,
+per building category and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_energy_req_reduction_per_condition">
+<span class="sig-name descname"><span class="pre">get_energy_req_reduction_per_condition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_energy_req_reduction_per_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_energy_req_reduction_per_condition" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with shares for reducing the energy requirement of the different building conditions. This
+function calls explode_unique_columns to expand building_category and TEK as necessary.</p>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing energy requirement reduction shares for the different building conditions,
+per building category, TEK and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_energy_need_yearly_improvements">
+<span class="sig-name descname"><span class="pre">get_energy_need_yearly_improvements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_energy_need_yearly_improvements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_energy_need_yearly_improvements" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with yearly efficiency rates for energy need improvements. This
+function calls explode_unique_columns to expand building_category and TEK as necessary.</p>
+<p>The column yearly_efficiency_improvement is expected to contain the yearly reduction as
+a float between 0.1 and 1.0.</p>
+<section id="id5">
+<h2>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing yearly efficiency rates (%) for energy need improvements,
+per building category, tek and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_energy_need_policy_improvement">
+<span class="sig-name descname"><span class="pre">get_energy_need_policy_improvement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_energy_need_policy_improvement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_energy_need_policy_improvement" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with total energy need improvement in a period related to a policy. This
+function calls explode_unique_columns to expand building_category and TEK as necessary.</p>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing total energy need improvement (%) in a policy period,
+per building category, tek and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_holiday_home_fuelwood_consumption">
+<span class="sig-name descname"><span class="pre">get_holiday_home_fuelwood_consumption</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_holiday_home_fuelwood_consumption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_holiday_home_fuelwood_consumption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_holiday_home_fossilfuel_consumption">
+<span class="sig-name descname"><span class="pre">get_holiday_home_fossilfuel_consumption</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_holiday_home_fossilfuel_consumption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_holiday_home_fossilfuel_consumption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_holiday_home_electricity_consumption">
+<span class="sig-name descname"><span class="pre">get_holiday_home_electricity_consumption</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_holiday_home_electricity_consumption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_holiday_home_electricity_consumption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_holiday_home_by_year">
+<span class="sig-name descname"><span class="pre">get_holiday_home_by_year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_holiday_home_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_holiday_home_by_year" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_calibrate_heating_rv">
+<span class="sig-name descname"><span class="pre">get_calibrate_heating_rv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_calibrate_heating_rv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_calibrate_heating_rv" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_calibrate_heating_systems">
+<span class="sig-name descname"><span class="pre">get_calibrate_heating_systems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_calibrate_heating_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_calibrate_heating_systems" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_area_per_person">
+<span class="sig-name descname"><span class="pre">get_area_per_person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_area_per_person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_area_per_person" title="Link to this definition"></a></dt>
+<dd><p>Return area_per_person as a pd.Series</p>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_category: BuildingCategory, optional</dt><dd><p>filter for building category</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>float values indexed by building_category, (year)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.validate_database">
+<span class="sig-name descname"><span class="pre">validate_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.validate_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.validate_database" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_heating_systems_shares_start_year">
+<span class="sig-name descname"><span class="pre">get_heating_systems_shares_start_year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_heating_systems_shares_start_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_heating_systems_shares_start_year" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_heating_systems_efficiencies">
+<span class="sig-name descname"><span class="pre">get_heating_systems_efficiencies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_heating_systems_efficiencies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_heating_systems_efficiencies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.get_heating_systems_projection">
+<span class="sig-name descname"><span class="pre">get_heating_systems_projection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.get_heating_systems_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.get_heating_systems_projection" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.explode_unique_columns">
+<span class="sig-name descname"><span class="pre">explode_unique_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.explode_unique_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.explode_unique_columns" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.explode_building_category_column">
+<span class="sig-name descname"><span class="pre">explode_building_category_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.explode_building_category_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.explode_building_category_column" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.database_manager.DatabaseManager.explode_building_code_column">
+<span class="sig-name descname"><span class="pre">explode_building_code_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/database_manager.html#DatabaseManager.explode_building_code_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.database_manager.DatabaseManager.explode_building_code_column" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.model.data_classes.html" class="btn btn-neutral float-left" title="ebm.model.data_classes module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.model.dataframemodels.html" class="btn btn-neutral float-right" title="ebm.model.dataframemodels module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

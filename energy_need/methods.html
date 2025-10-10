@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methods &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assumptions" href="assumptions.html" />
+    <link rel="prev" title="Energy need" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Energy need</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#explanation-of-each-factor">Explanation of Each Factor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#energy-purpose">Energy purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renovation-and-small-measures">Renovation and small measures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assumptions.html">Assumptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Energy need</a></li>
+      <li class="breadcrumb-item active">Methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/energy_need/methods.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h1>
+<p>The formula for <strong>energy need per square metre per year</strong> in the EBM (Energibruksmodell) is designed to estimate how much
+energy a building requires annually, adjusted for various factors.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\text{energy need kWh/m}^{\text{2}}_{\text{year}} &amp;= \text{energy need original condition}_{\text{building code}} \\
+&amp;\times \text{improvement building upgrade}_{\text{building condition}} \\
+&amp;\times \left(1.0 - \text{yearly reduction}\right)^{\text{year} - \text{start year}} \\
+&amp;\times \text{improvement end year}_{\text{year}} \\
+&amp;\times \text{behaviour factor} \\
+\end{align}\end{split}\]</div>
+<section id="explanation-of-each-factor">
+<h2>Explanation of Each Factor<a class="headerlink" href="#explanation-of-each-factor" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Energy need original condition</strong>
+- Baseline energy use for the building type and purpose as defined by the building code.</p></li>
+<li><p><strong>improvement building upgrade</strong>
+- Accounts for renovations or upgrades that improve energy performance. By default this will be small measure, renovation or both.</p></li>
+<li><p><strong>Yearly reduction</strong>
+- Annual percentage reduction in energy use due to technological progress or behavioral changes.</p></li>
+<li><p><strong>Improvement end year factor</strong>
+- A modifier that adjusts the reduction effect with improvements expected to be finalized after a certain year. EU Commission’s RoHS directive, banning fluorescent lamps, is an example of policy that can be modelled using this factor.</p></li>
+<li><p><strong>Behaviour factor</strong>
+- Captures changes in user behavior that affect energy consumption, like floor area utilization.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="energy-purpose">
+<h2>Energy purpose<a class="headerlink" href="#energy-purpose" title="Link to this heading"></a></h2>
+<p>Energy purpose is used to define level of energy, its source, and assess whether any energy-saving measures are applied.</p>
+<p>There are six energy purposes defined in EBM.</p>
+<dl class="simple">
+<dt>Heating Room Ventilation (heating_rv)</dt><dd><p>Energy used for space heating in rooms, typically through radiators, underfloor heating, or air systems. This includes the energy required to maintain indoor temperatures at comfortable levels during colder periods.</p>
+</dd>
+<dt>Heating Domestic Hot Water (heating_dhw)</dt><dd><p>Energy used to heat water for domestic purposes such as bathing, cooking, and cleaning. This is separate from space heating and is often supplied by boilers, heat pumps, or electric water heaters.</p>
+</dd>
+<dt>Fans and pumps</dt><dd><p>Electricity consumed by mechanical systems that circulate air or fluids within a building. This includes HVAC fans, circulation pumps for heating and cooling systems, and booster pumps for water supply.</p>
+</dd>
+<dt>Lighting</dt><dd><p>Electricity used for indoor and outdoor lighting, including general illumination, task lighting, and emergency lighting systems. This category often includes both traditional and energy-efficient lighting technologies.</p>
+</dd>
+<dt>Electrical equipment</dt><dd><p>Energy consumed by plug-in devices and fixed electrical systems not covered by other categories. This includes computers, kitchen appliances, office equipment, elevators, and other miscellaneous electrical loads.</p>
+</dd>
+<dt>Cooling</dt><dd><p>Energy used for air conditioning and refrigeration systems to maintain comfortable indoor temperatures and preserve perishable goods. This includes chillers, split systems, and centralized cooling systems.</p>
+</dd>
+</dl>
+<p>Below is an excerpt showing the kilowatt hours per square metre for retail buildings, categorized by energy purpose according to the TEK07 building code:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Energy need original condition retail TEK07</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>kwh_m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK07</p></td>
+<td><p>lighting</p></td>
+<td><p>50.2</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK07</p></td>
+<td><p>cooling</p></td>
+<td><p>36.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK07</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>3.7</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK07</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>45.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>TEK07</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>10.5</p></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>TEK07</p></td>
+<td><p>heating_rv</p></td>
+<td><p>82.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="renovation-and-small-measures">
+<h2>Renovation and small measures<a class="headerlink" href="#renovation-and-small-measures" title="Link to this heading"></a></h2>
+<p>The rates for implementing small measures and renovation are determined. The rates are
+set in relation to the area’s age, and a development comparable to an S-curve is expected. The rates can be defined
+individually for each building category. The proportion of a building type that is
+demolished, renovated, and undergoes small measures each year will therefore depend on the age distribution of the building stock
+for that building type.</p>
+<p>It is not uncommon for buildings that have reached a certain age to have undergone both small measures and renovation. This is
+accounted for in the model. However, this version of the model does not allow small measures and renovation to be done several times on the same building.
+This is something that we plan to improve in coming versions of the model.</p>
+<p>An example of how the renovation rates can function in the model:
+Let’s look at the small measure rate for office buildings. In the first few years after the
+buildings are constructed, no small measures are implemented. When the buildings are three years old, small measures will
+be implemented on some of the buildings. Small measures will be implemented in 1.4 % of the relevant office area each year
+until the buildings are ten years old. At ten years of age, the pace of implementing small measures increases, and 4 % of the
+area undergoes small measures each year. This high rate continues until the building stock is 30 years old. From then on,
+only 0.5 % of the building stock will undergo small measures annually. It is assumed that 1 % of the area
+will never have small measures implemented, and that the buildings that are to have small measures implemented will have had
+them done within 50 years.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Energy need" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assumptions.html" class="btn btn-neutral float-right" title="Assumptions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

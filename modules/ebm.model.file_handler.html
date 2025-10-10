@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.file_handler module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.model.filter_scurve_params module" href="ebm.model.filter_scurve_params.html" />
+    <link rel="prev" title="ebm.model.exceptions module" href="ebm.model.exceptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.model.html">ebm.model package</a></li>
+      <li class="breadcrumb-item active">ebm.model.file_handler module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.model.file_handler.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.model.file_handler">
+<span id="ebm-model-file-handler-module"></span><h1>ebm.model.file_handler module<a class="headerlink" href="#module-ebm.model.file_handler" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FileHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles file operations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.BUILDING_CONDITIONS">
+<span class="sig-name descname"><span class="pre">BUILDING_CONDITIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'building_conditions.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.BUILDING_CONDITIONS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.BUILDING_CODE_PARAMS">
+<span class="sig-name descname"><span class="pre">BUILDING_CODE_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'building_code_parameters.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.BUILDING_CODE_PARAMS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.S_CURVE">
+<span class="sig-name descname"><span class="pre">S_CURVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'s_curve.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.S_CURVE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.POPULATION_FORECAST">
+<span class="sig-name descname"><span class="pre">POPULATION_FORECAST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'population_forecast.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.POPULATION_FORECAST" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.NEW_BUILDINGS_RESIDENTIAL">
+<span class="sig-name descname"><span class="pre">NEW_BUILDINGS_RESIDENTIAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'new_buildings_residential.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.NEW_BUILDINGS_RESIDENTIAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.AREA_NEW_RESIDENTIAL_BUILDINGS">
+<span class="sig-name descname"><span class="pre">AREA_NEW_RESIDENTIAL_BUILDINGS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'area_new_residential_buildings.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.AREA_NEW_RESIDENTIAL_BUILDINGS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.AREA">
+<span class="sig-name descname"><span class="pre">AREA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'area.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.AREA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.BEHAVIOUR_FACTOR">
+<span class="sig-name descname"><span class="pre">BEHAVIOUR_FACTOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'energy_need_behaviour_factor.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.BEHAVIOUR_FACTOR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.ENERGY_NEED_ORIGINAL_CONDITION">
+<span class="sig-name descname"><span class="pre">ENERGY_NEED_ORIGINAL_CONDITION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'energy_need_original_condition.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.ENERGY_NEED_ORIGINAL_CONDITION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.IMPROVEMENT_BUILDING_UPGRADE">
+<span class="sig-name descname"><span class="pre">IMPROVEMENT_BUILDING_UPGRADE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'improvement_building_upgrade.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.IMPROVEMENT_BUILDING_UPGRADE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.ENERGY_NEED_YEARLY_IMPROVEMENTS">
+<span class="sig-name descname"><span class="pre">ENERGY_NEED_YEARLY_IMPROVEMENTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'energy_need_improvements.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.ENERGY_NEED_YEARLY_IMPROVEMENTS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.HOLIDAY_HOME_STOCK">
+<span class="sig-name descname"><span class="pre">HOLIDAY_HOME_STOCK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'holiday_home_stock.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.HOLIDAY_HOME_STOCK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.HOLIDAY_HOME_ENERGY_CONSUMPTION">
+<span class="sig-name descname"><span class="pre">HOLIDAY_HOME_ENERGY_CONSUMPTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'holiday_home_energy_consumption.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.HOLIDAY_HOME_ENERGY_CONSUMPTION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.AREA_PER_PERSON">
+<span class="sig-name descname"><span class="pre">AREA_PER_PERSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'area_per_person.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.AREA_PER_PERSON" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.HEATING_SYSTEM_INITIAL_SHARES">
+<span class="sig-name descname"><span class="pre">HEATING_SYSTEM_INITIAL_SHARES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'heating_system_initial_shares.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.HEATING_SYSTEM_INITIAL_SHARES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.HEATING_SYSTEMS_EFFICIENCIES">
+<span class="sig-name descname"><span class="pre">HEATING_SYSTEMS_EFFICIENCIES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'heating_systems_efficiencies.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.HEATING_SYSTEMS_EFFICIENCIES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.HEATING_SYSTEM_FORECAST">
+<span class="sig-name descname"><span class="pre">HEATING_SYSTEM_FORECAST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'heating_system_forecast.csv'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.HEATING_SYSTEM_FORECAST" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.CALIBRATE_ENERGY_REQUIREMENT">
+<span class="sig-name descname"><span class="pre">CALIBRATE_ENERGY_REQUIREMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'calibrate_heating_rv.xlsx'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.CALIBRATE_ENERGY_REQUIREMENT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.CALIBRATE_ENERGY_CONSUMPTION">
+<span class="sig-name descname"><span class="pre">CALIBRATE_ENERGY_CONSUMPTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'calibrate_energy_consumption.xlsx'</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.CALIBRATE_ENERGY_CONSUMPTION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.__init__" title="Link to this definition"></a></dt>
+<dd><p>Constructor for FileHandler Object. Sets FileHandler.input_directory.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>directory<span class="classifier">pathlib.Path | None | (str)</span></dt><dd><dl class="simple">
+<dt>When directory is None the constructor will attempt to read directory location from</dt><dd><p>environment variable EBM_INPUT_DIRECTORY</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.input_directory">
+<span class="sig-name descname"><span class="pre">input_directory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#ebm.model.file_handler.FileHandler.input_directory" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.default_data_directory">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_data_directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.default_data_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.default_data_directory" title="Link to this definition"></a></dt>
+<dd><p>Returns the path for ebm default data. The function is used when content is needed for a new input directory.
+Not to be confused with FileHandler.input_directory.</p>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<p>pathlib.Path</p>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>create_missing_input_files</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_file">
+<span class="sig-name descname"><span class="pre">get_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_file" title="Link to this definition"></a></dt>
+<dd><p>Finds and returns a file by searching in the folder defined by self.input_folder.</p>
+<p>Parameters:
+- file_name (str): Name of the file to retrieve.</p>
+<p>Returns:
+- file_df (pd.DataFrame): DataFrame containing file data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_building_code">
+<span class="sig-name descname"><span class="pre">get_building_code</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_building_code" title="Link to this definition"></a></dt>
+<dd><p>Get TEK parameters DataFrame.</p>
+<p>Returns:
+- building_code_params (pd.DataFrame): DataFrame containing TEK parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_s_curve">
+<span class="sig-name descname"><span class="pre">get_s_curve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_s_curve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_s_curve" title="Link to this definition"></a></dt>
+<dd><p>Get S-curve parameters DataFrame.</p>
+<p>Returns:
+- scurve_params (pd.DataFrame): DataFrame containing S-curve parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_construction_population">
+<span class="sig-name descname"><span class="pre">get_construction_population</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_construction_population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_construction_population" title="Link to this definition"></a></dt>
+<dd><p>Get population and household size DataFrame from a file.</p>
+<p>Returns:
+- construction_population (pd.DataFrame): Dataframe containing population numbers</p>
+<blockquote>
+<div><p>year population household_size</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_population">
+<span class="sig-name descname"><span class="pre">get_population</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_population" title="Link to this definition"></a></dt>
+<dd><p>Loads population data from population.csv as float64</p>
+<p>Should probably be merged with get_construction_population</p>
+<dl class="simple">
+<dt>Returns population<span class="classifier">pd.DataFrame</span></dt><dd><p>dataframe with population</p>
+</dd>
+</dl>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_construction_building_category_share">
+<span class="sig-name descname"><span class="pre">get_construction_building_category_share</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_construction_building_category_share"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_construction_building_category_share" title="Link to this definition"></a></dt>
+<dd><p>Get building category share by year DataFrame from a file.</p>
+<p>The number can be used in conjunction with number of households to calculate total number
+of buildings of category house and apartment block</p>
+<p>Returns:
+- construction_population (pd.DataFrame): Dataframe containing population numbers</p>
+<blockquote>
+<div><p>“year”, “Andel nye småhus”, “Andel nye leiligheter”, “Areal nye småhus”, “Areal nye leiligheter”</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_building_category_area">
+<span class="sig-name descname"><span class="pre">get_building_category_area</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_building_category_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_building_category_area" title="Link to this definition"></a></dt>
+<dd><p>Get population and household size DataFrame from a file.</p>
+<p>Returns:
+- construction_population (pd.DataFrame): Dataframe containing population numbers</p>
+<blockquote>
+<div><p>“area”,”type of building”,”2010”,”2011”</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_area_parameters">
+<span class="sig-name descname"><span class="pre">get_area_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_area_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_area_parameters" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with area parameters.</p>
+<p>Returns:
+- area_parameters (pd.DataFrame): Dataframe containing total area (m^2) per</p>
+<blockquote>
+<div><p>building category and TEK.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_energy_req_original_condition">
+<span class="sig-name descname"><span class="pre">get_energy_req_original_condition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_energy_req_original_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_energy_req_original_condition" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with energy requirement (kWh/m^2) for floor area in original condition.</p>
+<section id="id1">
+<h2>Returns<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing energy requirement (kWh/m^2) for floor area in original condition,
+per building category and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_energy_req_reduction_per_condition">
+<span class="sig-name descname"><span class="pre">get_energy_req_reduction_per_condition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_energy_req_reduction_per_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_energy_req_reduction_per_condition" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with shares for reducing the energy requirement of the different building conditions.</p>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing energy requirement reduction shares for the different building conditions,
+per building category, TEK and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_energy_need_yearly_improvements">
+<span class="sig-name descname"><span class="pre">get_energy_need_yearly_improvements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_energy_need_yearly_improvements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_energy_need_yearly_improvements" title="Link to this definition"></a></dt>
+<dd><p>Get dataframe with yearly efficiency rates for energy requirement improvements.</p>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe containing yearly efficiency rates (%) for energy requirement improvements,
+per building category, tek and purpose.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_holiday_home_energy_consumption">
+<span class="sig-name descname"><span class="pre">get_holiday_home_energy_consumption</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_holiday_home_energy_consumption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_holiday_home_energy_consumption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_holiday_home_by_year">
+<span class="sig-name descname"><span class="pre">get_holiday_home_by_year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_holiday_home_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_holiday_home_by_year" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_area_per_person">
+<span class="sig-name descname"><span class="pre">get_area_per_person</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_area_per_person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_area_per_person" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_calibrate_heating_rv">
+<span class="sig-name descname"><span class="pre">get_calibrate_heating_rv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_calibrate_heating_rv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_calibrate_heating_rv" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_calibrate_heating_systems">
+<span class="sig-name descname"><span class="pre">get_calibrate_heating_systems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_calibrate_heating_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_calibrate_heating_systems" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_heating_systems_shares_start_year">
+<span class="sig-name descname"><span class="pre">get_heating_systems_shares_start_year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_heating_systems_shares_start_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_heating_systems_shares_start_year" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_heating_systems_efficiencies">
+<span class="sig-name descname"><span class="pre">get_heating_systems_efficiencies</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_heating_systems_efficiencies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_heating_systems_efficiencies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.get_heating_systems_projection">
+<span class="sig-name descname"><span class="pre">get_heating_systems_projection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.get_heating_systems_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.get_heating_systems_projection" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.check_for_missing_files">
+<span class="sig-name descname"><span class="pre">check_for_missing_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.check_for_missing_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.check_for_missing_files" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of required files that are not present in self.input_folder</p>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>missing_files : List[str]</p>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>FileNotFoundError</dt><dd><p>If FileHandler::input_directory not found</p>
+</dd>
+<dt>NotADirectoryError</dt><dd><p>If FileHandler::input_directory is not a directory</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.create_missing_input_files">
+<span class="sig-name descname"><span class="pre">create_missing_input_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.create_missing_input_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.create_missing_input_files" title="Link to this definition"></a></dt>
+<dd><p>Creates any input files missing in self.input_directory. When source is omitted FileHandler</p>
+<section id="id5">
+<h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>source_directory<span class="classifier">pathlib.Path, optional</span></dt><dd><p>Optional directory for sourcing files to copy.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>None</p>
+</section>
+<section id="id7">
+<h2>See Also<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>default_data_directory : default source for data files</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.create_input_file">
+<span class="sig-name descname"><span class="pre">create_input_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.create_input_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.create_input_file" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.file_handler.FileHandler.validate_input_files">
+<span class="sig-name descname"><span class="pre">validate_input_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/file_handler.html#FileHandler.validate_input_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.file_handler.FileHandler.validate_input_files" title="Link to this definition"></a></dt>
+<dd><p>Validates the input files for correct formatting and content using the validators module</p>
+<section id="id8">
+<h2>Raises<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pa.errors.SchemaErrors</dt><dd><p>If any invalid data for formatting is found when validating files. The validation is lazy, meaning
+multiple errors may be listed in the exception.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.model.exceptions.html" class="btn btn-neutral float-left" title="ebm.model.exceptions module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.model.filter_scurve_params.html" class="btn btn-neutral float-right" title="ebm.model.filter_scurve_params module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

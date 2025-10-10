@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.filter_scurve_params &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.model.filter_scurve_params</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.model.filter_scurve_params</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.building_condition</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScurveParameters</span>
+
+
+<div class="viewcode-block" id="FilterScurveParams">
+<a class="viewcode-back" href="../../../modules/ebm.model.filter_scurve_params.html#ebm.model.filter_scurve_params.FilterScurveParams">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FilterScurveParams</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A utility class for filtering S-curve parameters based on building category and condition.</span>
+
+<span class="sd">    This class provides a static method to filter a DataFrame containing S-curve parameters, </span>
+<span class="sd">    extracting the relevant data for a specific building category and set of conditions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">COL_BUILDING_CATEGORY</span> <span class="o">=</span> <span class="s1">&#39;building_category&#39;</span>
+    <span class="n">COL_BUILDING_CONDITION</span> <span class="o">=</span> <span class="s1">&#39;condition&#39;</span>
+    <span class="n">COL_EARLIEST_AGE</span> <span class="o">=</span> <span class="s1">&#39;earliest_age_for_measure&#39;</span>
+    <span class="n">COL_AVERAGE_AGE</span> <span class="o">=</span> <span class="s1">&#39;average_age_for_measure&#39;</span>
+    <span class="n">COL_LAST_AGE</span> <span class="o">=</span> <span class="s1">&#39;last_age_for_measure&#39;</span>
+    <span class="n">COL_RUSH_YEARS</span> <span class="o">=</span> <span class="s1">&#39;rush_period_years&#39;</span>
+    <span class="n">COL_RUSH_SHARE</span> <span class="o">=</span> <span class="s1">&#39;rush_share&#39;</span>
+    <span class="n">COL_NEVER_SHARE</span> <span class="o">=</span> <span class="s1">&#39;never_share&#39;</span>
+
+<div class="viewcode-block" id="FilterScurveParams.filter">
+<a class="viewcode-back" href="../../../modules/ebm.model.filter_scurve_params.html#ebm.model.filter_scurve_params.FilterScurveParams.filter">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="p">,</span>
+               <span class="n">scurve_condition_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+               <span class="n">scurve_params</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ScurveParameters</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Filters S-curve parameters by building category and condition.</span>
+
+<span class="sd">        This method filters a DataFrame containing S-curve parameters to extract data specific to </span>
+<span class="sd">        the provided building category and conditions listed in `scurve_condition_list`. The filtered </span>
+<span class="sd">        data is then converted into a dictionary of `ScurveParameters` dataclass instances, each </span>
+<span class="sd">        representing the S-curve parameters for a particular condition.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - building_category (BuildingCategory): The building category for which the S-curve parameters are being filtered.</span>
+<span class="sd">        - scurve_condition_list (List[str]): A list of conditions (as strings) for which the S-curve parameters are needed.</span>
+<span class="sd">        - scurve_params (pd.DataFrame): DataFrame containing the S-curve parameters, with columns for building category, condition, and various age-related metrics.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - filtered_scurve_params (Dict[str, ScurveParameters]): A dictionary where the keys are conditions (str) and the values </span>
+<span class="sd">                                                                are `ScurveParameters` dataclass instances containing the </span>
+<span class="sd">                                                                corresponding S-curve parameters for each condition.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">        - KeyError: If the provided building category is not found in the S-curve parameters DataFrame.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">filtered_scurve_params</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">condition</span> <span class="ow">in</span> <span class="n">scurve_condition_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">scurve_params</span><span class="o">.</span><span class="n">building_category</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Unknown building_category &quot;</span><span class="si">{}</span><span class="s1">&quot; encountered when setting up scurve parameters&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="c1"># Filter dataframe on building category and condition</span>
+            <span class="n">scurve_params_filtered</span> <span class="o">=</span> <span class="n">scurve_params</span><span class="p">[(</span><span class="n">scurve_params</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_BUILDING_CATEGORY</span><span class="p">]</span> <span class="o">==</span> <span class="n">building_category</span><span class="p">)</span> <span class="o">&amp;</span>
+                                                   <span class="p">(</span><span class="n">scurve_params</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_BUILDING_CONDITION</span><span class="p">]</span> <span class="o">==</span> <span class="n">condition</span><span class="p">)]</span>
+
+            <span class="c1"># Assuming there is only one row in the filtered DataFrame</span>
+            <span class="n">scurve_params_row</span> <span class="o">=</span> <span class="n">scurve_params_filtered</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Convert the single row to a dictionary</span>
+            <span class="n">scurve_params_dict</span> <span class="o">=</span> <span class="n">scurve_params_row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+            
+            <span class="c1"># Map the dictionary values to the dataclass attributes</span>
+            <span class="n">scurve_parameters</span> <span class="o">=</span> <span class="n">ScurveParameters</span><span class="p">(</span>
+                <span class="n">building_category</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_BUILDING_CATEGORY</span><span class="p">],</span>
+                <span class="n">condition</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_BUILDING_CONDITION</span><span class="p">],</span>
+                <span class="n">earliest_age</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_EARLIEST_AGE</span><span class="p">],</span>
+                <span class="n">average_age</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_AVERAGE_AGE</span><span class="p">],</span> 
+                <span class="n">rush_years</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_RUSH_YEARS</span><span class="p">],</span> 
+                <span class="n">last_age</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_LAST_AGE</span><span class="p">],</span>
+                <span class="n">rush_share</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_RUSH_SHARE</span><span class="p">],</span>
+                <span class="n">never_share</span><span class="o">=</span><span class="n">scurve_params_dict</span><span class="p">[</span><span class="n">FilterScurveParams</span><span class="o">.</span><span class="n">COL_NEVER_SHARE</span><span class="p">],</span>
+            <span class="p">)</span>
+
+            <span class="n">filtered_scurve_params</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span> <span class="o">=</span> <span class="n">scurve_parameters</span>
+
+        <span class="k">return</span> <span class="n">filtered_scurve_params</span> </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

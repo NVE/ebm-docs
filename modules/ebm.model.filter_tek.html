@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.filter_tek module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.model.heat_pump module" href="ebm.model.heat_pump.html" />
+    <link rel="prev" title="ebm.model.filter_scurve_params module" href="ebm.model.filter_scurve_params.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.model.html">ebm.model package</a></li>
+      <li class="breadcrumb-item active">ebm.model.filter_tek module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.model.filter_tek.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.model.filter_tek">
+<span id="ebm-model-filter-tek-module"></span><h1>ebm.model.filter_tek module<a class="headerlink" href="#module-ebm.model.filter_tek" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FilterTek</span></span><a class="reference internal" href="../_modules/ebm/model/filter_tek.html#FilterTek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.filter_tek.FilterTek" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Utility class for filtering TEK lists and parameters.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.CATEGORY_APARTMENT">
+<span class="sig-name descname"><span class="pre">CATEGORY_APARTMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'apartment_block'</span></em><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.CATEGORY_APARTMENT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.CATEGORY_HOUSE">
+<span class="sig-name descname"><span class="pre">CATEGORY_HOUSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'house'</span></em><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.CATEGORY_HOUSE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.COMMERCIAL_BUILDING">
+<span class="sig-name descname"><span class="pre">COMMERCIAL_BUILDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'COM'</span></em><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.COMMERCIAL_BUILDING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.RESIDENTIAL_BUILDING">
+<span class="sig-name descname"><span class="pre">RESIDENTIAL_BUILDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RES'</span></em><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.RESIDENTIAL_BUILDING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.PRE_TEK49_APARTMENT">
+<span class="sig-name descname"><span class="pre">PRE_TEK49_APARTMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PRE_TEK49_RES_1950'</span></em><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.PRE_TEK49_APARTMENT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.PRE_TEK49_HOUSE">
+<span class="sig-name descname"><span class="pre">PRE_TEK49_HOUSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PRE_TEK49_RES_1940'</span></em><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.PRE_TEK49_HOUSE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.get_filtered_list">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_filtered_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/model/filter_tek.html#FilterTek.get_filtered_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.get_filtered_list" title="Link to this definition"></a></dt>
+<dd><p>Filters the provided TEK list based on the building category.</p>
+<p>Parameters:
+- building_category (BuildingCategory): The category of the building.
+- building_code_list (List[str]): List of TEK strings to be filtered.</p>
+<p>Returns:
+- filtered_building_code_list (List[str]): Filtered list of TEK strings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.get_filtered_params">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_filtered_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.TEKParameters" title="ebm.model.data_classes.TEKParameters"><span class="pre">TEKParameters</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.TEKParameters" title="ebm.model.data_classes.TEKParameters"><span class="pre">TEKParameters</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/model/filter_tek.html#FilterTek.get_filtered_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.get_filtered_params" title="Link to this definition"></a></dt>
+<dd><p>Filters the TEK parameters to include only those relevant to the provided TEK list.</p>
+<p>This method takes a dictionary of TEK parameters and filters it to include only
+the parameters for TEKs that are present in the <cite>building_code_list</cite>. This ensures that
+only the relevant TEK parameters are retained for use in subsequent calculations.</p>
+<p>Parameters:
+- building_code_list (List[str]): A list of TEK identifiers to filter by.
+- building_code_params (Dict[str, TEKParameters]): A dictionary where the keys are TEK identifiers</p>
+<blockquote>
+<div><p>and the values are TEKParameters objects containing
+the parameters for each TEK.</p>
+</div></blockquote>
+<p>Returns:
+- filtered_building_code_params (Dict[str, TEKParameters]): A dictionary containing only the TEK parameters</p>
+<blockquote>
+<div><p>for the TEKs present in the <cite>building_code_list</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.merge_building_code">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">merge_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_building_code_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_building_code_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/filter_tek.html#FilterTek.merge_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.merge_building_code" title="Link to this definition"></a></dt>
+<dd><p>Merge rows in a DataFrame based on specified ‘tek’ names and aggregate their values.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>The input DataFrame with a MultiIndex.</p>
+</dd>
+<dt>new_building_code_name<span class="classifier">str</span></dt><dd><p>The new ‘tek’ name to assign to the merged rows.</p>
+</dd>
+<dt>old_building_code_names<span class="classifier">typing.List[str]</span></dt><dd><p>A list of ‘tek’ names to be merged.</p>
+</dd>
+<dt>aggregates<span class="classifier">typing.Dict[str, str], optional</span></dt><dd><p>A dictionary specifying the aggregation functions for each column.
+If not provided, default aggregations will be used:
+{‘tek’: ‘max’, ‘m2’: ‘first’, ‘kwh_m2’: ‘mean’, ‘energy_requirement’: ‘sum’}.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>The DataFrame with the specified ‘tek’ rows merged and aggregated.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.filter_tek.FilterTek.remove_building_code_suffix">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_building_code_suffix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/filter_tek.html#FilterTek.remove_building_code_suffix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.filter_tek.FilterTek.remove_building_code_suffix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.model.filter_scurve_params.html" class="btn btn-neutral float-left" title="ebm.model.filter_scurve_params module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.model.heat_pump.html" class="btn btn-neutral float-right" title="ebm.model.heat_pump module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

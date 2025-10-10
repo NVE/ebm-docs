@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.energy_need_filter module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.model.energy_purpose module" href="ebm.model.energy_purpose.html" />
+    <link rel="prev" title="ebm.model.energy_need module" href="ebm.model.energy_need.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.model.html">ebm.model package</a></li>
+      <li class="breadcrumb-item active">ebm.model.energy_need_filter module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.model.energy_need_filter.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.model.energy_need_filter">
+<span id="ebm-model-energy-need-filter-module"></span><h1>ebm.model.energy_need_filter module<a class="headerlink" href="#module-ebm.model.energy_need_filter" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_need_filter.filter_original_condition">
+<span class="sig-name descname"><span class="pre">filter_original_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tek</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">purpose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_need_filter.html#filter_original_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_need_filter.filter_original_condition" title="Link to this definition"></a></dt>
+<dd><p>Explode and deduplicates DataFrame df and returns rows matching building_category, tek, and purpose</p>
+<p>Convenience function that does</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python</p>
+<p>exploded = explode_dataframe(df)
+de_duped = de_dupe_dataframe(exploded)
+filtered = de_duped[(de_duped.building_category==building_category) &amp; (de_duped.building_code==tek) &amp; (de_duped.purpose == purpose)]</p>
+<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>df : pd.DataFrame
+building_category : BuildingCategory | str
+tek : str
+purpose : str</p>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_need_filter.filter_improvement_building_upgrade">
+<span class="sig-name descname"><span class="pre">filter_improvement_building_upgrade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tek</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">purpose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_need_filter.html#filter_improvement_building_upgrade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_need_filter.filter_improvement_building_upgrade" title="Link to this definition"></a></dt>
+<dd><p>Explode and deduplicates DataFrame df and returns rows matching building_category, tek, and purpose</p>
+<p>Convenience function that does</p>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>python</p>
+<p>exploded = explode_dataframe(df)
+de_duped = de_dupe_dataframe(exploded)
+filtered = de_duped[(de_duped.building_category==building_category) &amp; (de_duped.building_code==tek) &amp; (de_duped.purpose == purpose)]</p>
+<p><a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
+<section id="id17">
+<h2>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<p>df : pd.DataFrame
+building_category : BuildingCategory | str
+tek : str
+purpose : str</p>
+</section>
+<section id="id18">
+<h2>Returns<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_need_filter.de_dupe_dataframe">
+<span class="sig-name descname"><span class="pre">de_dupe_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_need_filter.html#de_dupe_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_need_filter.de_dupe_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Drops duplicate rows in df based on building_category, TEK and purpose
+same as</p>
+<blockquote>
+<div><p>df.drop_duplicates(unique_columns)</p>
+</div></blockquote>
+<section id="id19">
+<h2>Parameters<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<p>df : pd.DataFrame
+unique_columns : list[str], optional</p>
+<blockquote>
+<div><p>default= [‘building_category’, ‘building_code’, ‘purpose’]</p>
+</div></blockquote>
+</section>
+<section id="id20">
+<h2>Returns<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_need_filter.explode_dataframe">
+<span class="sig-name descname"><span class="pre">explode_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_need_filter.html#explode_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_need_filter.explode_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Explode column aliases for building_category, TEK, purpose in dataframe.</p>
+<p>default in building_category is replaced with all options from BuildingCategory enum
+default in TEK is replaced with all elements in optional building_code_list parameter
+default in purpose is replaced with all options from EnergyPurpose enum</p>
+<section id="id21">
+<h2>Parameters<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<p>df : pd.DataFrame
+building_code_list : list of TEK to replace default, Optional</p>
+<blockquote>
+<div><p>default TEK49 PRE_TEK49 PRE_TEK49_RES_1950 TEK69 TEK87 TEK97 TEK07 TEK10 TEK17</p>
+</div></blockquote>
+</section>
+<section id="id22">
+<h2>Returns<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<p>pd.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_need_filter.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/energy_need_filter.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_need_filter.main" title="Link to this definition"></a></dt>
+<dd><p>Explode and prints all files listed in command line arguments. Default is reading files from input/</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.model.energy_need.html" class="btn btn-neutral float-left" title="ebm.model.energy_need module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.model.energy_purpose.html" class="btn btn-neutral float-right" title="ebm.model.energy_purpose module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

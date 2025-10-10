@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.bema &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.model.bema</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.model.bema</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">MappingProxyType</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span><span class="p">,</span> <span class="n">RESIDENTIAL</span><span class="p">,</span> <span class="n">NON_RESIDENTIAL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_condition</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCondition</span>
+
+<span class="n">_building_category_order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOUSE</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">APARTMENT_BLOCK</span><span class="p">:</span> <span class="mi">102</span><span class="p">,</span> <span class="n">RESIDENTIAL</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span>
+    <span class="s1">&#39;holiday_home&#39;</span><span class="p">:</span> <span class="mi">299</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">RETAIL</span><span class="p">:</span> <span class="mi">301</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">OFFICE</span><span class="p">:</span> <span class="mi">302</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">KINDERGARTEN</span><span class="p">:</span> <span class="mi">303</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SCHOOL</span><span class="p">:</span> <span class="mi">304</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">UNIVERSITY</span><span class="p">:</span> <span class="mi">305</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOSPITAL</span><span class="p">:</span> <span class="mi">306</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">NURSING_HOME</span><span class="p">:</span> <span class="mi">307</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOTEL</span><span class="p">:</span> <span class="mi">308</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SPORTS</span><span class="p">:</span> <span class="mi">309</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">CULTURE</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">STORAGE</span><span class="p">:</span> <span class="mi">312</span><span class="p">,</span> <span class="s1">&#39;storage&#39;</span><span class="p">:</span> <span class="mi">311</span><span class="p">,</span> <span class="n">NON_RESIDENTIAL</span><span class="p">:</span> <span class="mi">399</span><span class="p">}</span>
+
+<span class="n">BUILDING_CATEGORY_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_category_order</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;An immutable dict of BeMa sorting order for building_category&quot;&quot;&quot;</span>
+
+<span class="n">_building_group_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;residential&#39;</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span> <span class="s1">&#39;holiday_home&#39;</span><span class="p">:</span> <span class="mi">299</span><span class="p">,</span> <span class="s1">&#39;non_residential&#39;</span><span class="p">:</span> <span class="mi">399</span><span class="p">}</span>
+
+<span class="n">BUILDING_GROUP_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_group_order</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;An immutable dict of BeMa sorting order for building_group&quot;&quot;&quot;</span>
+
+
+<span class="n">_building_mix_order</span> <span class="o">=</span> <span class="n">_building_group_order</span><span class="o">|</span> <span class="n">_building_category_order</span>
+
+
+<span class="n">_building_code_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PRE_TEK49&#39;</span><span class="p">:</span> <span class="mi">1814</span><span class="p">,</span> <span class="s1">&#39;TEK49&#39;</span><span class="p">:</span> <span class="mi">1949</span><span class="p">,</span> <span class="s1">&#39;TEK69&#39;</span><span class="p">:</span> <span class="mi">1969</span><span class="p">,</span> <span class="s1">&#39;TEK87&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;TEK97&#39;</span><span class="p">:</span> <span class="mi">1997</span><span class="p">,</span>
+              <span class="s1">&#39;TEK07&#39;</span><span class="p">:</span> <span class="mi">2007</span><span class="p">,</span> <span class="s1">&#39;TEK10&#39;</span><span class="p">:</span> <span class="mi">2010</span><span class="p">,</span> <span class="s1">&#39;TEK17&#39;</span><span class="p">:</span> <span class="mi">2017</span><span class="p">,</span>
+              <span class="s1">&#39;TEK21&#39;</span><span class="p">:</span> <span class="mi">2021</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">9998</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="mi">9999</span><span class="p">}</span>
+
+<span class="n">TEK_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_code_order</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;A dict of BeMa sorting order for TEK&quot;&quot;&quot;</span>
+
+<span class="n">_purpose_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;heating_rv&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;heating_dhw&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fans_and_pumps&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;lighting&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                    <span class="s1">&#39;electrical_equipment&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;cooling&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+
+<span class="n">PURPOSE_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_purpose_order</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;A dict of BeMa sorting order for purpose&quot;&quot;&quot;</span>
+
+<span class="n">_building_condition_order</span> <span class="o">=</span> <span class="p">{</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">ORIGINAL_CONDITION</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">SMALL_MEASURE</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION_AND_SMALL_MEASURE</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">DEMOLITION</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+
+<span class="n">BUILDING_CONDITION_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_condition_order</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;A dict of BeMa sorting order for building_condition&quot;&quot;&quot;</span>
+
+<span class="n">_start_row_building_category_construction</span> <span class="o">=</span> <span class="p">{</span><span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOUSE</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">APARTMENT_BLOCK</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">KINDERGARTEN</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SCHOOL</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">UNIVERSITY</span><span class="p">:</span> <span class="mi">69</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">OFFICE</span><span class="p">:</span> <span class="mi">83</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">RETAIL</span><span class="p">:</span> <span class="mi">97</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOTEL</span><span class="p">:</span> <span class="mi">111</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOSPITAL</span><span class="p">:</span> <span class="mi">125</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">NURSING_HOME</span><span class="p">:</span> <span class="mi">139</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">CULTURE</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SPORTS</span><span class="p">:</span> <span class="mi">167</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">STORAGE</span><span class="p">:</span> <span class="mi">182</span><span class="p">}</span>
+
+<span class="n">START_ROWS_CONSTRUCTION_BUILDING_CATEGORY</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_start_row_building_category_construction</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;A dict of BeMa sorting order for start row of each building category in the sheet `nybygging`&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="get_building_category_sheet">
+<a class="viewcode-back" href="../../../modules/ebm.model.bema.html#ebm.model.bema.get_building_category_sheet">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_building_category_sheet</span><span class="p">(</span><span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="p">,</span> <span class="n">area_sheet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the appropriate sheet name based on the building category and area sheet type.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    - building_category: An instance of BuildingCategory.</span>
+<span class="sd">    - area_sheet (bool): Determines whether to return the area sheet (&#39;A&#39;) or rates sheet (&#39;R&#39;) name. Defaults to True for the area sheet.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    - sheet (str): The sheet name corresponding to the building category and sheet type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">building_category_sheets</span> <span class="o">=</span> <span class="p">{</span><span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOUSE</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A hus&#39;</span><span class="p">,</span> <span class="s1">&#39;R hus&#39;</span><span class="p">],</span>
+        <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">APARTMENT_BLOCK</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A leil&#39;</span><span class="p">,</span> <span class="s1">&#39;R leil&#39;</span><span class="p">],</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">KINDERGARTEN</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A bhg&#39;</span><span class="p">,</span> <span class="s1">&#39;R bhg&#39;</span><span class="p">],</span>
+        <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SCHOOL</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A skole&#39;</span><span class="p">,</span> <span class="s1">&#39;R skole&#39;</span><span class="p">],</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">UNIVERSITY</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A uni&#39;</span><span class="p">,</span> <span class="s1">&#39;R uni&#39;</span><span class="p">],</span>
+        <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">OFFICE</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A kont&#39;</span><span class="p">,</span> <span class="s1">&#39;R kont&#39;</span><span class="p">],</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">RETAIL</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A forr&#39;</span><span class="p">,</span> <span class="s1">&#39;R forr&#39;</span><span class="p">],</span>
+        <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOTEL</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A hotell&#39;</span><span class="p">,</span> <span class="s1">&#39;R hotell&#39;</span><span class="p">],</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOSPITAL</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A shus&#39;</span><span class="p">,</span> <span class="s1">&#39;R shus&#39;</span><span class="p">],</span>
+        <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">NURSING_HOME</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A shjem&#39;</span><span class="p">,</span> <span class="s1">&#39;R shjem&#39;</span><span class="p">],</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">CULTURE</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A kult&#39;</span><span class="p">,</span> <span class="s1">&#39;R kult&#39;</span><span class="p">],</span>
+        <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SPORTS</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A idr&#39;</span><span class="p">,</span> <span class="s1">&#39;R idr&#39;</span><span class="p">],</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">STORAGE</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A ind&#39;</span><span class="p">,</span> <span class="s1">&#39;R ind&#39;</span><span class="p">]}</span>
+
+    <span class="k">if</span> <span class="n">area_sheet</span><span class="p">:</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="n">building_category_sheets</span><span class="p">[</span><span class="n">building_category</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sheet</span> <span class="o">=</span> <span class="n">building_category_sheets</span><span class="p">[</span><span class="n">building_category</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">sheet</span></div>
+
+
+
+<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="map_sort_order">
+<a class="viewcode-back" href="../../../modules/ebm.model.bema.html#ebm.model.bema.map_sort_order">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">map_sort_order</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Map the sort order from bema to a DataFrame. The function is meant to be used as the key parameter for</span>
+<span class="sd">    a pandas DataFrame methods sort_values and sort_index.</span>
+
+<span class="sd">    Example below.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    column : pandas.Series</span>
+<span class="sd">        A pandas Series whose `name` attribute determines which predefined</span>
+<span class="sd">        mapping to apply to its values.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        A Series with values mapped to integers according to the corresponding</span>
+<span class="sd">        sort order. If the column name does not match any predefined mapping,</span>
+<span class="sd">        the original Series is returned unchanged.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function supports the following mappings:</span>
+
+<span class="sd">    - &#39;building_category&#39;: uses `_building_mix_order`</span>
+<span class="sd">    - &#39;building_group&#39;: uses `BUILDING_GROUP_ORDER`</span>
+<span class="sd">    - &#39;building_condition&#39;: uses `BUILDING_CONDITION_ORDER`</span>
+<span class="sd">    - &#39;purpose&#39;: uses `PURPOSE_ORDER`</span>
+<span class="sd">    - &#39;building_code&#39;: uses `TEK_ORDER`</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">    &gt;&gt;&gt; df = pd.DataFrame(</span>
+<span class="sd">    &gt;&gt;&gt;    data=[(&#39;culture&#39;, &#39;PRE_TEK49&#39;, &#39;heating_rv&#39;, 2022, &#39;LAST&#39;),</span>
+<span class="sd">    &gt;&gt;&gt;          (&#39;house&#39;, &#39;TEK07&#39;, &#39;heating_dhw&#39;, 2021, &#39;FIRST&#39;)],</span>
+<span class="sd">    &gt;&gt;&gt;    columns=[&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;, &#39;value&#39;])</span>
+<span class="sd">    &gt;&gt;&gt; df.sort_values(by=[&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;], key=map_sort_order)</span>
+<span class="sd">        building_category        building_code     purpose  year  value</span>
+<span class="sd">     1  house      TEK07  heating_dhw  2020  FIRST</span>
+<span class="sd">     0  culture  PRE_TEK49   heating_rv  2021   LAST</span>
+<span class="sd">    …</span>
+<span class="sd">    &gt;&gt;&gt; from ebm.model.bema import map_sort_order</span>
+<span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">    &gt;&gt;&gt; df = pd.DataFrame(data=[&#39;3&#39;, &#39;2&#39;, &#39;last&#39;, &#39;first&#39;],</span>
+<span class="sd">    &gt;&gt;&gt;                  index=pd.Index([&#39;non_residential&#39;, &#39;holiday_home&#39;, &#39;all&#39;, &#39;residential&#39;],</span>
+<span class="sd">    &gt;&gt;&gt;                                 name=&#39;building_group&#39;))</span>
+<span class="sd">    &gt;&gt;&gt; df.sort_index(key=map_sort_order)</span>
+<span class="sd">      building_group</span>
+<span class="sd">      residential      first</span>
+<span class="sd">      holiday_home         2</span>
+<span class="sd">      non_residential      3</span>
+<span class="sd">      all               last</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;building_category&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_building_mix_order</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;building_group&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">BUILDING_GROUP_ORDER</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;building_condition&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">BUILDING_CONDITION_ORDER</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;purpose&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">PURPOSE_ORDER</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;building_code&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">TEK_ORDER</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">column</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

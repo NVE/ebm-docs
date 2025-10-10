@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data assumptions NVE &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Energy need" href="../energy_need/index.html" />
+    <link rel="prev" title="Methods" href="methods.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Area</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="methods.html">Methods</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data assumptions NVE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#area-in-the-starting-year-of-the-model">Area in the starting year of the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demolition-of-area">Demolition of area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#population-forecast">Population forecast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-dwellings-in-residential-area">New dwellings in residential area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#area-per-person-in-non-residential-buildings">Area per person in non- residential buildings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Area</a></li>
+      <li class="breadcrumb-item active">Data assumptions NVE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/area/assumptions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-assumptions-nve">
+<h1>Data assumptions NVE<a class="headerlink" href="#data-assumptions-nve" title="Link to this heading"></a></h1>
+<section id="area-in-the-starting-year-of-the-model">
+<h2>Area in the starting year of the model<a class="headerlink" href="#area-in-the-starting-year-of-the-model" title="Link to this heading"></a></h2>
+<p>Data for the building area used in this model was prepared by Prognsesenteret in 2022. This data describes the building
+stock in 2020 in Norway, distributed by building categories and age. The area is grouped into age groups that correspond
+to the periods during which the various building codes (TEK) have been in effect. The age is suitable for use with the
+age-specific rates for small measures, renovation, and demolition.</p>
+<p>inputfile: ‘area’</p>
+</section>
+<section id="demolition-of-area">
+<h2>Demolition of area<a class="headerlink" href="#demolition-of-area" title="Link to this heading"></a></h2>
+<p>The rates for demolition in the dataset is based on ………</p>
+<p><em>NOTE! The current data on demolition and building of new area differs from available statistics.
+Changes in building stock area and energy consumption should therefore be used with caution.
+An updated and improved dataset will be published along with the next version of the model.</em></p>
+<p>inputfile: ‘s-curve’</p>
+</section>
+<section id="population-forecast">
+<h2>Population forecast<a class="headerlink" href="#population-forecast" title="Link to this heading"></a></h2>
+<p>The population forecast in the dataset is the SSB</p>
+<p>HVILKEN AV FRAMSKRIVINGENE BRUKER VI?</p>
+<p>inputfile: ‘population forecast’</p>
+</section>
+<section id="new-dwellings-in-residential-area">
+<h2>New dwellings in residential area<a class="headerlink" href="#new-dwellings-in-residential-area" title="Link to this heading"></a></h2>
+<p>The number of new dwellings</p>
+<p>Average household size in the dataset is based on ………</p>
+<p>inputfile: ‘new_buildings_residential’</p>
+</section>
+<section id="area-per-person-in-non-residential-buildings">
+<h2>Area per person in non- residential buildings<a class="headerlink" href="#area-per-person-in-non-residential-buildings" title="Link to this heading"></a></h2>
+<p>For non-residential buildings, NVE has assumed that the area of a building type (e.g. office buildings) distributed by the
+number of inhabitants in Norway (m²/person) will remain constant going forward. This assumption, along with the
+calculated demolition, leads to new construction that will vary from year to year and between building categories.</p>
+<p>The new construction rates for all building categories are directly linked to <a class="reference external" href="https://www.ssb.no/befolkning/befolkningsframskrivinger/statistikk/nasjonale-befolkningsframskrivinger">SSB’s population projections</a>,
+and this has a significant impact on the result. It is assumed that the area distributed by the number of inhabitants in Norway (m²/person)
+for each categories of non-residential buildings will remain constant throughout the period. For example, in 2024
+it is calculated that there are 5.8 m² of office area per person in Norway, and 1.3 m² of nursing home per person. These
+numbers are assumed to be constant during the forecast period, so the area will grow according to population change.</p>
+<p>Thus, no account is taken of upcoming structural changes. We know that the aging population will impact us during the
+forecast period. This might result in a different rate of new construction for nursing homes. However, since it is not
+possible to say with certainty that this change will occur, when it will occur, and what the change will be, it is not
+considered in this model. Other structural changes that can be imagined include urbanization and what it might entail
+in terms of increased use of cafes, restaurants, theatres and so on. This is also not taken into account in the forecast.
+The assumptions can easily be changed in the input files.</p>
+<p>Regarding residences, urbanization is included in the assumption that the proportion of households living in houses will
+decrease and the proportion living in apartments will increase. The assumed development in the number of people per
+household is crucial. Until now, we have seen a decrease in the number of people per household, and this is assumed
+to continue. However, we know that more and more families are choosing to have three or more children, and that divorce
+rates are flattening out. Together with increased immigration from non-Western countries, where there is a stronger
+tradition of having more children, this can impact household sizes going forward and help dampen the development.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="methods.html" class="btn btn-neutral float-left" title="Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../energy_need/index.html" class="btn btn-neutral float-right" title="Energy need" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

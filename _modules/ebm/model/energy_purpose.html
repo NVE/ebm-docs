@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.energy_purpose &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.model.energy_purpose</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.model.energy_purpose</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrEnum</span><span class="p">,</span> <span class="n">unique</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.bema</span><span class="w"> </span><span class="kn">import</span> <span class="n">BUILDING_CATEGORY_ORDER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.bema</span><span class="w"> </span><span class="kn">import</span> <span class="n">TEK_ORDER</span>
+
+
+<div class="viewcode-block" id="EnergyPurpose">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose">[docs]</a>
+<span class="nd">@unique</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EnergyPurpose</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+    <span class="n">HEATING_RV</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">HEATING_DHW</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">FANS_AND_PUMPS</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">LIGHTING</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">ELECTRICAL_EQUIPMENT</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">COOLING</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attempts to create an enum member from a given value by normalizing the string.</span>
+
+<span class="sd">        This method is called when a value is not found in the enumeration. It converts the input value </span>
+<span class="sd">        to lowercase, replaces spaces and hyphens with underscores, and then checks if this transformed </span>
+<span class="sd">        value matches the value of any existing enum member.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : str</span>
+<span class="sd">            The input value to convert and check against existing enum members.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Enum member</span>
+<span class="sd">            The corresponding enum member if a match is found.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If no matching enum member is found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">member</span>
+        <span class="k">return</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid purpose given: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<div class="viewcode-block" id="EnergyPurpose.other">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose.other">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">other</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="s1">&#39;EnergyPurpose&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">LIGHTING</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">ELECTRICAL_EQUIPMENT</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">FANS_AND_PUMPS</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EnergyPurpose.heating">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose.heating">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">heating</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="s1">&#39;EnergyPurpose&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">HEATING_RV</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">HEATING_DHW</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="EnergyPurpose.cooling">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose.cooling">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cooling</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="s1">&#39;EnergyPurpose&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">COOLING</span><span class="p">]</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="group_energy_use_kwh_by_building_group_purpose_year_wide">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.group_energy_use_kwh_by_building_group_purpose_year_wide">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">group_energy_use_kwh_by_building_group_purpose_year_wide</span><span class="p">(</span><span class="n">energy_use_kwh</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">energy_use_kwh</span>
+          <span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;heating_systems&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+          <span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;GWh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;kwh&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">(</span><span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;non_residential&#39;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;house&#39;</span><span class="p">,</span> <span class="s1">&#39;building_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;house&#39;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;apartment_block&#39;</span><span class="p">,</span> <span class="s1">&#39;building_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;apartment_block&#39;</span>
+
+    <span class="n">summed</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">summed</span> <span class="o">=</span> <span class="n">summed</span><span class="p">[[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;GWh&#39;</span><span class="p">]]</span>
+
+    <span class="n">hz</span> <span class="o">=</span> <span class="n">summed</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GWh&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">hz</span> <span class="o">=</span> <span class="n">hz</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">BUILDING_CATEGORY_ORDER</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;building_group&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                            <span class="n">TEK_ORDER</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;building_code&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                            <span class="p">{</span><span class="s1">&#39;heating_rv&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;heating_dhw&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fans_and_pumps&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;lighting&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                             <span class="s1">&#39;electrical_equipment&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;cooling&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;purpose&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="n">hz</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;GWh&#39;</span><span class="p">)</span>
+    <span class="n">hz</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2051</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">hz</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;building_group&#39;</span><span class="p">:</span> <span class="s1">&#39;building_category&#39;</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="group_energy_use_by_year_category_building_code_purpose">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.group_energy_use_by_year_category_building_code_purpose">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">group_energy_use_by_year_category_building_code_purpose</span><span class="p">(</span><span class="n">energy_use_kwh</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">energy_use_kwh</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;heating_systems&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+          <span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;GWh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;m2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;GWh&#39;</span><span class="p">]]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span>
+                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">BUILDING_CATEGORY_ORDER</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;building_category&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                            <span class="n">TEK_ORDER</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;building_category&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                            <span class="n">TEK_ORDER</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;building_code&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                            <span class="p">{</span><span class="s1">&#39;heating_rv&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;heating_dhw&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fans_and_pumps&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;lighting&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                             <span class="s1">&#39;electrical_equipment&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;cooling&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;purpose&#39;</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GWh&#39;</span><span class="p">:</span> <span class="s1">&#39;energy_use [GWh]&#39;</span><span class="p">})</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,715 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.construction module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.model.data_classes module" href="ebm.model.data_classes.html" />
+    <link rel="prev" title="ebm.model.column_operations module" href="ebm.model.column_operations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.model.html">ebm.model package</a></li>
+      <li class="breadcrumb-item active">ebm.model.construction module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.model.construction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.model.construction">
+<span id="ebm-model-construction-module"></span><h1>ebm.model.construction module<a class="headerlink" href="#module-ebm.model.construction" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ConstructionCalculator</span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to calculate various construction metrics for residential and commercial buildings.</p>
+<p>The main method to use is calculate_construction</p>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<dl>
+<dt>calculate_construction(building_category, demolition_floor_area, database_manager)</dt><dd><blockquote>
+<div><dl class="simple">
+<dt>Calculate constructed floor area for buildings using provided demolition floor area and input data from</dt><dd><p>database manager.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>calculate_construction_as_list(building_category, demolition_floor_area, database_manager=None)</dt><dd><dl class="simple">
+<dt>Calculate constructed floor area for buildings using provided demolition floor area and input data</dt><dd><p>from database manager.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>calculate_industrial_construction(building_category, total_floor_area, constructed_floor_area=None, demolition_floor_area=None, population=None)</dt><dd><p>Calculate the commercial construction metrics over a given period.</p>
+</dd>
+<dt>calculate_residential_construction(population, household_size, building_category_share, build_area_sum, yearly_demolished_floor_area, average_floor_area=175)</dt><dd><p>Calculate various residential construction metrics based on population, household size, and building data.</p>
+</dd>
+<dt>calculate_yearly_new_building_floor_area_sum(yearly_new_building_floor_area_house)</dt><dd><p>Calculate the accumulated constructed floor area over the years.</p>
+</dd>
+<dt>calculate_yearly_constructed_floor_area(build_area_sum, yearly_floor_area_change, yearly_demolished_floor_area)</dt><dd><p>Calculate the yearly constructed floor area based on changes and demolitions.</p>
+</dd>
+<dt>calculate_yearly_floor_area_change(building_change, average_floor_area=175)</dt><dd><p>Calculate the yearly floor area change based on building changes and average floor area.</p>
+</dd>
+<dt>calculate_population_growth(population)</dt><dd><p>Calculate the annual growth in population.</p>
+</dd>
+<dt>calculate_building_growth(building_category_share, households_change)</dt><dd><p>Calculate the annual growth in building categories based on household changes.</p>
+</dd>
+<dt>calculate_household_change(households)</dt><dd><p>Calculate the annual change in the number of households.</p>
+</dd>
+<dt>calculate_households_by_year(household_size, population)</dt><dd><p>Calculate the number of households by year based on household size and population.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_residential_construction">
+<span class="sig-name descname"><span class="pre">calculate_residential_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">household_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_category_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_area_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_demolished_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">175</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">YearRange(start=2010,</span> <span class="pre">end=2050)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_residential_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_residential_construction" title="Link to this definition"></a></dt>
+<dd><p>Calculate various residential construction metrics based on population, household size, and building data.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>population<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the population indexed by year.</p>
+</dd>
+<dt>household_size<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the average household size over time.</p>
+</dd>
+<dt>building_category_share<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the share of each building category.</p>
+</dd>
+<dt>build_area_sum<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the accumulated building area sum.</p>
+</dd>
+<dt>yearly_demolished_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the yearly demolished floor area.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>contains start and end year for the model</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>A pandas DataFrame containing various residential construction metrics.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<p>The function calculates several metrics including population growth, household changes, building growth,
+yearly constructed floor area, and accumulated constructed floor area.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_yearly_new_building_floor_area_sum">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_yearly_new_building_floor_area_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yearly_new_building_floor_area_house</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_yearly_new_building_floor_area_sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_yearly_new_building_floor_area_sum" title="Link to this definition"></a></dt>
+<dd><p>Calculate the accumulated constructed floor area over the years.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>yearly_new_building_floor_area_house<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the yearly new building floor area.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><dl class="simple">
+<dt>A pandas Series representing the accumulated constructed floor area, named</dt><dd><p>‘accumulated_constructed_floor_area’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Notes<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The function calculates the cumulative sum of the yearly new building floor area.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_yearly_constructed_floor_area">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_yearly_constructed_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_area_sum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_floor_area_change</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_demolished_floor_area</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_yearly_constructed_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_yearly_constructed_floor_area" title="Link to this definition"></a></dt>
+<dd><p>Calculate the yearly constructed floor area based on changes and demolitions.</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>build_area_sum<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the accumulated building area sum.</p>
+</dd>
+<dt>yearly_floor_area_change<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the yearly change in floor area.</p>
+</dd>
+<dt>yearly_demolished_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the yearly demolished floor area.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the yearly constructed floor area, named ‘constructed_floor_area’.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h3>Notes<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>The function calculates the yearly new building floor area by adding the yearly floor area change
+to the yearly demolished floor area. It then updates the values based on the build_area_sum index.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_yearly_floor_area_change">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_yearly_floor_area_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">175</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_yearly_floor_area_change"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_yearly_floor_area_change" title="Link to this definition"></a></dt>
+<dd><p>Calculate the yearly floor area change based on building changes and average floor area.</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>building_change<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the change in the number of buildings.</p>
+</dd>
+<dt>average_floor_area<span class="classifier">typing.Union[pd.Series, int], optional</span></dt><dd><p>The average floor area per building. Can be a pandas Series or an integer. Default is 175.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the yearly floor area change, named ‘house_floor_area_change’.</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Notes<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>The function calculates the yearly floor area change by multiplying the building change by the average floor</dt><dd><p>area.</p>
+</dd>
+</dl>
+<p>The floor area change for the first two years set to 0.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_population_growth">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_population_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_population_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_population_growth" title="Link to this definition"></a></dt>
+<dd><p>Calculate the annual growth in building categories based on household changes.</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>population<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the population indexed by year.</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the annual growth population.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_building_growth">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_building_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">households_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_building_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_building_growth" title="Link to this definition"></a></dt>
+<dd><p>Calculate the annual growth in building categories based on household changes.</p>
+<section id="id12">
+<h3>Parameters<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>building_category_share<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the share (0 to 1 ) of each building category.</p>
+</dd>
+<dt>households_change<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the annual change in the number of households.</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h3>Returns<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the annual growth in building categories, named ‘building_growth’.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_household_change">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_household_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">households</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_household_change"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_household_change" title="Link to this definition"></a></dt>
+<dd><p>Calculate the annual change in the number of households.</p>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>households<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the number of households over time.</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the annual change in the number of households, named ‘household_change’.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_households_by_year">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_households_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">household_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_households_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_households_by_year" title="Link to this definition"></a></dt>
+<dd><p>Calculate the number of households by year based on household size and population.</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>household_size<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the average household size over time.</p>
+</dd>
+<dt>population<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the population over time.</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the number of households by year, named ‘households’.</p>
+</dd>
+</dl>
+</section>
+<section id="id18">
+<h3>Notes<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>The function calculates the number of households by dividing the population by the average household size.</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_industrial_construction">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_industrial_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constructed_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">YearRange(start=2010,</span> <span class="pre">end=2050)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_industrial_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_industrial_construction" title="Link to this definition"></a></dt>
+<dd><p>Calculate the industrial construction metrics over a given period.</p>
+<section id="id19">
+<h3>Parameters<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>building_category<span class="classifier">BuildingCategory, optional</span></dt><dd><p>The category of the building.</p>
+</dd>
+<dt>total_floor_area<span class="classifier">pd.Series | int</span></dt><dd><p>The total floor area at the start of the period.</p>
+</dd>
+<dt>constructed_floor_area<span class="classifier">pd.Series, optional</span></dt><dd><p>Series containing the constructed floor area for each year.</p>
+</dd>
+<dt>demolition_floor_area<span class="classifier">pd.Series, optional</span></dt><dd><p>Series containing the demolished floor area for each year.</p>
+</dd>
+<dt>population<span class="classifier">pd.DataFrame, optional</span></dt><dd><p>DataFrame containing the population data for each year.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>start and end of model in years</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h3>Returns<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>DataFrame containing the calculated construction metrics:
+- total_floor_area: Total floor area for each year.
+- building_growth: Growth rate of the building floor area.
+- demolished_floor_area: Demolished floor area for each year.
+- constructed_floor_area: Constructed floor area for each year.
+- accumulated_constructed_floor_area: Cumulative constructed floor area.
+- floor_area_over_population_growth: Ratio of floor area growth over population growth.</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h3>Notes<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>If <cite>building_category</cite> is <cite>BuildingCategory.STORAGE_REPAIRS</cite>, the total floor area remains constant from 2010</dt><dd><p>to 2051.</p>
+</dd>
+</dl>
+</li>
+<li><p>The function assumes that the input Series and DataFrame have appropriate indices corresponding to the years.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_total_floor_area">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_total_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">floor_area_over_population_growth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population_growth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_total_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_total_floor_area" title="Link to this definition"></a></dt>
+<dd><p>Calculate the total floor area over a given period based on population growth.</p>
+<section id="id22">
+<h3>Parameters<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>floor_area_over_population_growth<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series containing the floor area change over population growth for each year.</p>
+</dd>
+<dt>population_growth<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series containing the population growth for each year.</p>
+</dd>
+<dt>total_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series containing the total floor area for each year.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>A named tuple containing the start and end years of the period.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h3>Returns<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>Updated pandas Series with the total floor area for each year in the given period.</p>
+</dd>
+</dl>
+</section>
+<section id="id24">
+<h3>Notes<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<p>The calculation starts from <cite>period.start + 5</cite> to <cite>period.end</cite>. For each year, the total floor area is updated
+based on the formula:</p>
+<blockquote>
+<div><p>total_floor_area[year] = ((change_ratio * pop_growth) + 1) * previous_floor_area</p>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_constructed_floor_area">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_constructed_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constructed_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_constructed_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_constructed_floor_area" title="Link to this definition"></a></dt>
+<dd><p>Calculate the constructed floor area over a specified period.</p>
+<section id="id25">
+<h3>Parameters<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>constructed_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series to store the constructed floor area for each previous year.</p>
+</dd>
+<dt>demolition_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series containing the demolition floor area for each year.</p>
+</dd>
+<dt>total_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series containing the total floor area for each year.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>An object containing the start year, end year, and the range of years.</p>
+</dd>
+</dl>
+</section>
+<section id="id26">
+<h3>Returns<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series containing the constructed floor area for each year in the period.</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Notes<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<p>The constructed floor area is calculated from year 6 onwards by subtracting the previous year’s
+floor area from the current year’s floor area and adding the previous year’s demolition floor area.</p>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">construction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="mi">2020</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2021</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2022</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2023</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2024</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2025</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">demolition</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="mi">2020</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2021</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">2022</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">2023</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">2024</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">2025</span><span class="p">:</span> <span class="mi">100</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="mi">2020</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2021</span><span class="p">:</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">2022</span><span class="p">:</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">2023</span><span class="p">:</span> <span class="mi">1300</span><span class="p">,</span> <span class="mi">2024</span><span class="p">:</span> <span class="mi">1400</span><span class="p">,</span> <span class="mi">2025</span><span class="p">:</span> <span class="mi">1500</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ConstructionCalculator</span><span class="o">.</span><span class="n">calculate_constructed_floor_area</span><span class="p">(</span><span class="n">construction</span><span class="p">,</span> <span class="n">demolition</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+<span class="go">2020      0.0</span>
+<span class="go">2021      0.0</span>
+<span class="go">2022      0.0</span>
+<span class="go">2023      0.0</span>
+<span class="go">2024      0.0</span>
+<span class="go">2025    200.0</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_floor_area_growth">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_floor_area_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_floor_area_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_floor_area_growth" title="Link to this definition"></a></dt>
+<dd><p>Calculate the growth of floor area over a specified period.</p>
+<section id="id28">
+<h3>Parameters<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>total_floor_area<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series containing the total floor area for each year.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>An object containing the start year, end year, and the range of years.</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h3>Returns<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series containing the floor area growth for each year in the period.</p>
+</dd>
+</dl>
+</section>
+<section id="id30">
+<h3>Notes<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<p>The growth for the first year in the period is set to NaN. The growth for the next four years
+is calculated based on the change in total floor area from the previous year.</p>
+</section>
+<section id="id31">
+<h3>Examples<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">total_floor_area</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="mi">2020</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2021</span><span class="p">:</span> <span class="mi">1100</span><span class="p">,</span> <span class="mi">2022</span><span class="p">:</span> <span class="mi">1210</span><span class="p">,</span> <span class="mi">2023</span><span class="p">:</span> <span class="mi">1331</span><span class="p">,</span> <span class="mi">2024</span><span class="p">:</span> <span class="mi">1464</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ConstructionCalculator</span><span class="o">.</span><span class="n">calculate_floor_area_growth</span><span class="p">(</span><span class="n">total_floor_area</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span>
+<span class="go">2020       NaN</span>
+<span class="go">2021    0.1000</span>
+<span class="go">2022    0.1000</span>
+<span class="go">2023    0.1000</span>
+<span class="go">2024    0.1000</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_floor_area_over_building_growth">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_floor_area_over_building_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_growth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population_growth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_floor_area_over_building_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_floor_area_over_building_growth" title="Link to this definition"></a></dt>
+<dd><p>Calculate the floor area over building growth for a given range of years.</p>
+<section id="id32">
+<h3>Parameters<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>building_growth<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the building growth over the years.</p>
+</dd>
+<dt>population_growth<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the population growth over the years.</p>
+</dd>
+<dt>years<span class="classifier">YearRange</span></dt><dd><p>An object representing the range of years for the calculation.</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h3>Returns<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the floor area over building growth for each year in the specified range.</p>
+</dd>
+</dl>
+</section>
+<section id="id34">
+<h3>Notes<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The first year in the range is initialized with NaN.</p></li>
+<li><p>For the first 4 years, the floor area over building growth is calculated directly from the building and population growth.</p></li>
+<li><p>For the next 5 years, the mean floor area over building growth is used.</p></li>
+<li><p>From the 11th year onwards, the value is set to 1.</p></li>
+<li><p>For the years between the 11th and 21st, the value is interpolated linearly.</p></li>
+</ul>
+</section>
+<section id="id35">
+<h3>Examples<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">building_growth</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">2010</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2050</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ConstructionCalculator</span><span class="o">.</span><span class="n">calculate_floor_area_over_building_growth</span><span class="p">(</span><span class="n">building_growth</span><span class="p">,</span> <span class="n">population_growth</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+<span class="go">2010         NaN</span>
+<span class="go">2011    1.083333</span>
+<span class="go">2012    1.076923</span>
+<span class="go">2013    1.071429</span>
+<span class="go">2014    1.066667</span>
+<span class="go">2015    1.074588</span>
+<span class="go">2016    1.074588</span>
+<span class="go">…</span>
+<span class="go">2050    1.000000</span>
+<span class="go">2051    1.000000</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_construction_as_list">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_construction_as_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager" title="ebm.model.database_manager.DatabaseManager"><span class="pre">DatabaseManager</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">YearRange(start=2010,</span> <span class="pre">end=2050)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_construction_as_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_construction_as_list" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Calculates constructed floor area for buildings based using provided demolition_floor_area</dt><dd><p>and input data from database_manager</p>
+</dd>
+</dl>
+<section id="id36">
+<h3>Parameters<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<p>building_category: BuildingCategory
+demolition_floor_area: pd.Series expects index=2010..2050
+database_manager: DatabaseManager (optional)
+period : YearRange</p>
+</section>
+<section id="id37">
+<h3>Returns<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
+<p>accumulated_constructed_floor_area: List</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_commercial_construction">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_commercial_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_by_person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_commercial_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_commercial_construction" title="Link to this definition"></a></dt>
+<dd><p>Calculate a projection of contructed floor area by building_category. The calculation makes the assumption that
+all demolished floor area will be replaced with construction.</p>
+<section id="id38">
+<h3>Parameters<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>building_category<span class="classifier">BuildingCategory</span></dt><dd><p>possibly redundant building_category for the construction projection</p>
+</dd>
+<dt>population<span class="classifier">pd.Series</span></dt><dd><p>population by year</p>
+</dd>
+<dt>area_by_person<span class="classifier">pd.Series</span></dt><dd><p>float or pd.Series containing the floor area per person for the building_category</p>
+</dd>
+<dt>demolition<span class="classifier">pd.Series</span></dt><dd><p>yearly demolition to be added to the floor area.</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h3>Returns<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>pd.Dataframe</dt><dd><p>floor area constructed by year
+accumalated contructed floor area</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_construction">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory" title="ebm.model.building_category.BuildingCategory"><span class="pre">BuildingCategory</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager" title="ebm.model.database_manager.DatabaseManager"><span class="pre">DatabaseManager</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_construction" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Calculates constructed floor area for buildings based using provided demolition_floor_area</dt><dd><p>and input data from database_manager</p>
+</dd>
+</dl>
+<section id="id40">
+<h3>Parameters<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<p>building_category: BuildingCategory
+demolition_floor_area: pd.Series expects index=2010..2050
+database_manager: DatabaseManager
+period : YearRange</p>
+</section>
+<section id="id41">
+<h3>Returns<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>calculated_construction: pd.DataFrame</dt><dd><p>dataframe columns include;
+(building_growth)
+(demolished_floor_area)
+(constructed_floor_area)
+(accumulated_constructed_floor_area)
+(total_floor_area)
+(floor_area_over_population_growth)
+(households)
+(household_size)
+(population)
+(population_growth)</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.model.construction.ConstructionCalculator.calculate_all_construction">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calculate_all_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager" title="ebm.model.database_manager.DatabaseManager"><span class="pre">DatabaseManager</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/construction.html#ConstructionCalculator.calculate_all_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.construction.ConstructionCalculator.calculate_all_construction" title="Link to this definition"></a></dt>
+<dd><section id="id42">
+<h3>Parameters<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<p>demolition_by_year : pd.Series, List[float]
+database_manager : DatabaseManager
+period : YearRange</p>
+</section>
+<section id="id43">
+<h3>Returns<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>DataFrame:</dt><dd><p>with building_category and area</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.model.column_operations.html" class="btn btn-neutral float-left" title="ebm.model.column_operations module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.model.data_classes.html" class="btn btn-neutral float-right" title="ebm.model.data_classes module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

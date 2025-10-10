@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm package &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.cmd package" href="ebm.cmd.html" />
+    <link rel="prev" title="API Reference" href="../api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">ebm package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ebm-package">
+<h1>ebm package<a class="headerlink" href="#ebm-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ebm.cmd.html">ebm.cmd package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.cmd.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.calibrate.html">ebm.cmd.calibrate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.calibrate.html#ebm.cmd.calibrate.run_calibration"><code class="docutils literal notranslate"><span class="pre">run_calibration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.calibrate.html#ebm.cmd.calibrate.write_dataframe"><code class="docutils literal notranslate"><span class="pre">write_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.calibrate.html#ebm.cmd.calibrate.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.calibrate_excel_com_io.html">ebm.cmd.calibrate_excel_com_io module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.heating_systems_by_year.html">ebm.cmd.heating_systems_by_year module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.heating_systems_by_year.html#ebm.cmd.heating_systems_by_year.group_heating_systems_energy_source_by_year"><code class="docutils literal notranslate"><span class="pre">group_heating_systems_energy_source_by_year()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.heating_systems_by_year.html#ebm.cmd.heating_systems_by_year.group_heating_systems_energy_source_by_year_horizontal"><code class="docutils literal notranslate"><span class="pre">group_heating_systems_energy_source_by_year_horizontal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.helpers.html">ebm.cmd.helpers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.helpers.html#ebm.cmd.helpers.load_environment_from_dotenv"><code class="docutils literal notranslate"><span class="pre">load_environment_from_dotenv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.helpers.html#ebm.cmd.helpers.configure_json_log"><code class="docutils literal notranslate"><span class="pre">configure_json_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.helpers.html#ebm.cmd.helpers.configure_loglevel"><code class="docutils literal notranslate"><span class="pre">configure_loglevel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.initialize.html">ebm.cmd.initialize module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.create_input"><code class="docutils literal notranslate"><span class="pre">create_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.copy_available_calibration_files"><code class="docutils literal notranslate"><span class="pre">copy_available_calibration_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.create_output_directory"><code class="docutils literal notranslate"><span class="pre">create_output_directory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.pipeline.html">ebm.cmd.pipeline module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.pipeline.html#ebm.cmd.pipeline.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.pipeline.html#ebm.cmd.pipeline.export_energy_model_reports"><code class="docutils literal notranslate"><span class="pre">export_energy_model_reports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.pipeline.html#ebm.cmd.pipeline.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.prepare_main.html">ebm.cmd.prepare_main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.EbmConfig"><code class="docutils literal notranslate"><span class="pre">EbmConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.make_arguments"><code class="docutils literal notranslate"><span class="pre">make_arguments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.check_output_file_status"><code class="docutils literal notranslate"><span class="pre">check_output_file_status()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.result_handler.html">ebm.cmd.result_handler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.result_handler.html#ebm.cmd.result_handler.transform_model_to_horizontal"><code class="docutils literal notranslate"><span class="pre">transform_model_to_horizontal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.result_handler.html#ebm.cmd.result_handler.transform_to_sorted_heating_systems"><code class="docutils literal notranslate"><span class="pre">transform_to_sorted_heating_systems()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.result_handler.html#ebm.cmd.result_handler.transform_heating_systems_to_horizontal"><code class="docutils literal notranslate"><span class="pre">transform_heating_systems_to_horizontal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.result_handler.html#ebm.cmd.result_handler.write_result"><code class="docutils literal notranslate"><span class="pre">write_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.result_handler.html#ebm.cmd.result_handler.append_result"><code class="docutils literal notranslate"><span class="pre">append_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.result_handler.html#ebm.cmd.result_handler.EbmDefaultHandler"><code class="docutils literal notranslate"><span class="pre">EbmDefaultHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.run_calculation.html">ebm.cmd.run_calculation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.area_forecast_result_to_dataframe"><code class="docutils literal notranslate"><span class="pre">area_forecast_result_to_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.result_to_horizontal_dataframe"><code class="docutils literal notranslate"><span class="pre">result_to_horizontal_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.validate_years"><code class="docutils literal notranslate"><span class="pre">validate_years()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.calculate_building_category_energy_requirements"><code class="docutils literal notranslate"><span class="pre">calculate_building_category_energy_requirements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.write_to_disk"><code class="docutils literal notranslate"><span class="pre">write_to_disk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.calculate_building_category_area_forecast"><code class="docutils literal notranslate"><span class="pre">calculate_building_category_area_forecast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.calculate_heating_systems"><code class="docutils literal notranslate"><span class="pre">calculate_heating_systems()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.cmd.html#module-ebm.cmd">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.model.html">ebm.model package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.model.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.area.html">ebm.model.area module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.transform_area_forecast_to_area_change"><code class="docutils literal notranslate"><span class="pre">transform_area_forecast_to_area_change()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.transform_cumulative_demolition_to_yearly_demolition"><code class="docutils literal notranslate"><span class="pre">transform_cumulative_demolition_to_yearly_demolition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.transform_construction_by_year"><code class="docutils literal notranslate"><span class="pre">transform_construction_by_year()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.transform_demolition_construction"><code class="docutils literal notranslate"><span class="pre">transform_demolition_construction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.merge_building_code_and_condition"><code class="docutils literal notranslate"><span class="pre">merge_building_code_and_condition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.filter_existing_area"><code class="docutils literal notranslate"><span class="pre">filter_existing_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.building_condition_scurves"><code class="docutils literal notranslate"><span class="pre">building_condition_scurves()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.building_condition_accumulated_scurves"><code class="docutils literal notranslate"><span class="pre">building_condition_accumulated_scurves()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.multiply_s_curves_with_floor_area"><code class="docutils literal notranslate"><span class="pre">multiply_s_curves_with_floor_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.merge_total_area_by_year"><code class="docutils literal notranslate"><span class="pre">merge_total_area_by_year()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.calculate_existing_area"><code class="docutils literal notranslate"><span class="pre">calculate_existing_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.construction_with_building_code"><code class="docutils literal notranslate"><span class="pre">construction_with_building_code()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.sum_building_category_demolition_by_year"><code class="docutils literal notranslate"><span class="pre">sum_building_category_demolition_by_year()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.area.html#ebm.model.area.calculate_demolition_floor_area_by_year"><code class="docutils literal notranslate"><span class="pre">calculate_demolition_floor_area_by_year()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.bema.html">ebm.model.bema module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.BUILDING_CATEGORY_ORDER"><code class="docutils literal notranslate"><span class="pre">BUILDING_CATEGORY_ORDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.BUILDING_GROUP_ORDER"><code class="docutils literal notranslate"><span class="pre">BUILDING_GROUP_ORDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.TEK_ORDER"><code class="docutils literal notranslate"><span class="pre">TEK_ORDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.PURPOSE_ORDER"><code class="docutils literal notranslate"><span class="pre">PURPOSE_ORDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.BUILDING_CONDITION_ORDER"><code class="docutils literal notranslate"><span class="pre">BUILDING_CONDITION_ORDER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.START_ROWS_CONSTRUCTION_BUILDING_CATEGORY"><code class="docutils literal notranslate"><span class="pre">START_ROWS_CONSTRUCTION_BUILDING_CATEGORY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.get_building_category_sheet"><code class="docutils literal notranslate"><span class="pre">get_building_category_sheet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.bema.html#ebm.model.bema.map_sort_order"><code class="docutils literal notranslate"><span class="pre">map_sort_order()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.building_category.html">ebm.model.building_category module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.MyEnumType"><code class="docutils literal notranslate"><span class="pre">MyEnumType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.BuildingCategory"><code class="docutils literal notranslate"><span class="pre">BuildingCategory</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.from_norsk"><code class="docutils literal notranslate"><span class="pre">from_norsk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.expand_building_category"><code class="docutils literal notranslate"><span class="pre">expand_building_category()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.building_category.html#ebm.model.building_category.expand_building_categories"><code class="docutils literal notranslate"><span class="pre">expand_building_categories()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.building_condition.html">ebm.model.building_condition module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition"><code class="docutils literal notranslate"><span class="pre">BuildingCondition</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html">ebm.model.calibrate_energy_requirements module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.EnergyRequirementCalibrationWriter"><code class="docutils literal notranslate"><span class="pre">EnergyRequirementCalibrationWriter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.EnergyConsumptionCalibrationWriter"><code class="docutils literal notranslate"><span class="pre">EnergyConsumptionCalibrationWriter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.EbmCalibration"><code class="docutils literal notranslate"><span class="pre">EbmCalibration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.CalibrationReader"><code class="docutils literal notranslate"><span class="pre">CalibrationReader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.CalibrationWriter"><code class="docutils literal notranslate"><span class="pre">CalibrationWriter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html">ebm.model.calibrate_heating_systems module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.extract_area_forecast"><code class="docutils literal notranslate"><span class="pre">extract_area_forecast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.extract_energy_requirements"><code class="docutils literal notranslate"><span class="pre">extract_energy_requirements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.extract_heating_systems"><code class="docutils literal notranslate"><span class="pre">extract_heating_systems()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.transform_by_energy_source"><code class="docutils literal notranslate"><span class="pre">transform_by_energy_source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.group_heating_systems_by_energy_carrier"><code class="docutils literal notranslate"><span class="pre">group_heating_systems_by_energy_carrier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.transform_pumps"><code class="docutils literal notranslate"><span class="pre">transform_pumps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.sort_heating_systems_by_energy_source"><code class="docutils literal notranslate"><span class="pre">sort_heating_systems_by_energy_source()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.DistributionOfHeatingSystems"><code class="docutils literal notranslate"><span class="pre">DistributionOfHeatingSystems</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.column_operations.html">ebm.model.column_operations module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.column_operations.html#ebm.model.column_operations.explode_building_category_column"><code class="docutils literal notranslate"><span class="pre">explode_building_category_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.column_operations.html#ebm.model.column_operations.explode_building_code_column"><code class="docutils literal notranslate"><span class="pre">explode_building_code_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.column_operations.html#ebm.model.column_operations.explode_unique_columns"><code class="docutils literal notranslate"><span class="pre">explode_unique_columns()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.column_operations.html#ebm.model.column_operations.explode_column_alias"><code class="docutils literal notranslate"><span class="pre">explode_column_alias()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.column_operations.html#ebm.model.column_operations.replace_column_alias"><code class="docutils literal notranslate"><span class="pre">replace_column_alias()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.column_operations.html#ebm.model.column_operations.explode_column"><code class="docutils literal notranslate"><span class="pre">explode_column()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.construction.html">ebm.model.construction module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.construction.html#ebm.model.construction.ConstructionCalculator"><code class="docutils literal notranslate"><span class="pre">ConstructionCalculator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.data_classes.html">ebm.model.data_classes module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.ScurveParameters"><code class="docutils literal notranslate"><span class="pre">ScurveParameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.TEKParameters"><code class="docutils literal notranslate"><span class="pre">TEKParameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange"><code class="docutils literal notranslate"><span class="pre">YearRange</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.database_manager.html">ebm.model.database_manager module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager"><code class="docutils literal notranslate"><span class="pre">DatabaseManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.dataframemodels.html">ebm.model.dataframemodels module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.dataframemodels.html#ebm.model.dataframemodels.EnergyNeedYearlyImprovements"><code class="docutils literal notranslate"><span class="pre">EnergyNeedYearlyImprovements</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.dataframemodels.html#ebm.model.dataframemodels.YearlyReduction"><code class="docutils literal notranslate"><span class="pre">YearlyReduction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.dataframemodels.html#ebm.model.dataframemodels.PolicyImprovement"><code class="docutils literal notranslate"><span class="pre">PolicyImprovement</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.defaults.html">ebm.model.defaults module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.defaults.html#ebm.model.defaults.default_calibrate_heating_rv"><code class="docutils literal notranslate"><span class="pre">default_calibrate_heating_rv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.defaults.html#ebm.model.defaults.default_calibrate_energy_consumption"><code class="docutils literal notranslate"><span class="pre">default_calibrate_energy_consumption()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.energy_need.html">ebm.model.energy_need module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_need.html#ebm.model.energy_need.transform_total_energy_need"><code class="docutils literal notranslate"><span class="pre">transform_total_energy_need()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.energy_need_filter.html">ebm.model.energy_need_filter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.filter_original_condition"><code class="docutils literal notranslate"><span class="pre">filter_original_condition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.filter_improvement_building_upgrade"><code class="docutils literal notranslate"><span class="pre">filter_improvement_building_upgrade()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.de_dupe_dataframe"><code class="docutils literal notranslate"><span class="pre">de_dupe_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.explode_dataframe"><code class="docutils literal notranslate"><span class="pre">explode_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.energy_purpose.html">ebm.model.energy_purpose module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose"><code class="docutils literal notranslate"><span class="pre">EnergyPurpose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_purpose.html#ebm.model.energy_purpose.group_energy_use_kwh_by_building_group_purpose_year_wide"><code class="docutils literal notranslate"><span class="pre">group_energy_use_kwh_by_building_group_purpose_year_wide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_purpose.html#ebm.model.energy_purpose.group_energy_use_by_year_category_building_code_purpose"><code class="docutils literal notranslate"><span class="pre">group_energy_use_by_year_category_building_code_purpose()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.energy_requirement.html">ebm.model.energy_requirement module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_requirement.html#ebm.model.energy_requirement.yearly_reduction"><code class="docutils literal notranslate"><span class="pre">yearly_reduction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement"><code class="docutils literal notranslate"><span class="pre">EnergyRequirement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_requirement.html#ebm.model.energy_requirement.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.energy_use.html">ebm.model.energy_use module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.base_load"><code class="docutils literal notranslate"><span class="pre">base_load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.peak_load"><code class="docutils literal notranslate"><span class="pre">peak_load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.tertiary_load"><code class="docutils literal notranslate"><span class="pre">tertiary_load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.heating_rv"><code class="docutils literal notranslate"><span class="pre">heating_rv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.heating_dhw"><code class="docutils literal notranslate"><span class="pre">heating_dhw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.cooling"><code class="docutils literal notranslate"><span class="pre">cooling()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.other"><code class="docutils literal notranslate"><span class="pre">other()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.all_purposes"><code class="docutils literal notranslate"><span class="pre">all_purposes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.efficiency_factor"><code class="docutils literal notranslate"><span class="pre">efficiency_factor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.energy_use_kwh"><code class="docutils literal notranslate"><span class="pre">energy_use_kwh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.building_group_energy_use_kwh"><code class="docutils literal notranslate"><span class="pre">building_group_energy_use_kwh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.energy_use_gwh_by_building_group"><code class="docutils literal notranslate"><span class="pre">energy_use_gwh_by_building_group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.energy_use.html#ebm.model.energy_use.calculate_energy_use"><code class="docutils literal notranslate"><span class="pre">calculate_energy_use()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.enums.html">ebm.model.enums module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.enums.html#ebm.model.enums.ReturnCode"><code class="docutils literal notranslate"><span class="pre">ReturnCode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.exceptions.html">ebm.model.exceptions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.exceptions.html#ebm.model.exceptions.AmbiguousDataError"><code class="docutils literal notranslate"><span class="pre">AmbiguousDataError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.file_handler.html">ebm.model.file_handler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.file_handler.html#ebm.model.file_handler.FileHandler"><code class="docutils literal notranslate"><span class="pre">FileHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.filter_scurve_params.html">ebm.model.filter_scurve_params module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.filter_scurve_params.html#ebm.model.filter_scurve_params.FilterScurveParams"><code class="docutils literal notranslate"><span class="pre">FilterScurveParams</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.filter_tek.html">ebm.model.filter_tek module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek"><code class="docutils literal notranslate"><span class="pre">FilterTek</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.heat_pump.html">ebm.model.heat_pump module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heat_pump.html#ebm.model.heat_pump.air_source_heat_pump"><code class="docutils literal notranslate"><span class="pre">air_source_heat_pump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heat_pump.html#ebm.model.heat_pump.district_heating_heat_pump"><code class="docutils literal notranslate"><span class="pre">district_heating_heat_pump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heat_pump.html#ebm.model.heat_pump.heat_pump_production"><code class="docutils literal notranslate"><span class="pre">heat_pump_production()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heat_pump.html#ebm.model.heat_pump.heat_prod_hp"><code class="docutils literal notranslate"><span class="pre">heat_prod_hp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heat_pump.html#ebm.model.heat_pump.heat_prod_hp_wide"><code class="docutils literal notranslate"><span class="pre">heat_prod_hp_wide()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.heating_systems.html">ebm.model.heating_systems module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heating_systems.html#ebm.model.heating_systems.HeatingSystems"><code class="docutils literal notranslate"><span class="pre">HeatingSystems</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.heating_systems_parameter.html">ebm.model.heating_systems_parameter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heating_systems_parameter.html#ebm.model.heating_systems_parameter.heating_systems_parameter_from_projection"><code class="docutils literal notranslate"><span class="pre">heating_systems_parameter_from_projection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heating_systems_parameter.html#ebm.model.heating_systems_parameter.expand_heating_system_parameters"><code class="docutils literal notranslate"><span class="pre">expand_heating_system_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.heating_systems_projection.html">ebm.model.heating_systems_projection module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.heating_systems_share.html">ebm.model.heating_systems_share module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heating_systems_share.html#ebm.model.heating_systems_share.transform_heating_systems_share_long"><code class="docutils literal notranslate"><span class="pre">transform_heating_systems_share_long()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.heating_systems_share.html#ebm.model.heating_systems_share.transform_heating_systems_share_wide"><code class="docutils literal notranslate"><span class="pre">transform_heating_systems_share_wide()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.scurve.html">ebm.model.scurve module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.scurve.html#ebm.model.scurve.SCurve"><code class="docutils literal notranslate"><span class="pre">SCurve</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.model.scurve.html#ebm.model.scurve.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.model.tek.html">ebm.model.tek module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.model.html#module-ebm.model">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.services.html">ebm.services package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.services.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.services.calibration_writer.html">ebm.services.calibration_writer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.services.console.html">ebm.services.console module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.console.html#ebm.services.console.rich_display_dataframe"><code class="docutils literal notranslate"><span class="pre">rich_display_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.console.html#ebm.services.console.df_to_table"><code class="docutils literal notranslate"><span class="pre">df_to_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.services.excel_loader.html">ebm.services.excel_loader module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.services.files.html">ebm.services.files module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.files.html#ebm.services.files.make_unique_path"><code class="docutils literal notranslate"><span class="pre">make_unique_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.files.html#ebm.services.files.file_is_writable"><code class="docutils literal notranslate"><span class="pre">file_is_writable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.services.spreadsheet.html">ebm.services.spreadsheet module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell"><code class="docutils literal notranslate"><span class="pre">SpreadsheetCell</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.spreadsheet.html#ebm.services.spreadsheet.iter_cells"><code class="docutils literal notranslate"><span class="pre">iter_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.spreadsheet.html#ebm.services.spreadsheet.detect_format_from_values"><code class="docutils literal notranslate"><span class="pre">detect_format_from_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.spreadsheet.html#ebm.services.spreadsheet.find_max_column_width"><code class="docutils literal notranslate"><span class="pre">find_max_column_width()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.spreadsheet.html#ebm.services.spreadsheet.add_top_row_filter"><code class="docutils literal notranslate"><span class="pre">add_top_row_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.services.spreadsheet.html#ebm.services.spreadsheet.make_pretty"><code class="docutils literal notranslate"><span class="pre">make_pretty()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.services.html#module-ebm.services">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ebm.energy_consumption.html">ebm.energy_consumption module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.__init__"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.grouped_heating_systems"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.grouped_heating_systems()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.calculate"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.calculate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.adjust_heat_pump"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.adjust_heat_pump()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.adjust_other"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.adjust_other()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.adjust_cooling"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.adjust_cooling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.adjust_heating_dhw"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.adjust_heating_dhw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.adjust_heating_rv"><code class="docutils literal notranslate"><span class="pre">EnergyConsumption.adjust_heating_rv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.calibrate_heating_systems"><code class="docutils literal notranslate"><span class="pre">calibrate_heating_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.energy_consumption.html#ebm.energy_consumption.calibrate_heating_systems_adder"><code class="docutils literal notranslate"><span class="pre">calibrate_heating_systems_adder()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.extractors.html">ebm.extractors module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_area_forecast"><code class="docutils literal notranslate"><span class="pre">extract_area_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.write_scurve"><code class="docutils literal notranslate"><span class="pre">write_scurve()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_energy_need"><code class="docutils literal notranslate"><span class="pre">extract_energy_need()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_heating_systems_projection"><code class="docutils literal notranslate"><span class="pre">extract_heating_systems_projection()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_energy_use_holiday_homes"><code class="docutils literal notranslate"><span class="pre">extract_energy_use_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.heating_systems_projection.html">ebm.heating_systems_projection module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.__init__"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.calculate_projection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.calculate_projection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.new_instance"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.new_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.pad_projection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.pad_projection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.add_missing_heating_systems"><code class="docutils literal notranslate"><span class="pre">add_missing_heating_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.add_load_shares_and_efficiencies"><code class="docutils literal notranslate"><span class="pre">add_load_shares_and_efficiencies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.aggregere_lik_oppvarming_fjern_0"><code class="docutils literal notranslate"><span class="pre">aggregere_lik_oppvarming_fjern_0()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.expand_building_category_building_code"><code class="docutils literal notranslate"><span class="pre">expand_building_category_building_code()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.project_heating_systems"><code class="docutils literal notranslate"><span class="pre">project_heating_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.check_sum_of_shares"><code class="docutils literal notranslate"><span class="pre">check_sum_of_shares()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.add_existing_heating_system_shares_to_projection"><code class="docutils literal notranslate"><span class="pre">add_existing_heating_system_shares_to_projection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.holiday_home_energy.html">ebm.holiday_home_energy module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy"><code class="docutils literal notranslate"><span class="pre">HolidayHomeEnergy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.__init__"><code class="docutils literal notranslate"><span class="pre">HolidayHomeEnergy.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.calculate_energy_usage"><code class="docutils literal notranslate"><span class="pre">HolidayHomeEnergy.calculate_energy_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.new_instance"><code class="docutils literal notranslate"><span class="pre">HolidayHomeEnergy.new_instance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_electricity_usage"><code class="docutils literal notranslate"><span class="pre">project_electricity_usage()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_fuelwood_usage"><code class="docutils literal notranslate"><span class="pre">project_fuelwood_usage()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_fossil_fuel_usage"><code class="docutils literal notranslate"><span class="pre">project_fossil_fuel_usage()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.sum_holiday_homes"><code class="docutils literal notranslate"><span class="pre">sum_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.population_over_holiday_homes"><code class="docutils literal notranslate"><span class="pre">population_over_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_holiday_homes"><code class="docutils literal notranslate"><span class="pre">projected_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.energy_usage_by_holiday_homes"><code class="docutils literal notranslate"><span class="pre">energy_usage_by_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_fuelwood_usage_holiday_homes"><code class="docutils literal notranslate"><span class="pre">projected_fuelwood_usage_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_electricity_usage_holiday_homes"><code class="docutils literal notranslate"><span class="pre">projected_electricity_usage_holiday_homes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.calculate_energy_use"><code class="docutils literal notranslate"><span class="pre">calculate_energy_use()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.transform_holiday_homes_to_horizontal"><code class="docutils literal notranslate"><span class="pre">transform_holiday_homes_to_horizontal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.s_curve.html">ebm.s_curve module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.original_condition"><code class="docutils literal notranslate"><span class="pre">original_condition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.small_measure"><code class="docutils literal notranslate"><span class="pre">small_measure()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.renovation_and_small_measure"><code class="docutils literal notranslate"><span class="pre">renovation_and_small_measure()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.trim_renovation_from_renovation_total"><code class="docutils literal notranslate"><span class="pre">trim_renovation_from_renovation_total()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.renovation_from_small_measure"><code class="docutils literal notranslate"><span class="pre">renovation_from_small_measure()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.total"><code class="docutils literal notranslate"><span class="pre">total()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.trim_max_value"><code class="docutils literal notranslate"><span class="pre">trim_max_value()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.small_measure_max"><code class="docutils literal notranslate"><span class="pre">small_measure_max()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.renovation_max"><code class="docutils literal notranslate"><span class="pre">renovation_max()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.cumulative_renovation"><code class="docutils literal notranslate"><span class="pre">cumulative_renovation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.cumulative_small_measure"><code class="docutils literal notranslate"><span class="pre">cumulative_small_measure()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.transform_demolition"><code class="docutils literal notranslate"><span class="pre">transform_demolition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.transform_to_cumulative_demolition"><code class="docutils literal notranslate"><span class="pre">transform_to_cumulative_demolition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.scurve_parameters_to_never_share"><code class="docutils literal notranslate"><span class="pre">scurve_parameters_to_never_share()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.scurve_parameters_to_scurve"><code class="docutils literal notranslate"><span class="pre">scurve_parameters_to_scurve()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.accumulate_demolition"><code class="docutils literal notranslate"><span class="pre">accumulate_demolition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.merge_s_curves_and_building_code"><code class="docutils literal notranslate"><span class="pre">merge_s_curves_and_building_code()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.transform_to_dataframe"><code class="docutils literal notranslate"><span class="pre">transform_to_dataframe()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.transform_to_long"><code class="docutils literal notranslate"><span class="pre">transform_to_long()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.s_curve.html#ebm.s_curve.calculate_s_curves"><code class="docutils literal notranslate"><span class="pre">calculate_s_curves()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.temp_calc.html">ebm.temp_calc module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.temp_calc.html#ebm.temp_calc.calculate_energy_use_wide"><code class="docutils literal notranslate"><span class="pre">calculate_energy_use_wide()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.temp_calc.html#ebm.temp_calc.calculate_area_forecast"><code class="docutils literal notranslate"><span class="pre">calculate_area_forecast()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.temp_calc.html#ebm.temp_calc.calculate_energy_need"><code class="docutils literal notranslate"><span class="pre">calculate_energy_need()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.validators.html">ebm.validators module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_building_category"><code class="docutils literal notranslate"><span class="pre">check_building_category()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_default_building_category"><code class="docutils literal notranslate"><span class="pre">check_default_building_category()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_default_building_category_with_group"><code class="docutils literal notranslate"><span class="pre">check_default_building_category_with_group()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_building_condition"><code class="docutils literal notranslate"><span class="pre">check_building_condition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_existing_building_conditions"><code class="docutils literal notranslate"><span class="pre">check_existing_building_conditions()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_all_existing_building_conditions_present"><code class="docutils literal notranslate"><span class="pre">check_all_existing_building_conditions_present()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_energy_purpose"><code class="docutils literal notranslate"><span class="pre">check_energy_purpose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_default_energy_purpose"><code class="docutils literal notranslate"><span class="pre">check_default_energy_purpose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_building_code"><code class="docutils literal notranslate"><span class="pre">check_building_code()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_default_building_code"><code class="docutils literal notranslate"><span class="pre">check_default_building_code()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_overlapping_building_code_periods"><code class="docutils literal notranslate"><span class="pre">check_overlapping_building_code_periods()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_building_category_share"><code class="docutils literal notranslate"><span class="pre">check_building_category_share()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.create_residential_area_checks"><code class="docutils literal notranslate"><span class="pre">create_residential_area_checks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_heating_systems"><code class="docutils literal notranslate"><span class="pre">check_heating_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.check_sum_of_heating_system_shares_equal_1"><code class="docutils literal notranslate"><span class="pre">check_sum_of_heating_system_shares_equal_1()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.make_building_purpose"><code class="docutils literal notranslate"><span class="pre">make_building_purpose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.behaviour_factor_parser"><code class="docutils literal notranslate"><span class="pre">behaviour_factor_parser()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.calculate_yearly_reduction"><code class="docutils literal notranslate"><span class="pre">calculate_yearly_reduction()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.validators.html#ebm.validators.heating_system_forecast"><code class="docutils literal notranslate"><span class="pre">heating_system_forecast</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-ebm">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebm" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../api_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.cmd.html" class="btn btn-neutral float-right" title="ebm.cmd package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

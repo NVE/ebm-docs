@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.model.energy_need_filter &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.model.energy_need_filter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.model.energy_need_filter</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_condition</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.column_operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace_column_alias</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.energy_purpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyPurpose</span>
+
+
+<div class="viewcode-block" id="filter_original_condition">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.filter_original_condition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_original_condition</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="o">|</span><span class="nb">str</span><span class="p">,</span> <span class="n">tek</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">purpose</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Explode and deduplicates DataFrame df and returns rows matching building_category, tek, and purpose</span>
+
+<span class="sd">    Convenience function that does</span>
+
+<span class="sd">    ```python</span>
+
+<span class="sd">    exploded = explode_dataframe(df)</span>
+<span class="sd">    de_duped = de_dupe_dataframe(exploded)</span>
+<span class="sd">    filtered = de_duped[(de_duped.building_category==building_category) &amp; (de_duped.building_code==tek) &amp; (de_duped.purpose == purpose)]</span>
+
+<span class="sd">    ```</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pd.DataFrame</span>
+<span class="sd">    building_category : BuildingCategory | str</span>
+<span class="sd">    tek : str</span>
+<span class="sd">    purpose : str</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">explode_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">de_duped</span> <span class="o">=</span> <span class="n">de_dupe_dataframe</span><span class="p">(</span><span class="n">exploded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">de_duped</span><span class="p">[(</span><span class="n">de_duped</span><span class="o">.</span><span class="n">building_category</span><span class="o">==</span><span class="n">building_category</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">de_duped</span><span class="o">.</span><span class="n">building_code</span><span class="o">==</span><span class="n">tek</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">de_duped</span><span class="o">.</span><span class="n">purpose</span> <span class="o">==</span> <span class="n">purpose</span><span class="p">)]</span></div>
+
+
+
+<div class="viewcode-block" id="filter_improvement_building_upgrade">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.filter_improvement_building_upgrade">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_improvement_building_upgrade</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="o">|</span><span class="nb">str</span><span class="p">,</span> <span class="n">tek</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">purpose</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Explode and deduplicates DataFrame df and returns rows matching building_category, tek, and purpose</span>
+
+<span class="sd">    Convenience function that does</span>
+
+<span class="sd">    ```python</span>
+
+<span class="sd">    exploded = explode_dataframe(df)</span>
+<span class="sd">    de_duped = de_dupe_dataframe(exploded)</span>
+<span class="sd">    filtered = de_duped[(de_duped.building_category==building_category) &amp; (de_duped.building_code==tek) &amp; (de_duped.purpose == purpose)]</span>
+
+<span class="sd">    ```</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pd.DataFrame</span>
+<span class="sd">    building_category : BuildingCategory | str</span>
+<span class="sd">    tek : str</span>
+<span class="sd">    purpose : str</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">explode_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">de_duped</span> <span class="o">=</span> <span class="n">de_dupe_dataframe</span><span class="p">(</span><span class="n">exploded</span><span class="p">,</span> <span class="n">unique_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">])</span>
+    <span class="n">filtered</span><span class="o">=</span><span class="n">de_duped</span><span class="p">[(</span><span class="n">de_duped</span><span class="o">.</span><span class="n">building_category</span><span class="o">==</span><span class="n">building_category</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">de_duped</span><span class="o">.</span><span class="n">building_code</span><span class="o">==</span><span class="n">tek</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">de_duped</span><span class="o">.</span><span class="n">purpose</span> <span class="o">==</span> <span class="n">purpose</span><span class="p">)]</span>
+
+    <span class="n">filler_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">building_category</span><span class="p">,</span> <span class="n">tek</span><span class="p">,</span> <span class="n">purpose</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">existing_conditions</span><span class="p">()],</span>
+                                <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_share&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">filtered</span><span class="p">,</span> <span class="n">filler_frame</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="de_dupe_dataframe">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.de_dupe_dataframe">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">de_dupe_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">unique_columns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Drops duplicate rows in df based on building_category, TEK and purpose</span>
+<span class="sd">    same as</span>
+<span class="sd">        df.drop_duplicates(unique_columns)</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pd.DataFrame</span>
+<span class="sd">    unique_columns : list[str], optional</span>
+<span class="sd">                     default= [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;]</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">de_dupe_by</span> <span class="o">=</span> <span class="n">unique_columns</span> <span class="k">if</span> <span class="n">unique_columns</span> <span class="k">else</span> <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">]</span>
+
+    <span class="n">de_duped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">de_dupe_by</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">de_duped</span></div>
+
+
+
+<div class="viewcode-block" id="explode_dataframe">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.explode_dataframe">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">explode_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">building_code_list</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Explode column aliases for building_category, TEK, purpose in dataframe.</span>
+
+<span class="sd">    default in building_category is replaced with all options from BuildingCategory enum</span>
+<span class="sd">    default in TEK is replaced with all elements in optional building_code_list parameter</span>
+<span class="sd">    default in purpose is replaced with all options from EnergyPurpose enum</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pd.DataFrame</span>
+<span class="sd">    building_code_list : list of TEK to replace default, Optional</span>
+<span class="sd">               default TEK49 PRE_TEK49 PRE_TEK49_RES_1950 TEK69 TEK87 TEK97 TEK07 TEK10 TEK17</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">building_code_list</span><span class="p">:</span>
+        <span class="n">building_code_list</span> <span class="o">=</span> <span class="s1">&#39;TEK49 PRE_TEK49 PRE_TEK49_RES_1950 TEK69 TEK87 TEK97 TEK07 TEK10 TEK17 TEK21 TEK01&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="c1"># expand building_category</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">replace_column_alias</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                              <span class="n">column</span><span class="o">=</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span>
+                              <span class="n">values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">BuildingCategory</span><span class="p">],</span>
+                                      <span class="s1">&#39;residential&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">BuildingCategory</span> <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">is_residential</span><span class="p">()],</span>
+                                      <span class="s1">&#39;non_residential&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">BuildingCategory</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">b</span><span class="o">.</span><span class="n">is_residential</span><span class="p">()]})</span>
+    <span class="c1"># expand tek</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">replace_column_alias</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">building_code_list</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+
+    <span class="c1"># expand purpose</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">replace_column_alias</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">EnergyPurpose</span><span class="p">],</span> <span class="n">alias</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add priorty column and sort</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bc_priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">building_category</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="s1">&#39;+&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)))</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;t_priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">building_code</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="s1">&#39;+&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)))</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;p_priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">purpose</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="s1">&#39;+&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;priority&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;priority&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">bc_priority</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">t_priority</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">p_priority</span>
+
+    <span class="c1"># Explode</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">),</span> <span class="p">})</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;building_category&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;building_code&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;building_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)})</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;building_code&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;purpose&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;purpose&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">),</span> <span class="p">})</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;purpose&#39;</span><span class="p">)</span>
+    <span class="c1"># dedupe</span>
+    <span class="n">deduped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;priority&#39;</span><span class="p">])</span>
+    <span class="n">deduped</span><span class="p">[</span><span class="s1">&#39;dupe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deduped</span><span class="o">.</span><span class="n">duplicated</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">deduped</span></div>
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Explode and prints all files listed in command line arguments. Default is reading files from input/</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_file</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+        <span class="n">building_code_list</span> <span class="o">=</span> <span class="s1">&#39;TEK49 PRE_TEK49 TEK69 TEK87 TEK97 TEK07 TEK10 TEK17&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">explode_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">building_code_list</span><span class="o">=</span><span class="n">building_code_list</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dupe&#39;</span><span class="p">,</span> <span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;priority&#39;</span><span class="p">])</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.csv&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;# </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">_load_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">key_error</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;KeyError: missing &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">key_error</span><span class="p">),</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
