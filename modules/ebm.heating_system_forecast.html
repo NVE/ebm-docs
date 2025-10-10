@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.heating_system_forecast module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.holiday_home_energy module" href="ebm.holiday_home_energy.html" />
+    <link rel="prev" title="ebm.extractors module" href="ebm.extractors.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Technical Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx_guide.html">Sphinx guide - INTERN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+      <li class="breadcrumb-item active">ebm.heating_system_forecast module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.heating_system_forecast.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.heating_system_forecast">
+<span id="ebm-heating-system-forecast-module"></span><h1>ebm.heating_system_forecast module<a class="headerlink" href="#module-ebm.heating_system_forecast" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.HeatingSystemsForecast">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HeatingSystemsForecast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shares_start_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">efficiencies</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forecast</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#HeatingSystemsForecast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.HeatingSystemsForecast" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.HeatingSystemsForecast.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shares_start_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">efficiencies</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forecast</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#HeatingSystemsForecast.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.HeatingSystemsForecast.__init__" title="Link to this definition"></a></dt>
+<dd><p>Init HeatingSystemsForecast.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.HeatingSystemsForecast.calculate_forecast">
+<span class="sig-name descname"><span class="pre">calculate_forecast</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#HeatingSystemsForecast.calculate_forecast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.HeatingSystemsForecast.calculate_forecast" title="Link to this definition"></a></dt>
+<dd><p>Project heating system shares across model years.</p>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Dataframe</dt><dd><p>TEK shares for heating systems per year, along with different load shares and efficiencies.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If sum of shares for a building_code is not equal to 1.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.HeatingSystemsForecast.new_instance">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">new_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">database_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager" title="ebm.model.database_manager.DatabaseManager"><span class="pre">DatabaseManager</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ebm.heating_system_forecast.HeatingSystemsForecast" title="ebm.heating_system_forecast.HeatingSystemsForecast"><span class="pre">HeatingSystemsForecast</span></a></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#HeatingSystemsForecast.new_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.HeatingSystemsForecast.new_instance" title="Link to this definition"></a></dt>
+<dd><p>Create a new instance of the HeatingSystemsProjection class, using the specified YearRange Period and an optional database manager.</p>
+<p>If a database manager is not provided, a new DatabaseManager instance will be created.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>period: YearRange</dt><dd><p>period of forecast</p>
+</dd>
+<dt>database_manager: DatabaseManager</dt><dd><p>a database manager for heating system forecast</p>
+</dd>
+</dl>
+</section>
+<section id="id1">
+<h2>Returns<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>HeatingSystemsForecast</dt><dd><p>A new instance of HeatingSystemsProjection initialized with data from the specified database manager.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.HeatingSystemsForecast.pad_projection">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pad_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_pad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#HeatingSystemsForecast.pad_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.HeatingSystemsForecast.pad_projection" title="Link to this definition"></a></dt>
+<dd><p>Left pad dataframe hf with years in years_to_pad. The padding will be equal to existing first year of hf.</p>
+<section id="id2">
+<h2>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>hf<span class="classifier">pd.DataFrame</span></dt><dd><p>heating systems to pad</p>
+</dd>
+<dt>years_to_pad<span class="classifier">YearRange</span></dt><dd><p>range of years to pad unto hf</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>hf with left padding</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.add_missing_heating_systems">
+<span class="sig-name descname"><span class="pre">add_missing_heating_systems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heating_systems_shares</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heating_systems</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.heating_systems.html#ebm.model.heating_systems.HeatingSystems" title="ebm.model.heating_systems.HeatingSystems"><span class="pre">HeatingSystems</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#add_missing_heating_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.add_missing_heating_systems" title="Link to this definition"></a></dt>
+<dd><p>Add missing HeatingSystems per BuildingCategory and building_codewith a default TEK_share of 0.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.add_load_shares_and_efficiencies">
+<span class="sig-name descname"><span class="pre">add_load_shares_and_efficiencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heating_systems_efficiencies</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#add_load_shares_and_efficiencies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.add_load_shares_and_efficiencies" title="Link to this definition"></a></dt>
+<dd><p>Add load share and efficiency data to heating system share records by merging with efficiency reference data.</p>
+<section id="id4">
+<h2>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing heating system shares, including columns for year and heating system type.</p>
+</dd>
+<dt>heating_systems_efficiencies<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing efficiency and load share data for each heating system type.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h2>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Merged DataFrame with heating system shares enriched with efficiency and load share information.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The merge is performed on the HEATING_SYSTEMS column using a left join.</p></li>
+<li><p>The YEAR column is cast to integer to ensure consistent data types.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.aggregere_lik_oppvarming_fjern_0">
+<span class="sig-name descname"><span class="pre">aggregere_lik_oppvarming_fjern_0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#aggregere_lik_oppvarming_fjern_0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.aggregere_lik_oppvarming_fjern_0" title="Link to this definition"></a></dt>
+<dd><p>Aggregate heating system shares by summing TEK_share values, excluding entries with zero share.</p>
+<section id="id6">
+<h2>Parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame</span></dt><dd><p>Input DataFrame containing heating system share data, including TEK_share values.</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h2>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Aggregated DataFrame grouped by building category, building code, heating system, and year,
+with summed TEK_share values excluding zero-share entries.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Notes<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Rows where TEK_share is zero are removed before aggregation.</p></li>
+<li><p>The resulting DataFrame is grouped by [BUILDING_CATEGORY, BUILDING_CODE, HEATING_SYSTEMS, YEAR].</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.expand_building_category_building_code">
+<span class="sig-name descname"><span class="pre">expand_building_category_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#expand_building_category_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.expand_building_category_building_code" title="Link to this definition"></a></dt>
+<dd><p>Add necessary building categories and building_code to the heating_systems_forecast dataframe.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.project_heating_systems">
+<span class="sig-name descname"><span class="pre">project_heating_systems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shares_start_year_all_systems</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projected_shares</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#project_heating_systems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.project_heating_systems" title="Link to this definition"></a></dt>
+<dd><p>Forecast heating system shares over a given period based on initial shares and projected replacement rates.</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>shares_start_year_all_systems<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing TEK_share values for all heating systems at the start year.</p>
+</dd>
+<dt>projected_shares<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing projected replacement shares for heating systems across years.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>The projection period, defined by a start and end year.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>A DataFrame with projected TEK_share values for both existing and new heating systems
+across the specified period.</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h2>Notes<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The function melts the projected shares into long format and filters them to match the projection period.</p></li>
+<li><p>It calculates new shares based on replacement rates and adjusts existing shares accordingly.</p></li>
+<li><p>New and existing heating system shares are merged and aggregated, removing duplicates and zero-share entries.</p></li>
+<li><p>The final output contains TEK_share values per year, building category, building code, and heating system.</p></li>
+<li><p>Internal helper functions like <cite>aggregere_lik_oppvarming_fjern_0</cite> are used to clean and aggregate data.</p></li>
+<li><p>The YEAR column is explicitly cast to integer at the end to ensure consistency.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.check_sum_of_shares">
+<span class="sig-name descname"><span class="pre">check_sum_of_shares</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">projected_shares</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#check_sum_of_shares"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.check_sum_of_shares" title="Link to this definition"></a></dt>
+<dd><p>Make sure that the sum of heating_system_share equals 1 per TEK, building category and year.</p>
+<section id="id12">
+<h2>Parameters<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>projected_shares: pd.Dataframe</dt><dd><p>Dataframe must contain columns: ‘building_category’, ‘building_code’, ‘year’ and ‘heating_system_share’</p>
+</dd>
+<dt>precision: int</dt><dd><p>Precision used for value check (with round)</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h2>Raises<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If sum of shares for a building_codeis not equal to 1.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.heating_system_forecast.add_existing_heating_system_shares_to_projection">
+<span class="sig-name descname"><span class="pre">add_existing_heating_system_shares_to_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_shares</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_shares</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/heating_system_forecast.html#add_existing_heating_system_shares_to_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.heating_system_forecast.add_existing_heating_system_shares_to_projection" title="Link to this definition"></a></dt>
+<dd><p>Extend heating system shares in the projection period by preserving TEK_share values for systems with unprojected existing building code shares.</p>
+<section id="id14">
+<h2>Parameters<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>new_shares<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing projected heating system shares for buildings.</p>
+</dd>
+<dt>existing_shares<span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing existing heating system shares for buildings.</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>The projection period, defined by a start and end year.</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h2>Returns<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>Combined DataFrame with projected shares and extended existing shares
+for heating systems not present in the new projections.</p>
+</dd>
+</dl>
+</section>
+<section id="id16">
+<h2>Notes<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Heating systems with existing shares but missing from the new projections
+will retain their TEK_share values across the projection period.</p></li>
+<li><p>The function filters out combinations already present in the new projections
+and extends the remaining ones across the projection years.</p></li>
+<li><p>The <cite>Sortering</cite> column is used internally for identifying unique combinations
+of building category, code, and heating system.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.extractors.html" class="btn btn-neutral float-left" title="ebm.extractors module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.holiday_home_energy.html" class="btn btn-neutral float-right" title="ebm.holiday_home_energy module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -54,7 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
@@ -108,7 +108,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.energy_requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyRequirement</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyConsumption</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.heating_systems_projection</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingSystemsProjection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.heating_system_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingSystemsForecast</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
 
 
@@ -327,8 +327,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">projection_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
-    <span class="n">hsp</span> <span class="o">=</span> <span class="n">HeatingSystemsProjection</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">projection_period</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
-    <span class="n">hf</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">calculate_projection</span><span class="p">()</span>
+    <span class="n">hsp</span> <span class="o">=</span> <span class="n">HeatingSystemsForecast</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">projection_period</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
+    <span class="n">hf</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">calculate_forecast</span><span class="p">()</span>
     <span class="n">hf</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">pad_projection</span><span class="p">(</span><span class="n">hf</span><span class="p">,</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">))</span>
     <span class="n">calculator</span> <span class="o">=</span> <span class="n">EnergyConsumption</span><span class="p">(</span><span class="n">hf</span><span class="p">)</span>
     <span class="n">calculator</span><span class="o">.</span><span class="n">heating_systems_parameters</span> <span class="o">=</span> <span class="n">calculator</span><span class="o">.</span><span class="n">grouped_heating_systems</span><span class="p">()</span>

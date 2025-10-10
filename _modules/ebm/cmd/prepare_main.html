@@ -54,7 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
@@ -218,6 +218,9 @@
     <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--create-input&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
                             <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Create input directory containing all required files in the current working directory&#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--migrate&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
+
     <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--start-year&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
                             <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EBM_START_YEAR&#39;</span><span class="p">,</span> <span class="mi">2020</span><span class="p">),</span>
                             <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>

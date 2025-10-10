@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Result files" href="results.html" />
-    <link rel="prev" title="Geographical_distribution" href="user_guide/geographical_distribution.html" /> 
+    <link rel="prev" title="Geographical distribution" href="user_guide/geographical_distribution.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,7 +54,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Input files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#input-constraints">Input constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#use-of-default">Use of “default”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-of-default-and-grouping">Use of “default” and grouping</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="results.html">Result files</a></li>
@@ -64,7 +64,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heating_systems/index.html">Heating systems</a></li>
@@ -105,42 +105,42 @@
              
   <section id="input-files">
 <h1>Input files<a class="headerlink" href="#input-files" title="Link to this heading"></a></h1>
-<p>Each input file is described here. The heading is the file name, followed by a short description of its contents. Constraints are given in the tab
+<p>Each input file is described here in alphabetical order. The heading is the file name, followed by a short description of its contents. Constraints are given in the tab
 formatted box after the descriptions.</p>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong>area.csv</strong> <br>
+<p id="area-csv">🧾 <a class="reference internal" href="#area-csv"><span class="std std-ref">area.csv</span></a> <br>
 Useful floor area in the start year 2020 distributed by building category and building code.</p>
-<p><strong>area_new_residential_buildings.csv</strong> <br>
-New useful floor area for residential buildings in 2020 and 2021 from statistics.Statistics source is Statistics Norway.</p>
-<p><strong>area_per_person.csv</strong> <br>
+<p id="area-new-residential-buildings-csv">🧾 <a class="reference internal" href="#area-new-residential-buildings-csv"><span class="std std-ref">area_new_residential_buildings.csv</span></a> <br>
+New built useful floor area for residential buildings in 2020 and 2021 from statistics. Statistics source is Statistics Norway.</p>
+<p id="area-per-person-csv">🧾 <a class="reference internal" href="#area-per-person-csv"><span class="std std-ref">area_per_person.csv</span></a> <br>
 Useful floor area for new non-residential buildings based on population growth.</p>
-<p><strong>building_code.csv</strong> <br>
-Year of operation for the different building codes in Norway.</p>
-<p><strong>new_buildings_residential.csv</strong> <br>
-Average size of new apartments and houses. Proportion of new homes that are apartments and houses per year.</p>
-<p><strong>population_forecast.csv</strong> <br>
-Population forecast from Statistics Norway and average household size.</p>
-<p><strong>s_curve.csv</strong> <br>
-Parameters to create S-curves. Parameters are given for small measures, renovation and demolition for each building category.</p>
-<p><strong>energy_need_original_condition.csv</strong> <br>
-Energy need per square meter for various energy purposes differentiated by building code and building category. The given energy need is only for a buildings original purpose.</p>
-<p><strong>improvement_building_upgrade.csv</strong> <br>
-Reduction in heating energy need from completed small measures, renovation and small measures + renovation. Percentage reduction compared to the original condition.</p>
-<p><strong>energy_need_behaviour_factor.csv</strong> <br>
-Changes in energy need not related to the improvements in heating need from the s-curves.</p>
-<p><strong>energy_need_improvements.csv</strong> <br>
-Reduction in lighting and equipment energy need from implementation of ecodesign.</p>
-<p><strong>holiday_home_stock.csv</strong> <br>
-Stock of holiday homes per year from 2001. Statistics from Statistics Norway.</p>
-<p><strong>holiday_home_energy_consumption.csv</strong> <br>
-Historical energy use of fuel wood, electricity and fossil fuel in holiday homes.</p>
-<p><strong>heating_system_forecast.csv</strong> <br>
-Defines the rate of change in heating systems towards 2050. The change is made on a percentage basis compared with the start year.</p>
-<p><strong>heating_system_initial_shares.csv</strong> <br>
-Distribution of heating systems per building category and building code in the start year.</p>
-<p><strong>heating_systems_efficiencies</strong> <br>
+<p id="building-code-parameters-csv">🧾 <a class="reference internal" href="#building-code-parameters-csv"><span class="std std-ref">building_code_parameters.csv</span></a> <br>
+Year of operation for the different building codes in Norway. New area is built after a new building code a few years after it is implemented.</p>
+<p id="energy-need-behaviour-factor-csv">🧾 <a class="reference internal" href="#energy-need-behaviour-factor-csv"><span class="std std-ref">energy_need_behaviour_factor.csv</span></a> <br>
+Changes in energy need not related to the improvements in heating need from small measures and renovation.</p>
+<p id="energy-need-improvements-csv">🧾 <a class="reference internal" href="#energy-need-improvements-csv"><span class="std std-ref">energy_need_improvements.csv</span></a> <br>
+Reduction in energy need for lighting and electrical equipment from implementation of eco design, energy labeling and other measures.</p>
+<p id="energy-need-original-condition-csv">🧾 <a class="reference internal" href="#energy-need-original-condition-csv"><span class="std std-ref">energy_need_original_condition.csv</span></a> <br>
+Energy need per square meter for various energy purposes differentiated by building code and building category. The given energy need is only for a building’s original condition.</p>
+<p id="heating-system-efficiencies-csv">🧾 <a class="reference internal" href="#heating-system-efficiencies-csv"><span class="std std-ref">heating_system_efficiencies.csv</span></a> <br>
 Parameters of the various heating technologies. Includes load shares, efficiencies and the related energy product.</p>
+<p id="heating-system-forecast-csv">🧾 <a class="reference internal" href="#heating-system-forecast-csv"><span class="std std-ref">heating_system_forecast.csv</span></a> <br>
+Defines the rate of change in heating systems towards 2050. The change is made on a percentage basis compared to the start year. Described in more detail here <a class="reference internal" href="heating_systems/index.html#forecasting-of-heating-systems"><span class="std std-ref">Forecasting of heating systems</span></a>.</p>
+<p id="heating-system-initial-shares-csv">🧾 <a class="reference internal" href="#heating-system-initial-shares-csv"><span class="std std-ref">heating_system_initial_shares.csv</span></a> <br>
+Distribution of heating systems per building category and building code in the start year.</p>
+<p id="holiday-home-energy-consumption-csv">🧾 <a class="reference internal" href="#holiday-home-energy-consumption-csv"><span class="std std-ref">holiday_home_energy_consumption.csv</span></a>  <br>
+Historical energy use of fuel wood, electricity and fossil fuel in holiday homes.</p>
+<p id="holiday-home-stock-csv">🧾 <a class="reference internal" href="#holiday-home-stock-csv"><span class="std std-ref">holiday_home_stock.csv</span></a> <br>
+Stock of holiday homes per year from 2001. Statistics from Statistics Norway.</p>
+<p id="improvement-building-upgrade-csv">🧾 <a class="reference internal" href="#improvement-building-upgrade-csv"><span class="std std-ref">improvement_building_upgrade.csv</span></a> <br>
+Reduction in heating energy need from completed small measures, renovation and small measures + renovation. Percentage reduction compared to the original condition.</p>
+<p id="new-buildings-residential-csv">🧾 <a class="reference internal" href="#new-buildings-residential-csv"><span class="std std-ref">new_buildings_residential.csv</span></a> <br>
+Average size of new apartments and houses. Proportion of new homes that are apartments and houses per year.</p>
+<p id="population-forecast-csv">🧾 <a class="reference internal" href="#population-forecast-csv"><span class="std std-ref">population_forecast.csv</span></a> <br>
+Population forecast from Statistics Norway and average household size.</p>
+<p id="s-curve-csv">🧾 <a class="reference internal" href="#s-curve-csv"><span class="std std-ref">s_curve.csv</span></a> <br>
+Parameters to create S-curves. Parameters are given for small measures, renovation and demolition for each building category.</p>
 </section>
 <section id="input-constraints">
 <h2>Input constraints<a class="headerlink" href="#input-constraints" title="Link to this heading"></a></h2>
@@ -208,7 +208,7 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 - values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
 <p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
 - required
-- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+- values: heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default</p>
 <p><code class="docutils literal notranslate"><span class="pre">kwh_m2</span></code>
 - required
 - float using a decimal point (‘.’) as the separator
@@ -221,7 +221,7 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 - values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
 <p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
 - required
-- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+- values: heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default</p>
 <p><code class="docutils literal notranslate"><span class="pre">condition</span></code>
 - required
 - values: original_condition, small_measure, renovation, renovation_and_small_measure, demolition</p>
@@ -237,7 +237,7 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 - values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
 <p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
 - required
-- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+- values: heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default</p>
 <p><code class="docutils literal notranslate"><span class="pre">period_start_year</span></code>
 - required
 - integer value
@@ -258,7 +258,7 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 - values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code>, ‘default’</p>
 <p><code class="docutils literal notranslate"><span class="pre">purpose</span></code>
 - required
-- values: ‘heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default’</p>
+- values: heating_rv, heating_dhw, fans_and_pumps, lighting, electrical_equipment, cooling, default</p>
 <p><code class="docutils literal notranslate"><span class="pre">start_year</span></code>
 - integer
 - <strong>0</strong> ≤ value ≤ <strong>end_year</strong>
@@ -325,7 +325,7 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 <td><p>lighting</p></td>
 <td><p>improvement_at_end_year</p></td>
 <td><p>2020</p></td>
-<td><p>0.5555555555555556</p></td>
+<td><p>0.55</p></td>
 <td><p>2030</p></td>
 </tr>
 <tr class="row-odd"><td><p>default</p></td>
@@ -360,7 +360,7 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 - integer or empty</p>
 </div></div>
 </div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">heating_system_forecast</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">heating_system_initial_shares</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">heating_systems_efficiencies</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">heating_system_forecast</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">heating_system_initial_shares</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">heating_system_efficiencies</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
 - required
 - values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs, default, residential, non_residential</p>
 <p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
@@ -369,15 +369,16 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 <p><code class="docutils literal notranslate"><span class="pre">heating_systems</span></code>
 - required
 - string
-- value: ‘DH’, ‘DH - Bio’, ‘HP Central heating - Bio’, ‘HP Central heating - Electric boiler’, ‘HP Central heating - Gas’, ‘Electric boiler’, ‘Electric boiler - Solar’, ‘Gas’, ‘Electricity’, ‘Electricity - Bio’, ‘HP - Bio - Electricity’, ‘HP - Electricity’</p>
+- value: DH, DH - Bio, HP Central heating - Bio, HP Central heating - Electric boiler, HP Central heating - Gas, Electric boiler, Electric boiler - Solar, Gas, Electricity, Electricity - Bio, HP - Bio - Electricity, HP - Electricity</p>
 <p><code class="docutils literal notranslate"><span class="pre">new_heating_systems</span></code>
 - required
 - string
-- value: ‘DH’, ‘DH - Bio’, ‘HP Central heating - Bio’, ‘HP Central heating - Electric boiler’, ‘HP Central heating - Gas’, ‘Electric boiler’, ‘Electric boiler - Solar’, ‘Gas’, ‘Electricity’, ‘Electricity - Bio’, ‘HP - Bio - Electricity’, ‘HP - Electricity’</p>
+- value: DH, DH - Bio, HP Central heating - Bio, HP Central heating - Electric boiler, HP Central heating - Gas, Electric boiler, Electric boiler - Solar, Gas, Electricity, Electricity - Bio, HP - Bio - Electricity, HP - Electricity</p>
 <p>Year columns: <code class="docutils literal notranslate"><span class="pre">2024-2050</span></code>
 - required
 - float using a decimal point (‘.’) as the separator
 - <strong>0</strong> ≤ value ≤ <strong>1</strong></p>
+<p>An explanation of the abbreviations can be found in <a class="reference internal" href="heating_systems/index.html#tables-and-glossary"><span class="std std-ref">Tables and glossary</span></a>.</p>
 </div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_category</span></code>
 - required
 - values: house, apartment_block, kindergarten, school, university, office, retail, hotel, hospital, nursing_home, culture, sports, storage_repairs</p>
@@ -390,78 +391,63 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 <p><code class="docutils literal notranslate"><span class="pre">heating_systems</span></code>
 - required
 - string
-- value: ‘DH’, ‘DH - Bio’, ‘HP Central heating - Bio’, ‘HP Central heating - Electric boiler’, ‘HP Central heating - Gas’, ‘Electric boiler’, ‘Electric boiler - Solar’, ‘Gas’, ‘Electricity’, ‘Electricity - Bio’, ‘HP - Bio - Electricity’, ‘HP - Electricity’</p>
+- value: DH, DH - Bio, HP Central heating - Bio, HP Central heating - Electric boiler, HP Central heating - Gas, Electric boiler, Electric boiler - Solar, Gas, Electricity, Electricity - Bio, HP - Bio - Electricity, HP - Electricity</p>
 <p><code class="docutils literal notranslate"><span class="pre">heating_system_share</span></code>
 - required
-- float
 - float using a decimal point (‘.’) as the separator
 - <strong>0.0</strong> ≤ value</p>
+<p>An explanation of the terms can be found in <a class="reference internal" href="heating_systems/index.html#tables-and-glossary"><span class="std std-ref">Tables and glossary</span></a>.</p>
 </div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">heating_systems</span></code>
 - required
 - string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">base_load_energy_product</span></code>
 - required
 - string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">peak_load_energy_product</span></code>
 - required
 - string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">tertiary_load_energy_product</span></code>
 - required
 - string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span> <span class="pre">energivare</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">tertiary_load_coverage</span></code>
 - required
-- string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span> <span class="pre">energivare</span></code>
-- required
-- string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span> <span class="pre">energivare</span></code>
-- required
-- string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span> <span class="pre">andel</span></code>
-- required
-- float
 - float using a decimal point (‘.’) as the separator
 - <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span> <span class="pre">andel</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;base_load_coverage</span></code>
 - required
-- float
+- float using a decimal point (‘.’) as the separator
 - <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span> <span class="pre">andel</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">peak_load_coverage</span></code>
 - required
-- float
+- float using a decimal point (‘.’) as the separator
 - <strong>0.0</strong> ≤ value ≤ <strong>1.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Grunnlast</span> <span class="pre">virkningsgrad</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">base_load_efficiency</span></code>
 - required
-- float
+- float using a decimal point (‘.’) as the separator
 - value &gt; <strong>0.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Spisslast</span> <span class="pre">virkningsgrad</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">peak_load_efficiency</span></code>
 - required
-- float
+- float using a decimal point (‘.’) as the separator
 - value &gt; <strong>0.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Ekstralast</span> <span class="pre">virkningsgrad</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">tertiary_load_efficiency</span></code>
 - required
-- float
+- float using a decimal point (‘.’) as the separator
 - value &gt; <strong>0.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Tappevann</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">domestic_hot_water_energy_product</span></code>
 - required
 - string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Tappevann</span> <span class="pre">energivare</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">domestic_hot_water_efficiency</span></code>
 - required
-- string</p>
-<p><code class="docutils literal notranslate"><span class="pre">Tappevann</span> <span class="pre">virkningsgrad</span></code>
-- required
-- float
+- float using a decimal point (‘.’) as the separator
 - value &gt; <strong>0.0</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Spesifikt</span> <span class="pre">elforbruk</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">cooling_efficiency</span></code>
 - required
-- float</p>
-<p><code class="docutils literal notranslate"><span class="pre">Kjoling</span> <span class="pre">virkningsgrad</span></code>
-- required
-- float
+- float using a decimal point (‘.’) as the separator
 - value &gt; <strong>0.0</strong></p>
+<p>An explanation of the terms can be found in <a class="reference internal" href="heating_systems/index.html#tables-and-glossary"><span class="std std-ref">Tables and glossary</span></a>.</p>
 </div></div>
 </div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">building_code</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">population_forecast</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">s_curve</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">building_code_parameters</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">population_forecast</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">s_curve</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">building_code</span></code>
 - required
 - values: Any string containing <code class="docutils literal notranslate"><span class="pre">TEK</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">building_year</span></code>
@@ -527,15 +513,15 @@ Parameters of the various heating technologies. Includes load shares, efficienci
 </div></div>
 </div></div>
 </section>
-<section id="use-of-default">
-<h2>Use of “default”<a class="headerlink" href="#use-of-default" title="Link to this heading"></a></h2>
+<section id="use-of-default-and-grouping">
+<h2>Use of “default” and grouping<a class="headerlink" href="#use-of-default-and-grouping" title="Link to this heading"></a></h2>
 <p>When making changes to an input file, for example <strong>energy_need_improvements</strong>, you can use aggregated
 commands instead of specifying each individual <em>building category</em>, <em>building code</em> and <em>purpose</em>. The common aggregated
 command is <strong>default</strong>. When <strong>default</strong> is input the model chooses all valid options. For example <strong>default</strong>
 building code means all building codes.</p>
-<p><em>Building category</em> has two additional categories: <strong>residential</strong> and
-<strong>non-residental</strong>. <strong>residential</strong> consists of houses and apartment blocks and <strong>non-residential</strong> are the other
-building categories. In the input constraint overview these aggregated categories are specified when available.</p>
+<p><em>Building category</em> has two additional groups: <strong>residential</strong> and
+<strong>non-residental</strong> where <strong>residential</strong> consists of houses and apartment blocks, and <strong>non-residential</strong> are the other
+building groups. In the input constraint overview these aggregated groups are specified when available.</p>
 <p>Last Updated on 2025-10-10.</p>
 <blockquote>
 <div><p>Version: 1.2.10.</p>
@@ -547,7 +533,7 @@ building categories. In the input constraint overview these aggregated categorie
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user_guide/geographical_distribution.html" class="btn btn-neutral float-left" title="Geographical_distribution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_guide/geographical_distribution.html" class="btn btn-neutral float-left" title="Geographical distribution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="results.html" class="btn btn-neutral float-right" title="Result files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

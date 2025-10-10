@@ -57,7 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heating_systems/index.html">Heating systems</a></li>
@@ -98,14 +98,124 @@
              
   <section id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
+<p>Thank you for your interest in contributing to <strong>Energibruksmodell</strong>!
+Your help is greatly appreciated. This guide outlines how you can get
+involved, report issues, suggest improvements, and submit code.</p>
 <section id="how-to-contribute">
 <h2>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading"></a></h2>
-<p>We welcome contributions! To get started:</p>
-<p>…</p>
+<p>There are many ways to contribute:</p>
+<section id="report-bugs">
+<h3>1. Report Bugs<a class="headerlink" href="#report-bugs" title="Link to this heading"></a></h3>
+<p>If you find a bug, please open an issue with:</p>
+<ul class="simple">
+<li><p>A clear and descriptive title</p></li>
+<li><p>Steps to reproduce the issue</p></li>
+<li><p>Expected vs. actual behavior</p></li>
+<li><p>Environment details (OS, Python version, etc.)</p></li>
+</ul>
 </section>
-<section id="code-conventions">
-<h2>Code Conventions<a class="headerlink" href="#code-conventions" title="Link to this heading"></a></h2>
-<p>Please follow the PEP8 style guide.</p>
+<section id="suggest-enhancements">
+<h3>2. Suggest Enhancements<a class="headerlink" href="#suggest-enhancements" title="Link to this heading"></a></h3>
+<p>Have an idea for a new feature or improvement? Open an issue and
+describe:</p>
+<ul class="simple">
+<li><p>The motivation behind the suggestion</p></li>
+<li><p>How it would benefit users</p></li>
+<li><p>Any potential implementation ideas</p></li>
+</ul>
+</section>
+<section id="submit-code">
+<h3>3. Submit Code<a class="headerlink" href="#submit-code" title="Link to this heading"></a></h3>
+<p>We welcome pull requests! To contribute code:</p>
+<ol class="arabic simple">
+<li><p>Fork the repository</p></li>
+<li><p>Create a new branch (<code class="docutils literal notranslate"><span class="pre">feature/my-feature</span></code> or <code class="docutils literal notranslate"><span class="pre">bugfix/my-bug</span></code>)</p></li>
+<li><p>Make your changes with clear, concise commits</p></li>
+<li><p>Write or update tests if applicable</p></li>
+<li><p>Ensure the code passes linting and tests</p></li>
+<li><p>Submit a pull request with a detailed description</p></li>
+</ol>
+</section>
+<section id="improve-documentation">
+<h3>4. Improve Documentation<a class="headerlink" href="#improve-documentation" title="Link to this heading"></a></h3>
+<p>Good documentation is key! You can help by:</p>
+<ul class="simple">
+<li><p>Fixing typos or grammar</p></li>
+<li><p>Adding examples or clarifications</p></li>
+<li><p>Translating content (if applicable)</p></li>
+</ul>
+<p>The documentation is written in reStructuredText and is located under the subdirectory <code class="docutils literal notranslate"><span class="pre">docs/source</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="development-setup">
+<h2>Development Setup<a class="headerlink" href="#development-setup" title="Link to this heading"></a></h2>
+<p>To set up the project locally:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nve/Energibruksmodell.git
+<span class="nb">cd</span><span class="w"> </span>Energibruksmodell
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># or venv\Scripts\activate.ps1 on Windows</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="code-style-guidelines">
+<h2>Code Style &amp; Guidelines<a class="headerlink" href="#code-style-guidelines" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Follow PEP 8 for Python code</p></li>
+<li><p>Use meaningful commit messages</p></li>
+<li><p>Keep pull requests focused and minimal</p></li>
+<li><p>Include docstrings and comments where helpful</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="testing-with-pytest">
+<h2>Testing with Pytest<a class="headerlink" href="#testing-with-pytest" title="Link to this heading"></a></h2>
+<p>We use pytest for testing. All new features and bug fixes should include
+relevant tests.</p>
+<section id="running-tests">
+<h3>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h3>
+<p>To run the test suite:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/
+</pre></div>
+</div>
+</section>
+<section id="writing-tests">
+<h3>Writing Tests<a class="headerlink" href="#writing-tests" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Place your tests in the <code class="docutils literal notranslate"><span class="pre">tests/ebm</span></code> directory.</p></li>
+<li><p>Name test files starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code>.</p></li>
+<li><p>Use descriptive names for test functions.</p></li>
+<li><p>Prefer fixtures for setup and teardown logic.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.scurve</span><span class="w"> </span><span class="kn">import</span> <span class="n">SCurve</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_energy_calculation</span><span class="p">():</span>
+    <span class="n">s_curve</span> <span class="o">=</span> <span class="n">SCurve</span><span class="p">(</span><span class="n">earliest_age</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                     <span class="n">average_age</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                     <span class="n">rush_years</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                     <span class="n">last_age</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                     <span class="n">rush_share</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                     <span class="n">never_share</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">s_curve</span><span class="o">.</span><span class="n">_calc_pre_rush_rate</span><span class="p">()</span> <span class="o">==</span> <span class="mf">0.01</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>By contributing, you agree that your contributions will be licensed
+under the MIT license.</p>
+</section>
+<hr class="docutils" />
+<section id="thank-you">
+<h2>Thank You<a class="headerlink" href="#thank-you" title="Link to this heading"></a></h2>
+<p>Your contributions make this project better. Whether it’s a typo fix or
+a major feature, <strong>thank you</strong> for helping improve Energibruksmodell!</p>
+<hr class="docutils" />
 <p>Last Updated on 2025-10-10.</p>
 <p>Version: 1.2.10.</p>
 </section>

@@ -54,7 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../heating_systems/index.html">Heating systems</a></li>
@@ -99,7 +99,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">area</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.holiday_home_energy</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_energy_use</span><span class="p">,</span> <span class="n">transform_holiday_homes_to_horizontal</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.heating_systems_projection</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingSystemsProjection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.heating_system_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingSystemsForecast</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.construction</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConstructionCalculator</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
@@ -171,16 +171,16 @@
 
 
 
-<div class="viewcode-block" id="extract_heating_systems_projection">
-<a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.extract_heating_systems_projection">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_heating_systems_projection</span><span class="p">(</span><span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">projection_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
-    <span class="n">hsp</span> <span class="o">=</span> <span class="n">HeatingSystemsProjection</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">projection_period</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">calculate_projection</span><span class="p">()</span>
+<div class="viewcode-block" id="extract_heating_systems_forecast">
+<a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.extract_heating_systems_forecast">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_heating_systems_forecast</span><span class="p">(</span><span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">forecast_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
+    <span class="n">hsp</span> <span class="o">=</span> <span class="n">HeatingSystemsForecast</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">forecast_period</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">calculate_forecast</span><span class="p">()</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">pad_projection</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">))</span>
 
-    <span class="n">heating_system_projection</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">heating_system_projection</span></div>
+    <span class="n">heating_system_forecast</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">heating_system_forecast</span></div>
 
 
 
@@ -218,7 +218,7 @@
     <span class="n">energy_need_kwh_m2</span> <span class="o">=</span> <span class="n">extract_energy_need</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">energy_need_kwh_m2</span><span class="p">)</span>
 
-    <span class="n">heating_systems_projection</span> <span class="o">=</span> <span class="n">extract_heating_systems_projection</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
+    <span class="n">heating_systems_projection</span> <span class="o">=</span> <span class="n">extract_heating_systems_forecast</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">heating_systems_projection</span><span class="p">)</span></div>
 
 

@@ -17,11 +17,12 @@
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Methods" href="methods.html" />
-    <link rel="prev" title="Data assumptions NVE" href="../area/assumptions.html" /> 
+    <link rel="next" title="Heating systems" href="../heating_systems/index.html" />
+    <link rel="prev" title="Area" href="../area/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,11 +58,24 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Energy need</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="methods.html">Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assumptions.html">Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-functionality">Model functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#heating-room-ventilation-heating-rv">Heating Room Ventilation (heating_rv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heating-domestic-hot-water-heating-dhw">Heating Domestic Hot Water (heating_dhw)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fans-and-pumps">Fans and pumps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lighting">Lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cooling">Cooling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summarised">Summarised</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-assumptions-nve">Data assumptions NVE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-original-energy-need-of-the-area">The original energy need of the area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#improving-the-energy-need">Improving the energy need</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -102,40 +116,214 @@
              
   <section id="energy-need">
 <h1>Energy need<a class="headerlink" href="#energy-need" title="Link to this heading"></a></h1>
-<p>Energy need in the model is determined by many factors; Building category, age and how much the area has been renovated.
-The base line energy need per square metre is defined in the building code. Each <a class="reference internal" href="../building_parameters/index.html#building-category-and-building-code"><span class="std std-ref">building category</span></a> has a specific energy need according
-to its building code, building condition and <a class="reference internal" href="methods.html#energy-purpose"><span class="std std-ref">energy purpose</span></a>.
-The energy condition of the area in the model changes between the model years due to renovation and small measures.
-An user defined S- curve determines how often and how much the area undergoes renovation and small measures.
-The area in the model can have on of the following conditions:</p>
+<p><a class="reference internal" href="../glossary.html#various-terms-glossary"><span class="std std-ref">Energy need</span></a> in the model is determined by many factors, building category, the area’s age and if the area has been upgraded.
+The baseline energy need per square meter is defined in the building code. Each <span class="xref std std-ref">building category</span> has a specific energy need according
+to its building code, building condition and <span class="xref std std-ref">energy purpose</span>.
+The energy condition of the area in the model changes between the model years due to implementation of renovation, small measures and other
+energy efficiency measures (e.g. LED lighting). User defined S-curves determines how often and how much of the
+area undergoes renovation and small measures.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definitions" id="id1">Definitions</a></p></li>
+<li><p><a class="reference internal" href="#model-functionality" id="id2">Model functionality</a></p>
+<ul>
+<li><p><a class="reference internal" href="#heating-room-ventilation-heating-rv" id="id3">Heating Room Ventilation (heating_rv)</a></p></li>
+<li><p><a class="reference internal" href="#heating-domestic-hot-water-heating-dhw" id="id4">Heating Domestic Hot Water (heating_dhw)</a></p></li>
+<li><p><a class="reference internal" href="#fans-and-pumps" id="id5">Fans and pumps</a></p></li>
+<li><p><a class="reference internal" href="#lighting" id="id6">Lighting</a></p></li>
+<li><p><a class="reference internal" href="#cooling" id="id7">Cooling</a></p></li>
+<li><p><a class="reference internal" href="#summarised" id="id8">Summarised</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#data-assumptions-nve" id="id9">Data assumptions NVE</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-original-energy-need-of-the-area" id="id10">The original energy need of the area</a></p></li>
+<li><p><a class="reference internal" href="#improving-the-energy-need" id="id11">Improving the energy need</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Link to this heading"></a></h2>
+<p>The area in the model can have one of the following conditions:</p>
 <ul class="simple">
 <li><p>Original condition</p></li>
 <li><p>Small measure</p></li>
 <li><p>Renovation</p></li>
 <li><p>Renovation and small measure</p></li>
 </ul>
-<p>In addition the energy need can be distributed on different energy purposes.
-By default the energy need in the model is distributed on these energy purposes:</p>
+<p>The energy need is distributed for different energy purposes.
+The model uses the following energy purposes:</p>
+<p><strong>Heating Room Ventilation (heating_rv)</strong> <br>
+Energy used for space heating in rooms, typically through radiators, underfloor heating, or air systems.
+This is the energy required to maintain indoor temperatures at comfortable levels during colder periods.</p>
+<p><strong>Heating Domestic Hot Water (heating_dhw)</strong> <br>
+Energy used to heat water for domestic purposes such as bathing, cooking, and cleaning.
+This is separate from space heating and is often supplied by boilers, heat pumps, or electric water heaters.</p>
+<p><strong>Fans and pumps</strong> <br>
+Electricity consumed by mechanical systems that circulate air or fluids within a building. This includes HVAC fans,
+circulation pumps for heating and cooling systems, and booster pumps for water supply.</p>
+<p><strong>Lighting</strong> <br>
+Electricity used for indoor and outdoor lighting, including general illumination, task lighting, and emergency lighting systems.
+This category often includes both traditional and energy-efficient lighting technologies.</p>
+<p><strong>Electrical equipment</strong> <br>
+Energy consumed by plug-in devices and fixed electrical systems not covered by other categories. This
+includes computers, kitchen appliances, office equipment, elevators, and other miscellaneous electrical loads.</p>
+<p><strong>Cooling</strong> <br>
+Energy used for air conditioning and refrigeration systems to maintain comfortable indoor temperatures and preserve perishable goods.
+This includes chillers, split systems, and centralized cooling systems.</p>
+</section>
+<section id="model-functionality">
+<h2>Model functionality<a class="headerlink" href="#model-functionality" title="Link to this heading"></a></h2>
+<p>The model calculates the energy need for every combination of building category,
+building code and condition for each year. The calculations are done separately for every energy purpose.</p>
+<section id="heating-room-ventilation-heating-rv">
+<h3>Heating Room Ventilation (heating_rv)<a class="headerlink" href="#heating-room-ventilation-heating-rv" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{energy need heating_rv} = &amp; \text{ energy need heating_rv original condition}_\text{buidling code} \\
+                               &amp;-\text{area upgrade}_\text{condition} \\
+                               &amp;+\text{behaviour factor}\end{split}\]</div>
+<p>Where</p>
 <ul class="simple">
-<li><p>heating the building</p></li>
-<li><p>heating domestic hot water</p></li>
-<li><p>lighting</p></li>
-<li><p>appliances</p></li>
-<li><p>fans and pumps</p></li>
-<li><p>cooling</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{energy need heating_rv original condition}_\text{buidling code}\)</span> refers to the energy needfor heating rooms and ventilation as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{area upgrade}_\text{condition}\)</span> refers to the reduction in energy need for heating rooms and ventilation as a result of the area being upgraded (the condition of the area).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{behaviour factor}\)</span> factor refers to the inhabitant’s behavior. E.g. some people do not heat their whole house but keep some rooms cold and closed of during the winter. This would give a behavior factor smaller than 1, which coordinates with the portion of the house that is heated.</p></li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
+</section>
+<section id="heating-domestic-hot-water-heating-dhw">
+<h3>Heating Domestic Hot Water (heating_dhw)<a class="headerlink" href="#heating-domestic-hot-water-heating-dhw" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{energy need heating_dhw} = &amp; \text{ energy need heating_dhw original condition}_\text{buidling code} \\
+                                 &amp;-\text{upgrade heating_dhw}\end{split}\]</div>
+<p>Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{energy need heating_dhw original condition}_\text{buidling code}\)</span> refers to the energy need for heating domestic hot water as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{upgrade domestic hot water}\)</span> refers to the reduction in energy need for heating domestic hot water as a result of energy measures. Currently, no reduction is defined for heating_dhw in EBM.</p></li>
+</ul>
+</section>
+<section id="fans-and-pumps">
+<h3>Fans and pumps<a class="headerlink" href="#fans-and-pumps" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{energy need fans_and_pumps} = &amp; \text{ energy need fans_and_pumps original condition}_\text{buidling code} \\
+                                    &amp;-\text{upgrade fans_and_pumps}\end{split}\]</div>
+<p>Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{energy need fans_and_pumps original condition}_\text{buidling code}\)</span> refers to the energy need for fans and pumps as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{upgrade fans_and_pumps}\)</span> refers to the reduction in energy need for fans and pumps as a result of energy measures. Currently, no reduction is defined for fans and pumps in EBM.</p></li>
+</ul>
+</section>
+<section id="lighting">
+<h3>Lighting<a class="headerlink" href="#lighting" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{energy need lightning} = &amp; \text{ energy need lighting original condition}_\text{buidling code} \\
+                               &amp; * \text{1-yearly reduction lighting}^\text{year-start year} \\
+                               &amp; * \text{improvment lighting end year}_\text{year}\end{split}\]</div>
+<p>Where</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\text{energy need lighting original condition}_\text{buidling code}\)</span> code refers to the energy need for lighting as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{yearly reduction lighting}\)</span> refers to a yearly reduction in energy need for lighting as a result of energy measures e.g. transition to LED bulbs.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(^\text{year}\)</span> refers to the year of the calculated energy need.</p></li>
+<li><p><span class="math notranslate nohighlight">\(^\text{start year}\)</span> refers to the start of the energy measure e.g. transition to LED bulbs.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\text{improvment lighting end year}_{\text_year}\)</span> refers to an assumed reduction in energy need by a specific year and how much of this is released year by year.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(_\text{year}\)</span> refers to the year of the calculated enery need.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="cooling">
+<h3>Cooling<a class="headerlink" href="#cooling" title="Link to this heading"></a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{energy need cooling} = &amp; \text{ energy need cooling original condition}_\text{buidling code} \\
+                             &amp;-\text{upgrade cooling}\end{split}\]</div>
+<p>Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{energy need cooling original condition}_\text{buidling code}\)</span> refers to the energy need for cooling as determined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{upgrade fans_and_pumps}\)</span> refers to the reduction in energy need for cooling as a result of energy measures. Currently, no reduction is defined for cooling in EBM.</p></li>
+</ul>
+</section>
+<section id="summarised">
+<h3>Summarised<a class="headerlink" href="#summarised" title="Link to this heading"></a></h3>
+<p>This can be summarised in the following formula:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\text{energy need kWh/m}^{\text{2}}_{\text{year}} &amp;= \text{energy need original condition}_{\text{building code}} \\
+&amp;\times \text{improvement building upgrade}_{\text{building condition}} \\
+&amp;\times \left(1.0 - \text{yearly reduction}\right)^{\text{year} - \text{start year}} \\
+&amp;\times \text{improvement end year}_{\text{year}} \\
+&amp;\times \text{behaviour factor} \\
+\end{align}\end{split}\]</div>
+<p>Where</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{Energy need original condition}\)</span>
+- refers to the baseline energy use for the building type and purpose as defined by the building code.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{improvement building upgrade}\)</span>
+- accounts for renovations or upgrades that improve energy performance. By default this will be small measure, renovation or both.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{yearly reduction}\)</span>
+- refers to the annual percentage reduction in energy use due to technological progress or behavioral changes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{improvement end year factor}\)</span>
+- is a modifier that adjusts the reduction effect with improvements expected to be finalized after a certain year. EU Commission’s RoHS directive, banning fluorescent lamps, is an example of policy that can be modelled using this factor.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{behaviour factor}\)</span>
+- captures changes in user behavior that affect energy consumption, like floor area utilization.</p></li>
+</ul>
+</div></blockquote>
+<p>The factors described above affects the energy need in different ways and their usage depends on the intent of the user and what the user wants to achieve.</p>
+</section>
+</section>
+<section id="data-assumptions-nve">
+<h2>Data assumptions NVE<a class="headerlink" href="#data-assumptions-nve" title="Link to this heading"></a></h2>
+<section id="the-original-energy-need-of-the-area">
+<h3>The original energy need of the area<a class="headerlink" href="#the-original-energy-need-of-the-area" title="Link to this heading"></a></h3>
+<p>🧾 <a class="reference internal" href="../input_description.html#energy-need-original-condition-csv"><span class="std std-ref">energy_need_original_condition.csv</span></a></p>
+<p>In the NVE dataset, the original condition of the area has an energy need given by the building code.
+This energy need is in kWh per square meter. To calculate the original condition energy need per energy purpose,
+representative buildings per building category and building code have been simulated in
+Simien (a Norway-based software tool used by professionals for detailed energy calculations). This work was originally done
+by Multiconsult in 2014 to simulate the energy purpose for buildings built according to different building codes
+to calculate a new building performance energy scale. There have been changes in the energy purpose since then,
+especially in lighting, due to new eco design regulations. For more information on energy purpose in buildings see this
+summary report published in 2016 (in Norwegian) <a class="reference external" href="https://publikasjoner.nve.no/rapport/2016/rapport2016_24.pdf">Analyse av energibruk i yrkesbygg</a>.</p>
+</section>
+<section id="improving-the-energy-need">
+<h3>Improving the energy need<a class="headerlink" href="#improving-the-energy-need" title="Link to this heading"></a></h3>
+<p>🧾 <a class="reference internal" href="../input_description.html#s-curve-csv"><span class="std std-ref">s_curve.csv</span></a></p>
+<p>Determines the rates for demolition and the implementing small measures and renovation. The rates are
+based on the area’s age, and a development comparable to an S-curve is expected. The rates can be
+defined individually for each building category. The proportion of a building type that is demolished, renovated,
+and undergoes small measures each year will therefore depend on the age distribution of the building stock for that building type.</p>
+<p>It is not uncommon for buildings that have reached a certain age to have undergone both small measures
+and renovation. This is accounted for in the model. However, this version of
+the model does not allow small measures and renovation to be done several times on the same building. This is something
+that we plan to improve in coming versions of the model.</p>
+<p>🧾 <a class="reference internal" href="../input_description.html#improvement-building-upgrade-csv"><span class="std std-ref">improvement_building_upgrade.csv</span></a></p>
+<p>In EBM we assume that buildings undergo small measures and renovation over time. This
+reduces the energy need for heating rooms and ventilation by a certain percentage, as defined in this input file.</p>
+<p>🧾 <a class="reference internal" href="../input_description.html#energy-need-improvements-csv"><span class="std std-ref">energy_need_improvements.csv</span></a></p>
+<p>Specifies energy efficiency measures other than small measures and renovation. In this file,
+you can define any energy efficiency measure, by specifying the energy purpose, start year
+and end year of the measure and the energy improvement by the end year. By default, the model uses a 60 % improvement by
+the year 2030 for lighting. Lighting is expected to decrease by 0.5 % yearly after 2030. Electrical equipment has a yearly reduction of 1 %.</p>
 <p>Last Updated on 2025-10-10</p>
 <p>Version: 1.2.10.</p>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../area/assumptions.html" class="btn btn-neutral float-left" title="Data assumptions NVE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="methods.html" class="btn btn-neutral float-right" title="Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../area/index.html" class="btn btn-neutral float-left" title="Area" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../heating_systems/index.html" class="btn btn-neutral float-right" title="Heating systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

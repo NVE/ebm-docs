@@ -53,12 +53,12 @@
 <li class="toctree-l2"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Calibrating the model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-calibrate">How to calibrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assumptions">Assumptions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#assumptions">Assumptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Model configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical_distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical distribution</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
@@ -69,7 +69,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -119,7 +119,7 @@ in a given year from temperature corrected statistics or a constructed year base
 <ul class="simple">
 <li><p>Kalibreringsark.xlsx</p></li>
 <li><p>energy_need_behaviour_factor.csv</p></li>
-<li><p>heating_systems_efficiencies.csv</p></li>
+<li><p>heating_system_efficiencies.csv</p></li>
 </ul>
 <p>“Kalibreringsark.xlsx” can modify the heating system share where the given factor changes a percentage of one heating system for another.
 This excel file also makes it quick to see what the result of the calibration changes will be as the model directly modifies the cells
@@ -130,12 +130,11 @@ year can be specified, in addition to the mathematical function.</p>
 <p>The table below shows how the csv file is formatted. When “default” is input all valid
 possibilites are affected.</p>
 <p>It is also possible to modify the
-factors given in “heating_systems_efficiencies.csv” to fine tune the coverage of various heating technologies and their
+factors given in “heating_system_efficiencies.csv” to fine tune the coverage of various heating technologies and their
 efficiencies.</p>
 </section>
-</section>
 <section id="assumptions">
-<h1>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading"></a></h1>
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading"></a></h2>
 <p>The calibration is based
 on the <a class="reference external" href="https://www.ssb.no/statbank/table/11561/">Norwegian energy balance</a> published by Statistics Norway. The energy
 balance contains yearly consumption statistics per energy product on households and private and public services,
@@ -143,6 +142,7 @@ including military. Heat production from heat pumps is calibrated on the basis o
 the Norwegian Heat Pump Assosciation.</p>
 <p>Last Updated on 2025-10-10</p>
 <p>Version: 1.2.10.</p>
+</section>
 </section>
 
 

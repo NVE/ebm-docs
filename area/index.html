@@ -17,11 +17,12 @@
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Methods" href="methods.html" />
-    <link rel="prev" title="Building category and building code" href="../building_parameters/index.html" /> 
+    <link rel="next" title="Energy need" href="../energy_need/index.html" />
+    <link rel="prev" title="Building categories and building codes" href="../building_parameters/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,10 +58,21 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Area</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="methods.html">Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assumptions.html">Data assumptions NVE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-functionality">Model functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#residential-area">Residential area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-residential-area">Non-residential area</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-assumptions-nve">Data assumptions NVE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#area-in-the-starting-year-of-the-model">Area in the starting year of the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demolition-of-area">Demolition of area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#population-forecast">Population forecast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dwellings">Dwellings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#area-per-person-in-non-residential-buidlings">Area per person in non-residential buidlings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
@@ -102,21 +114,211 @@
              
   <section id="area">
 <h1>Area<a class="headerlink" href="#area" title="Link to this heading"></a></h1>
-<p>Based on the established rates for small measures, renovation, and demolition, as well as an assumed rate for new construction,
-the area within each building category is projected, distributed by the condition of the area, i.e., whether the area is in original
-condition, has undergone small measures or renovation or both.</p>
-<div class="toctree-wrapper compound">
-</div>
+<p>Based on the assumed rates for small measures, renovation, and demolition, as well as an assumed rate for new construction, the area within each building category
+is forecasted. The model forecast area within each building code and determines the condition of the area,
+i.e., whether the area is in original condition, has undergone small measures or renovation or both.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#model-functionality" id="id2">Model functionality</a></p>
+<ul>
+<li><p><a class="reference internal" href="#residential-area" id="id3">Residential area</a></p></li>
+<li><p><a class="reference internal" href="#non-residential-area" id="id4">Non-residential area</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#data-assumptions-nve" id="id5">Data assumptions NVE</a></p>
+<ul>
+<li><p><a class="reference internal" href="#area-in-the-starting-year-of-the-model" id="id6">Area in the starting year of the model</a></p></li>
+<li><p><a class="reference internal" href="#demolition-of-area" id="id7">Demolition of area</a></p></li>
+<li><p><a class="reference internal" href="#population-forecast" id="id8">Population forecast</a></p></li>
+<li><p><a class="reference internal" href="#dwellings" id="id9">Dwellings</a></p></li>
+<li><p><a class="reference internal" href="#area-per-person-in-non-residential-buidlings" id="id10">Area per person in non-residential buidlings</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="model-functionality">
+<h2>Model functionality<a class="headerlink" href="#model-functionality" title="Link to this heading"></a></h2>
+<p>The total area in the model changes over time because some of the area is demolished and new area is constructed. In the model, newly built area is added in two ways:</p>
+<ul class="simple">
+<li><p>Newly built area replaces demolished area.</p></li>
+<li><p>New area is built due to population growth.</p></li>
+</ul>
+<p>When new area replaces demolished area the total amount of area does not change.
+However, the new area is constructed according to the newest building code, which has an impact on the energy need.
+Demolition is determined by a user defined S-curve, which decides how much area is demolished each year.
+The demolition rates are set in relation to the area’s age, and a development comparable to an S-curve is expected. The
+rates can be defined individually for each building category.</p>
+<p>When new area is added due to population growth, the total amount of area increases. The model has two
+different methods for forecasting newly built area due to population growth. One method for residential area
+and another for non-residential area.</p>
+<section id="residential-area">
+<h3>Residential area<a class="headerlink" href="#residential-area" title="Link to this heading"></a></h3>
+<p>New construction in residential area is based on the population forecast and other key assumptions.</p>
+<p>First, we calculate the required increase in dwellings. This is calculated from 🧾 <a class="reference internal" href="../input_description.html#population-forecast-csv"><span class="std std-ref">population_forecast.csv</span></a>
+which contains both the population forecast and average household size.</p>
+<div class="math notranslate nohighlight">
+\[\text{Increase in num. dwellings} (\text{year } x) = \frac{\text{population} (\text{year } x)}{\text{household size} (\text{year } x)} - \frac{\text{population} (\text{year } x-1)}{\text{household size} (\text{year } x-1)}\]</div>
+<p>The new dwellings can be either apartments or houses. The ratio between them, and the area per dwelling,
+is given in 🧾 <a class="reference internal" href="../input_description.html#new-buildings-residential-csv"><span class="std std-ref">new_buildings_residential.csv</span></a>. The increase in dwellings is divided into houses and apartments:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Increase in num. houses} (\text{year } x) = &amp;\text{ Increase in num. dwellings} (\text{year } x) \\
+                                                  &amp;*\text{New house share} (\text{year } x)\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Increase in num. apartments} (\text{year } x) = &amp;\text{ Increase in num. dwellings} (\text{year } x) \\
+                                                      &amp;*\text{New apartment share} (\text{year } x)\end{split}\]</div>
+<p>The new construction area for houses is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{New construction house} (\text{year } x) = &amp;\text{ Increase in num. houses} (\text{year } x) \\
+                                                  &amp;*\text{Floor area new house} \\
+                                                  &amp;+\text{demolished area houses} (\text{year } x-1)\end{split}\]</div>
+<p>The construction area for new apartments is calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{New construction house} (\text{year } x) = &amp;\text{ Increase in num. apartments} (\text{year } x) \\
+                                                  &amp;*\text{Floor area new apartments} \\
+                                                  &amp;+\text{demolished area apartments} (\text{year } x-1)\end{split}\]</div>
+<p>Any residential floor area listed in 🧾 <a class="reference internal" href="../input_description.html#area-new-residential-buildings-csv"><span class="std std-ref">area_new_residential_buildings.csv</span></a> is considered a
+statistical fact and will override the model’s calculated values for new construction.</p>
+</section>
+<section id="non-residential-area">
+<h3>Non-residential area<a class="headerlink" href="#non-residential-area" title="Link to this heading"></a></h3>
+<p>Population growth is the driver for increasing non-residential area. The population forecast is defined in
+🧾 <a class="reference internal" href="../input_description.html#population-forecast-csv"><span class="std std-ref">population_forecast.csv</span></a>. The area per person for each building category is defined in 🧾 <a class="reference internal" href="../input_description.html#area-per-person-csv"><span class="std std-ref">area_per_person.csv</span></a>.</p>
+<p>The total area in a given year for each building category is the area per person times the population.</p>
+<div class="math notranslate nohighlight">
+\[\text{Total area} (\text{year } x) = \text{area\person} * \text{population} (\text{year } x)\]</div>
+<p>The total area in a given year for each building cateogry can also be described as the area in the
+previous year minus the demolished area the previous year plus new construction.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Total area} (\text{year } x) = &amp;\text{ total area} (\text{year } x-1) \\
+                      &amp;- \text{demolished area} (\text{year } x-1) \\
+                      &amp;+ \text{new construction} (\text{year } x)\end{split}\]</div>
+<p>Combining the two formulas and rearranging them gives us the method for calculating new construction:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{New construction} (\text{year } x) = &amp;\text{ area/person} \times \text{population} (\text{year } x) \\
+                      &amp;-\text{area/person} \times \text{population} (\text{year } x-1) \\
+                      &amp;+ \text{ demolished}(\text{year }x-1)\end{split}\]</div>
+<p>The area per person is different for each of the non-residential building categories. It can also change from year to year.
+In 🧾 <a class="reference internal" href="../input_description.html#area-per-person-csv"><span class="std std-ref">area_per_person.csv</span></a>, we have assumed that the area per person for each building category is constant thorughout the forecast period.</p>
+</section>
+</section>
+<section id="data-assumptions-nve">
+<h2>Data assumptions NVE<a class="headerlink" href="#data-assumptions-nve" title="Link to this heading"></a></h2>
+<section id="area-in-the-starting-year-of-the-model">
+<h3>Area in the starting year of the model<a class="headerlink" href="#area-in-the-starting-year-of-the-model" title="Link to this heading"></a></h3>
+<p>🧾 <a class="reference internal" href="../input_description.html#area-csv"><span class="std std-ref">area.csv</span></a></p>
+<p>Data for the building area used in this model was prepared by Prognosesenteret in 2022. . This data describes the building stock in 2020 in Norway,
+distributed by building categories and age. The area is grouped into age groups that correspond to the periods during which the
+various building codes (TEK) have been in effect. The age is suitable for use with the
+age-specific rates for small measures, renovation, and demolition.</p>
+</section>
+<section id="demolition-of-area">
+<h3>Demolition of area<a class="headerlink" href="#demolition-of-area" title="Link to this heading"></a></h3>
+<p>🧾 <a class="reference internal" href="../input_description.html#s-curve-csv"><span class="std std-ref">s_curve.csv</span></a></p>
+<p>The assumed rates for demolition in the model are made to resemble S-curves. This means that the demolition of a
+specific building category of a specific age varies over time in the model. The S-curves are specific to
+each building category but are the same across building code.</p>
+<p>The assumed demolition S-curves are based on limited data of average lifetime before demolition of the different building categories.</p>
+<p><em>NOTE! The current data on demolition and building of new area differs from available statistics. Changes in building stock area and
+energy consumption should therefore be used with caution. An updated and improved dataset will be published along with the next version of the model.</em></p>
+</section>
+<section id="population-forecast">
+<h3>Population forecast<a class="headerlink" href="#population-forecast" title="Link to this heading"></a></h3>
+<p>🧾 <a class="reference internal" href="../input_description.html#population-forecast-csv"><span class="std std-ref">population_forecast.csv</span></a></p>
+<p>The population forecast in the dataset is sourced from Statistics Norway. We use their main forecast, called
+<a class="reference external" href="https://www.ssb.no/befolkning/befolkningsframskrivinger/statistikk/nasjonale-befolkningsframskrivinger">MMM</a>.</p>
+</section>
+<section id="dwellings">
+<h3>Dwellings<a class="headerlink" href="#dwellings" title="Link to this heading"></a></h3>
+<p>🧾 <a class="reference internal" href="../input_description.html#new-buildings-residential-csv"><span class="std std-ref">new_buildings_residential.csv</span></a></p>
+<p>The forecast for average household size in the dataset is made to be a continuation of historic household size
+in Norway going back to the 1960s. <a class="reference external" href="https://www.ssb.no/statbank/table/06076/">The historic household size is published by Statistics Norway</a>. We have assumed
+a continued decrease in average household size, and that the decline will continue to decrease over time. We also assume
+that the average houseohld size never dips below 2 persons per household.</p>
+<p>The forecasted allocation of new dwellings distributed into houses and apartments is made to be a continuation of the historic development in number of newly built
+houses versus number of newly built apartments. This <a class="reference external" href="https://www.ssb.no/statbank/table/05940/">statistic is published by Statistics Norway</a>.</p>
+<p>The assumed average area for newly built houses and apartments is based on the historic development in average area of newly built dwellings. This is calculated
+based on information about <a class="reference external" href="https://www.ssb.no/statbank/table/05940/">newly built dwellings published by Statistics Norway</a>.</p>
+</section>
+<section id="area-per-person-in-non-residential-buidlings">
+<h3>Area per person in non-residential buidlings<a class="headerlink" href="#area-per-person-in-non-residential-buidlings" title="Link to this heading"></a></h3>
+<p>For non-residential buildings, NVE has assumed that the area of a building category (e.g. office buildings) distributed
+by the number of inhabitants in Norway (m²/person) will remain constant going forward. This assumption,
+along with the calculated demolition, leads to new construction that will vary from year to year and between building categories.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Area per person per non-residential building category</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 66.7%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Building category</p></th>
+<th class="head"><p>Area per person (m<sup>2</sup>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>kindergarten</p></td>
+<td><p>0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>retail</p></td>
+<td><p>6.0</p></td>
+</tr>
+<tr class="row-even"><td><p>hotel</p></td>
+<td><p>1.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>sports</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>office</p></td>
+<td><p>5.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>culture</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>school</p></td>
+<td><p>2.8</p></td>
+</tr>
+<tr class="row-odd"><td><p>nursing_home</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-even"><td><p>hospital</p></td>
+<td><p>0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>university</p></td>
+<td><p>0.6</p></td>
+</tr>
+<tr class="row-even"><td><p>storage_repairs</p></td>
+<td><p>3.4</p></td>
+</tr>
+</tbody>
+</table>
+<p>The new construction rates for all building categories are directly linked to <a class="reference external" href="https://www.ssb.no/befolkning/befolkningsframskrivinger/statistikk/nasjonale-befolkningsframskrivinger">SSB’s population forecast</a>,
+and this has a significant impact on the result.</p>
+<p>Thus, no account is taken of upcoming structural changes. We know that the average lifespan of the Norwegian
+population will increase during the forecast period. This might result in a different rate of new
+construction for nursing homes. However, since it is not possible to say for sure that this change will occur,
+when it will occur, and what the change will be, it is not considered in this model. Other structural changes
+might include urbanization and what it might entail in terms of increased use of cafes, restaurants,
+theatres and so on. This is also not taken into account in the forecast. The assumptions can easily be changed in the input files.</p>
+<p>Regarding residences, urbanization is included in the assumption that the
+proportion of households living in houses will decrease and the
+proportion living in apartments will increase. The assumed development in the number of people per
+household is crucial. Until now, we have seen a decrease in the number of people per household,
+and this is assumed to continue. However, we know that more and more families are choosing to have three or more children,
+and that divorce rates are flattening out. Together with increased immigration from non-Western countries, where
+there is a stronger tradition of having more children, this can impact household sizes going forward and help dampen the development.</p>
 <p>Last Updated on 2025-10-10</p>
 <p>Version: 1.2.10.</p>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../building_parameters/index.html" class="btn btn-neutral float-left" title="Building category and building code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="methods.html" class="btn btn-neutral float-right" title="Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../building_parameters/index.html" class="btn btn-neutral float-left" title="Building categories and building codes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../energy_need/index.html" class="btn btn-neutral float-right" title="Energy need" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Geographical_distribution" href="geographical_distribution.html" />
+    <link rel="next" title="Geographical distribution" href="geographical_distribution.html" />
     <link rel="prev" title="Model configuration" href="configuration.html" /> 
 </head>
 
@@ -52,10 +52,15 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html">Calibrating the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html#assumptions">Assumptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Model configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical_distribution</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ebm-fail-the-the-error-input-directory-dirname-not-found">Ebm fail the the error <cite>Input Directory &lt;dirname&gt; Not Found</cite></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-code-periods-do-not-overlap-failure-cases">building_code periods do not overlap failure cases …</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permissionerror-errno-13-permission-denied-output-area-xlsx-file-open">PermissionError: [Errno 13] Permission denied: ‘output\area.xlsx’ (file open)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#period-end-year-should-be-greater-than-period-start-year-failure-cases-pre-tek49-1945-0-1948">period_end_year should be greater than period_start_year&gt; failure cases: PRE_TEK49;1945;0;1948”</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical distribution</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
@@ -66,7 +71,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -108,18 +113,84 @@
              
   <section id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
-<div class="admonition-suggested-issues-for-troubleshooting admonition">
-<p class="admonition-title">Suggested issues for troubleshooting</p>
-<ul class="simple">
-<li><p>FileNotFoundError: No such directory usercase_tek33 (missing input directory)</p></li>
-<li><p>Could not find building_code_parameters.csv (missing input file)</p></li>
-<li><p>building_code periods do not overlap failure cases: TEK10, 2018, 2011, 2021 (overlapping building codes)</p></li>
-<li><p>PermissionError: [Errno 13] Permission denied: ‘output\demolition_construction.xlsx’ (file open)</p></li>
-<li><p>period_end_year should be greater than period_start_year&gt; failure cases: PRE_TEK49;1945;0;1948” (Semi colon as delimiter)</p></li>
-</ul>
+<section id="ebm-fail-the-the-error-input-directory-dirname-not-found">
+<h2>Ebm fail the the error <cite>Input Directory &lt;dirname&gt; Not Found</cite><a class="headerlink" href="#ebm-fail-the-the-error-input-directory-dirname-not-found" title="Link to this heading"></a></h2>
+<p><strong>Problem</strong></p>
+<p>This error indicates that the input directory specified (or the default input directory) does not exist in your current
+working directory.</p>
+<p><strong>Solution 1</strong></p>
+<p>By default, ebm looks for a directory named input. If it doesn’t exist, you can create it manually or use the
+<code class="docutils literal notranslate"><span class="pre">--create-input</span></code> flag.</p>
+<ol class="arabic simple">
+<li><p>To create the default input directory:</p></li>
+</ol>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">ebm</span> <span class="p">-</span><span class="n">-create-input</span>
+</pre></div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>Then run:</p></li>
+</ol>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">ebm</span>
+</pre></div>
+</div>
+<p><strong>Solution 2</strong></p>
+<ol class="arabic simple">
+<li><p>If you prefer a different directory name (e.g., my-input), create it like this:</p></li>
+</ol>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">ebm</span> <span class="p">-</span><span class="n">-create-input</span> <span class="p">-</span><span class="n">-input</span><span class="p">=</span><span class="n">my-input</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Then run ebm with the same directory:</p></li>
+</ol>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">ebm</span> <span class="p">-</span><span class="n">-input</span><span class="p">=</span><span class="n">my-input</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="configuration.html#model-configuration"><span class="std std-ref">Model configuration</span></a></p>
+</div>
+</section>
+<section id="building-code-periods-do-not-overlap-failure-cases">
+<h2>building_code periods do not overlap failure cases …<a class="headerlink" href="#building-code-periods-do-not-overlap-failure-cases" title="Link to this heading"></a></h2>
+<p><strong>Problem</strong></p>
+<p>Some entries in 🧾 <a class="reference internal" href="../input_description.html#building-code-parameters-csv"><span class="std std-ref">building_code_parameters.csv</span></a> have overlapping start and end years,
+which violates the schema validation.</p>
+<p>The full error message may look something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;building_code_parameters&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;column&quot;</span><span class="p">:</span> <span class="s2">&quot;building_code_parameters&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;check&quot;</span><span class="p">:</span> <span class="s2">&quot;building_code periods do not overlap&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;DataFrameSchema &#39;building_code_parameters&#39; failed element-wise validator number 1: building_code periods do not overlap failure cases: TEK10, 2018, 2011, 2021&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Solution</strong></p>
+<ol class="arabic simple">
+<li><p>Open 🧾 <a class="reference internal" href="../input_description.html#building-code-parameters-csv"><span class="std std-ref">building_code_parameters.csv</span></a> and adjust the start and end year columns to ensure that no end year overlaps with the start year of the next entry.</p></li>
+</ol>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">start </span><span class="n">input</span><span class="p">/</span><span class="n">building_code_parameters</span><span class="p">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</section>
+<section id="permissionerror-errno-13-permission-denied-output-area-xlsx-file-open">
+<h2>PermissionError: [Errno 13] Permission denied: ‘output\area.xlsx’ (file open)<a class="headerlink" href="#permissionerror-errno-13-permission-denied-output-area-xlsx-file-open" title="Link to this heading"></a></h2>
+<p><strong>Problem</strong></p>
+<p>Windows file locking prevents multiple programs from accessing the same file. The output file is likely open in Excel
+or another application.</p>
+<p><strong>Solution</strong></p>
+<p>Close Excel and re-run the model.</p>
+</section>
+<section id="period-end-year-should-be-greater-than-period-start-year-failure-cases-pre-tek49-1945-0-1948">
+<h2>period_end_year should be greater than period_start_year&gt; failure cases: PRE_TEK49;1945;0;1948”<a class="headerlink" href="#period-end-year-should-be-greater-than-period-start-year-failure-cases-pre-tek49-1945-0-1948" title="Link to this heading"></a></h2>
+<p><strong>Problem</strong></p>
+<p>Although the error message suggests a year mismatch, the actual issue is a formatting error in the CSV file—semicolons
+are used instead of commas.</p>
+<p><strong>Solution</strong></p>
+<p>Open the invalid input file in a text editor (e.g., Notepad), and replace all semicolons (;) with commas (,).</p>
 <p>Last Updated on 2025-10-10.</p>
 <p>Version: 1.2.10.</p>
+</section>
 </section>
 
 
@@ -127,7 +198,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="configuration.html" class="btn btn-neutral float-left" title="Model configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="geographical_distribution.html" class="btn btn-neutral float-right" title="Geographical_distribution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="geographical_distribution.html" class="btn btn-neutral float-right" title="Geographical distribution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

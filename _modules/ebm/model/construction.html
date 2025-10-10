@@ -54,7 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
@@ -269,9 +269,9 @@
 <div class="viewcode-block" id="ConstructionCalculator.calculate_yearly_constructed_floor_area">
 <a class="viewcode-back" href="../../../modules/ebm.model.construction.html#ebm.model.construction.ConstructionCalculator.calculate_yearly_constructed_floor_area">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_yearly_constructed_floor_area</span><span class="p">(</span><span class="n">build_area_sum</span><span class="p">,</span>
-                                                <span class="n">yearly_floor_area_change</span><span class="p">,</span>
-                                                <span class="n">yearly_demolished_floor_area</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_yearly_constructed_floor_area</span><span class="p">(</span><span class="n">build_area_sum</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                                                <span class="n">yearly_floor_area_change</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                                                <span class="n">yearly_demolished_floor_area</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the yearly constructed floor area based on changes and demolitions.</span>
 
@@ -293,6 +293,7 @@
 <span class="sd">        -----</span>
 <span class="sd">        The function calculates the yearly new building floor area by adding the yearly floor area change</span>
 <span class="sd">        to the yearly demolished floor area. It then updates the values based on the build_area_sum index.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">bas_missing_year</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">yearly_demolished_floor_area</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">index</span> <span class="k">if</span>
                             <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">build_area_sum</span><span class="o">.</span><span class="n">index</span> <span class="ow">or</span>
@@ -303,10 +304,9 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="n">yearly_new_building_floor_area_house</span> <span class="o">=</span> <span class="n">yearly_floor_area_change</span> <span class="o">+</span> <span class="n">yearly_demolished_floor_area</span>
-        <span class="n">yearly_new_building_floor_area_house</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">build_area_sum</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">]</span> <span class="o">=</span> <span class="n">build_area_sum</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-            <span class="n">build_area_sum</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
+        <span class="n">yearly_new_building_floor_area_house</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">build_area_sum</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()]</span> <span class="o">=</span> <span class="n">build_area_sum</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">build_area_sum</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()]</span>
 
-        <span class="n">yearly_new_building_floor_area_house</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">yearly_new_building_floor_area_house</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;constructed_floor_area&#39;</span><span class="p">)</span></div>
 
 

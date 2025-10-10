@@ -57,7 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -129,6 +129,12 @@
 <li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.create_output_directory"><code class="docutils literal notranslate"><span class="pre">create_output_directory()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="ebm.cmd.initialize.html#ebm.cmd.initialize.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.cmd.migrate.html">ebm.cmd.migrate module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.migrate.html#ebm.cmd.migrate.migrate_directories"><code class="docutils literal notranslate"><span class="pre">migrate_directories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.migrate.html#ebm.cmd.migrate.migrate_directory"><code class="docutils literal notranslate"><span class="pre">migrate_directory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebm.cmd.migrate.html#ebm.cmd.migrate.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ebm.cmd.pipeline.html">ebm.cmd.pipeline module</a><ul>
@@ -412,26 +418,26 @@
 <li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_area_forecast"><code class="docutils literal notranslate"><span class="pre">extract_area_forecast()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.write_scurve"><code class="docutils literal notranslate"><span class="pre">write_scurve()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_energy_need"><code class="docutils literal notranslate"><span class="pre">extract_energy_need()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_heating_systems_projection"><code class="docutils literal notranslate"><span class="pre">extract_heating_systems_projection()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_heating_systems_forecast"><code class="docutils literal notranslate"><span class="pre">extract_heating_systems_forecast()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.extract_energy_use_holiday_homes"><code class="docutils literal notranslate"><span class="pre">extract_energy_use_holiday_homes()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="ebm.extractors.html#ebm.extractors.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ebm.heating_systems_projection.html">ebm.heating_systems_projection module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.__init__"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.calculate_projection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.calculate_projection()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.new_instance"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.new_instance()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.HeatingSystemsProjection.pad_projection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsProjection.pad_projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.heating_system_forecast.html">ebm.heating_system_forecast module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.HeatingSystemsForecast"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsForecast</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.HeatingSystemsForecast.__init__"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsForecast.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.HeatingSystemsForecast.calculate_forecast"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsForecast.calculate_forecast()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.HeatingSystemsForecast.new_instance"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsForecast.new_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.HeatingSystemsForecast.pad_projection"><code class="docutils literal notranslate"><span class="pre">HeatingSystemsForecast.pad_projection()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.add_missing_heating_systems"><code class="docutils literal notranslate"><span class="pre">add_missing_heating_systems()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.add_load_shares_and_efficiencies"><code class="docutils literal notranslate"><span class="pre">add_load_shares_and_efficiencies()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.aggregere_lik_oppvarming_fjern_0"><code class="docutils literal notranslate"><span class="pre">aggregere_lik_oppvarming_fjern_0()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.expand_building_category_building_code"><code class="docutils literal notranslate"><span class="pre">expand_building_category_building_code()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.project_heating_systems"><code class="docutils literal notranslate"><span class="pre">project_heating_systems()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.check_sum_of_shares"><code class="docutils literal notranslate"><span class="pre">check_sum_of_shares()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebm.heating_systems_projection.html#ebm.heating_systems_projection.add_existing_heating_system_shares_to_projection"><code class="docutils literal notranslate"><span class="pre">add_existing_heating_system_shares_to_projection()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.add_missing_heating_systems"><code class="docutils literal notranslate"><span class="pre">add_missing_heating_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.add_load_shares_and_efficiencies"><code class="docutils literal notranslate"><span class="pre">add_load_shares_and_efficiencies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.aggregere_lik_oppvarming_fjern_0"><code class="docutils literal notranslate"><span class="pre">aggregere_lik_oppvarming_fjern_0()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.expand_building_category_building_code"><code class="docutils literal notranslate"><span class="pre">expand_building_category_building_code()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.project_heating_systems"><code class="docutils literal notranslate"><span class="pre">project_heating_systems()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.check_sum_of_shares"><code class="docutils literal notranslate"><span class="pre">check_sum_of_shares()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.heating_system_forecast.html#ebm.heating_system_forecast.add_existing_heating_system_shares_to_projection"><code class="docutils literal notranslate"><span class="pre">add_existing_heating_system_shares_to_projection()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ebm.holiday_home_energy.html">ebm.holiday_home_energy module</a><ul>
@@ -452,6 +458,14 @@
 <li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.projected_electricity_usage_holiday_homes"><code class="docutils literal notranslate"><span class="pre">projected_electricity_usage_holiday_homes()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.calculate_energy_use"><code class="docutils literal notranslate"><span class="pre">calculate_energy_use()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="ebm.holiday_home_energy.html#ebm.holiday_home_energy.transform_holiday_homes_to_horizontal"><code class="docutils literal notranslate"><span class="pre">transform_holiday_homes_to_horizontal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebm.migrations.html">ebm.migrations module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebm.migrations.html#ebm.migrations.drop_unnamed"><code class="docutils literal notranslate"><span class="pre">drop_unnamed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.migrations.html#ebm.migrations.rename_columns"><code class="docutils literal notranslate"><span class="pre">rename_columns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.migrations.html#ebm.migrations.drop_columns"><code class="docutils literal notranslate"><span class="pre">drop_columns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.migrations.html#ebm.migrations.translate_heating_system_efficiencies"><code class="docutils literal notranslate"><span class="pre">translate_heating_system_efficiencies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebm.migrations.html#ebm.migrations.migrate_input_directory"><code class="docutils literal notranslate"><span class="pre">migrate_input_directory()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ebm.s_curve.html">ebm.s_curve module</a><ul>

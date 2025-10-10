@@ -57,7 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -363,9 +363,9 @@ and optionally years.</p>
 ‘Grunnlast’: pa.Column(str),
 ‘Spisslast’: pa.Column(str),
 ‘Ekstralast’: pa.Column(str),
-‘Grunnlast energivare’: pa.Column(str),
-‘Spisslast energivare’: pa.Column(str),
-‘Ekstralast energivare’: pa.Column(str),</p>
+‘base_load_energy_product’: pa.Column(str),
+‘peak_load_energy_product’: pa.Column(str),
+‘tertiary_load_energy_product’: pa.Column(str),</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TODO</p>

@@ -54,7 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../heating_systems/index.html">Heating systems</a></li>
@@ -118,7 +118,7 @@
     <span class="n">database_manager</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">(</span><span class="n">file_handler</span><span class="o">=</span><span class="n">fh</span><span class="p">)</span>
     <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
 
-    <span class="n">heating_systems_projection</span> <span class="o">=</span> <span class="n">extractors</span><span class="o">.</span><span class="n">extract_heating_systems_projection</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>  <span class="c1"># 📍</span>
+    <span class="n">heating_systems_projection</span> <span class="o">=</span> <span class="n">extractors</span><span class="o">.</span><span class="n">extract_heating_systems_forecast</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>  <span class="c1"># 📍</span>
     <span class="n">heating_systems_parameter</span> <span class="o">=</span> <span class="n">h_s_param</span><span class="o">.</span><span class="n">heating_systems_parameter_from_projection</span><span class="p">(</span><span class="n">heating_systems_projection</span><span class="p">)</span>  <span class="c1"># 📌</span>
 
     <span class="n">building_code_parameters</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_code</span><span class="p">()</span>  <span class="c1"># 📍</span>

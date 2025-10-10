@@ -52,14 +52,14 @@
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html">Calibrating the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html#assumptions">Assumptions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Model configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#model-structure">Model Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-files">Configuration Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-environment-variables">General environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ebm-geographical-distribution-specific-environment-variables">EBM geographical distribution specific environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-a-env-file">Example of a .env file</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical_distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical distribution</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
@@ -70,7 +70,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -112,17 +112,47 @@
              
   <section id="model-configuration">
 <h1>Model configuration<a class="headerlink" href="#model-configuration" title="Link to this heading"></a></h1>
-<section id="model-structure">
-<h2>Model Structure<a class="headerlink" href="#model-structure" title="Link to this heading"></a></h2>
-<p>To set up model X, use the following structure:</p>
-<p>…</p>
+<p>This page describes the environment variables used to configure the model.
+The configuration of the <code class="docutils literal notranslate"><span class="pre">ebm</span></code> and <code class="docutils literal notranslate"><span class="pre">ebmgeodist</span></code> modules is controlled through a set of environment variables.
+These variables define model execution settings, logging configuration, input and output paths, and other parameters.
+They can be provided either via the system environment or through a local <code class="docutils literal notranslate"><span class="pre">.env</span></code> file in the working directory.
+Unless specified otherwise, the variables are optional and have default values.
+However, the <code class="docutils literal notranslate"><span class="pre">ebmgeodist</span></code> module requires additional variables to be set, as described below.</p>
+<section id="general-environment-variables">
+<h2>General environment variables<a class="headerlink" href="#general-environment-variables" title="Link to this heading"></a></h2>
+<p>The following environment variables are common for both the <code class="docutils literal notranslate"><span class="pre">ebm</span></code> and <code class="docutils literal notranslate"><span class="pre">ebmgeodist</span></code> modules:</p>
 </section>
-<section id="configuration-files">
-<h2>Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading"></a></h2>
-<p>The configuration is defined in a <cite>config.yaml</cite> file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">parameter_1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
-<span class="nt">parameter_2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<section id="ebm-geographical-distribution-specific-environment-variables">
+<h2>EBM geographical distribution specific environment variables<a class="headerlink" href="#ebm-geographical-distribution-specific-environment-variables" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">ebmgeodist</span></code> extends the <code class="docutils literal notranslate"><span class="pre">ebm</span></code> module by adding functionality for distributing energy use forecasts at the municipality level.
+It requires one additional configuration variable related to the container and storage account parameters of the ELhub API.</p>
+</section>
+<section id="example-of-a-env-file">
+<h2>Example of a .env file<a class="headerlink" href="#example-of-a-env-file" title="Link to this heading"></a></h2>
+<p>An example of a <code class="docutils literal notranslate"><span class="pre">.env</span></code> configuration file is shown below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># General EBM settings</span>
+<span class="l l-Scalar l-Scalar-Plain">DEBUG=false</span>
+<span class="l l-Scalar l-Scalar-Plain">LOG_FORMAT=&quot;&lt;green&gt;{time:HH:mm:ss.SSS}&lt;/green&gt; | &lt;blue&gt;{elapsed}&lt;/blue&gt; | &lt;level&gt;{level</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;8}&lt;/level&gt; | &lt;cyan&gt;{function</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;20}&lt;/cyan&gt;:&lt;cyan&gt;{line</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;3}&lt;/cyan&gt; - &lt;level&gt;{message}&lt;/level&gt;&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">EBM_INPUT_DIRECTORY=/data/ebm/input</span>
+<span class="l l-Scalar l-Scalar-Plain">EBM_OUTPUT_DIRECTORY=/data/ebm/output</span>
+<span class="l l-Scalar l-Scalar-Plain">EBM_DEFAULT_INPUT=baseline_input.csv</span>
+<span class="l l-Scalar l-Scalar-Plain">EBM_ALWAYS_OPEN=false</span>
+
+<span class="c1"># EBMGeoDist module</span>
+<span class="l l-Scalar l-Scalar-Plain">EBM_GEODIST_ELHUB_LOCATION=/data/elhub/elhub_data.parquet</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The variables are case-sensitive and should be defined in uppercase letters as shown.</p></li>
+<li><p>If a variable is not set, the model will use the default value specified in the tables above.</p></li>
+<li><p>Ensure that the paths provided for input and output directories exist and are accessible by the model.</p></li>
+<li><p>The Elhub dataset path must point to a valid Parquet file containing the necessary data for calculating distribution keys.</p></li>
+<li><p>The logging format used by the EBM and EBMGeoDist modules is based on the Loguru logging framework.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">LOG_FORMAT</span></code> environment variable allows customization of how log messages are rendered in the console, including timestamps,
+elapsed time, log level, function name, line number, and message content.</p></li>
+</ul>
 </div>
 <p>Last Updated on 2025-10-10.</p>
 <p>Version: 1.2.10.</p>

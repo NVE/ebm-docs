@@ -53,6 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#quick-start-guide">Quick Start Guide</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-version-of-ebm-are-we-running">What version of ebm are we running?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-an-input-directory">Create an input directory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-the-model">Run the model</a></li>
 </ul>
@@ -61,10 +62,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html">Calibrating the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calibrating_the_model.html#assumptions">Assumptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">Model configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical_distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geographical_distribution.html">Geographical distribution</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
@@ -75,7 +75,7 @@
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
@@ -117,29 +117,52 @@
              
   <section id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
-<p>This page is a quick guide to get you started with the Energibruksmodell (EBM) framework. The framework is designed to calculate energy use in buildings. The framework is developed by the Norwegian Water Resources and Energy Directorate (NVE).</p>
+<p>This page is a quick guide to get you started with the Energibruksmodell (EBM) model. The model is designed to calculate
+energy use in the norwegian building stock. The model is developed by the
+<a class="reference external" href="https://www.nve.no">Norwegian Water Resources and Energy Directorate (NVE)</a>.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">EBM</span></code> requires Python 3.11 or newer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EBM</span></code> requires Python 3.11 or newer. Python is available from <a class="reference external" href="https://www.python.org/downloads/">python.org</a>.</p>
+<p>Additional requirements like pandas, pandera and openpyxl will be installed along side <code class="docutils literal notranslate"><span class="pre">EBM</span></code></p>
 </section>
 <section id="quick-start-guide">
 <h2>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Link to this heading"></a></h2>
-<p>Please, open your preferred terminal and follow the instructions below.</p>
+<p>Please, open your preferred terminal application and follow the instructions below.</p>
+<img alt="../_images/ebm-in-windows-terminal.png" src="../_images/ebm-in-windows-terminal.png" />
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
 <p>Install ebm using pip</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>energibruksmodell
 </pre></div>
 </div>
+</section>
+<section id="what-version-of-ebm-are-we-running">
+<h3>What version of ebm are we running?<a class="headerlink" href="#what-version-of-ebm-are-we-running" title="Link to this heading"></a></h3>
+<p>Once installed, you need to setup input files with all the parameters required to  run <code class="docutils literal notranslate"><span class="pre">EBM</span></code>. But before we do that, let’s
+check if ebm is working properly. Open a terminal (powershell) and type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>The output should look something like this:</p>
+<details class="expected-output admonition" open="open">
+<summary class="admonition-title">expected output</summary>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">&gt;</span> <span class="n">ebm</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">ebm</span> <span class="n">1</span><span class="p">.</span><span class="n">2</span><span class="p">.</span><span class="n">9</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</details>
+<p>The output shows what version of ebm you are running. Don’t worry if the version number you get is a bit off from the one
+in the example.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To figure out what EBM version you have installed, you can type <code class="docutils literal notranslate"><span class="pre">ebm</span> <span class="pre">--version</span></code>
-These instructions are made for 1.2.10, but should work for later versions as well.</p>
+<p>These instructions are made for 1.2.10, but should work for later versions as well.</p>
 </div>
 </section>
 <section id="create-an-input-directory">
 <h3>Create an input directory<a class="headerlink" href="#create-an-input-directory" title="Link to this heading"></a></h3>
-<p>First, you need to create a directory with the necessary input files. The recommended way of creating the directory is to use ebm:</p>
+<p>Before running the model you need to create a directory with the necessary input files. The recommended way of creating
+the input directory is to use ebm:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--create-input
 </pre></div>
 </div>
@@ -163,18 +186,51 @@ These instructions are made for 1.2.10, but should work for later versions as we
 <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">60</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">holiday_home_stock</span><span class="p">.</span><span class="n">csv</span>
 <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">62</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">area_per_person</span><span class="p">.</span><span class="n">csv</span>
 <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">65</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_system_initial_shares</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">68</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_systems_efficiencies</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">68</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_system_efficiencies</span><span class="p">.</span><span class="n">csv</span>
 <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">71</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_system_forecast</span><span class="p">.</span><span class="n">csv</span>
 <span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">71</span> <span class="p">-</span> <span class="n">Finished</span> <span class="n">creating</span> <span class="n">input</span> <span class="n">files</span> <span class="k">in</span> <span class="n">input</span>
 </pre></div>
 </div>
 </details>
-<p>The command creates a new directory called <code class="docutils literal notranslate"><span class="pre">input</span></code> with the default input parameters. You can use a different directory
-by adding the <code class="docutils literal notranslate"><span class="pre">--input=&lt;directory</span> <span class="pre">name&gt;</span></code> option.</p>
+<p>The command creates a new directory named <code class="docutils literal notranslate"><span class="pre">input</span></code>, containing copies of all input files. By default, this directory is
+created in the current working directory. To specify a different location, use the <code class="docutils literal notranslate"><span class="pre">--input=&lt;directory</span> <span class="pre">name&gt;</span></code> option.</p>
+<p>If the directory already exists, only missing files will be copied. Existing files will not be overwritten.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">ls</span></code> to get a list of all the files in the <code class="docutils literal notranslate"><span class="pre">input</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>input
+</pre></div>
+</div>
+<details class="expected-output admonition">
+<summary class="admonition-title">expected output</summary>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="nb">ls </span><span class="n">input</span>
+
+     <span class="n">Directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">\</span><span class="n">input</span>
+
+<span class="n">Mode</span>                 <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>
+<span class="p">----</span>                 <span class="p">-------------</span>         <span class="p">------</span> <span class="p">----</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>           <span class="n">2475</span> <span class="n">area</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">114</span> <span class="n">area_new_residential_buildings</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">192</span> <span class="n">area_per_person</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">238</span> <span class="n">building_code_parameters</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">305</span> <span class="n">energy_need_behaviour_factor</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">462</span> <span class="n">energy_need_improvements</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>          <span class="n">23191</span> <span class="n">energy_need_original_condition</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>           <span class="n">1340</span> <span class="n">heating_system_efficiencies</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>           <span class="n">1847</span> <span class="n">heating_system_forecast</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>          <span class="n">67093</span> <span class="n">heating_system_initial_shares</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">446</span> <span class="n">holiday_home_energy_consumption</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">652</span> <span class="n">holiday_home_stock</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">475</span> <span class="n">improvement_building_upgrade</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>           <span class="n">1807</span> <span class="n">new_buildings_residential</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>            <span class="n">959</span> <span class="n">population_forecast</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">30</span><span class="p">.</span><span class="n">09</span><span class="p">.</span><span class="n">2025</span>     <span class="n">12</span><span class="p">:</span><span class="n">10</span>           <span class="n">1854</span> <span class="n">s_curve</span><span class="p">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+</details>
+<p>If your shell does not have the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command, you might have better luck with <code class="docutils literal notranslate"><span class="pre">dir</span></code>.</p>
 </section>
 <section id="run-the-model">
 <h3>Run the model<a class="headerlink" href="#run-the-model" title="Link to this heading"></a></h3>
-<p>You are now ready to run the model. Use the bare command <code class="docutils literal notranslate"><span class="pre">ebm</span></code> with no options:</p>
+<p>You are now ready to run the model. Use the bare command <code class="docutils literal notranslate"><span class="pre">EBM</span></code> with no options:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm
 </pre></div>
 </div>
@@ -191,7 +247,8 @@ by adding the <code class="docutils literal notranslate"><span class="pre">--inp
 </pre></div>
 </div>
 </details>
-<p>By default the scenario is read from <code class="docutils literal notranslate"><span class="pre">input</span></code>, and the results are written to the directory <code class="docutils literal notranslate"><span class="pre">output</span></code>.</p>
+<p>By default the scenario is read from <code class="docutils literal notranslate"><span class="pre">input</span></code>, and the results are written to the subdirectory <code class="docutils literal notranslate"><span class="pre">output</span></code> in the
+current working directory.</p>
 <p>You can get a directory listing that shows all the result files created by issuing the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>output
 </pre></div>
@@ -214,11 +271,10 @@ by adding the <code class="docutils literal notranslate"><span class="pre">--inp
 </pre></div>
 </div>
 </details>
-<p>If your shell does not have the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command, you might have better luck with <code class="docutils literal notranslate"><span class="pre">dir</span></code>.</p>
 <p>The files can be opened using your favourite spreadsheet application. I.E. Microsoft Excel or LibreOffice Calc.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you want to open the results automatically as they become available, you can use the switch <code class="docutils literal notranslate"><span class="pre">--open</span></code>.</p>
+<p>If you want to open the results automatically as they become available, you can use the <code class="docutils literal notranslate"><span class="pre">--open</span></code> option.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--open
 </pre></div>
 </div>
@@ -228,7 +284,7 @@ by adding the <code class="docutils literal notranslate"><span class="pre">--inp
 <dl class="simple">
 <dt><a class="reference internal" href="../results.html#result-files"><span class="std std-ref">Result files</span></a></dt><dd><p>An overview of the contents of all the output files.</p>
 </dd>
-<dt><a class="reference internal" href="more_information.html#user-guide-additional-arguments"><span class="std std-ref">Additional arguments</span></a></dt><dd><p>Shows all the commands available for <code class="docutils literal notranslate"><span class="pre">ebm</span></code>.</p>
+<dt><a class="reference internal" href="more_information.html#user-guide-additional-arguments"><span class="std std-ref">Additional arguments</span></a></dt><dd><p>Shows all the commands available for <code class="docutils literal notranslate"><span class="pre">EBM</span></code>.</p>
 </dd>
 <dt><a class="reference internal" href="user_case.html#user-case"><span class="std std-ref">User case</span></a></dt><dd><p>gives a run-down on how you can change the input files to better suit your needs.</p>
 </dd>

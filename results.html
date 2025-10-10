@@ -50,17 +50,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_description.html">Input files</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Result files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="model_description/index.html">Model Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building category and building code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_parameters/index.html">Building categories and building codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="area/index.html">Area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy_need/index.html">Energy need</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heating_systems/index.html">Heating systems</a></li>
@@ -101,31 +98,28 @@
              
   <section id="result-files">
 <h1>Result files<a class="headerlink" href="#result-files" title="Link to this heading"></a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>Running the model without any arguments results in 6 different excel files.</p>
-<p>1. <strong>“area”</strong>.
+<p>1. <strong>📄 area.xlsx</strong>.
 Forecasted area per building category per year from 2020 to 2050. In both wide and long formats.</p>
-<p>2. <strong>“demoliton_construction”</strong>.
+<p>2. <strong>📄 demoliton_construction.xlsx</strong>.
 How much area is demolished and constructed per year, and in which building categories and building codes. Also gives
 the change in energy use as a result of the demolition or construction.</p>
-<p>3. <strong>“energy_purpose”</strong>.
+<p>3. <strong>📄 energy_purpose.xlsx</strong>.
 The total energy use per energy purpose per building category. The energy use is given per year from 2020 to 2050. In both
 wide and long formats. In the wide format the building categories is aggregated to houses, apartment blocks and non-residential buildings with no differentiation on building code.
-The long format is more detailed per building code and building category, i.e. “kindergarten, TEK97”</p>
-<p>4. <strong>“energy_use”</strong>.
+The long format is more detailed per building code and building category, i.e. “kindergarten, TEK97”.</p>
+<p>4. <strong>📄 energy_use.xlsx</strong>.
 The energy use per energy product from 2020 to 2050. In both
-wide and long formats. In the wide format the building categories is aggregated to residential, cabins and non-residential buildings with no differentiation on building code.
+wide and long formats. In the wide format the building categories are aggregated to residential, holiday homes and non-residential buildings with no differentiation on building code.
 The long format is more detailed per building code and building category.</p>
-<p>5. <strong>“heat_prod_hp”</strong>.
-Shows the calculated heat production from “air-air” or “centreal heating” heat pumps for 2020 to 2050.
+<p>5. <strong>📄 heat_prod_hp.xlsx</strong>.
+Shows the calculated heat production from “air-air” or “central heating” heat pumps for 2020 to 2050.
 Building categories are aggreagted to residential and non-residental.</p>
-<p>6. <strong>“heating_system_share”</strong>.
+<p>6. <strong>📄 heating_system_share.xlsx</strong>.
 Gives the share of heating systems in percentage for the building categories house, apartment block or non-residental buildings for 2020 to 2050.
 In wide and long format.</p>
 <p>Last Updated on 2025-10-10</p>
 <p>Version: 1.2.10.</p>
-</section>
 </section>
 
 
