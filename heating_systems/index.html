@@ -139,27 +139,27 @@ and <a class="reference internal" href="#data-assumptions-heating-systems"><span
 <nav class="contents local" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#model-functionality" id="id8">Model functionality</a></p>
+<li><p><a class="reference internal" href="#model-functionality" id="id9">Model functionality</a></p>
 <ul>
-<li><p><a class="reference internal" href="#making-changes-to-heating-systems" id="id9">Making changes to heating systems</a></p></li>
+<li><p><a class="reference internal" href="#making-changes-to-heating-systems" id="id10">Making changes to heating systems</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#data-assumptions-nve" id="id10">Data assumptions NVE</a></p>
+<li><p><a class="reference internal" href="#data-assumptions-nve" id="id11">Data assumptions NVE</a></p>
 <ul>
-<li><p><a class="reference internal" href="#selecting-certificates" id="id11">Selecting certificates</a></p></li>
-<li><p><a class="reference internal" href="#determining-heating-systems" id="id12">Determining heating systems</a></p></li>
-<li><p><a class="reference internal" href="#calculating-the-heating-system-share" id="id13">Calculating the heating system share</a></p></li>
-<li><p><a class="reference internal" href="#manual-tuning-of-heating-systems" id="id14">Manual tuning of heating systems</a></p></li>
-<li><p><a class="reference internal" href="#aggregating-the-heating-systems" id="id15">Aggregating the heating systems</a></p></li>
-<li><p><a class="reference internal" href="#heating-systems-efficiencies-and-load-share" id="id16">Heating systems efficiencies and load share</a></p></li>
-<li><p><a class="reference internal" href="#forecasting" id="id17">Forecasting</a></p></li>
-<li><p><a class="reference internal" href="#forecasting-the-use-of-heating-systems" id="id18">Forecasting the use of heating systems</a></p></li>
+<li><p><a class="reference internal" href="#selecting-certificates" id="id12">Selecting certificates</a></p></li>
+<li><p><a class="reference internal" href="#determining-heating-systems" id="id13">Determining heating systems</a></p></li>
+<li><p><a class="reference internal" href="#calculating-the-heating-system-share" id="id14">Calculating the heating system share</a></p></li>
+<li><p><a class="reference internal" href="#manual-tuning-of-heating-systems" id="id15">Manual tuning of heating systems</a></p></li>
+<li><p><a class="reference internal" href="#aggregating-the-heating-systems" id="id16">Aggregating the heating systems</a></p></li>
+<li><p><a class="reference internal" href="#heating-systems-efficiencies-and-load-share" id="id17">Heating systems efficiencies and load share</a></p></li>
+<li><p><a class="reference internal" href="#forecasting" id="id18">Forecasting</a></p></li>
+<li><p><a class="reference internal" href="#forecasting-the-use-of-heating-systems" id="id19">Forecasting the use of heating systems</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#tables-and-glossary" id="id19">Tables and glossary</a></p>
+<li><p><a class="reference internal" href="#tables-and-glossary" id="id20">Tables and glossary</a></p>
 <ul>
-<li><p><a class="reference internal" href="#tables" id="id20">Tables</a></p></li>
-<li><p><a class="reference internal" href="#heating-systems-glossary" id="id21">Heating systems glossary</a></p></li>
+<li><p><a class="reference internal" href="#tables" id="id21">Tables</a></p></li>
+<li><p><a class="reference internal" href="#heating-systems-glossary" id="id22">Heating systems glossary</a></p></li>
 </ul>
 </li>
 </ul>
@@ -511,6 +511,58 @@ That increases the overall share of “HP Central heating - Electric boiler” i
 the intial heating system share of “Electricity - Bio” is 20 %. In 2040 it states that 50 % of “Electricity - Bio” changes over to “HP - Electricity - Bio”. The intial share is 20 %
 so that means that 10 % in total (50 % of 20 %) changes over to the new heating system “HP - Electricity - Bio”. In 2050 100 % of the heating system “Electricity - Bio” has changed over to “HP - Electricity - Bio” and
 the overall heating system share of “HP - Electricity - Bio” for houses has been increased by 20 percentage points.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Heating systems forecasting illustration.</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 12.5%" />
+<col style="width: 18.8%" />
+<col style="width: 6.2%" />
+<col style="width: 18.8%" />
+<col style="width: 6.2%" />
+<col style="width: 6.2%" />
+<col style="width: 6.2%" />
+<col style="width: 6.2%" />
+<col style="width: 6.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Building category</p></th>
+<th class="head"><p>building code</p></th>
+<th class="head"><p>Initial heating systems</p></th>
+<th class="head"><p>Shares</p></th>
+<th class="head"><p>New heating systems</p></th>
+<th class="head"><p>2024</p></th>
+<th class="head"><p>2025</p></th>
+<th class="head"><p>2030</p></th>
+<th class="head"><p>2040</p></th>
+<th class="head"><p>2050</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>non_residential</p></td>
+<td><p>default</p></td>
+<td><p>Gas</p></td>
+<td><p>0.10</p></td>
+<td><p>HP Central heating - Electric boiler</p></td>
+<td><p>0.10</p></td>
+<td><p>0.25</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>default</p></td>
+<td><p>Electricity - Bio</p></td>
+<td><p>0.20</p></td>
+<td><p>HP - Bio - Electricity</p></td>
+<td><p>0.05</p></td>
+<td><p>0.10</p></td>
+<td><p>0.25</p></td>
+<td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
 <p>An example on how the forecasted share of heating systems can look are shown in the figure below. Here the share of air-air heatpumps is increased over time by shrinking
 the share of “Electricity - Bio” and increasing the share of “HP - Electricity - Bio”. With the same rates as in the table above.</p>
 <html>
@@ -590,8 +642,8 @@ e.exports=function(t){return null!=t&&(n(t)||function(t){return"function"==typeo
 <section id="tables">
 <h3>Tables<a class="headerlink" href="#tables" title="Link to this heading"></a></h3>
 <p>The table below shows the abbrevations used for the various heating systems. The full terms are also explained in more detail under <a class="reference internal" href="#heating-systems-glossary"><span class="std std-ref">Heating systems glossary</span></a>.</p>
-<span id="heating-systems-abbreviations"></span><table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Heating systems abbreviations</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<span id="heating-systems-abbreviations"></span><table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Heating systems abbreviations</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 27.3%" />
 <col style="width: 72.7%" />
@@ -641,8 +693,8 @@ e.exports=function(t){return null!=t&&(n(t)||function(t){return"function"==typeo
 </tbody>
 </table>
 <p>The tables below show the various combinations of heating systems and heating technologies.</p>
-<table class="docutils align-default" id="id4">
-<caption><span class="caption-text">Heating systems efficiency</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Heating systems efficiency</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 20.0%" />
@@ -806,8 +858,8 @@ e.exports=function(t){return null!=t&&(n(t)||function(t){return"function"==typeo
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Heating systems coverage</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Heating systems coverage</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 20.0%" />
@@ -971,8 +1023,8 @@ e.exports=function(t){return null!=t&&(n(t)||function(t){return"function"==typeo
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" id="id6">
-<caption><span class="caption-text">Heating systems domestic hot water</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Heating systems domestic hot water</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 33.3%" />
@@ -1038,8 +1090,8 @@ e.exports=function(t){return null!=t&&(n(t)||function(t){return"function"==typeo
 </section>
 <section id="heating-systems-glossary">
 <h3>Heating systems glossary<a class="headerlink" href="#heating-systems-glossary" title="Link to this heading"></a></h3>
-<table class="docutils align-default" id="id7">
-<caption><span class="caption-text">Glossary of terms used in heating systems</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Glossary of terms used in heating systems</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 12.5%" />
 <col style="width: 12.5%" />
