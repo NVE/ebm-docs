@@ -128,6 +128,63 @@ corresponding energy purpose in kWh/m<sup>2</sup> as given by a specific buildin
 year can be specified, in addition to the mathematical function.</p>
 <p>The table below shows how the csv file is formatted. When “default” is input all valid
 possibilites are affected.</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Energy need behaviour factor.</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_code</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>behaviour_factor</p></th>
+<th class="head"><p>start_year</p></th>
+<th class="head"><p>end_year</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>residential</p></td>
+<td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>1.0</p></td>
+<td><p>2020</p></td>
+<td><p>2050</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>PRE_TEK49+TEK69 + TEK87+TEK49+TEK97</p></td>
+<td><p>default</p></td>
+<td><p>0.85</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>TEK07+TEK10+TEK17</p></td>
+<td><p>lighting</p></td>
+<td><p>0.85</p></td>
+<td><p>2020</p></td>
+<td><p>2050</p></td>
+</tr>
+<tr class="row-odd"><td><p>non_residential</p></td>
+<td><p>default</p></td>
+<td><p>default</p></td>
+<td><p>1.15</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>retail</p></td>
+<td><p>default</p></td>
+<td><p>electrical_equipment</p></td>
+<td><p>2.0</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>It is also possible to modify the
 factors given in “heating_system_efficiencies.csv” to fine tune the coverage of various heating technologies and their
 efficiencies.</p>

@@ -114,6 +114,44 @@ products: electricity, district heating, bioenergy, and fossil fuels. Furthermor
 commercial buildings. The distribution keys are either calculated directly from Elhub data
 inside the module or loaded from input files under the <code class="docutils literal notranslate"><span class="pre">input</span></code> folder, depending on the energy product that is into consideration. The following table
 gives an overview of the implemented functionality introduced in the module.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Geographical distribution overview</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 15.0%" />
+<col style="width: 20.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Energy-product</p></th>
+<th class="head"><p>Building category</p></th>
+<th class="head"><p>File name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Electricity</p></td>
+<td><p>All</p></td>
+<td><p>yearly_aggregated_elhub_data.parquet</p></td>
+<td><p>Precalculated distribution keys for electricity consumption per municipality based on Elhub data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>District heating</p></td>
+<td><p>Households &amp; commercial buildings</p></td>
+<td><p>fjernvarme_kommune_fordelingsnøkler.xlsx</p></td>
+<td><p>Distribution keys for district heating consumption per municipality</p></td>
+</tr>
+<tr class="row-even"><td><p>Bioenergy</p></td>
+<td><p>Households &amp; holiday homes</p></td>
+<td><p>ved_kommune_fordelingsnøkler.xlsx</p></td>
+<td><p>Distribution keys for bioenergy (wood) consumption per municipality</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fossil fuels</p></td>
+<td><p>Holiday homes</p></td>
+<td><p>ved_kommune_fordelingsnøkler.xlsx</p></td>
+<td><p>Distribution keys for fossil fuel consumption per municipality</p></td>
+</tr>
+</tbody>
+</table>
 <section id="detailed-description">
 <h2>Detailed description<a class="headerlink" href="#detailed-description" title="Link to this heading"></a></h2>
 <p>The following is a more detailed description of how the distribution keys for each energy product are obtained:</p>

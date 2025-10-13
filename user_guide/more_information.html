@@ -114,6 +114,26 @@
 </pre></div>
 </div>
 <p>The parameters listed above are optional. The default choice for the <code class="docutils literal notranslate"><span class="pre">step</span></code> parameter is <code class="docutils literal notranslate"><span class="pre">energy-use</span></code>, and the default output filename is <code class="docutils literal notranslate"><span class="pre">output/ebm_output.xlsx</span></code>.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Difference between switch and step</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 13.0%" />
+<col style="width: 87.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>switch</p></td>
+<td><p>Always preceded by <code class="docutils literal notranslate"><span class="pre">--</span></code>. Used to ensure different running options a user may want to use. Examples include: <code class="docutils literal notranslate"><span class="pre">--help</span></code>, <code class="docutils literal notranslate"><span class="pre">--version</span></code>, <code class="docutils literal notranslate"><span class="pre">--debug</span></code> and <code class="docutils literal notranslate"><span class="pre">--open</span></code>. A more detailed explanation of the options can be found using the <code class="docutils literal notranslate"><span class="pre">--help</span></code> switch.</p></td>
+</tr>
+<tr class="row-odd"><td><p>step</p></td>
+<td><p>Represents the calculation step you want to run. The steps are sequential. Any prerequisite to the chosen step will run automatically. The four steps available are: <code class="docutils literal notranslate"><span class="pre">area-forecast</span></code>, <code class="docutils literal notranslate"><span class="pre">energy-requirements</span></code>, <code class="docutils literal notranslate"><span class="pre">heating-systems</span></code> and <code class="docutils literal notranslate"><span class="pre">energy-use</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="example-of-how-to-run-your-first-model-test">
 <h2>3. Example of how to run your first model: test<a class="headerlink" href="#example-of-how-to-run-your-first-model-test" title="Link to this heading"></a></h2>
@@ -165,11 +185,81 @@ options:
 ebm<span class="w"> </span>area-forecast<span class="w"> </span>output/area-forecast-vertical.xlsx
 </pre></div>
 </div>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Output from using the command above</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Building_category</p></th>
+<th class="head"><p>TEK</p></th>
+<th class="head"><p>Building_condition</p></th>
+<th class="head"><p>Year</p></th>
+<th class="head"><p>m2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>House</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>2020</p></td>
+<td><p>941109.5047</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>2021</p></td>
+<td><p>494082.49</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>2022</p></td>
+<td><p>494082.49</p></td>
+</tr>
+</tbody>
+</table>
 <p>If the user wants the output file in horizontal format, the user can use the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will write the output file in horizontal format with the name area-forecast.xlsx</span>
 ebm<span class="w"> </span>--horizontal<span class="w"> </span>area-forecast<span class="w"> </span>output/area-forecast.xlsx
 </pre></div>
 </div>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Output from using the command above (horizontal format)</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>TEK</p></th>
+<th class="head"><p>building_condition</p></th>
+<th class="head"><p>U</p></th>
+<th class="head"><p>2020</p></th>
+<th class="head"><p>2021</p></th>
+<th class="head"><p>2022</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>m2</p></td>
+<td><p>941 110</p></td>
+<td><p>494 082</p></td>
+<td><p>494 082</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>small_measure</p></td>
+<td><p>m2</p></td>
+<td><p>1529 303</p></td>
+<td><p>1976 330</p></td>
+<td><p>1976 330</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>renovation</p></td>
+<td><p>m2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="calculate-energy-requirements">
 <h3>5. Calculate energy-requirements<a class="headerlink" href="#calculate-energy-requirements" title="Link to this heading"></a></h3>
@@ -179,11 +269,117 @@ ebm<span class="w"> </span>--horizontal<span class="w"> </span>area-forecast<spa
 ebm<span class="w"> </span>energy-requirements<span class="w"> </span>output/energy-requirements-vertical.xlsx
 </pre></div>
 </div>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Output from using the command above</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>TEK</p></th>
+<th class="head"><p>building_condition</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>m2</p></th>
+<th class="head"><p>original_kwh_m2</p></th>
+<th class="head"><p>reduction_yearly</p></th>
+<th class="head"><p>reduction_policy</p></th>
+<th class="head"><p>reduction_condition</p></th>
+<th class="head"><p>reduced_kwh_m2</p></th>
+<th class="head"><p>behavior_factor</p></th>
+<th class="head"><p>kwh_m2</p></th>
+<th class="head"><p>energy_requirement</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>2020</p></td>
+<td><p>heating_rv</p></td>
+<td><p>941109.5047</p></td>
+<td><p>155.290712</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>155.290712</p></td>
+<td><p>1</p></td>
+<td><p>155.290712</p></td>
+<td><p>146145565.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>2020</p></td>
+<td><p>heating_dhw</p></td>
+<td><p>941109.5047</p></td>
+<td><p>29.78125</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>29.78125</p></td>
+<td><p>1</p></td>
+<td><p>29.78125</p></td>
+<td><p>28027417.44</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>2020</p></td>
+<td><p>fans_and_pumps</p></td>
+<td><p>941109.5047</p></td>
+<td><p>0.58125</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0.58125</p></td>
+<td><p>1</p></td>
+<td><p>0.58125</p></td>
+<td><p>547019.8996</p></td>
+</tr>
+</tbody>
+</table>
 <p>If the user wants the output file in horizontal format, the user can use the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will write the output file in horizontal format with the name energy-requirements.xlsx</span>
 ebm<span class="w"> </span>--horizontal<span class="w"> </span>energy-requirements<span class="w"> </span>output/energy-requirements.xlsx
 </pre></div>
 </div>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Output from using the command above (horizontal format)</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>TEK</p></th>
+<th class="head"><p>building_condition</p></th>
+<th class="head"><p>U</p></th>
+<th class="head"><p>2020</p></th>
+<th class="head"><p>2021</p></th>
+<th class="head"><p>2022</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>original_condition</p></td>
+<td><p>GWh</p></td>
+<td><p>	199</p></td>
+<td><p>104</p></td>
+<td><p>104</p></td>
+</tr>
+<tr class="row-odd"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>small_measure</p></td>
+<td><p>GWh</p></td>
+<td><p>307</p></td>
+<td><p>395</p></td>
+<td><p>394</p></td>
+</tr>
+<tr class="row-even"><td><p>house</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>renovation</p></td>
+<td><p>GWh</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="energy-consumption">
 <h3>6. Energy consumption<a class="headerlink" href="#energy-consumption" title="Link to this heading"></a></h3>
@@ -193,6 +389,117 @@ ebm<span class="w"> </span>--horizontal<span class="w"> </span>energy-requiremen
 ebm<span class="w"> </span>heating-systems<span class="w"> </span>output/heating-systems-vertical.xlsx
 </pre></div>
 </div>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Output from using the command above</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>building_condition</p></th>
+<th class="head"><p>purpose</p></th>
+<th class="head"><p>TEK</p></th>
+<th class="head"><p>year</p></th>
+<th class="head"><p>heating_systems</p></th>
+<th class="head"><p>heating_system_share</p></th>
+<th class="head"><p>eq_ts</p></th>
+<th class="head"><p>RV_GL</p></th>
+<th class="head"><p>Grunnlast energivare</p></th>
+<th class="head"><p>Grunnlast virkningsgrad</p></th>
+<th class="head"><p>RV_SL</p></th>
+<th class="head"><p>Spisslast energivare</p></th>
+<th class="head"><p>Spisslast virkningsgrad</p></th>
+<th class="head"><p>RV_EL</p></th>
+<th class="head"><p>Ekstralast energivare</p></th>
+<th class="head"><p>Ekstralast virkningsgrad</p></th>
+<th class="head"><p>DHW_TV</p></th>
+<th class="head"><p>Tappevann energivare</p></th>
+<th class="head"><p>CL_KV</p></th>
+<th class="head"><p>O_SV</p></th>
+<th class="head"><p>RV_HP</p></th>
+<th class="head"><p>hp_source</p></th>
+<th class="head"><p>kwh</p></th>
+<th class="head"><p>gwh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>original_condition</p></td>
+<td><p>cooling</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>2020</p></td>
+<td><p>DH</p></td>
+<td><p>0.20675904</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>DH</p></td>
+<td><p>0.99</p></td>
+<td><p>0</p></td>
+<td><p>Ingen</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Ingen</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>DH</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>apartment_block</p></td>
+<td><p>original_condition</p></td>
+<td><p>cooling</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>2020</p></td>
+<td><p>DH - Bio</p></td>
+<td><p>0.003394661</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>DH</p></td>
+<td><p>0.99</p></td>
+<td><p>0</p></td>
+<td><p>Bio</p></td>
+<td><p>0.65</p></td>
+<td><p>0</p></td>
+<td><p>Ingen</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>DH</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>apartment_block</p></td>
+<td><p>original_condition</p></td>
+<td><p>cooling</p></td>
+<td><p>PRE_TEK49</p></td>
+<td><p>2020</p></td>
+<td><p>Electric boiler</p></td>
+<td><p>0.056017026</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Electricity</p></td>
+<td><p>0.98</p></td>
+<td><p>0</p></td>
+<td><p>Ingen</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Ingen</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Electricity</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="holiday-homes-energy-consumption">
 <h3>7. Holiday homes energy consumption<a class="headerlink" href="#holiday-homes-energy-consumption" title="Link to this heading"></a></h3>
@@ -201,6 +508,41 @@ ebm<span class="w"> </span>heating-systems<span class="w"> </span>output/heating
 ebm<span class="w"> </span>energy-use<span class="w"> </span>output/energy-use-vertical.xlsx
 </pre></div>
 </div>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Output from using the command above</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>building_category</p></th>
+<th class="head"><p>energy_source</p></th>
+<th class="head"><p>U</p></th>
+<th class="head"><p>2020</p></th>
+<th class="head"><p>2021</p></th>
+<th class="head"><p>2022</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bolig</p></td>
+<td><p>Elektrisitet</p></td>
+<td><p>GWh</p></td>
+<td><p>42133</p></td>
+<td><p>42039</p></td>
+<td><p>41926</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bolig</p></td>
+<td><p>Fjernvarme</p></td>
+<td><p>GWh</p></td>
+<td><p>2727</p></td>
+<td><p>2732</p></td>
+<td><p>2736</p></td>
+</tr>
+<tr class="row-even"><td><p>Bolig</p></td>
+<td><p>Bio</p></td>
+<td><p>GWh</p></td>
+<td><p>6138</p></td>
+<td><p>6123</p></td>
+<td><p>6094</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="example-case">
 <h3>8. Example case<a class="headerlink" href="#example-case" title="Link to this heading"></a></h3>
