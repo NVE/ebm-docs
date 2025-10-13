@@ -109,10 +109,10 @@ and describe their contents. “column names” explains the columns for each in
 <nav class="contents local" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#various-terms" id="id3">Various terms</a></p></li>
-<li><p><a class="reference internal" href="#heating-systems" id="id4">Heating systems</a></p></li>
-<li><p><a class="reference internal" href="#filenames" id="id5">Filenames</a></p></li>
-<li><p><a class="reference internal" href="#column-names" id="id6">Column names</a></p></li>
+<li><p><a class="reference internal" href="#various-terms" id="id5">Various terms</a></p></li>
+<li><p><a class="reference internal" href="#heating-systems" id="id6">Heating systems</a></p></li>
+<li><p><a class="reference internal" href="#filenames" id="id7">Filenames</a></p></li>
+<li><p><a class="reference internal" href="#column-names" id="id8">Column names</a></p></li>
 </ul>
 </nav>
 <section id="various-terms">
@@ -439,9 +439,649 @@ and describe their contents. “column names” explains the columns for each in
 </section>
 <section id="filenames">
 <h2>Filenames<a class="headerlink" href="#filenames" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Overview of the input files and contents. The # column is an identifier for the file name and its corresponding columns. All files are in csv format and with underscore “_” instead of space.</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 40.2%" />
+<col style="width: 40.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>File name</p></th>
+<th class="head"><p>Norwegian translation</p></th>
+<th class="head"><p>Norwegian explanation</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Area</p></td>
+<td><p>Areal</p></td>
+<td><p>Areal (BRA) fordelt på bygningskategori og TEK i modellens startår.</p></td>
+<td><p>Useful floor area in the start year distributed by building category and building code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Area per person</p></td>
+<td><p>Areal per person</p></td>
+<td><p>Areal for nybygg i yrkesbygg, følger befolkningsøkning.</p></td>
+<td><p>Useful floor area for new non-residential buildings based on population growth.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Area new residential buildings</p></td>
+<td><p>Areal bolig nybygg</p></td>
+<td><p>Areal nybygg for boliger. Har behov for dette arealet i 2020 og 2021 for å kunne gjøre beregninger.</p></td>
+<td><p>New useful floor area for residential buildings in 2020 and 2021. Constants.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Energy need original condition</p></td>
+<td><p>Energibehov uberørte bygg</p></td>
+<td><p>Energibehov per kvadratmeter til ulike formål fordelt på TEK og bygningskategori. Filen inneholder også adferdsfaktor.</p></td>
+<td><p>Energy need per square meter for various energy purposes differentiated by building code and building category. Including a behavior factor.</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Energy need improvements</p></td>
+<td><p>Forbedringer fra politiske virkemidler</p></td>
+<td><p>Reduksjon i energibehov til andre energiformål enn enøk, rehab og enøk + rehab.</p></td>
+<td><p>Specifies energy efficiency measures for energypurposes other than small measures and renovation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Improvement building upgrade</p></td>
+<td><p>Forbedringer ved ENØK og rehabilitering.</p></td>
+<td><p>Prosentvis reduksjon i energibehov til oppvarming ved hhv. Enøk, rehab og enøk + rehab.</p></td>
+<td><p>Reduction in heating energy need from completed small measures, renovation and small measures + renovation. Percentage reduction.</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Heating systems efficiencies</p></td>
+<td><p>Virkningsgrad oppvarmingsløsninger</p></td>
+<td><p>Inneholder dekningsgrader, virkningsgrader og energivare for hver oppvarmingsteknolgi.</p></td>
+<td><p>Parameters of the various heating technologies. Includes load shares, efficiencies and the related energy product.</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Heating systems forecast</p></td>
+<td><p>Framskrivning oppvarmingsløsninger</p></td>
+<td><p>Definerer utviklingen i bruk av forskjellige oppvarmingsløsninger mot 2050. Overgangen gjøres med en andel sett opp mot startåret.</p></td>
+<td><p>Defines the rate of change in heating systems towards 2050. The change is made on a percentage basis compared with the start year.</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Heating systems initial shares</p></td>
+<td><p>Oppvarmingsløsninger startår</p></td>
+<td><p>Prosentvis fordeling av oppvarmingsløsninger per bygningskategori og TEK i startår.</p></td>
+<td><p>Distribution of heating systems per building category and building code in the start year.</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>Holiday home stock</p></td>
+<td><p>Antall fritidsboliger</p></td>
+<td><p>Bestanden av fritidsboliger per år fra 2001.</p></td>
+<td><p>Stock of holiday homes per year from 2001.</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Holiday home energy consumption</p></td>
+<td><p>Samlet energibruk fritidsboliger</p></td>
+<td><p>Historisk energibruk i fritidsboliger fordelt på elektrisitet og ved.</p></td>
+<td><p>Historical energy use of fuel wood and electricity in holiday homes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>New buildings residential</p></td>
+<td><p>Nybygg boliger</p></td>
+<td><p>Gjennomsnittlig areal nye boliger og andel hus og boligblokk av samlet nybygg boliger per år</p></td>
+<td><p>Average size of new apartments and houses. Proportion of new homes that are apartments and houses.</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>Population forecast</p></td>
+<td><p>Befolkning</p></td>
+<td><p>Befolkningsframskriving fra SSB med antall personer per husholdning.</p></td>
+<td><p>Population forecast from Statistics Norway and average household size.</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>S curve</p></td>
+<td><p>S- kurve</p></td>
+<td><p>Parametere for å lage S-kurve. Parametere for enøk, rehabilitering og riving for hver bygningskategori.</p></td>
+<td><p>Parameters to create S-curves.  Parameters are given for small measures, renovation and demolition for each building category.</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Energy need behaviour factor</p></td>
+<td><p>Energibehov ved tiltak</p></td>
+<td><p>Definerer reduksjon i energibehov for tiltak og behovsfaktoren som brukes til kalibrering.</p></td>
+<td><p>Sets the behaviour factor used for calibration purposes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>Building code parameters</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Virkeår per byggeteknisk forskrift.</p></td>
+<td><p>Year of operation for the different building code categories.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="column-names">
 <h2>Column names<a class="headerlink" href="#column-names" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Overview of the column names with explanation. The # column is an identifier which referes to the filename in the table above.</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 40.2%" />
+<col style="width: 40.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Column name</p></th>
+<th class="head"><p>Norwegian translation</p></th>
+<th class="head"><p>Norwegian explanation</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Area [m<sup>2</sup>]</p></td>
+<td><p>Areal [m<sup>2</sup>]</p></td>
+<td><p>Bruksareal (BRA)</p></td>
+<td><p>Useful floor area [m<sup>2</sup>].</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in TEK.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>area per person</p></td>
+<td><p>Areal per person</p></td>
+<td><p>Bruksareal (BRA) per person for hver kategori yrkesbygg.</p></td>
+<td><p>Useful floor area per person for each category of non-residential buildings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Year</p></td>
+<td><p>År</p></td>
+<td><p>År I modellen</p></td>
+<td><p>Year in the model</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>House</p></td>
+<td><p>Småhus</p></td>
+<td><p>Areal for nybygging I 2020 og 2021.</p></td>
+<td><p>New useful floor area for houses in 2020 and 2021.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Apartment block</p></td>
+<td><p>Boligblokk</p></td>
+<td><p>Areal for nybygging I 2020 og 2021.</p></td>
+<td><p>New useful floor area for apartments in 2020 and 2021</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Purpose</p></td>
+<td><p>Energiformål</p></td>
+<td><p>Hva energien skal brukes til. Eks. belysning eller romoppvarming.</p></td>
+<td><p>What the energy is used for. Ex. lighting or space heating.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Energy need[kWh/m<sup>2</sup>]</p></td>
+<td><p>Energibehov [kWh/m<sup>2</sup>]</p></td>
+<td><p>Beregnet energibehov per kvadratmeter per energiformål fra TEK.</p></td>
+<td><p>Calculated energy requirement per square meter for a specific purpose from the building code.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Behaviour factor</p></td>
+<td><p>Adferdsfaktor</p></td>
+<td><p>Faktor for å justere på energibehovet per formål, bygningskategori og TEK.</p></td>
+<td><p>A factor to change the energy requirement for each energy purpose, building category and building code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Purpose</p></td>
+<td><p>Energiformål</p></td>
+<td><p>Valg av energiformål.</p></td>
+<td><p>Affected energy purpose.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Function</p></td>
+<td><p>Funksjon</p></td>
+<td><p>Hvordan reduksjonen skal implementeres.</p></td>
+<td><p>How the reduction is applied.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Start year</p></td>
+<td><p>Startår</p></td>
+<td><p>Startår endring energibehov.</p></td>
+<td><p>Start year change in energy need.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Value</p></td>
+<td><p>Verdi</p></td>
+<td><p>Hvor stor reduksjonen skal være. Avhenging av funksjonen.</p></td>
+<td><p>How large the reduction is. Based on the function.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>End year</p></td>
+<td><p>Sluttår</p></td>
+<td><p>Sluttår endring energibehov</p></td>
+<td><p>End year change in energy need.</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Building category</p></td>
+<td><p>bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in TEK.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Purpose</p></td>
+<td><p>Energiformål</p></td>
+<td><p>Hva energien skal brukes til. Eks. belysning eller romoppvarming.</p></td>
+<td><p>What the energy is used for. Ex. lighting or space heating.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building condition</p></td>
+<td><p>Arealtilstand</p></td>
+<td><p>Arealets rehabiliteringstilstand. Arealet kan ha en av følgende tilstander: uberørt, ENØK, rehabilitering, ENØK og rehabilitering eller revet.</p></td>
+<td><p>The condition of the useful floor area in question. It can have one of the following conditions: original, small measures, renovation, small measures and renovation or demolished.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Energy improvement [%]</p></td>
+<td><p>Energiforbedring [%]</p></td>
+<td><p>Prosentvis reduksjon i energibehovet til oppvarming per tilstand.</p></td>
+<td><p>Percentage reduction in heating requirement based on condition.</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Heating systems</p></td>
+<td><p>Oppvarmingsløsninger</p></td>
+<td><p>En av de 12 tilgjengelige oppvarmingsløsningene. Dette kan være en kombinasjon av en til tre ulike oppvarmingsteknologier.</p></td>
+<td><p>One of the 12 available heating systems. A combination of up to three different heating technologies.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Base load</p></td>
+<td><p>Grunnlast</p></td>
+<td><p>Oppvarmingsteknologien som leverer majoriteten av oppvarmingsbehovet fra en gitt oppvarmingsløsning.</p></td>
+<td><p>The heating technology delivering the majority of the heating demand from a specific heating technology.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Peak load</p></td>
+<td><p>Spisslast</p></td>
+<td><p>Oppvarmingsteknologien som leverer en mindre andel av oppvarmingsbehovet fra en gitt oppvarmingsløsning. Når det enten er kaldt, eller for å varme resterende rom som grunnlasten ikke dekker.</p></td>
+<td><p>The heating technology delivering a smaller share of the heating demand. Either at low temperatures and/or to deliver heating to rooms the base load does not cover.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Tertiary load</p></td>
+<td><p>Ekstralast</p></td>
+<td><p>En tredje oppvarmingteknologi som kan brukes som et supplement til grunnlast og spisslast.</p></td>
+<td><p>A third heating technology which can supplement the base and peak load.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Base load energy product</p></td>
+<td><p>Grunnlast energivare</p></td>
+<td><p>Energivaren til oppvarmingsteknologien.</p></td>
+<td><p>Energy product used by the heating technology.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Peak load energy product</p></td>
+<td><p>Spisslast energivare</p></td>
+<td><p>Energivaren til oppvarmingsteknologien.</p></td>
+<td><p>Energy product used by the heating technology.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Teritary load energy product</p></td>
+<td><p>Ekstralast energivare</p></td>
+<td><p>Energivaren til oppvarmingsteknologien. Er kun elektrisitet.</p></td>
+<td><p>Energy product used by the heating technology. It is only electricity.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Tertiary load share</p></td>
+<td><p>Ekstralast andel</p></td>
+<td><p>Andelen av oppvarmingsbehovet som dekkes av ekstralasten.</p></td>
+<td><p>Share of the heating need covered by the tertiary load.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Base load share</p></td>
+<td><p>Grunnlast andel</p></td>
+<td><p>Andelen av oppvarmingsbehovet som dekkes av grunnlasten.</p></td>
+<td><p>Share of the heating need covered by the base load.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Peak load share</p></td>
+<td><p>Spisslast andel</p></td>
+<td><p>Andelen av oppvarmingsbehovet som dekkes av spisslasten.</p></td>
+<td><p>Share of the heating need covered by the peak load.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Base load efficiency</p></td>
+<td><p>Grunnlast virkningsgrad</p></td>
+<td><p>Virkningsgrad, kan være over eller under 1.</p></td>
+<td><p>Efficiency factor, can be smaller or larger than 1.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Peak load efficiency</p></td>
+<td><p>Spisslast virkningsgrad</p></td>
+<td><p>Virkningsgrad, kan være over eller under 1.</p></td>
+<td><p>Efficiency factor, can be smaller or larger than 1.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Tertiary load efficiency</p></td>
+<td><p>Ekstralast virkningsgrad</p></td>
+<td><p>Virkningsgrad, kan være over eller under 1.</p></td>
+<td><p>Efficiency factor, can be smaller or larger than 1.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Domestic hot water</p></td>
+<td><p>Tappevann</p></td>
+<td><p>Teknologien som brukes for å varme tappevann.</p></td>
+<td><p>Technology used to provide hot tap water.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Domestic hot water energy product</p></td>
+<td><p>Tappevann energivare</p></td>
+<td><p>Energivaren som brukes til å varme tappevann.</p></td>
+<td><p>The energy product used by the technology providing hot tap water.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Domestic hot water efficiency</p></td>
+<td><p>Tappevann virkningsgrad</p></td>
+<td><p>Virkningsgraden til teknologien som brukes til å varme tappevannet. Kan være over eller under 1.</p></td>
+<td><p>Efficiency factor of the technology providing hot tap water. Can be smaller or larger than 1.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Cooling efficiency</p></td>
+<td><p>Kjøling virkningsgrad</p></td>
+<td><p>Virkningsgrad til kjølemaskiner. Satt til 4.</p></td>
+<td><p>Efficiency factor for cooling machines, set to 4.</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Building category</p></td>
+<td><p>bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Initial heating system</p></td>
+<td><p>Oppvarmingsløsning utgangspunkt</p></td>
+<td><p>En av de 12 tilgjengelige oppvarmingsløsningene. Oppvarmingsløsningen som er i bruk.</p></td>
+<td><p>One of the 12 available heating systems. The initial heating system.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>New heating systems</p></td>
+<td><p>Ny oppvarmingsløsning</p></td>
+<td><p>En av de 12 tilgjengelige oppvarmingsløsningene. Fremskrevet endring.</p></td>
+<td><p>One of the 12 available heating systems. Forecasted change. .</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>2024-2050</p></td>
+<td><p>2024-2050</p></td>
+<td><p>Hvert år er en kolonne som inneholder andelen som skal gå fra oppvarmingsløsningen i bruk til en ny oppvarmingsløsning.</p></td>
+<td><p>Each year is a new column containing the share defining the change from the initial heating system to a new heating system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Heating systems</p></td>
+<td><p>Oppvarmingsløsninger</p></td>
+<td><p>En av de 12 tilgjengelige oppvarmingsløsningene.</p></td>
+<td><p>One of the 12 available heating systems.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Year</p></td>
+<td><p>år</p></td>
+<td><p>Startår</p></td>
+<td><p>Start year</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Heating system share</p></td>
+<td><p>Oppvarmingsløsning andel</p></td>
+<td><p>Andel av bygningskategori og TEK med den gitte oppvarmingsløsningen. Summeres til 1 innenfor hver bygningskategori og TEK.</p></td>
+<td><p>Share of building category and TEK with a specific heating system. Adds up to 1 for each TEK and building category.</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Number of holiday houses</p></td>
+<td><p>Antall fritidsboliger</p></td>
+<td><p>Antall fritidsboliger. Historisk statistikk hentet fra SSB.</p></td>
+<td><p>Historical statistics on number of holiday houses.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Detached houses and farmhouses used as holiday houses</p></td>
+<td><p>Helårsboliger og våningshus benyttet som fritidsbolig</p></td>
+<td><p>Antall bygg. Historisk statistikk hentet fra SSB.</p></td>
+<td><p>Historical statistics on number of holiday houses.</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>Year</p></td>
+<td><p>År</p></td>
+<td><p>År I modellen</p></td>
+<td><p>Year in the model</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Electricity</p></td>
+<td><p>Elektrisitet</p></td>
+<td><p>Framskrevet elektrisitetsbruk i fritidsboliger.</p></td>
+<td><p>Historical electricity use in holiday homes.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Fuelwood</p></td>
+<td><p>Ved</p></td>
+<td><p>Historisk vedforbruk i fritidsbolig.</p></td>
+<td><p>Historical use of fuelwood in holiday homes.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Fossilfuel</p></td>
+<td><p>Fossil</p></td>
+<td><p>Historisk fossilforbruk i fritidsbolig.</p></td>
+<td><p>Historical use of fossil fuels in holiday homes.</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Year</p></td>
+<td><p>År</p></td>
+<td><p>År I modellen</p></td>
+<td><p>Year in the model</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>New house share</p></td>
+<td><p>Andel nybygg småhus</p></td>
+<td><p>Andel av nybygde boliger som er småhus.</p></td>
+<td><p>House share of newly built dwellings.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>New apartment share</p></td>
+<td><p>Andel nybygg leilighet</p></td>
+<td><p>Andel av nybygde boliger som er leiligheter.</p></td>
+<td><p>Apartment share of newly built dwellings.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Floor area new house</p></td>
+<td><p>Areal nye småhus</p></td>
+<td><p>Gjennomsnittlig areal for nye småhus (175 m<sup>2</sup>)</p></td>
+<td><p>Average area for new houses (175 (m<sup>2</sup>)).</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Floor area new apartments</p></td>
+<td><p>Areal ny leilighet</p></td>
+<td><p>Gjennomsnittlig areal for nye leiligheter (75 m<sup>2</sup>).</p></td>
+<td><p>Average area for new apartments (75 (m<sup>2</sup>)).</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Household size</p></td>
+<td><p>Husholdningsstørrelse</p></td>
+<td><p>Antall personer per husholdning (gjennomsnitt), historisk og fremskrevet</p></td>
+<td><p>Average household size, historical and forecasted.</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Building category</p></td>
+<td><p>bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Condition</p></td>
+<td><p>Tilstand</p></td>
+<td><p>En av tilstandene: enøk, rehabilitering eller revet.</p></td>
+<td><p>One of the conditions: small measure, renovation or demolition.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Earliest age for measure</p></td>
+<td><p>Tidligste alder ved tiltak</p></td>
+<td><p>Punkt på S-kurven når tiltak kan begynne å gjennomføres. Alder er byggets alder etter TEK.</p></td>
+<td><p>A point on the S-curve when the condition/measure can be completed. Age is according to building code.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Middle point rush period</p></td>
+<td><p>Midtpunkt for hurtigperiode</p></td>
+<td><p>Midtpunkt for hurtigperiode for s-kurven.</p></td>
+<td><p>Middle point for the rush period on the s-curve.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Rush period years</p></td>
+<td><p>Hurtigperiode</p></td>
+<td><p>Lengde på perioden når flest bygg gjør tiltak.</p></td>
+<td><p>Length of a period when the majority of buildings complete a measure.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Last age for measure</p></td>
+<td><p>Siste alder ved tiltak</p></td>
+<td><p>Siste mulig alder tiltak gjennomføres.</p></td>
+<td><p>Deadline for when a measure can be completed.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Rush share</p></td>
+<td><p>Andel i hurtigperiode</p></td>
+<td><p>Hvor stor andel av bygningsmassen som utfører tiltaket i hurtigperioden</p></td>
+<td><p>Share of buildings completing the measure during the rush period.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Never share</p></td>
+<td><p>Andel ingen tiltak</p></td>
+<td><p>Andel av bygg som aldri gjennomfører et tiltak.</p></td>
+<td><p>Share of buildings never completing a measure.</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>Building category</p></td>
+<td><p>Bygningskategori</p></td>
+<td><p>Bygningskategoriene som brukes i TEK.</p></td>
+<td><p>Building categories used in the building code.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Purpose</p></td>
+<td><p>Energiformål</p></td>
+<td><p>Hva energien skal brukes til. Eks. belysning eller romoppvarming.</p></td>
+<td><p>What the energy is used for. Ex. lighting or space heating.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Behavior factor</p></td>
+<td><p>Adferdsfaktor</p></td>
+<td><p>Faktor for å justere på energibehovet per formål, bygningskategori og TEK.</p></td>
+<td><p>A factor to change the energy requirement for each energy purpose, building category and building code.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Start year</p></td>
+<td><p>Periodestart</p></td>
+<td><p>Når tiltaket skal starte.</p></td>
+<td><p>When the given measure begins.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>End year</p></td>
+<td><p>Periodeslutt</p></td>
+<td><p>Når tiltaket skal slutte.</p></td>
+<td><p>When the given measure ends.</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>Building code</p></td>
+<td><p>Byggteknisk forskrift</p></td>
+<td><p>Gjeldene versjon av TEK i byggeår.</p></td>
+<td><p>Building code in construction year.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Building year</p></td>
+<td><p>Byggeår</p></td>
+<td><p>Gjennomsnittlig byggeår for bygg innenfor en TEK</p></td>
+<td><p>Average year of construction for buildings in a building code.</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Period start year</p></td>
+<td><p>Periodestart</p></td>
+<td><p>Startår for en spesifikk TEK.</p></td>
+<td><p>Start year for a building code category.</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Period end year</p></td>
+<td><p>Periodeslutt</p></td>
+<td><p>Sluttår for en spesifikk TEK.</p></td>
+<td><p>End year for a building code category.</p></td>
+</tr>
+</tbody>
+</table>
 <p>Last Updated on 2025-10-13.</p>
 <p>Version: 0.99.2.</p>
 </section>
