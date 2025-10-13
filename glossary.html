@@ -109,19 +109,162 @@ and describe their contents. “column names” explains the columns for each in
 <nav class="contents local" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#various-terms" id="id2">Various terms</a></p></li>
-<li><p><a class="reference internal" href="#heating-systems" id="id3">Heating systems</a></p></li>
-<li><p><a class="reference internal" href="#filenames" id="id4">Filenames</a></p></li>
-<li><p><a class="reference internal" href="#column-names" id="id5">Column names</a></p></li>
+<li><p><a class="reference internal" href="#various-terms" id="id3">Various terms</a></p></li>
+<li><p><a class="reference internal" href="#heating-systems" id="id4">Heating systems</a></p></li>
+<li><p><a class="reference internal" href="#filenames" id="id5">Filenames</a></p></li>
+<li><p><a class="reference internal" href="#column-names" id="id6">Column names</a></p></li>
 </ul>
 </nav>
 <section id="various-terms">
 <span id="various-terms-glossary"></span><h2>Various terms<a class="headerlink" href="#various-terms" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Various terms used in the model and its description.</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 12.5%" />
+<col style="width: 37.5%" />
+<col style="width: 37.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>English</p></th>
+<th class="head"><p>Norwegian</p></th>
+<th class="head"><p>Norwegian explanation</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Small-scale energy measure.</p></td>
+<td><p>Enøk-tiltak.</p></td>
+<td><p>Reduserer energibehov til romoppvarming.</p></td>
+<td><p>Reduces space heating demand.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Renovation.</p></td>
+<td><p>Rehabilitering.</p></td>
+<td><p>Reduserer energibehov til oppvarming.</p></td>
+<td><p>Reduces space heating demand.</p></td>
+</tr>
+<tr class="row-even"><td><p>Renovation and small measure.</p></td>
+<td><p>Rehabilitering og enøk.</p></td>
+<td><p>Reduserer energibehov til romoppvarming.</p></td>
+<td><p>Reduces space heating demand.</p></td>
+</tr>
+<tr class="row-odd"><td><p>House.</p></td>
+<td><p>Småhus.</p></td>
+<td><p>Enebolig, rekkehus, tomannsbolig, firemannsbolig.</p></td>
+<td><p>Residential buildings which are not multi-storey apartment blocks.</p></td>
+</tr>
+<tr class="row-even"><td><p>Original condition.</p></td>
+<td><p>Uberørt.</p></td>
+<td><p>Bygningsarealet har ikke utført enøk eller rehabilitering.</p></td>
+<td><p>The floor area/building has not completed any measures.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Apartment block.</p></td>
+<td><p>Leilighet i boligblokk.</p></td>
+<td><p>En boligblokk inneholder flere leligheter.</p></td>
+<td><p>Residential apartments. An apartment block contains multiple apartments.</p></td>
+</tr>
+<tr class="row-even"><td><p>Non-residential building.</p></td>
+<td><p>Yrkesbygg.</p></td>
+<td><p>De 11 bygningskategoriene I TEK som ikke er boliger.</p></td>
+<td><p>The 11 building categories in the building code that are not residential buildings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Electricity.</p></td>
+<td><p>Elektrisitet.</p></td>
+<td><p>Energibærer.</p></td>
+<td><p>Energy product.</p></td>
+</tr>
+<tr class="row-even"><td><p>Direct resistance heating.</p></td>
+<td><p>Direktevirkende elektrisitet.</p></td>
+<td><p>Oppvarmingsteknologi, punktoppvarming. For eksempel panelovn eller vifteovn.</p></td>
+<td><p>Heating technology, space heating. For example electrical panel heater or convection oven.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wood stove.</p></td>
+<td><p>Vedovn.</p></td>
+<td><p>Oppvarmingsteknologi som bruker ved. Punktoppvarming.</p></td>
+<td><p>Heating technology using fuel wood. Space heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Heat pump air-air.</p></td>
+<td><p>Varmepumpe luft-luft .</p></td>
+<td><p>Punktoppvarming, kan ikke varme opp hele bygningen med én enhet.</p></td>
+<td><p>Point source and cannot heat an entire building with one unit.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Electric water heater.</p></td>
+<td><p>Varmtvannsbereder.</p></td>
+<td><p>Varmtvannsbereder for varmt tappevann.</p></td>
+<td><p>Electric water heater for domestic hot water.</p></td>
+</tr>
+<tr class="row-even"><td><p>Electric boiler.</p></td>
+<td><p>Elkjel.</p></td>
+<td><p>Vannbåren varme.</p></td>
+<td><p>Water-borne heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Biomass boiler.</p></td>
+<td><p>Biokjel.</p></td>
+<td><p>Vannbåren varme.</p></td>
+<td><p>Water-borne heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Solar collector.</p></td>
+<td><p>Solfanger.</p></td>
+<td><p>Vannbåren varme.</p></td>
+<td><p>Water-borne heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fossil boiler.</p></td>
+<td><p>Fossilkjel.</p></td>
+<td><p>Vannbåren varme.</p></td>
+<td><p>Water-borne heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Heat pump central heating.</p></td>
+<td><p>Varmepumpe væske-vann eller luft-væske.</p></td>
+<td><p>Samlebegrep for alle varmepumper som leverer vannbåren varme.</p></td>
+<td><p>Term for all heat pumps that delivers water-borne heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>District heating.</p></td>
+<td><p>Fjernvarme.</p></td>
+<td><p>Vannbåren varme. Hentet fra SSB sin fjernvarmestatistikk for kalibrering.</p></td>
+<td><p>Water-borne heating. Uses Statistics Norways district heating statistics for calibration.</p></td>
+</tr>
+<tr class="row-even"><td><p>Non substitutable electricity use.</p></td>
+<td><p>Elspesifikt forbruk.</p></td>
+<td><p>Energiforbruk som krever elektrisitet, som belysning. Kan ikke erstattes med andre energivarer.</p></td>
+<td><p>Electricity usage which cannot be replaced by another technology or energy product. Like lighting and electrical appliances.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chiller/cooler.</p></td>
+<td><p>Kjølemaskin.</p></td>
+<td><p>Kjøleteknologi. Bruker elektrisitet.</p></td>
+<td><p>Cooling technology. Uses electricity.</p></td>
+</tr>
+<tr class="row-even"><td><p>Condition.</p></td>
+<td><p>Tilstand.</p></td>
+<td><p>Arealets tilstand.</p></td>
+<td><p>The conditon of the heated floor area.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Storage.</p></td>
+<td><p>Lager.</p></td>
+<td><p>Omfatter kun lagerbygg i modellen. En underkategori av lettindustri og verksted.</p></td>
+<td><p>Consists only of storage and warehouses in the model. A subcategory of light industry and workshops.</p></td>
+</tr>
+<tr class="row-even"><td><p>Energy need.</p></td>
+<td><p>Energibehov.</p></td>
+<td><p>Arealets energibehov i kWh/m2 etter definisjon i TEK. Energimengden arealet trenger for å fungere optimalt. Teoretisk størrelse.</p></td>
+<td><p>The area’s energy need in kWh/m<sup>2</sup> as defined in the building code. This is the amount of energy the area needs to function properly. A theoretical size.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Energy use.</p></td>
+<td><p>Energibruk.</p></td>
+<td><p>Den energimengden arealet må få tilført for å dekke energibehovet. Målbar mengde. I kWh/m<sup>2</sup>.</p></td>
+<td><p>The amount of delivered energy the area requires in order to cover the energy need. In kWh/m<sup>2</sup> This is a measurable quantity.</p></td>
+</tr>
+<tr class="row-even"><td><p>Energy product.</p></td>
+<td><p>Energivare.</p></td>
+<td><p>Energivaren til oppvarmingsteknologien.</p></td>
+<td><p>Energy product used by the heating technology.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="heating-systems">
 <h2>Heating systems<a class="headerlink" href="#heating-systems" title="Link to this heading"></a></h2>
-<table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Glossary of terms used in heating systems</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Glossary of terms used in heating systems</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 12.5%" />
 <col style="width: 12.5%" />
