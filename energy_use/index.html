@@ -105,7 +105,7 @@
            <div itemprop="articleBody">
              
   <section id="energy-use">
-<h1>Energy use<a class="headerlink" href="#energy-use" title="Link to this heading"></a></h1>
+<span id="energy-use-doc"></span><h1>Energy use<a class="headerlink" href="#energy-use" title="Link to this heading"></a></h1>
 <p>The model calculates the energy use by combining energy need, area and heating systems.
 How much energy the building stock uses depends on it’s energy need and which heating technologies are used to cover it.
 For instance, both air-to-air heat pumps and electrical panel heaters use electricity to heat a room, but heat pumps use
@@ -128,7 +128,7 @@ The energy products included in the model are electricity, fuel wood, district h
 </nav>
 <section id="model-functionality">
 <h2>Model functionality<a class="headerlink" href="#model-functionality" title="Link to this heading"></a></h2>
-<p>The formula for <strong>Total energy use per year</strong> in the EBM (Energibruksmodell) is designed to calculate the annual energy use in the Norwegian building stock.
+<p>The formula for <strong>Total energy use per year</strong> in EBM is designed to calculate the annual energy use in the Norwegian building stock.
 The calculation takes into account the type of energy product and efficiency in heating systems.</p>
 <div class="math notranslate nohighlight">
 \[\text{energy use kWh}_{\text{year}} =
@@ -143,29 +143,29 @@ The calculation takes into account the type of energy product and efficiency in 
 <p>where</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>energy need kWh/m²</strong>
+<li><p><span class="math notranslate nohighlight">\(\text{energy need kWh/m}^{\text{2}}\)</span>
 - <a class="reference internal" href="../energy_need/index.html#energy-need"><span class="std std-ref">Energy need</span></a> for the building category, building condition and purpose.</p></li>
-<li><p><strong>area m²</strong>
+<li><p><span class="math notranslate nohighlight">\(\text{area m}^{\text{2}}\)</span>
 - <a class="reference internal" href="../area/index.html#area"><span class="std std-ref">Area</span></a> for building type and condition</p></li>
-<li><p><strong>heating systems share</strong>
+<li><p><span class="math notranslate nohighlight">\(\text{heating systems share}\)</span>
 - Distribution of <a class="reference internal" href="../heating_systems/index.html#aggregating-the-heating-systems"><span class="std std-ref">heating systems</span></a> across the building stock</p></li>
-<li><p><strong>heating systems efficiency</strong>
-- Thermal efficiency of heating systems</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{heating systems efficiency kWh/kWh}\)</span>
+- <a class="reference internal" href="../heating_systems/index.html#heating-systems-efficiencies"><span class="std std-ref">Thermal efficiency of heating systems</span></a></p></li>
 </ul>
 </div></blockquote>
 <p>Energy use per year can be broken down into energy use per purpose and energy product across building categories and building codes.</p>
 </section>
 <section id="holiday-homes">
 <h2>Holiday homes<a class="headerlink" href="#holiday-homes" title="Link to this heading"></a></h2>
-<p>Holyday homes are treated separately in EBM.
-We assume that the building code and condition of the buildings is not as important for energy use in holyday
-homes as it is for other building categories, as the use of holyday homes varies a lot.
-Some holyday comes are only used a few days per year, while others are used several months per year.</p>
+<p>Holiday homes are treated separately in EBM.
+We assume that the building code and condition of the buildings is not as important for energy use in holiday
+homes as it is for other building categories, as the use of holiday homes varies a lot.
+Some holiday comes are only used a few days per year, while others are used several months per year.</p>
 <section id="id1">
 <h3>Model functionality<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>To calculate the energy use in holyday homes in Norway,
-we use the number of holyday homes and the average energy use per holyday home.</p>
-<p>First, we make a forecast of the number of holyday homes:</p>
+<p>To calculate the energy use in holiday homes in Norway,
+we use the number of holiday homes and the average energy use per holiday home.</p>
+<p>First, we make a forecast of the number of holiday homes:</p>
 <div class="math notranslate nohighlight">
 \[\text{Number of holiday homes}_{\text{year}} =
    \frac{
@@ -176,45 +176,43 @@ we use the number of holyday homes and the average energy use per holyday home.<
 <p>where</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>population_year</strong>
+<li><p><span class="math notranslate nohighlight">\(\text{population}_{\text{year}}\)</span>
 - referst to the assumed population in the model year.</p></li>
-<li><p><strong>average number of people per holiday home</strong>
+<li><p><span class="math notranslate nohighlight">\(\text{average number of people per holiday home}\)</span>
 - refers to the ratio between population in Norway and the number of holiday homes, averaged over the years 2021 to 2024</p></li>
 </ul>
 </div></blockquote>
-<p>The next step is to calculate the energy use, based on the use of electricity, wood fuel and fossil fuels per holyday home.
+<p>The next step is to calculate the energy use, based on the use of electricity, wood fuel and fossil fuels per holiday home.
 Assumptions in the model on the energy use of holiday homes is described under Data Assumptions NVE.</p>
 <p>Energy use in holiday homes is calculated as follows:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\text{Energy use in holyday homes}_{\text{year, energy product}} =
-    \text{Number of holyday homes}_{\text{year}} \\
+\[\begin{split}\text{Energy use in holiday homes}_{\text{year, energy product}} =
+    \text{Number of holiday homes}_{\text{year}} \\
     \times
-    \text{energy use per holyday home}_{\text{year, energy product}}\end{split}\]</div>
+    \text{energy use per holiday home}_{\text{year, energy product}}\end{split}\]</div>
 <p>where</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>energy use per holyday home_year_energy product</strong>
-- referst to the assumed average energy use per holiday home in the model year, for each energy product</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Energy use in holiday homes}_{\text{year, energy product}}\)</span>
+- refers to the assumed average energy use per holiday home in the model year, for each energy product</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="data-assumptions-nve">
 <h3>Data assumptions NVE<a class="headerlink" href="#data-assumptions-nve" title="Link to this heading"></a></h3>
-<p>The assumptions concerning other building categories than holyday homes, are described in <a class="reference internal" href="../area/index.html#area"><span class="std std-ref">Area</span></a>, <a class="reference internal" href="../energy_need/index.html#energy-need"><span class="std std-ref">Energy need</span></a> and <a class="reference internal" href="../heating_systems/index.html#heating-systems"><span class="std std-ref">Heating systems</span></a>.</p>
-<p>Holyday home stock
-Input file: holiday_home_stock.csv
-The historic number of holyday homes is based on statistics from Statistics Norway.</p>
-<p>Energy consumption in holyday homes
-Input file: holiday_home_energy_consumption.csv</p>
-<p>The historic energy consumption in holyday homes is published by Statistics Norway.
-This energy use is divided by the number of holyday homes, also published by Statistics Norway.
+<p>The assumptions concerning other building categories than holiday homes, are described in <a class="reference internal" href="../area/index.html#area"><span class="std std-ref">Area</span></a>, <a class="reference internal" href="../energy_need/index.html#energy-need"><span class="std std-ref">Energy need</span></a> and <a class="reference internal" href="../heating_systems/index.html#heating-systems"><span class="std std-ref">Heating systems</span></a>.</p>
+<p>🧾 <a class="reference internal" href="../input_description.html#holiday-home-stock-csv"><span class="std std-ref">holiday_home_stock.csv</span></a>. <br>
+The historic number of holiday homes is based on statistics from Statistics Norway.</p>
+<p>🧾 <a class="reference internal" href="../input_description.html#holiday-home-energy-consumption-csv"><span class="std std-ref">holiday_home_energy_consumption.csv</span></a>. <br>
+The <a class="reference external" href="https://www.ssb.no/en/statbank/table/13929">historic energy consumption in holiday homes</a> is published by Statistics Norway.
+This energy use is divided by the <a class="reference external" href="https://www.ssb.no/en/statbank/table/03174">number of holiday homes</a>, also published by Statistics Norway.
 This is done for the energy products electricity, wood fuel and fossil fuel.</p>
-<p>The development in use of the different energy products pr holyday home is assumed based on the historic development.
-The electricity use per holyday home has increased over the last 20 years, and we expect this trend to continue.
-However, we assume that the increase will slow down over time and that the electricity use per holyday hose never exceeds the level in 2021,
-when corona restrictions on travel caused people to use their holyday homes more.</p>
-<p>For wood fuel use, we assume that going forward, this will be the same as the average use in the years 2019 to 2023.</p>
-<p>There is still some use of fossil fuels in holiday homes. This is assumed to continue in the years ahead.</p>
+<p>The development in use of the different energy products per holiday home is assumed based on the historic development.
+The electricity use per holiday home has increased over the last 20 years, and we expect this trend to continue.
+However, we assume that the increase will slow down over time and that the electricity use per holiday home never exceeds the level in 2021,
+when corona restrictions on travel caused people to use their holiday homes more.</p>
+<p>For fuelwood use, we assume that going forward, this will be the same as the average use in the years 2019 to 2023.</p>
+<p>There are still some use of fossil fuels in holiday homes. This is assumed to continue in the years ahead.</p>
 <p>Last Updated on 2025-10-13</p>
 <p>Version: 0.99.2.</p>
 </section>
