@@ -109,10 +109,10 @@ and describe their contents. “column names” explains the columns for each in
 <nav class="contents local" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#various-terms" id="id1">Various terms</a></p></li>
-<li><p><a class="reference internal" href="#heating-systems" id="id2">Heating systems</a></p></li>
-<li><p><a class="reference internal" href="#filenames" id="id3">Filenames</a></p></li>
-<li><p><a class="reference internal" href="#column-names" id="id4">Column names</a></p></li>
+<li><p><a class="reference internal" href="#various-terms" id="id2">Various terms</a></p></li>
+<li><p><a class="reference internal" href="#heating-systems" id="id3">Heating systems</a></p></li>
+<li><p><a class="reference internal" href="#filenames" id="id4">Filenames</a></p></li>
+<li><p><a class="reference internal" href="#column-names" id="id5">Column names</a></p></li>
 </ul>
 </nav>
 <section id="various-terms">
@@ -120,6 +120,179 @@ and describe their contents. “column names” explains the columns for each in
 </section>
 <section id="heating-systems">
 <h2>Heating systems<a class="headerlink" href="#heating-systems" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Glossary of terms used in heating systems</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 12.5%" />
+<col style="width: 37.5%" />
+<col style="width: 37.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>English</p></th>
+<th class="head"><p>Norwegian</p></th>
+<th class="head"><p>Norwegian explanation</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Heating systems</p></td>
+<td><p>Oppvarmingsløsninger</p></td>
+<td><p>Kombinasjon av en eller flere oppvarmingsteknologier. Er en andel som summerer seg til 1 innenfor hver kombinasjon av TEK og bygningskategori.</p></td>
+<td><p>Combination of one or more heating technologies. Fraction which adds up to 1 for each combination of building code and building category.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Base load</p></td>
+<td><p>Grunnlast</p></td>
+<td><p>Oppvarmingsteknologien som dekker majoriteten av oppvarmingsbehovet.</p></td>
+<td><p>The heating technology that meets the majority of the heating need.</p></td>
+</tr>
+<tr class="row-even"><td><p>Peak load</p></td>
+<td><p>Spisslast</p></td>
+<td><p>Oppvarmingsteknologiensom dekker det resterende oppvarmingsbehovet.</p></td>
+<td><p>The heating technology that meets the remaining heating need.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tertiary load</p></td>
+<td><p>Ekstralast</p></td>
+<td><p>Oppvarmingsteknologien som dekker det resterende oppvarmingsbehovet etter grunnlast og spisslast.</p></td>
+<td><p>The heating technology that meets the remaining heating need after base and peak load.</p></td>
+</tr>
+<tr class="row-even"><td><p>Base load energy product</p></td>
+<td><p>Grunnlast energivare</p></td>
+<td><p>Energivaren som brukes avgrunnlasten.</p></td>
+<td><p>The energy product used by the base load.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Peak load energy product</p></td>
+<td><p>Spisslast energivare</p></td>
+<td><p>Energivaren som brukes av spisslasten.</p></td>
+<td><p>The energy product used by the peak load.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tertiary load energy product</p></td>
+<td><p>Ekstralast energivare</p></td>
+<td><p>Energivaren som brukes av ekstralasten.</p></td>
+<td><p>The energy product used by the tertiary load.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Base load coverage</p></td>
+<td><p>Grunnlast andel</p></td>
+<td><p>Andelen av varmebehovet som dekkes av grunnlasten.</p></td>
+<td><p>Share of the heating need covered by the base load.</p></td>
+</tr>
+<tr class="row-even"><td><p>Peak load coverage</p></td>
+<td><p>Spisslast andel</p></td>
+<td><p>Andelen av varmebehovet som dekkes av spisslasten.</p></td>
+<td><p>Share of the heating need covered by the peak load.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tertiary load coverage</p></td>
+<td><p>Ekstralast andel</p></td>
+<td><p>Andelen av varmebehovet som dekkes av ekstralasten.</p></td>
+<td><p>Share of the heating need covered by the tertiary load.</p></td>
+</tr>
+<tr class="row-even"><td><p>Base load efficiency</p></td>
+<td><p>Grunnlast virkningsgrad</p></td>
+<td><p>Virkningsgrad, kan være over eller under 1.</p></td>
+<td><p>Efficiency factor, can be smaller or larger than 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Peak load efficiency</p></td>
+<td><p>Spisslast virkningsgrad</p></td>
+<td><p>Virkningsgrad, kan være over eller under 1.</p></td>
+<td><p>Efficiency factor, can be smaller or larger than 1.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tertiary load efficiency</p></td>
+<td><p>Ekstralast virkningsgrad</p></td>
+<td><p>Virkningsgrad, kan være over eller under 1.</p></td>
+<td><p>Efficiency factor, can be smaller or larger than 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Domestic hot water</p></td>
+<td><p>Tappevann</p></td>
+<td><p>Oppvarming av varmt vann til tappevannsbruk.</p></td>
+<td><p>Heating of domestic hot water.</p></td>
+</tr>
+<tr class="row-even"><td><p>Domestic hot water energy product</p></td>
+<td><p>Tappevann energivare</p></td>
+<td><p>Hvilken energivare som brukes til å varme opp varmt tappevann.</p></td>
+<td><p>Energy product used by the heating technology providing hot tap water.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Domestic hot water efficiency</p></td>
+<td><p>Tappevann virkningsgrad</p></td>
+<td><p>Virkningsgrad for teknologien som brukes til å varme opp varmt tappevann.</p></td>
+<td><p>Efficiency factor for the technology providing hot tap water.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cooling efficiency</p></td>
+<td><p>Kjøling virkingsgrad</p></td>
+<td><p>Virkningsgrad for kjølemaskin.</p></td>
+<td><p>Efficiency factor for cooling unit.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cooling</p></td>
+<td><p>Kjøling</p></td>
+<td><p>Kjølemaskin.</p></td>
+<td><p>Cooling unit.</p></td>
+</tr>
+<tr class="row-even"><td><p>Direct resistance heating</p></td>
+<td><p>Direktevirkende elektristiet.</p></td>
+<td><p>Direktevirkende elektrisk oppvarming. For eksempel panelovn og vifteovn. Punktoppvarming.</p></td>
+<td><p>Direct resistance heating. For example electric wall heater or convection ovens. Space heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Electric boiler</p></td>
+<td><p>Elkjel</p></td>
+<td><p>Elkjel. Vannbåren varme.</p></td>
+<td><p>Electric boiler. Water  borne heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>District heating</p></td>
+<td><p>Fjernvarme</p></td>
+<td><p>Fjernvarme. Vannbåren varme.</p></td>
+<td><p>District heating. Water borne heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gas boiler</p></td>
+<td><p>Gasskjel</p></td>
+<td><p>Naturgasskjel. Vannbåren varme.</p></td>
+<td><p>Natural gas boiler. Water borne heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Direct resistance heating – Wood stove</p></td>
+<td><p>Direktevirkende elektristet - Vedovn</p></td>
+<td><p>Direktevirkende elektrisitet og vedovn. Punktoppvarming.</p></td>
+<td><p>Direct resistance heating and wood stove. Space heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>District heating – Wood stove</p></td>
+<td><p>Fjernvarme – Vedovn</p></td>
+<td><p>Fjernvarme og vedovn. Vannbåren varme og punktoppvarming.</p></td>
+<td><p>District heating and wood stove. Water borne heating and space heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Heat pump air air – direct resistance heating – wood stove</p></td>
+<td><p>Luft luft varmepumpe – Direktevirkende elektrisitet – Vedovn</p></td>
+<td><p>Luft luft varmepumpe, vedovn og panelovn (evt varmekabler). Punktoppvarming.</p></td>
+<td><p>Heat pump air air, wood stove and direct resistance heating. Space heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heat pump air air – Direct resistance heating</p></td>
+<td><p>Luft luft varmepumpe – Direktevirkende elektrisitet</p></td>
+<td><p>Luft luft varmepumpe og direktevirkende elektrisitet. Punktoppvarming.</p></td>
+<td><p>Heat pump air air and direct resistance heating. Space heating</p></td>
+</tr>
+<tr class="row-even"><td><p>Heat pump central heating – Electric boiler</p></td>
+<td><p>Vannbåren varmepumpe – Elkjel</p></td>
+<td><p>Vannbåren varmepumpe (væske – vann eller luft – vann) og elkjel. Vannbåren varme.</p></td>
+<td><p>Water borne heat pump and electric boiler. Water borne heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heat pump central heating – Gas boiler</p></td>
+<td><p>Vannbåren varmepumpe – Naturgasskjel</p></td>
+<td><p>Vannbåren varmepumpe og fossilkjel. Vannbåren varme.</p></td>
+<td><p>Water borne heat pump and fossil boiler. Water borne heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Electric boiler – Solar collector</p></td>
+<td><p>Elkjel – Solfanger</p></td>
+<td><p>Elkjel og solfanger. Vannbåren varme.</p></td>
+<td><p>Electric boiler and solar collector. Water borne heating.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heat pump central heating – Wood stove</p></td>
+<td><p>Vannbåren varmepumpe - Vedovn</p></td>
+<td><p>Vannbåren varmepumpe og vedovn. Vannbåren varme og punktoppvarming.</p></td>
+<td><p>Water borne heat pump and wood stove. Water borne heating and space heating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Heat pump central heating</p></td>
+<td><p>Vannbåren varmepumpe</p></td>
+<td><p>Samlebetegnelse for luft-vann, væske-vann (bergvarme, jordvarme eller sjøvarme) og ventilasjonsvarmepumpe.</p></td>
+<td><p>Term for different types of heat pumps delivering hot water such as air-water, liquid-water (ground heat, ocean heat) and ventilation heat pumps.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="filenames">
 <h2>Filenames<a class="headerlink" href="#filenames" title="Link to this heading"></a></h2>
