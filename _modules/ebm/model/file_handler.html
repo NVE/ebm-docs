@@ -172,7 +172,8 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">default_data_directory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the path for ebm default data. The function is used when content is needed for a new input directory.</span>
+<span class="sd">        Returns the path for ebm default data. The function is used when content is needed for a new input directory</span>
+
 <span class="sd">        Not to be confused with FileHandler.input_directory.</span>
 
 <span class="sd">        Returns</span>
@@ -183,14 +184,22 @@
 <span class="sd">        --------</span>
 <span class="sd">        create_missing_input_files</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span></div>
+        <span class="n">data_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+        <span class="n">default_data_directory</span> <span class="o">=</span>  <span class="n">data_directory</span> <span class="o">/</span> <span class="s1">&#39;calibrated&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">default_data_directory</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Could not find default data directory </span><span class="si">{</span><span class="n">default_data_directory</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">default_data_directory</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">default_data_directory</span><span class="si">}</span><span class="s1"> is not a directory&#39;</span>
+            <span class="k">raise</span> <span class="ne">NotADirectoryError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">default_data_directory</span></div>
 
 
 <div class="viewcode-block" id="FileHandler.get_file">
 <a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_file">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Finds and returns a file by searching in the folder defined by self.input_folder.</span>
+<span class="sd">        Finds and returns a file by searching in the folder defined by self.input_folder</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">        - file_name (str): Name of the file to retrieve.</span>
@@ -395,18 +404,52 @@
 <div class="viewcode-block" id="FileHandler.get_calibrate_heating_rv">
 <a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_calibrate_heating_rv">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_calibrate_heating_rv</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the calibrated heating requirement values</span>
+
+<span class="sd">        This method attempts to load the energy requirement calibration file from the</span>
+<span class="sd">        input directory. It first checks for a file without extension, then for a `.csv`</span>
+<span class="sd">        version. If neither is found, it returns a default DataFrame.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            A DataFrame containing the calibrated heating requirement values. If no file</span>
+<span class="sd">            is found, a default DataFrame is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">calibrate_heating_rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALIBRATE_ENERGY_REQUIREMENT</span>
         <span class="k">if</span> <span class="n">calibrate_heating_rv</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">calibrate_heating_rv</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">calibrate_heating_rv</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">calibrate_heating_rv</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">default_calibrate_heating_rv</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="FileHandler.get_calibrate_heating_systems">
 <a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_calibrate_heating_systems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_calibrate_heating_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the calibrated energy consumption values for heating systems</span>
+
+<span class="sd">        This method attempts to load the energy consumption calibration file from the</span>
+<span class="sd">        input directory. It first checks for a file without extension, then for a `.csv`</span>
+<span class="sd">        version. If neither is found, it returns a default DataFrame.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            A DataFrame containing the calibrated energy consumption values. If no file</span>
+<span class="sd">            is found, a default DataFrame is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">calibrate_energy_consumption</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALIBRATE_ENERGY_CONSUMPTION</span>
         <span class="k">if</span> <span class="n">calibrate_energy_consumption</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">calibrate_energy_consumption</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">calibrate_energy_consumption</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">calibrate_energy_consumption</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">default_calibrate_energy_consumption</span><span class="p">()</span></div>
 
 
@@ -557,7 +600,35 @@
             <span class="k">except</span> <span class="p">(</span><span class="n">SchemaErrors</span><span class="p">,</span> <span class="n">SchemaError</span><span class="p">):</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got error while validating </span><span class="si">{</span><span class="n">file_to_validate</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
                 <span class="k">raise</span></div>
+
+
+<div class="viewcode-block" id="FileHandler.is_calibrated">
+<a class="viewcode-back" href="../../../modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.is_calibrated">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_calibrated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if calibration files exist in the input directory.</span>
+
+<span class="sd">        This method verifies the presence of both energy consumption and energy</span>
+<span class="sd">        requirement files in either `.xlsx` or `.csv` format within the specified</span>
+<span class="sd">        input directory.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            `True` if both required files exist with the same extension (`.xlsx` or `.csv`),</span>
+<span class="sd">            otherwise `False`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">energy_consumption</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALIBRATE_ENERGY_CONSUMPTION</span><span class="p">)</span>
+        <span class="n">energy_requirement</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">CALIBRATE_ENERGY_REQUIREMENT</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">energy_consumption</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="n">energy_requirement</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">energy_consumption</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="n">energy_requirement</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 </div>
+
 
 </pre></div>
 
