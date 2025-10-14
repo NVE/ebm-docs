@@ -125,14 +125,14 @@ follow the instructions below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>ebmgeodist
 </pre></div>
 </div>
-<p>By default, the distribution keys are loaded from <code class="docutils literal notranslate"><span class="pre">📁input</span></code>, and the results are written to the directory <code class="docutils literal notranslate"><span class="pre">📁output</span></code>.
+<p>By default, the distribution keys are loaded from <code class="docutils literal notranslate"><span class="pre">📁input</span></code>, and the results are written to the <code class="docutils literal notranslate"><span class="pre">📁output</span></code> directory.
 If no options are specified, the module distributes energy consumption for all energy products across all building categories at the municipality level. If you want
 to distribute a specific energy product, this can be done using the option <code class="docutils literal notranslate"><span class="pre">--energy-product</span></code>. For example, to distribute
 district heating consumption, run: <code class="docutils literal notranslate"><span class="pre">--energy-product</span> <span class="pre">dh</span></code>.</p>
 <p>By default and without using any option, the distribution keys for electricity are calculated inside the module using electricity consumption data from 🧾 <a class="reference internal" href="../input_description.html#yearly-aggregated-elhub-data-parquet"><span class="std std-ref">yearly_aggregated_elhub_data.parquet</span></a> under <code class="docutils literal notranslate"><span class="pre">📁input</span></code>.
 If the file does not exist, the module will generate the distribution keys using Elhub API inside the module, assuming that you have
 access to Elhub data via Azure Blob Storage.</p>
-<p>The results are saved in an Excel file named <code class="docutils literal notranslate"><span class="pre">{energy-product}_use_geographically_distributed.xlsx</span></code> under <code class="docutils literal notranslate"><span class="pre">📁output</span></code>.</p>
+<p>The results are saved in four Excel files named 🧾 <span class="xref std std-ref">{energy-product}_use_geographically_distributed.xlsx</span> under <code class="docutils literal notranslate"><span class="pre">📁output</span></code>, where <code class="docutils literal notranslate"><span class="pre">{energy-product}</span></code> is replaced by the name of the energy product being distributed (e.g., <code class="docutils literal notranslate"><span class="pre">electricity</span></code>, <code class="docutils literal notranslate"><span class="pre">fuelwood</span></code>, <code class="docutils literal notranslate"><span class="pre">dh</span></code>, etc.).</p>
 </section>
 <section id="additional-arguments">
 <h2>Additional arguments<a class="headerlink" href="#additional-arguments" title="Link to this heading"></a></h2>
@@ -200,9 +200,9 @@ are omitted for better readability. For more detailed information about each opt
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>ebmgeodist<span class="w"> </span>--help
 </pre></div>
 </div>
-<p>The option <code class="docutils literal notranslate"><span class="pre">local</span></code> means that the distribution keys for electricity will be loaded from the input files under the <code class="docutils literal notranslate"><span class="pre">input</span></code> folder, as introduced above.
-The option <code class="docutils literal notranslate"><span class="pre">azure</span></code> means that the distribution keys for electricity will be generated using Elhub API inside the module.
-For all other energy products, the distribution keys are always loaded from the input files under the <code class="docutils literal notranslate"><span class="pre">input</span></code> folder.</p>
+<p>The option <code class="docutils literal notranslate"><span class="pre">local</span></code> means that the module will be using electricity consumption data loaded from 🧾 <a class="reference internal" href="../input_description.html#yearly-aggregated-elhub-data-parquet"><span class="std std-ref">yearly_aggregated_elhub_data.parquet</span></a> under <code class="docutils literal notranslate"><span class="pre">📁input</span></code> to generate the distribution keys for electricity.</p>
+<p>The option <code class="docutils literal notranslate"><span class="pre">azure</span></code> means that the module will be using Elhub API to fetch electricity consumption data from Azure Blob Storage to generate the distribution keys for electricity.</p>
+<p>For all other energy products, the distribution keys are always loaded from the input files under the <code class="docutils literal notranslate"><span class="pre">📁input</span></code> folder.</p>
 </div>
 <p>The general syntax for running the module with specific options is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ebmgeodist</span> <span class="o">&lt;--</span><span class="n">option</span><span class="o">&gt;</span>
@@ -219,7 +219,7 @@ for all years, you can run:</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#geographical-distribution"><span class="std std-ref">Geographical distribution</span></a></dt><dd><p>For a more detailed description of the geographical distribution module, including input file formats and examples.</p>
+<dt><a class="reference internal" href="../geographical_distribution/index.html#geo-distribution-comprehensive-doc"><span class="std std-ref">Geographical distribution</span></a></dt><dd><p>For a more detailed description of the geographical distribution module, including input file formats and examples.</p>
 </dd>
 </dl>
 </div>
