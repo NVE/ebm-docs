@@ -176,6 +176,51 @@ to suppress DEBUG logs from the ‘ebm.model.file_handler’ logger.</p>
 </section>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.cmd.helpers.open_file">
+<span class="sig-name descname"><span class="pre">open_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_to_open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ebm/cmd/helpers.html#open_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.helpers.open_file" title="Link to this definition"></a></dt>
+<dd><p>Open a file or directory using the default application based on the operating system.</p>
+<p>This function attempts to open a file or directory by delegating to platform-specific utilities:
+- On Windows, it uses <cite>os.startfile</cite>.
+- On macOS, it uses the <cite>open</cite> command.
+- On Linux or other Unix-like systems, it uses the <cite>xdg-open</cite> command.</p>
+<section id="id2">
+<h2>Parameters<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>file_to_open<span class="classifier">pathlib.Path or str</span></dt><dd><p>The path of the file or directory to be opened.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>FileNotFoundError</dt><dd><p>If the specified file or directory does not exist.</p>
+</dd>
+<dt>OSError</dt><dd><p>If there is an issue invoking the platform-specific command to open the file.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h2>Notes<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The file path can be specified as either a <cite>pathlib.Path</cite> object or a string.</p></li>
+<li><p>This function logs the action using the <cite>loguru</cite> logger.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Examples<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Open a file specified as a string:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_file</span><span class="p">(</span><span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Open a file using a <cite>pathlib.Path</cite> object:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">open_file</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
 </section>
 
 

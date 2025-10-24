@@ -95,6 +95,9 @@
   <h1>Source code for ebm.cmd.helpers</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
@@ -234,6 +237,59 @@
                <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="ow">not</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ebm.model.file_handler&#39;</span> <span class="ow">and</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">),</span>
                <span class="o">**</span><span class="n">options</span><span class="p">)</span></div>
 
+
+
+<div class="viewcode-block" id="open_file">
+<a class="viewcode-back" href="../../../modules/ebm.cmd.helpers.html#ebm.cmd.helpers.open_file">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">open_file</span><span class="p">(</span><span class="n">file_to_open</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Open a file or directory using the default application based on the operating system.</span>
+
+<span class="sd">    This function attempts to open a file or directory by delegating to platform-specific utilities:</span>
+<span class="sd">    - On Windows, it uses `os.startfile`.</span>
+<span class="sd">    - On macOS, it uses the `open` command.</span>
+<span class="sd">    - On Linux or other Unix-like systems, it uses the `xdg-open` command.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_to_open : pathlib.Path or str</span>
+<span class="sd">        The path of the file or directory to be opened.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    FileNotFoundError</span>
+<span class="sd">        If the specified file or directory does not exist.</span>
+<span class="sd">    OSError</span>
+<span class="sd">        If there is an issue invoking the platform-specific command to open the file.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The file path can be specified as either a `pathlib.Path` object or a string.</span>
+<span class="sd">    - This function logs the action using the `loguru` logger.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Open a file specified as a string:</span>
+
+<span class="sd">    &gt;&gt;&gt; open_file(&quot;/path/to/file.txt&quot;)</span>
+
+<span class="sd">    Open a file using a `pathlib.Path` object:</span>
+
+<span class="sd">    &gt;&gt;&gt; from pathlib import Path</span>
+<span class="sd">    &gt;&gt;&gt; open_file(Path(&quot;/path/to/file.txt&quot;))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Open </span><span class="si">{</span><span class="n">file_to_open</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">file_to_open</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>  <span class="c1"># macOS</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="n">file_to_open</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Linux and other Unix-like systems</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;xdg-open is not available on this system. Unable to open file.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_to_open</span><span class="p">])</span></div>
 
 
 </pre></div>
