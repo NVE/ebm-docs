@@ -93,17 +93,29 @@
            <div itemprop="articleBody">
              
   <h1>Source code for ebm.model.calibrate_heating_systems</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.run_calculation</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_building_category_area_forecast</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ebm.extractors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ex</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.run_calculation</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_building_category_energy_requirements</span><span class="p">,</span> <span class="n">calculate_heating_systems</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BASE_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
+    <span class="n">COOLING_TOTAL</span><span class="p">,</span>
+    <span class="n">DHW_TOTAL</span><span class="p">,</span>
+    <span class="n">DOMESTIC_HOT_WATER_ENERGY_PRODUCT</span><span class="p">,</span>
+    <span class="n">HEAT_PUMP</span><span class="p">,</span>
+    <span class="n">HEATING_RV_BASE_TOTAL</span><span class="p">,</span>
+    <span class="n">HEATING_RV_PEAK_TOTAL</span><span class="p">,</span>
+    <span class="n">HEATING_RV_TERTIARY_TOTAL</span><span class="p">,</span>
+    <span class="n">HP_ENERGY_SOURCE</span><span class="p">,</span>
+    <span class="n">OTHER_TOTAL</span><span class="p">,</span>
+    <span class="n">PEAK_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
+    <span class="n">TERTIARY_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">HEATING_RV_BASE_TOTAL</span><span class="p">,</span> <span class="n">HEATING_RV_PEAK_TOTAL</span><span class="p">,</span> <span class="n">BASE_LOAD_ENERGY_PRODUCT</span><span class="p">,</span> <span class="n">PEAK_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
-                                    <span class="n">TERTIARY_LOAD_ENERGY_PRODUCT</span><span class="p">,</span> <span class="n">HEATING_RV_TERTIARY_TOTAL</span><span class="p">,</span> <span class="n">COOLING_TOTAL</span><span class="p">,</span> <span class="n">OTHER_TOTAL</span><span class="p">,</span> <span class="n">DHW_TOTAL</span><span class="p">,</span>
-                                    <span class="n">DOMESTIC_HOT_WATER_ENERGY_PRODUCT</span><span class="p">,</span> <span class="n">HEAT_PUMP</span><span class="p">,</span> <span class="n">HP_ENERGY_SOURCE</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
 
 <span class="n">ELECTRICITY</span> <span class="o">=</span> <span class="s1">&#39;Elektrisitet&#39;</span>
 <span class="n">DISTRICT_HEATING</span> <span class="o">=</span> <span class="s1">&#39;Fjernvarme&#39;</span>
@@ -122,28 +134,28 @@
 <span class="n">end_year</span> <span class="o">=</span> <span class="n">model_period</span><span class="o">.</span><span class="n">end</span>
 
 
-<div class="viewcode-block" id="extract_area_forecast">
-<a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.extract_area_forecast">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_area_forecast</span><span class="p">(</span><span class="n">database_manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">area_forecasts</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">building_category</span> <span class="ow">in</span> <span class="n">BuildingCategory</span><span class="p">:</span>
-        <span class="n">area_forecast_result</span> <span class="o">=</span> <span class="n">calculate_building_category_area_forecast</span><span class="p">(</span>
-            <span class="n">building_category</span><span class="o">=</span><span class="n">building_category</span><span class="p">,</span>
-            <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">,</span>
-            <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
-            <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">)</span>
-        <span class="n">area_forecasts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">area_forecast_result</span><span class="p">)</span>
+<div class="viewcode-block" id="load_area_forecast">
+<a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.load_area_forecast">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_area_forecast</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">building_code_parameters</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_code</span><span class="p">()</span>
+    <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">)</span>
+    <span class="n">scurve_params</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_scurve_params</span><span class="p">()</span>
+    <span class="n">s_curves_by_condition</span> <span class="o">=</span> <span class="n">calculate_s_curves</span><span class="p">(</span><span class="n">scurve_params</span><span class="p">,</span> <span class="n">building_code_parameters</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
 
-    <span class="n">area_forecast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">area_forecasts</span><span class="p">)</span>
+    <span class="n">area_forecast</span> <span class="o">=</span> <span class="n">ex</span><span class="o">.</span><span class="n">extract_area_forecast</span><span class="p">(</span><span class="n">years</span><span class="p">,</span>
+                                          <span class="n">building_code_parameters</span><span class="o">=</span><span class="n">building_code_parameters</span><span class="p">,</span>
+                                          <span class="n">area_parameters</span><span class="o">=</span><span class="n">database_manager</span><span class="o">.</span><span class="n">get_area_parameters</span><span class="p">(),</span>
+                                          <span class="n">s_curves_by_condition</span><span class="o">=</span><span class="n">s_curves_by_condition</span><span class="p">,</span>
+                                          <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">area_forecast</span></div>
 
 
 
-<div class="viewcode-block" id="extract_energy_requirements">
-<a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.extract_energy_requirements">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_energy_requirements</span><span class="p">(</span><span class="n">area_forecast</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="load_energy_need">
+<a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.load_energy_need">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_energy_need</span><span class="p">(</span><span class="n">area_forecast</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">en_req</span> <span class="o">=</span> <span class="n">calculate_building_category_energy_requirements</span><span class="p">(</span>
-        <span class="n">building_category</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">),</span>
+        <span class="n">building_category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">area_forecast</span><span class="o">=</span><span class="n">area_forecast</span><span class="p">,</span>
         <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">,</span>
         <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
@@ -153,13 +165,12 @@
 
 
 
-<div class="viewcode-block" id="extract_heating_systems">
-<a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.extract_heating_systems">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<div class="viewcode-block" id="load_heating_systems">
+<a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.load_heating_systems">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">heating_systems</span> <span class="o">=</span> <span class="n">calculate_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="o">=</span><span class="n">energy_requirements</span><span class="p">,</span>
                                                 <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
 
-    <span class="c1"># heating_systems[heating_systems[&#39;purpose&#39;]==&#39;heating_rv&#39;]</span>
     <span class="k">return</span> <span class="n">heating_systems</span></div>
 
 
