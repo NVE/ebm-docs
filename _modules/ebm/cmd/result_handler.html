@@ -101,15 +101,13 @@
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.run_calculation</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">calculate_building_category_area_forecast</span><span class="p">,</span>
-                                     <span class="n">calculate_building_category_energy_requirements</span><span class="p">,</span>
-                                     <span class="n">calculate_heating_systems</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.run_calculation</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_building_category_area_forecast</span><span class="p">,</span> <span class="n">calculate_building_category_energy_requirements</span><span class="p">,</span> <span class="n">calculate_heating_systems</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">bema</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.calibrate_heating_systems</span><span class="w"> </span><span class="kn">import</span> <span class="n">group_heating_systems_by_energy_carrier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.calibrate_heating_systems</span><span class="w"> </span><span class="kn">import</span> <span class="n">group_heating_systems_by_energy_carrier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.services.spreadsheet</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_format_from_values</span><span class="p">,</span> <span class="n">find_max_column_width</span>
@@ -288,7 +286,7 @@
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Extracting area energy requirements&#39;</span><span class="p">)</span>
             <span class="n">energy_requirements_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_energy_requirements</span><span class="p">(</span><span class="n">b_c</span><span class="p">,</span>
                                                                           <span class="n">database_manager</span><span class="p">,</span>
-                                                                          <span class="n">area_forecast</span><span class="p">,</span>
+                                                                          <span class="n">area_forecast</span><span class="p">[[</span><span class="s1">&#39;m2&#39;</span><span class="p">]],</span>
                                                                           <span class="n">period</span><span class="o">=</span><span class="n">year_range</span><span class="p">)</span>
             <span class="n">df</span> <span class="o">=</span> <span class="n">energy_requirements_result</span>
 

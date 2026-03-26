@@ -98,16 +98,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for ebm.model.energy_requirement</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span></span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_condition</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCondition</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.energy_purpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyPurpose</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.file_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileHandler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.services.files</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_unique_path</span>
@@ -115,7 +114,7 @@
 
 <div class="viewcode-block" id="yearly_reduction">
 <a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.yearly_reduction">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">yearly_reduction</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">yearly_reduction</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">year</span> <span class="o">&lt;</span> <span class="n">x</span><span class="o">.</span><span class="n">period_start_year</span><span class="p">:</span>
         <span class="k">return</span> <span class="mf">1.0</span>
     <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">period_end_year</span><span class="p">:</span>
@@ -127,346 +126,381 @@
 
 
 
-<div class="viewcode-block" id="EnergyRequirement">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">EnergyRequirement</span><span class="p">:</span>
-<div class="viewcode-block" id="EnergyRequirement.__init__">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">building_code_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-                 <span class="n">period</span><span class="p">:</span> <span class="n">YearRange</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2050</span><span class="p">),</span>
-                 <span class="n">calibration_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1999</span><span class="p">,</span>
-                 <span class="n">database_manager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">building_code_list</span> <span class="o">=</span> <span class="n">building_code_list</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">period</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">calibration_year</span> <span class="o">=</span> <span class="n">calibration_year</span>
-        <span class="k">if</span> <span class="n">calibration_year</span> <span class="o">==</span> <span class="n">period</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calibration year </span><span class="si">{</span><span class="n">calibration_year</span><span class="si">}</span><span class="s1"> is same as start year </span><span class="si">{</span><span class="n">period</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">calibration_year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">period</span><span class="o">.</span><span class="n">subset</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calibration year </span><span class="si">{</span><span class="n">calibration_year</span><span class="si">}</span><span class="s1"> is outside period </span><span class="si">{</span><span class="n">period</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">period</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">database_manager</span> <span class="o">=</span> <span class="n">database_manager</span></div>
-
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_for_building_category">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_for_building_category">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_for_building_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculates energy requirements for a single building category</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        database_manager: DatabaseManager</span>
-<span class="sd">            optional database_manager used to load input parameters</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Iterable of pd.Series</span>
-<span class="sd">            indexed by year, building_category, TEK, purpose, building_condition</span>
-<span class="sd">            column kwh_m2 representing energy requirement</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">database_manager</span> <span class="o">=</span> <span class="n">database_manager</span> <span class="k">if</span> <span class="n">database_manager</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">database_manager</span>
-
-        <span class="n">all_building_codes</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_building_code_list</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-        <span class="n">all_building_categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">)</span>
-        <span class="n">all_purpose</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EnergyPurpose</span><span class="p">)</span>
-        <span class="n">most_conditions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">existing_conditions</span><span class="p">())</span>
-        <span class="n">model_years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
-        <span class="n">erq_oc</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_original_condition</span><span class="p">()</span>
-
-        <span class="n">merged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_energy_requirement</span><span class="p">(</span><span class="n">all_building_categories</span><span class="p">,</span> <span class="n">all_purpose</span><span class="p">,</span> <span class="n">all_building_codes</span><span class="p">,</span> <span class="n">erq_oc</span><span class="p">,</span> <span class="n">model_years</span><span class="p">,</span>
-                                                   <span class="n">most_conditions</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
-        
-        <span class="n">merged</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s1">&#39;building_category,building_code,building_condition,year,purpose&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">),</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">merged</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;original_kwh_m2&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_condition&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;reduced_kwh_m2&#39;</span><span class="p">,</span> <span class="s1">&#39;behaviour_factor&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">]]</span></div>
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_energy_requirement">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_energy_requirement">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_requirement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">all_building_categories</span><span class="p">,</span> <span class="n">all_purpose</span><span class="p">,</span> <span class="n">all_building_codes</span><span class="p">,</span> <span class="n">energy_requirement_original_condition</span><span class="p">,</span> <span class="n">model_years</span><span class="p">,</span>
-                                     <span class="n">most_conditions</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="n">df_bc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_building_categories</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">])</span>
-        <span class="n">df_building_code</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_bc</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;building_code&#39;</span><span class="p">:</span> <span class="n">all_building_codes</span><span class="p">}),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
-        <span class="n">df_purpose</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_building_code</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_purpose</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;purpose&#39;</span><span class="p">]),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
-        <span class="n">df_condition</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_purpose</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;building_condition&#39;</span><span class="p">:</span> <span class="n">most_conditions</span><span class="p">}),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
-        <span class="n">df_years</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_condition</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">model_years</span><span class="p">}),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
-
-        <span class="n">energy_requirement_original_condition</span> <span class="o">=</span> <span class="n">energy_requirement_original_condition</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-        <span class="n">energy_requirement_original_condition</span> <span class="o">=</span> <span class="n">energy_requirement_original_condition</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;building_condition_r&#39;</span><span class="p">:</span> <span class="n">most_conditions</span><span class="p">}),</span>
-            <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">energy_requirement_original_condition</span><span class="p">[</span><span class="s1">&#39;building_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">energy_requirement_original_condition</span><span class="o">.</span><span class="n">building_condition_r</span>
-        <span class="n">energy_requirement_original_condition</span> <span class="o">=</span> <span class="n">energy_requirement_original_condition</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_condition_r&#39;</span><span class="p">])</span>
-
-        <span class="n">erq_all_years</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">df_years</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">energy_requirement_original_condition</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-        <span class="n">energy_requirements</span> <span class="o">=</span> <span class="n">erq_all_years</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;level_0&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-
-        <span class="n">reduction_per_condition</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_reduction_per_condition</span><span class="p">()</span>
-        <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_need_policy_improvement</span><span class="p">()</span>
-        <span class="n">yearly_improvement</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_need_yearly_improvements</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_energy_reduction</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">model_years</span><span class="p">,</span> <span class="n">policy_improvement</span><span class="p">,</span>
-                                               <span class="n">reduction_per_condition</span><span class="p">,</span> <span class="n">yearly_improvement</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_energy_reduction">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_energy_reduction">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_reduction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">energy_requirements</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-                                   <span class="n">model_years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span>
-                                   <span class="n">policy_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-                                   <span class="n">reduction_per_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
-                                   <span class="n">yearly_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate and combine all reduction factors for energy needs into a single Dataframe.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        energy_requirements : pd.DataFrame</span>
-<span class="sd">        model_years : YearRange</span>
-<span class="sd">        policy_improvement : pd.DataFrame</span>
-<span class="sd">        reduction_per_condition : pd.DataFrame</span>
-<span class="sd">        yearly_improvement : pd.DataFrame</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pd.DataFrame</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">reduction_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_reduction_condition</span><span class="p">(</span><span class="n">reduction_per_condition</span><span class="p">)</span>
-        <span class="n">condition_factor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">reduction_condition</span><span class="p">,</span>
-                                    <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span>
-                                    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-
-        <span class="n">reduction_policy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_reduction_policy</span><span class="p">(</span><span class="n">policy_improvement</span><span class="p">,</span> <span class="n">energy_requirements</span><span class="p">)</span>
-        <span class="n">reduction_yearly</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_reduction_yearly</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">yearly_improvement</span><span class="p">)</span>
-
-        <span class="n">merged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_energy_requirement_reductions</span><span class="p">(</span><span class="n">condition_factor</span><span class="p">,</span> <span class="n">reduction_yearly</span><span class="p">,</span> <span class="n">reduction_policy</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">merged</span></div>
-
-
-<div class="viewcode-block" id="EnergyRequirement.merge_energy_requirement_reductions">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.merge_energy_requirement_reductions">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">merge_energy_requirement_reductions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition_factor</span><span class="p">,</span> <span class="n">yearly_improvements</span><span class="p">,</span> <span class="n">reduction_policy</span><span class="p">):</span>
-        <span class="n">m_nrg_yi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">condition_factor</span><span class="p">,</span>
-                            <span class="n">right</span><span class="o">=</span><span class="n">yearly_improvements</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
-                            <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span>
-                            <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-        <span class="n">m_nrg_yi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">m_nrg_yi</span><span class="p">,</span>
-                            <span class="n">right</span><span class="o">=</span><span class="n">reduction_policy</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
-                            <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span>
-                            <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-        <span class="n">merged</span> <span class="o">=</span> <span class="n">m_nrg_yi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-
-        <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduced_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span>
-                                    <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
-        <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;behavior_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduced_kwh_m2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;behaviour_factor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="n">merged</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">:</span> <span class="s1">&#39;original_kwh_m2&#39;</span><span class="p">})</span>
-        <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;behavior_kwh_m2&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">merged</span></div>
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_reduction_yearly">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_yearly">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_reduction_yearly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df_years</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">yearly_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate factor for yearly reduction for each entry in the DataFrame yearly_improvement.</span>
-
-<span class="sd">        This method merges the yearly improvement data with the policy improvement data, adjusts the</span>
-<span class="sd">        efficiency start year if the period end year is greater, and calculates the yearly reduction</span>
-<span class="sd">        based on the yearly efficiency improvement.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        df_years : pd.DataFrame</span>
-<span class="sd">            DataFrame containing all years for which to calculate factors. Must include column &#39;year&#39;.</span>
-<span class="sd">        yearly_improvement : pd.DataFrame</span>
-<span class="sd">            DataFrame containing yearly improvement information. Must include columns &#39;yearly_efficiency_improvement&#39;, and &#39;efficiency_start_year&#39;.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pd.DataFrame</span>
-<span class="sd">            DataFrame with the calculated &#39;reduction_yearly&#39; column and updated entries.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">required_in_yearly_improvement</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;yearly_efficiency_improvement&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">}</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">required_in_yearly_improvement</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">yearly_improvement</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got columns </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">yearly_improvement</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="n">missing</span> <span class="o">=</span> <span class="n">required_in_yearly_improvement</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">yearly_improvement</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Required column</span><span class="si">{}</span><span class="s1"> not found in yearly_improvement: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s1">&#39;s&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">missing</span>
-            <span class="p">))</span>
-        <span class="k">if</span> <span class="s1">&#39;year&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_years</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got columns </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_years</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;df_years does not contain column year&#39;</span><span class="p">)</span>
-
-        <span class="n">years</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">df_years</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">unique</span><span class="p">()],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
-
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">yearly_improvement</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
-        <span class="n">rows_in_range</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="o">.</span><span class="n">start_year</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="o">.</span><span class="n">end_year</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>
-
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;yearly_change&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;yearly_efficiency_improvement&#39;</span><span class="p">])</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;pow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;yearly_change&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;pow&#39;</span><span class="p">]</span>
-
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">start_year</span> <span class="o">&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-            <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">start_year</span> <span class="o">&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]]</span></div>
-
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_reduction_policy">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_policy">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_reduction_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">all_things</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the reduction policy for each entry in the DataFrame.</span>
-
-<span class="sd">        This method computes the reduction policy by first calculating the number of years since the</span>
-<span class="sd">        start of the period. It then applies the `yearly_reduction` function to each relevant entry</span>
-<span class="sd">        to determine the reduction policy.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        policy_improvement : pd.DataFrame</span>
-<span class="sd">            DataFrame containing policy improvement information. Must include columns &#39;year&#39; and &#39;period_start_year&#39;.</span>
-<span class="sd">        all_things: pd.DataFrame</span>
-<span class="sd">            DataFrame containing every combination of building_category, TEK, purpose, year</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pd.DataFrame</span>
-<span class="sd">            DataFrame with the calculated &#39;reduction_policy&#39; column and updated entries.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-            <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">])</span>
-
-        <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;building_category_s&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK_s&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose_s&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year_s&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year_s&#39;</span><span class="p">]]</span> <span class="o">=</span> \
-        <span class="n">policy_improvement</span><span class="p">[</span>
-            <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">]]</span>
-
-        <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-        <span class="n">shifted</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-
-        <span class="n">shifted</span> <span class="o">=</span> <span class="n">shifted</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;building_category==building_category_s &amp; building_code==TEK_s &amp; purpose==purpose_s&#39;</span><span class="p">)</span>
-        <span class="n">shifted</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shifted</span><span class="p">[</span><span class="s1">&#39;improvement_at_end_year&#39;</span><span class="p">]</span>
-        <span class="n">shifted</span> <span class="o">=</span> <span class="n">shifted</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">,</span> <span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]]</span>
-
-        <span class="n">start_year_from_previous</span> <span class="o">=</span> <span class="n">shifted</span>
-
-        <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">policy_improvement</span><span class="p">,</span>
-                                      <span class="n">right</span><span class="o">=</span><span class="n">start_year_from_previous</span><span class="p">,</span>
-                                      <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span>
-                                      <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span>
-                                      <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
-                                      <span class="p">)</span>
-
-        <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-        <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">policy_improvement</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">policy_improvement</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-
-        <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;improvement_at_end_year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">all_things</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]],</span>
-                      <span class="n">right</span><span class="o">=</span><span class="n">policy_improvement</span><span class="p">,</span>
-                      <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;num_values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;end_year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;start_year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">start_year</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">num_values</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;step&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="mf">1.0</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;improvement_at_end_year&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num_values&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
-
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;step&#39;</span><span class="p">]</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_col_to_filter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;start_year&#39;</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;end_year&#39;</span><span class="p">])</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;_col_to_filter&#39;</span><span class="p">])</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
-
-        <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">]]</span></div>
-
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_reduction_condition">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_reduction_condition">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_reduction_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduction_per_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the reduction condition for each entry in the DataFrame.</span>
-
-<span class="sd">        This method computes the reduction condition by subtracting the reduction share from 1.0.</span>
-<span class="sd">        It also fills any NaN values in the &#39;reduction_condition&#39; column with 1.0.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        reduction_per_condition : pd.DataFrame</span>
-<span class="sd">            DataFrame containing the reduction share information. Must include columns &#39;reduction_share&#39; and &#39;building_code&#39;.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pd.DataFrame</span>
-<span class="sd">            DataFrame with the calculated &#39;reduction_condition&#39; column and filtered entries.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">reduction_per_condition</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">reduction_per_condition</span><span class="p">[</span><span class="s1">&#39;reduction_share&#39;</span><span class="p">]</span>
-        <span class="n">reduction_per_condition</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduction_per_condition</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span>
-                                                                <span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">reduction_per_condition</span></div>
-
-
-<div class="viewcode-block" id="EnergyRequirement.calculate_energy_requirements">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.calculate_energy_requirements">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_requirements</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">building_categories</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">BuildingCategory</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculates energy requirements for building categories</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        building_categories : Iterable[BuildingCategory]</span>
-<span class="sd">            Iterable containing building categories on which to calculate energy requirements.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Iterable of pd.Series</span>
-<span class="sd">            indexed by year, building_category, TEK, purpose, building_condition</span>
-<span class="sd">            column kwh_m2 representing energy requirement</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">building_categories</span> <span class="o">=</span> <span class="n">building_categories</span> <span class="k">if</span> <span class="n">building_categories</span> <span class="k">else</span> <span class="nb">iter</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_for_building_category</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">database_manager</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="EnergyRequirement.new_instance">
-<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.EnergyRequirement.new_instance">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">new_instance</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">calibration_year</span><span class="p">,</span> <span class="n">database_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">period</span><span class="o">.</span><span class="n">start</span> <span class="o">!=</span> <span class="mi">2010</span> <span class="ow">and</span> <span class="n">calibration_year</span> <span class="o">!=</span> <span class="n">calibration_year</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;EnergyRequirements </span><span class="si">{</span><span class="n">period</span><span class="o">.</span><span class="n">start</span><span class="si">=}</span><span class="s1"> </span><span class="si">{</span><span class="n">calibration_year</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">dm</span> <span class="o">=</span> <span class="n">database_manager</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">database_manager</span><span class="p">,</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="k">else</span> <span class="n">DatabaseManager</span><span class="p">()</span>
-        <span class="n">instance</span> <span class="o">=</span> <span class="n">EnergyRequirement</span><span class="p">(</span><span class="n">building_code_list</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">get_building_code_list</span><span class="p">(),</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">calibration_year</span><span class="o">=</span><span class="n">calibration_year</span><span class="p">,</span>
-                                     <span class="n">database_manager</span><span class="o">=</span><span class="n">dm</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">instance</span></div>
-</div>
+<div class="viewcode-block" id="calculate_for_building_category">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.calculate_for_building_category">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+    <span class="n">energy_need_original_condition</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_original_condition</span><span class="p">()</span>
+    <span class="n">improvement_building_upgrade</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_reduction_per_condition</span><span class="p">()</span>
+    <span class="n">energy_need_improvements_policy</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_need_policy_improvement</span><span class="p">()</span>
+    <span class="n">energy_need_yearly_reduction</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_need_yearly_improvements</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">energy_need_improvements</span><span class="p">(</span><span class="n">energy_need_original_condition</span><span class="o">=</span><span class="n">energy_need_original_condition</span><span class="p">,</span>
+                                    <span class="n">improvement_building_upgrade</span><span class="o">=</span><span class="n">improvement_building_upgrade</span><span class="p">,</span>
+                                    <span class="n">energy_need_improvements_policy</span><span class="o">=</span><span class="n">energy_need_improvements_policy</span><span class="p">,</span>
+                                    <span class="n">energy_need_yearly_reduction</span><span class="o">=</span><span class="n">energy_need_yearly_reduction</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="energy_need_improvements">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.energy_need_improvements">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_need_improvements</span><span class="p">(</span><span class="n">energy_need_original_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                             <span class="n">improvement_building_upgrade</span><span class="p">:</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                             <span class="n">energy_need_improvements_policy</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                             <span class="n">energy_need_yearly_reduction</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates energy requirements for a single building category</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    energy_need_original_condition : pd.DataFrame</span>
+<span class="sd">    improvement_building_upgrade : pd.DataFrame</span>
+<span class="sd">    energy_need_improvements_policy : pd.DataFrame</span>
+<span class="sd">    energy_need_yearly_reduction : pd.DataFrame</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Iterable of pd.Series</span>
+<span class="sd">        indexed by year, building_category, TEK, purpose, building_condition</span>
+<span class="sd">        column kwh_m2 representing energy requirement</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">most_conditions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">existing_conditions</span><span class="p">())</span>
+    <span class="n">model_years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
+
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">energy_need_improvements_kwh_m2</span><span class="p">(</span>
+        <span class="n">energy_need_original_condition</span><span class="o">=</span><span class="n">energy_need_original_condition</span><span class="p">,</span>
+        <span class="n">reduction_per_condition</span><span class="o">=</span><span class="n">improvement_building_upgrade</span><span class="p">,</span>
+        <span class="n">policy_improvement</span><span class="o">=</span><span class="n">energy_need_improvements_policy</span><span class="p">,</span>
+        <span class="n">yearly_improvement</span><span class="o">=</span><span class="n">energy_need_yearly_reduction</span><span class="p">,</span>
+        <span class="n">df_years</span><span class="o">=</span><span class="n">make_df_building_category_code_purpose_yearly</span><span class="p">(</span><span class="n">model_years</span><span class="p">,</span> <span class="n">building_condition</span><span class="o">=</span><span class="n">most_conditions</span><span class="p">))</span>
+
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">merged</span></div>
+
+
+<div class="viewcode-block" id="energy_need_improvements_kwh_m2">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.energy_need_improvements_kwh_m2">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_need_improvements_kwh_m2</span><span class="p">(</span><span class="n">energy_need_original_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                                    <span class="n">reduction_per_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">policy_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                                    <span class="n">yearly_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_years</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+    <span class="n">energy_need_original_condition</span> <span class="o">=</span> <span class="n">energy_need_original_condition</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">energy_need_original_condition</span> <span class="o">=</span> <span class="n">energy_need_original_condition</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;building_condition_r&#39;</span><span class="p">:</span> <span class="n">df_years</span><span class="o">.</span><span class="n">building_condition</span><span class="o">.</span><span class="n">unique</span><span class="p">()}),</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">energy_need_original_condition</span><span class="p">[</span><span class="s1">&#39;building_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">energy_need_original_condition</span><span class="o">.</span><span class="n">building_condition_r</span>
+    <span class="n">energy_need_original_condition</span> <span class="o">=</span> <span class="n">energy_need_original_condition</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_condition_r&#39;</span><span class="p">])</span>
+
+    <span class="n">erq_all_years</span> <span class="o">=</span> <span class="n">df_years</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="n">energy_need_original_condition</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">energy_requirements</span> <span class="o">=</span> <span class="n">erq_all_years</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;level_0&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">calculate_energy_reduction</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">policy_improvement</span><span class="p">,</span> <span class="n">reduction_per_condition</span><span class="p">,</span>
+                                           <span class="n">yearly_improvement</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_energy_reduction">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.calculate_energy_reduction">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_energy_reduction</span><span class="p">(</span> <span class="n">energy_requirements</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">policy_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                               <span class="n">reduction_per_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">yearly_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate and combine all reduction factors for energy needs into a single Dataframe.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    energy_requirements : pd.DataFrame</span>
+<span class="sd">    policy_improvement : pd.DataFrame</span>
+<span class="sd">    reduction_per_condition : pd.DataFrame</span>
+<span class="sd">    yearly_improvement : pd.DataFrame</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reduction_condition</span> <span class="o">=</span> <span class="n">calculate_reduction_condition</span><span class="p">(</span><span class="n">reduction_per_condition</span><span class="p">)</span>
+    <span class="n">condition_factor</span> <span class="o">=</span> <span class="n">energy_requirements</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">reduction_condition</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">reduction_policy</span> <span class="o">=</span> <span class="n">calculate_reduction_policy</span><span class="p">(</span><span class="n">policy_improvement</span><span class="p">,</span> <span class="n">energy_requirements</span><span class="p">)</span>
+    <span class="n">reduction_yearly</span> <span class="o">=</span> <span class="n">calculate_reduction_yearly</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">yearly_improvement</span><span class="p">)</span>
+
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">merge_energy_requirement_reductions</span><span class="p">(</span><span class="n">condition_factor</span><span class="p">,</span> <span class="n">reduction_yearly</span><span class="p">,</span> <span class="n">reduction_policy</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">merged</span></div>
+
+
+
+<div class="viewcode-block" id="merge_energy_requirement_reductions">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.merge_energy_requirement_reductions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_energy_requirement_reductions</span><span class="p">(</span><span class="n">condition_factor</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">yearly_improvements</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">reduction_policy</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">m_nrg_yi</span> <span class="o">=</span> <span class="n">condition_factor</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">yearly_improvements</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">m_nrg_yi</span> <span class="o">=</span> <span class="n">m_nrg_yi</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">reduction_policy</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">m_nrg_yi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">:</span> <span class="s1">&#39;original_kwh_m2&#39;</span><span class="p">})</span>
+    <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;behavior_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;original_kwh_m2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;behaviour_factor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduced_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="s1">&#39;behavior_kwh_m2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span>
+                                <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+
+    <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;reduced_kwh_m2&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">merged</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_reduction_yearly">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.calculate_reduction_yearly">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_reduction_yearly</span><span class="p">(</span> <span class="n">df_years</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">yearly_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate factor for yearly reduction for each entry in the DataFrame yearly_improvement.</span>
+
+<span class="sd">    This method merges the yearly improvement data with the policy improvement data, adjusts the</span>
+<span class="sd">    efficiency start year if the period end year is greater, and calculates the yearly reduction</span>
+<span class="sd">    based on the yearly efficiency improvement.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df_years : pd.DataFrame</span>
+<span class="sd">        DataFrame containing all years for which to calculate factors. Must include column &#39;year&#39;.</span>
+<span class="sd">    yearly_improvement : pd.DataFrame</span>
+<span class="sd">        DataFrame containing yearly improvement information. Must include columns &#39;yearly_efficiency_improvement&#39;, and &#39;efficiency_start_year&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        DataFrame with the calculated &#39;reduction_yearly&#39; column and updated entries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">required_in_yearly_improvement</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;yearly_efficiency_improvement&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">required_in_yearly_improvement</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">yearly_improvement</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got columns </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">yearly_improvement</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="n">required_in_yearly_improvement</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">yearly_improvement</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Required column</span><span class="si">{}</span><span class="s1"> not found in yearly_improvement: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;s&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;year&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_years</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got columns </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_years</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;df_years does not contain column year&#39;</span><span class="p">)</span>
+
+    <span class="n">years</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">df_years</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">unique</span><span class="p">()],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">yearly_improvement</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
+    <span class="n">rows_in_range</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="o">.</span><span class="n">start_year</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="o">.</span><span class="n">end_year</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;yearly_change&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;yearly_efficiency_improvement&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;pow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;yearly_change&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_in_range</span><span class="p">,</span> <span class="s1">&#39;pow&#39;</span><span class="p">]</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">start_year</span> <span class="o">&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">start_year</span> <span class="o">&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_yearly&#39;</span><span class="p">]]</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_reduction_policy">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.calculate_reduction_policy">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_reduction_policy</span><span class="p">(</span> <span class="n">policy_improvement</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">all_things</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the reduction policy for each entry in the DataFrame.</span>
+
+<span class="sd">    This method computes the reduction policy by first calculating the number of years since the</span>
+<span class="sd">    start of the period. It then applies the `yearly_reduction` function to each relevant entry</span>
+<span class="sd">    to determine the reduction policy.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    policy_improvement : pd.DataFrame</span>
+<span class="sd">        DataFrame containing policy improvement information. Must include columns &#39;year&#39; and &#39;period_start_year&#39;.</span>
+<span class="sd">    all_things: pd.DataFrame</span>
+<span class="sd">        DataFrame containing every combination of building_category, TEK, purpose, year</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        DataFrame with the calculated &#39;reduction_policy&#39; column and updated entries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+        <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">])</span>
+
+    <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;building_category_s&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK_s&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose_s&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year_s&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year_s&#39;</span><span class="p">]]</span> <span class="o">=</span> \
+    <span class="n">policy_improvement</span><span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">]]</span>
+
+    <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">shifted</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+    <span class="n">shifted</span> <span class="o">=</span> <span class="n">shifted</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;building_category==building_category_s &amp; building_code==TEK_s &amp; purpose==purpose_s&#39;</span><span class="p">)</span>
+    <span class="n">shifted</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shifted</span><span class="p">[</span><span class="s1">&#39;improvement_at_end_year&#39;</span><span class="p">]</span>
+    <span class="n">shifted</span> <span class="o">=</span> <span class="n">shifted</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">,</span> <span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]]</span>
+
+    <span class="n">start_year_from_previous</span> <span class="o">=</span> <span class="n">shifted</span>
+
+    <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">start_year_from_previous</span><span class="p">,</span>
+        <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span>
+        <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;end_year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">policy_improvement</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">policy_improvement</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="n">policy_improvement</span> <span class="o">=</span> <span class="n">policy_improvement</span><span class="p">[[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">,</span> <span class="s1">&#39;improvement_at_end_year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">all_things</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">policy_improvement</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;num_values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;end_year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;start_year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">start_year</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">num_values</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;step&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="mf">1.0</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;improvement_at_end_year&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;num_values&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;improvement_at_start_year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;step&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;reduction_policy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_col_to_filter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;start_year&#39;</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;end_year&#39;</span><span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;_col_to_filter&#39;</span><span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;reduction_policy&#39;</span><span class="p">]]</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_reduction_condition">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.calculate_reduction_condition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_reduction_condition</span><span class="p">(</span> <span class="n">reduction_per_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the reduction condition for each entry in the DataFrame.</span>
+
+<span class="sd">    This method computes the reduction condition by subtracting the reduction share from 1.0.</span>
+<span class="sd">    It also fills any NaN values in the &#39;reduction_condition&#39; column with 1.0.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    reduction_per_condition : pd.DataFrame</span>
+<span class="sd">        DataFrame containing the reduction share information. Must include columns &#39;reduction_share&#39; and &#39;building_code&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        DataFrame with the calculated &#39;reduction_condition&#39; column and filtered entries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reduction_per_condition</span><span class="p">[</span><span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">reduction_per_condition</span><span class="p">[</span><span class="s1">&#39;reduction_share&#39;</span><span class="p">]</span>
+    <span class="n">reduction_per_condition</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduction_per_condition</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span>
+                                                            <span class="s1">&#39;reduction_condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reduction_per_condition</span></div>
+
+
+
+<div class="viewcode-block" id="make_df_building_category_code_purpose_yearly">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.make_df_building_category_code_purpose_yearly">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_df_building_category_code_purpose_yearly</span><span class="p">(</span><span class="n">period</span><span class="p">:</span> <span class="n">YearRange</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+                                                  <span class="n">building_category</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                                  <span class="n">building_code</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                                  <span class="n">purpose</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                                  <span class="n">building_condition</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a cross-joined dataframe of building category, building code, purpose, building condition, and year.</span>
+
+<span class="sd">    This function normalizes all input arguments to single-column</span>
+<span class="sd">    DataFrames and performs a series of cross merges to produce the full</span>
+<span class="sd">    combinatorial dataset. It is typically used to prepare a structured</span>
+<span class="sd">    index for energy modeling or building analytics.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    period : YearRange or None</span>
+<span class="sd">        A YearRange iterable providing the sequence of years to include.</span>
+<span class="sd">        If None, defaults to ``YearRange(2020, 2050)``.</span>
+<span class="sd">    building_category : DataFrame, list of str, or None, optional</span>
+<span class="sd">        Building categories to include. May be a DataFrame with a</span>
+<span class="sd">        ``&quot;building_category&quot;`` column, a list of category strings, or None.</span>
+<span class="sd">        If None, defaults to ``list(BuildingCategory)``.</span>
+<span class="sd">    building_code : DataFrame, list of str, or None, optional</span>
+<span class="sd">        Building codes to include. May be a DataFrame with a</span>
+<span class="sd">        ``&quot;building_code&quot;`` column, a list of code strings, or None.</span>
+<span class="sd">        If None, defaults to the predefined TEK code list.</span>
+<span class="sd">    purpose : DataFrame, list of str, or None, optional</span>
+<span class="sd">        Energy purposes to include. May be a DataFrame with a ``&quot;purpose&quot;``</span>
+<span class="sd">        column, a list of purpose strings, or None.</span>
+<span class="sd">        If None, defaults to ``list(EnergyPurpose)``.</span>
+<span class="sd">    building_condition : DataFrame, list of str, or None, optional</span>
+<span class="sd">        Building condition categories. May be a DataFrame with a</span>
+<span class="sd">        ``&quot;building_condition&quot;`` column, a list of condition strings, or None.</span>
+<span class="sd">        If None, defaults to ``BuildingCondition.existing_conditions()``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">        A DataFrame containing the full Cartesian product of all input</span>
+<span class="sd">        dimensions, with columns:</span>
+
+<span class="sd">        - ``building_category``</span>
+<span class="sd">        - ``building_code``</span>
+<span class="sd">        - ``purpose``</span>
+<span class="sd">        - ``building_condition``</span>
+<span class="sd">        - ``year``</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - All non-DataFrame inputs are converted to single-column DataFrames.</span>
+<span class="sd">    - Cross joins are implemented using ``pandas.DataFrame.merge(..., how=&quot;cross&quot;)``.</span>
+<span class="sd">    - The output is guaranteed to contain one row per unique combination</span>
+<span class="sd">      of the input dimensions.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Generate a table using default categories and years:</span>
+
+<span class="sd">    &gt;&gt;&gt; make_df_building_category_code_purpose_yearly(None).head()</span>
+
+<span class="sd">    Provide custom building codes and a custom year range:</span>
+
+<span class="sd">    &gt;&gt;&gt; make_df_building_category_code_purpose_yearly(</span>
+<span class="sd">    ...     period=YearRange(2025, 2030),</span>
+<span class="sd">    ...     building_code=[&quot;TEK97&quot;, &quot;TEK07&quot;]</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ensure_iterable</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">default</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">column_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize lists/enums/defaults to a list.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="n">period</span> <span class="o">=</span> <span class="n">period</span> <span class="k">if</span> <span class="n">period</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
+    <span class="n">building_category</span> <span class="o">=</span> <span class="n">ensure_iterable</span><span class="p">(</span><span class="n">building_category</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">),</span> <span class="s1">&#39;building_category&#39;</span><span class="p">)</span>
+    <span class="n">building_code</span> <span class="o">=</span> <span class="n">ensure_iterable</span><span class="p">(</span><span class="n">building_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;PRE_TEK49&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK49&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK69&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK87&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK97&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK07&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK10&#39;</span><span class="p">,</span> <span class="s1">&#39;TEK17&#39;</span><span class="p">],</span> <span class="s1">&#39;building_code&#39;</span><span class="p">)</span>
+    <span class="n">purpose</span> <span class="o">=</span> <span class="n">ensure_iterable</span><span class="p">(</span><span class="n">purpose</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">EnergyPurpose</span><span class="p">),</span> <span class="s1">&#39;purpose&#39;</span><span class="p">)</span>
+    <span class="n">building_condition</span> <span class="o">=</span> <span class="n">ensure_iterable</span><span class="p">(</span><span class="n">building_condition</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">existing_conditions</span><span class="p">()),</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">building_category</span><span class="p">,</span> <span class="n">building_code</span><span class="p">,</span> <span class="n">purpose</span><span class="p">,</span> <span class="n">building_condition</span><span class="p">,</span> <span class="n">period</span><span class="o">.</span><span class="n">year_range</span><span class="p">],</span>
+        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
 
 
 
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.main">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>  <span class="c1"># noqa: PLC0415</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>  <span class="c1"># noqa: PLC0415</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>  <span class="c1"># noqa: PLC0415</span>
     <span class="n">log_format</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    &lt;blue&gt;</span><span class="si">{elapsed}</span><span class="s2">&lt;/blue&gt; | &lt;level&gt;</span><span class="si">{level: &lt;8}</span><span class="s2">&lt;/level&gt; | &lt;cyan&gt;</span><span class="si">{function: &lt;20}</span><span class="s2">&lt;/cyan&gt;:&lt;cyan&gt;</span><span class="si">{line: &lt;3}</span><span class="s2">&lt;/cyan&gt; - &lt;level&gt;</span><span class="si">{message}</span><span class="s2">&lt;/level&gt;</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -474,10 +508,9 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;WARNING&#39;</span><span class="p">)</span>
 
     <span class="n">dm</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">(</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;kalibrering&#39;</span><span class="p">))</span>
-    <span class="n">er</span> <span class="o">=</span> <span class="n">EnergyRequirement</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">),</span> <span class="n">calibration_year</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="n">database_manager</span><span class="o">=</span><span class="n">dm</span><span class="p">)</span>
 
     <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Calculating&#39;</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span>  <span class="n">er</span><span class="o">.</span><span class="n">calculate_energy_requirements</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">calculate_for_building_category</span><span class="p">(</span><span class="n">dm</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Writing to file&#39;</span><span class="p">)</span>
 
     <span class="n">xlsx_filename</span> <span class="o">=</span> <span class="n">make_unique_path</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;output/er.xlsx&#39;</span><span class="p">))</span>

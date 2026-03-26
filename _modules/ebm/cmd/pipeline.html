@@ -102,24 +102,24 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm</span><span class="w"> </span><span class="kn">import</span> <span class="n">extractors</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_environment_from_dotenv</span><span class="p">,</span> <span class="n">configure_loglevel</span><span class="p">,</span> <span class="n">configure_json_log</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.areaforecast.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_json_log</span><span class="p">,</span> <span class="n">configure_loglevel</span><span class="p">,</span> <span class="n">load_environment_from_dotenv</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.cmd.result_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">transform_model_to_horizontal</span><span class="p">,</span> <span class="n">transform_to_sorted_heating_systems</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">area</span> <span class="k">as</span> <span class="n">a_f</span><span class="p">,</span> <span class="n">bema</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">area</span> <span class="k">as</span> <span class="n">a_f</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">bema</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">energy_need</span> <span class="k">as</span> <span class="n">e_n</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">energy_purpose</span> <span class="k">as</span> <span class="n">e_p</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">energy_use</span> <span class="k">as</span> <span class="n">e_u</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.file_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileHandler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">heating_systems_parameter</span> <span class="k">as</span> <span class="n">h_s_param</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">heat_pump</span> <span class="k">as</span> <span class="n">h_p</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">heating_systems_parameter</span> <span class="k">as</span> <span class="n">h_s_param</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.file_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileHandler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.heating_systems_share</span><span class="w"> </span><span class="kn">import</span> <span class="n">transform_heating_systems_share_long</span><span class="p">,</span> <span class="n">transform_heating_systems_share_wide</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.services.spreadsheet</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pretty</span><span class="p">,</span> <span class="n">add_top_row_filter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.services.spreadsheet</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_top_row_filter</span><span class="p">,</span> <span class="n">make_pretty</span>
 
 
 <div class="viewcode-block" id="main">

@@ -259,6 +259,71 @@ unique_columns : str</p>
 </section>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.building_category.collapse_building_category">
+<span class="sig-name descname"><span class="pre">collapse_building_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/building_category.html#collapse_building_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.building_category.collapse_building_category" title="Link to this definition"></a></dt>
+<dd><p>Replace building category labels with building group labels where appropriate.</p>
+<p>This function takes a pandas Series containing building category strings
+separated by either “+” or “,”. It normalizes token case, applies a set of
+category‑collapse rules, and returns a new Series with collapsed category
+labels.</p>
+<dl class="simple">
+<dt>building groups implemented:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>residential</dt><dd><p>house, apartment_block</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>non_residential</dt><dd><p>culture, hospital, hotel, kindergarten, nursing_home, office, retail, school, sports, storage_repairs, university</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>default</dt><dd><p>All of the above</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_category<span class="classifier">pd.Series</span></dt><dd><dl class="simple">
+<dt>Series of building category strings. Each value must be a</dt><dd><p>string containing tokens separated by either <code class="docutils literal notranslate"><span class="pre">&quot;+&quot;</span></code> or <cite>“,”`</cite>.
+Tokens may contain arbitrary casing; they are normalized to lowercase.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>series with building categories collapsed into groups</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collapse_building_category</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;house+apartment_block&quot;</span><span class="p">]))</span>
+<span class="go">0    residential</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collapse_building_category</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;culture+hospital+hotel+kindergarten+nursing_home+office+retail&quot;</span>
+<span class="gp">... </span>     <span class="s2">&quot;+school+sports+storage_repairs+university&quot;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">))</span>
+<span class="go">0    non_residential</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
 </section>
 
 

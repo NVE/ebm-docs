@@ -152,8 +152,118 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.energy_use.energy_use_kwh">
-<span class="sig-name descname"><span class="pre">energy_use_kwh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_need</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">efficiency_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_use.html#energy_use_kwh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_use.energy_use_kwh" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">energy_use_kwh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_need</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">efficiency_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'energy_requirement'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_use.html#energy_use_kwh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_use.energy_use_kwh" title="Link to this definition"></a></dt>
+<dd><p>Merge energy needs with efficiency parameters and compute delivered energy (kWh).</p>
+<dl class="simple">
+<dt>The function:</dt><dd><ol class="arabic simple">
+<li><p>Copies the <cite>energy_need</cite> frame,</p></li>
+<li><p>Resets its index,</p></li>
+<li><p>Performs an <strong>inner</strong> merge with <cite>efficiency_factor</cite> on
+(‘building_category’, ‘building_code’, ‘purpose’, ‘year’),</p></li>
+<li><p>Computes delivered energy <code class="docutils literal notranslate"><span class="pre">kwh</span></code> using
+<code class="docutils literal notranslate"><span class="pre">efficiency_kwh(energy_need_col,</span> <span class="pre">heating_system_share,</span> <span class="pre">load_share,</span> <span class="pre">load_efficiency)</span></code>,</p></li>
+<li><p>Scales <code class="docutils literal notranslate"><span class="pre">kwh_m2</span></code> by <code class="docutils literal notranslate"><span class="pre">efficiency_factor</span></code> if <code class="docutils literal notranslate"><span class="pre">kwh_m2</span></code> exists, otherwise sets it to NaN.</p></li>
+</ol>
+</dd>
+</dl>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>energy_need<span class="classifier">pandas.DataFrame</span></dt><dd><p>Input dataframe containing energy needs. Must include the join keys:
+- ‘building_category’
+- ‘building_code’
+- ‘purpose’
+- ‘year’
+and the column specified by <cite>energy_column</cite> (default: ‘energy_requirement’).</p>
+</dd>
+<dt>efficiency_factor<span class="classifier">pandas.DataFrame</span></dt><dd><p>Dataframe with efficiency parameters. Must include the same join keys as above and:
+- ‘heating_system_share’
+- ‘load_share’
+- ‘load_efficiency’
+- ‘efficiency_factor’</p>
+</dd>
+<dt>energy_column<span class="classifier">str, default ‘energy_requirement’</span></dt><dd><p>Column name in <cite>energy_need</cite> representing the energy need passed to <cite>efficiency_kwh</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl>
+<dt>pandas.DataFrame</dt><dd><p>The merged dataframe with two additional columns:
+- ‘kwh’ : Delivered energy computed via <cite>efficiency_kwh(…)</cite>.
+- ‘kwh_m2’ : If present before the merge, it is scaled by ‘efficiency_factor’;</p>
+<blockquote>
+<div><p>otherwise it is created and filled with NaN.</p>
+</div></blockquote>
+<p>Note that the result reflects an <strong>inner</strong> join of the inputs after
+<cite>energy_need.reset_index()</cite>, which may drop unmatched rows from either side
+and include the old index as a normal column named ‘index’ (unless the
+original index had a different name).</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>KeyError</dt><dd><p>If any of the required join keys or columns are missing in either input.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The function relies on an external callable <cite>efficiency_kwh</cite> that must accept
+vectorized pandas Series for:
+<cite>(energy_need_col, heating_system_share, load_share, load_efficiency)</cite>,
+and return a Series of delivered energy in kWh.</p></li>
+<li><p>The merge uses default pandas behavior: <cite>how=’inner’</cite> and default suffixes.
+If both dataframes share other non-key column names (e.g., ‘kwh_m2’),
+pandas may add suffixes (e.g., ‘_x’, ‘_y’).</p></li>
+<li><p>Existing NaNs in any efficiency inputs will propagate through to ‘kwh’
+depending on <cite>efficiency_kwh</cite>’s implementation.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># energy_need columns (example):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#  &#39;energy_requirement&#39;, &#39;kwh_m2&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># efficiency_factor columns (example):</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#  &#39;heating_system_share&#39;, &#39;load_share&#39;, &#39;load_efficiency&#39;, &#39;efficiency_factor&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">energy_use_kwh</span><span class="p">(</span><span class="n">energy_need</span><span class="p">,</span> <span class="n">efficiency_factor</span><span class="p">,</span> <span class="n">energy_column</span><span class="o">=</span><span class="s1">&#39;energy_requirement&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">[[</span><span class="s1">&#39;kwh&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.energy_use.efficiency_kwh">
+<span class="sig-name descname"><span class="pre">efficiency_kwh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy_need</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heating_system_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_efficiency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/energy_use.html#efficiency_kwh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.energy_use.efficiency_kwh" title="Link to this definition"></a></dt>
+<dd><p>Compute delivered electricity (kWh) from energy need, system share, load share, and efficiency.</p>
+<p>Result = energy_need * heating_system_share * load_share / load_efficiency</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>energy_need : pd.Series
+heating_system_share : pd.Series
+load_share : pd.Series
+load_efficiency : pd.Series</p>
+</section>
+<section id="id2">
+<h2>Raises<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the input series are not of equal length.
+If the input indexes are different.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>pd.Series
+Energy used in unit (kWh)</p>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.energy_use.building_group_energy_use_kwh">
@@ -177,16 +287,16 @@ m2, original_kwh_m2, reduction_yearly, reduction_policy, reduction_condition, re
 heating_system_share, load_share, load_efficiency, energy_product,
 heating_system, load, building_group, efficiency_factor</p>
 </div></blockquote>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>database_manager : pd.DataFrame
 years : YearRange, optional
 area_parameters : pd.DataFrame, optional
 scurve_parameters : pd.DataFrame, optional
 building_code_parameters : pd.DataFrame, optional</p>
 </section>
-<section id="returns">
-<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>pd.DataFrame</dt><dd><p>energy use in KWh by building_category, TEK, building_condition, year, purpose
 ,</p>

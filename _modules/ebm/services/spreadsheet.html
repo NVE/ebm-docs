@@ -102,8 +102,8 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -398,7 +398,8 @@
                 <span class="n">max_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
                 <span class="n">number_format</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
                 <span class="k">if</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
-                    <span class="n">number_format</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;_-* #,##0_-;\-* #,##0_-;_-* &quot;-&quot;??_-;_-@_-&#39;</span>
+                    <span class="c1">#cell.number_format = &#39;#,##0.00;[Red]-#,##0.00;0&#39;</span>
+                    <span class="n">number_format</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;_-* #,##0_-;[Red]\-* #,##0_-;_-* &quot;-&quot;??_-;_-@_-&#39;</span>
                 <span class="k">elif</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mf">1.0</span> <span class="ow">and</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="c1"># number_format = &#39;0%&#39;</span>
                     <span class="n">number_format</span> <span class="o">=</span> <span class="s1">&#39;0.000&#39;</span>

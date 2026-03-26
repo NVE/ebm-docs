@@ -100,15 +100,29 @@
   <h1>Source code for ebm.model.energy_use</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm</span><span class="w"> </span><span class="kn">import</span> <span class="n">extractors</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">HEATING_SYSTEM_SHARE</span><span class="p">,</span> <span class="n">GRUNNLAST_ANDEL</span><span class="p">,</span> <span class="n">BASE_LOAD_EFFICIENCY</span><span class="p">,</span> <span class="n">BASE_LOAD_ENERGY_PRODUCT</span><span class="p">,</span> \
-    <span class="n">PEAK_LOAD_ENERGY_PRODUCT</span><span class="p">,</span> <span class="n">PEAK_LOAD_COVERAGE</span><span class="p">,</span> <span class="n">PEAK_LOAD_EFFICIENCY</span><span class="p">,</span> <span class="n">TERTIARY_LOAD_COVERAGE</span><span class="p">,</span> <span class="n">TERTIARY_LOAD_EFFICIENCY</span><span class="p">,</span> \
-    <span class="n">TERTIARY_LOAD_ENERGY_PRODUCT</span><span class="p">,</span> <span class="n">COOLING_EFFICIENCY</span><span class="p">,</span> <span class="n">DHW_EFFICIENCY</span><span class="p">,</span> <span class="n">DOMESTIC_HOT_WATER_ENERGY_PRODUCT</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">energy_need</span> <span class="k">as</span> <span class="n">e_n</span><span class="p">,</span> <span class="n">heating_systems_parameter</span> <span class="k">as</span> <span class="n">h_s_param</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.areaforecast.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BASE_LOAD_EFFICIENCY</span><span class="p">,</span>
+    <span class="n">BASE_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
+    <span class="n">COOLING_EFFICIENCY</span><span class="p">,</span>
+    <span class="n">DHW_EFFICIENCY</span><span class="p">,</span>
+    <span class="n">DOMESTIC_HOT_WATER_ENERGY_PRODUCT</span><span class="p">,</span>
+    <span class="n">GRUNNLAST_ANDEL</span><span class="p">,</span>
+    <span class="n">HEATING_SYSTEM_SHARE</span><span class="p">,</span>
+    <span class="n">PEAK_LOAD_COVERAGE</span><span class="p">,</span>
+    <span class="n">PEAK_LOAD_EFFICIENCY</span><span class="p">,</span>
+    <span class="n">PEAK_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
+    <span class="n">TERTIARY_LOAD_COVERAGE</span><span class="p">,</span>
+    <span class="n">TERTIARY_LOAD_EFFICIENCY</span><span class="p">,</span>
+    <span class="n">TERTIARY_LOAD_ENERGY_PRODUCT</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">energy_need</span> <span class="k">as</span> <span class="n">e_n</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">heating_systems_parameter</span> <span class="k">as</span> <span class="n">h_s_param</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
 
 
 <div class="viewcode-block" id="base_load">
@@ -246,19 +260,138 @@
 
 <div class="viewcode-block" id="energy_use_kwh">
 <a class="viewcode-back" href="../../../modules/ebm.model.energy_use.html#ebm.model.energy_use.energy_use_kwh">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">energy_use_kwh</span><span class="p">(</span><span class="n">energy_need</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">efficiency_factor</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_use_kwh</span><span class="p">(</span><span class="n">energy_need</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">efficiency_factor</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">energy_column</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;energy_requirement&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Merge energy needs with efficiency parameters and compute delivered energy (kWh).</span>
+
+<span class="sd">    The function:</span>
+<span class="sd">      1) Copies the `energy_need` frame,</span>
+<span class="sd">      2) Resets its index,</span>
+<span class="sd">      3) Performs an **inner** merge with `efficiency_factor` on</span>
+<span class="sd">         (&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;),</span>
+<span class="sd">      4) Computes delivered energy ``kwh`` using</span>
+<span class="sd">         ``efficiency_kwh(energy_need_col, heating_system_share, load_share, load_efficiency)``,</span>
+<span class="sd">      5) Scales ``kwh_m2`` by ``efficiency_factor`` if ``kwh_m2`` exists, otherwise sets it to NaN.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    energy_need : pandas.DataFrame</span>
+<span class="sd">        Input dataframe containing energy needs. Must include the join keys:</span>
+<span class="sd">        - &#39;building_category&#39;</span>
+<span class="sd">        - &#39;building_code&#39;</span>
+<span class="sd">        - &#39;purpose&#39;</span>
+<span class="sd">        - &#39;year&#39;</span>
+<span class="sd">        and the column specified by `energy_column` (default: &#39;energy_requirement&#39;).</span>
+
+<span class="sd">    efficiency_factor : pandas.DataFrame</span>
+<span class="sd">        Dataframe with efficiency parameters. Must include the same join keys as above and:</span>
+<span class="sd">        - &#39;heating_system_share&#39;</span>
+<span class="sd">        - &#39;load_share&#39;</span>
+<span class="sd">        - &#39;load_efficiency&#39;</span>
+<span class="sd">        - &#39;efficiency_factor&#39;</span>
+
+<span class="sd">    energy_column : str, default &#39;energy_requirement&#39;</span>
+<span class="sd">        Column name in `energy_need` representing the energy need passed to `efficiency_kwh`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        The merged dataframe with two additional columns:</span>
+<span class="sd">        - &#39;kwh&#39; : Delivered energy computed via `efficiency_kwh(...)`.</span>
+<span class="sd">        - &#39;kwh_m2&#39; : If present before the merge, it is scaled by &#39;efficiency_factor&#39;;</span>
+<span class="sd">          otherwise it is created and filled with NaN.</span>
+
+<span class="sd">        Note that the result reflects an **inner** join of the inputs after</span>
+<span class="sd">        `energy_need.reset_index()`, which may drop unmatched rows from either side</span>
+<span class="sd">        and include the old index as a normal column named &#39;index&#39; (unless the</span>
+<span class="sd">        original index had a different name).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    KeyError</span>
+<span class="sd">        If any of the required join keys or columns are missing in either input.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The function relies on an external callable `efficiency_kwh` that must accept</span>
+<span class="sd">      vectorized pandas Series for:</span>
+<span class="sd">      `(energy_need_col, heating_system_share, load_share, load_efficiency)`,</span>
+<span class="sd">      and return a Series of delivered energy in kWh.</span>
+<span class="sd">    - The merge uses default pandas behavior: `how=&#39;inner&#39;` and default suffixes.</span>
+<span class="sd">      If both dataframes share other non-key column names (e.g., &#39;kwh_m2&#39;),</span>
+<span class="sd">      pandas may add suffixes (e.g., &#39;_x&#39;, &#39;_y&#39;).</span>
+<span class="sd">    - Existing NaNs in any efficiency inputs will propagate through to &#39;kwh&#39;</span>
+<span class="sd">      depending on `efficiency_kwh`&#39;s implementation.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; # energy_need columns (example):</span>
+<span class="sd">    &gt;&gt;&gt; # [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;,</span>
+<span class="sd">    &gt;&gt;&gt; #  &#39;energy_requirement&#39;, &#39;kwh_m2&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; # efficiency_factor columns (example):</span>
+<span class="sd">    &gt;&gt;&gt; # [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;,</span>
+<span class="sd">    &gt;&gt;&gt; #  &#39;heating_system_share&#39;, &#39;load_share&#39;, &#39;load_efficiency&#39;, &#39;efficiency_factor&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; out = energy_use_kwh(energy_need, efficiency_factor, energy_column=&#39;energy_requirement&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; out[[&#39;kwh&#39;, &#39;kwh_m2&#39;]].head()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nrj</span> <span class="o">=</span> <span class="n">energy_need</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
     <span class="n">df</span> <span class="o">=</span> <span class="n">nrj</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">efficiency_factor</span><span class="p">,</span>
                                  <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span>
                                  <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
 
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;energy_requirement&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;heating_system_share&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;load_share&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;load_efficiency&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">efficiency_kwh</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">energy_column</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;heating_system_share&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;load_share&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;load_efficiency&#39;</span><span class="p">])</span>
     <span class="k">if</span> <span class="s1">&#39;kwh_m2&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;efficiency_factor&#39;</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
     <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="efficiency_kwh">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_use.html#ebm.model.energy_use.efficiency_kwh">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">efficiency_kwh</span><span class="p">(</span><span class="n">energy_need</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                   <span class="n">heating_system_share</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">load_share</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">load_efficiency</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute delivered electricity (kWh) from energy need, system share, load share, and efficiency.</span>
+
+<span class="sd">    Result = energy_need * heating_system_share * load_share / load_efficiency</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    energy_need : pd.Series</span>
+<span class="sd">    heating_system_share : pd.Series</span>
+<span class="sd">    load_share : pd.Series</span>
+<span class="sd">    load_efficiency : pd.Series</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the input series are not of equal length.</span>
+<span class="sd">        If the input indexes are different.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.Series</span>
+<span class="sd">    Energy used in unit (kWh)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">energy_need</span><span class="p">)</span><span class="o">!=</span><span class="nb">len</span><span class="p">(</span><span class="n">heating_system_share</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">heating_system_share</span><span class="p">)</span><span class="o">!=</span><span class="nb">len</span><span class="p">(</span><span class="n">load_share</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">load_share</span><span class="p">)</span><span class="o">!=</span><span class="nb">len</span><span class="p">(</span><span class="n">load_efficiency</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">energy_need</span><span class="p">)</span><span class="si">=}</span><span class="s1">, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">heating_system_share</span><span class="p">)</span><span class="si">=}</span><span class="s1">, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">load_share</span><span class="p">)</span><span class="si">=}</span><span class="s1">,  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">load_efficiency</span><span class="p">)</span><span class="si">=}</span><span class="s1">&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;All input Series must have equal length.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+            <span class="n">energy_need</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">heating_system_share</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="n">energy_need</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">load_share</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="n">energy_need</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">load_efficiency</span><span class="o">.</span><span class="n">index</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;All input Series must share an identical index.&#39;</span><span class="p">)</span>
+
+    <span class="n">kwh</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">energy_need</span> <span class="o">*</span> <span class="n">heating_system_share</span> <span class="o">*</span> <span class="n">load_share</span> <span class="o">/</span> <span class="n">load_efficiency</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">kwh</span><span class="o">.</span><span class="n">isna</span><span class="p">()):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Resulting kwh contain np.nan values&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kwh</span></div>
+
 
 
 

@@ -100,20 +100,18 @@
   <h1>Source code for ebm.cmd.run_calculation</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.areaforecast.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyConsumption</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.extractors</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_area_forecast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.heating_system_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingSystemsForecast</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span>
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.database_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseManager</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.energy_requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyRequirement</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyConsumption</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.heating_system_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingSystemsForecast</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_s_curves</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.energy_requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_for_building_category</span>
 
 
 <div class="viewcode-block" id="area_forecast_result_to_dataframe">
@@ -231,19 +229,14 @@
 <span class="sd">    pd.DataFrame</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">energy_requirement</span> <span class="o">=</span> <span class="n">EnergyRequirement</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span>
-        <span class="n">period</span><span class="o">=</span><span class="n">YearRange</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">),</span>
-        <span class="n">calibration_year</span><span class="o">=</span><span class="n">calibration_year</span> <span class="k">if</span> <span class="n">calibration_year</span> <span class="o">&gt;</span> <span class="n">start_year</span> <span class="k">else</span> <span class="n">start_year</span><span class="p">,</span>
-        <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">energy_requirement</span><span class="o">.</span><span class="n">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
-
+    <span class="n">df</span> <span class="o">=</span> <span class="n">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
 
-    <span class="n">q</span> <span class="o">=</span> <span class="n">area_forecast</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="p">(</span><span class="n">area_forecast</span>
+              <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+              <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+              <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
-    <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
-
-    <span class="n">merged</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;energy_requirement&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">kwh_m2</span> <span class="o">*</span> <span class="n">merged</span><span class="o">.</span><span class="n">m2</span>
 
     <span class="k">return</span> <span class="n">merged</span></div>

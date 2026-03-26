@@ -105,42 +105,21 @@
 <div class="viewcode-block" id="SCurve">
 <a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SCurve</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates S-curve per building condition.</span>
-
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    ValueError</span>
-<span class="sd">        When any of the arguments are less than zero</span>
-<span class="sd">        </span>
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
-<span class="sd">    multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
-<span class="sd">    still return percent as a value between 0 and 1.</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
-
-    <span class="c1"># TODO:</span>
-    <span class="c1"># - add check to control that defined periods match building lifetime index in get_rates_per_year</span>
-
-    <span class="n">earliest_age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">average_age</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">last_age</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">rush_years</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">rush_share</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">never_share</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">building_lifetime</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">130</span>
-
 <div class="viewcode-block" id="SCurve.__init__">
 <a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-                 <span class="n">earliest_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-                 <span class="n">average_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-                 <span class="n">last_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-                 <span class="n">rush_years</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-                 <span class="n">rush_share</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-                 <span class="n">never_share</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-                 <span class="n">building_lifetime</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">130</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">earliest_age</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">average_age</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">last_age</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">rush_years</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">rush_share</span><span class="p">:</span> <span class="nb">float</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">never_share</span><span class="p">:</span> <span class="nb">float</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">building_lifetime</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">130</span><span class="p">,</span>
+                 <span class="n">building_category</span><span class="p">:</span> <span class="nb">str</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span>
+                 <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span>
+                 <span class="n">s</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">earliest_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">earliest_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -161,89 +140,45 @@
             <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Illegal value for </span><span class="si">{</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">=</span> <span class="n">building_lifetime</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">=</span> <span class="n">earliest_age</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">=</span> <span class="n">average_age</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_last_age</span> <span class="o">=</span> <span class="n">last_age</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span> <span class="o">=</span> <span class="n">rush_years</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">=</span> <span class="n">rush_share</span> <span class="o">*</span> <span class="mi">100</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_never_share</span> <span class="o">=</span> <span class="n">never_share</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="n">pre_rush_years</span> <span class="o">=</span> <span class="p">(</span><span class="n">average_age</span> <span class="o">-</span> <span class="n">earliest_age</span> <span class="o">-</span> <span class="p">(</span><span class="n">rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">pre_rush_years</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;average_age=</span><span class="si">{</span><span class="n">average_age</span><span class="si">}</span><span class="s1">, leaves no room for a pre rush period&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">post_rush_years</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_age</span> <span class="o">-</span> <span class="n">average_age</span> <span class="o">-</span> <span class="p">(</span><span class="n">rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">post_rush_years</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;last_age=</span><span class="si">{</span><span class="n">last_age</span><span class="si">}</span><span class="s1">, leaves no room for a post rush period&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-        <span class="c1"># Calculate yearly rates</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pre_rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_pre_rush_rate</span><span class="p">()</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_rush_rate</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_post_rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_post_rush_rate</span><span class="p">()</span>
-        
-        <span class="c1"># Calculate S-curves</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">scurve</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_scurve</span><span class="p">()</span> </div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+            <span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="n">building_category</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">:</span> <span class="n">condition</span><span class="p">,</span>
+            <span class="s1">&#39;earliest_age_for_measure&#39;</span><span class="p">:</span> <span class="n">earliest_age</span><span class="p">,</span> <span class="s1">&#39;average_age_for_measure&#39;</span><span class="p">:</span> <span class="n">average_age</span><span class="p">,</span>
+            <span class="s1">&#39;rush_period_years&#39;</span><span class="p">:</span><span class="n">rush_years</span><span class="p">,</span> <span class="s1">&#39;last_age_for_measure&#39;</span><span class="p">:</span><span class="n">last_age</span><span class="p">,</span> <span class="s1">&#39;rush_share&#39;</span><span class="p">:</span><span class="n">rush_share</span><span class="p">,</span>
+            <span class="s1">&#39;never_share&#39;</span><span class="p">:</span><span class="n">never_share</span><span class="p">}],</span>
+        <span class="p">)</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_calc_pre_rush_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the yearly measure rate for the pre-rush period.</span>
 
-<span class="sd">        The pre-rush rate represents the percentage share of building area that has </span>
-<span class="sd">        undergone a measure per year during the period before the rush period begins.</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;SCurve(earliest_age=</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">earliest_age_for_measure</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;average_age=</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">average_age_for_measure</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;rush_years=</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">rush_period_years</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;rush_share=</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">rush_share</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;last_age=</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">last_age_for_measure</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;never_share=</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">never_share</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        float</span>
-<span class="sd">            Yearly measure rate in the pre-rush period.</span>
+<div class="viewcode-block" id="SCurve.calc_scurve">
+<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.calc_scurve">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_scurve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.areaforecast.s_curve</span><span class="w"> </span><span class="kn">import</span> <span class="n">translate_scurve_parameter_to_shortform</span><span class="p">,</span> <span class="n">scurve_rates</span><span class="p">,</span> <span class="n">scurve_rates_with_age</span>  <span class="c1"># noqa: PLC0415, I001</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">translate_scurve_parameter_to_shortform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
 
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
-<span class="sd">        multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
-<span class="sd">        still return percent as a value between 0 and 1.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">remaining_share</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_never_share</span><span class="p">)</span>
-        <span class="n">age_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)))</span>
-        <span class="n">pre_rush_rate</span> <span class="o">=</span> <span class="n">remaining_share</span> <span class="o">*</span> <span class="n">age_range</span> <span class="o">/</span> <span class="mi">100</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">pre_rush_rate</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
-    
-    <span class="k">def</span><span class="w"> </span><span class="nf">_calc_rush_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the yearly measure rate for the rush period.</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">scurve_rates</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">scurve_rates_with_age</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-<span class="sd">        The rush rate represents the percentage share of building area that has </span>
-<span class="sd">        undergone a measure per year during the rush period.</span>
+        <span class="k">return</span> <span class="n">df</span></div>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        float</span>
-<span class="sd">            Yearly rate in the rush period.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
-<span class="sd">        multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
-<span class="sd">        still return percent as a value between 0 and 1.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">rush_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">rush_rate</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
-    
-    <span class="k">def</span><span class="w"> </span><span class="nf">_calc_post_rush_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculate the yearly measure rate for the post-rush period.</span>
-
-<span class="sd">        The post-rush rate represents the percentage share of building area that has </span>
-<span class="sd">        undergone a measure per year during the period after the rush period ends.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        float</span>
-<span class="sd">            Yearly rate in the post-rush period.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        To make calculations return better rounded more and accurate results, _rush_share and _never_share area</span>
-<span class="sd">        multiplied by 100 internally.  _calc_pre_rush_rate() _calc_rush_rate() _calc_post_rush_rate() will</span>
-<span class="sd">        still return percent as a value between 0 and 1.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">remaining_share</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_share</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_never_share</span><span class="p">)</span>
-        <span class="n">age_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)))</span>
-        <span class="n">post_rush_rate</span> <span class="o">=</span> <span class="n">remaining_share</span> <span class="o">*</span> <span class="n">age_range</span> <span class="o">/</span> <span class="mi">100</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">post_rush_rate</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SCurve.get_rates_per_year_over_building_lifetime">
 <a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.get_rates_per_year_over_building_lifetime">[docs]</a>
@@ -261,82 +196,9 @@
 <span class="sd">            with an index representing the age from 1 to the building lifetime.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># Define the length of the different periods in the S-curve</span>
-        <span class="n">earliest_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="n">pre_rush_years</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_earliest_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
-        <span class="n">rush_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span>
-        <span class="n">post_rush_years</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_age</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_average_age</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_years</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
-        <span class="n">last_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">-</span> <span class="n">earliest_years</span> <span class="o">-</span> <span class="n">pre_rush_years</span> <span class="o">-</span> <span class="n">rush_years</span> <span class="o">-</span> <span class="n">post_rush_years</span>
-        
-        <span class="c1"># Redefine periods for Demolition, as the post_rush_year calculation isn&#39;t the same as for Small measures and</span>
-        <span class="c1"># rehabilitation</span>
-        <span class="k">if</span> <span class="n">last_years</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">last_years</span> <span class="o">=</span> <span class="mi">0</span> 
-            <span class="n">post_rush_years</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">-</span> <span class="n">earliest_years</span> <span class="o">-</span> <span class="n">pre_rush_years</span> <span class="o">-</span> <span class="n">rush_years</span>
-
-        <span class="c1"># Create list where the yearly rates are placed according to their corresponding period in the buildings</span>
-        <span class="c1"># lifetime</span>
-
-        <span class="n">rates_per_year</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">earliest_years</span> <span class="o">+</span> 
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_pre_rush_rate</span><span class="p">]</span> <span class="o">*</span> <span class="n">pre_rush_years</span> <span class="o">+</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_rush_rate</span><span class="p">]</span> <span class="o">*</span> <span class="n">rush_years</span> <span class="o">+</span>
-            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_post_rush_rate</span><span class="p">]</span> <span class="o">*</span> <span class="n">post_rush_years</span> <span class="o">+</span>
-            <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">last_years</span>
-        <span class="p">)</span>  
-        
-        <span class="c1"># Create a pd.Series with an index from 1 to building_lifetime </span>
-        <span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_building_lifetime</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">rates_per_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rates_per_year</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;scurve&#39;</span><span class="p">)</span>
-        <span class="n">rates_per_year</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;age&#39;</span>
-
-        <span class="k">return</span> <span class="n">rates_per_year</span></div>
-
-
-<div class="viewcode-block" id="SCurve.calc_scurve">
-<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.calc_scurve">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">calc_scurve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calculates the S-curve by accumulating the yearly measure rates over the building&#39;s lifetime.</span>
-
-<span class="sd">        This method returns a pandas Series representing the S-curve, where each value corresponds </span>
-<span class="sd">        to the accumulated rate up to that age.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        pd.Series</span>
-<span class="sd">            A Series containing the accumulated rates of the S-curve with an index representing the age from 1 to the</span>
-<span class="sd">                building lifetime.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Get rates_per_year and accumulate them over the building lifetime</span>
-        <span class="n">rates_per_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_rates_per_year_over_building_lifetime</span><span class="p">()</span> 
-        <span class="n">scurve</span> <span class="o">=</span> <span class="n">rates_per_year</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">scurve</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_scurve</span><span class="p">()</span><span class="o">.</span><span class="n">rate</span></div>
 </div>
 
-
-
-<div class="viewcode-block" id="main">
-<a class="viewcode-back" href="../../../modules/ebm.model.scurve.html#ebm.model.scurve.main">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate all scurves from data/s_curve.csv&#39;</span><span class="p">)</span>
-    <span class="n">area_parameters_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data/s_curve.csv&#39;</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">area_parameters_path</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="n">scurve</span> <span class="o">=</span> <span class="n">SCurve</span><span class="p">(</span><span class="n">earliest_age</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">earliest_age_for_measure</span><span class="p">,</span>
-                        <span class="n">average_age</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">average_age_for_measure</span><span class="p">,</span>
-                        <span class="n">last_age</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">last_age_for_measure</span><span class="p">,</span>
-                        <span class="n">rush_years</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">rush_period_years</span><span class="p">,</span>
-                        <span class="n">never_share</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">never_share</span><span class="p">,</span>
-                        <span class="n">rush_share</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">rush_share</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">scurve</span><span class="o">.</span><span class="n">calc_scurve</span><span class="p">())</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
            </div>

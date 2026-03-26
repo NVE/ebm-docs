@@ -100,7 +100,7 @@
   <h1>Source code for ebm.model.heat_pump</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">HP_ENERGY_SOURCE</span><span class="p">,</span> <span class="n">HEAT_PUMP</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">HEAT_PUMP</span><span class="p">,</span> <span class="n">HP_ENERGY_SOURCE</span>
 
 
 <div class="viewcode-block" id="air_source_heat_pump">
@@ -161,6 +161,23 @@
 <div class="viewcode-block" id="heat_prod_hp_wide">
 <a class="viewcode-back" href="../../../modules/ebm.model.heat_pump.html#ebm.model.heat_pump.heat_prod_hp_wide">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">heat_prod_hp_wide</span><span class="p">(</span><span class="n">production</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Change transform the result of production into heat_prod_hp wide format with years as columns.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    production : pd.DataFrame</span>
+<span class="sd">        Containing year, building_group, hp_source</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFRame</span>
+<span class="sd">        heat_prod_hp in wide format</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function will modify the original dataframe by adding an RV_HP column</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">heat_prod_hp</span><span class="p">(</span><span class="n">production</span><span class="p">)</span>
     <span class="n">wide</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;hp_source&#39;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RV_HP&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">wide</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;building_group&#39;</span><span class="p">,</span> <span class="s1">&#39;hp_source&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">wide</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]]</span>

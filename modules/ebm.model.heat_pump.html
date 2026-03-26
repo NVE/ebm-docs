@@ -128,7 +128,26 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.heat_pump.heat_prod_hp_wide">
 <span class="sig-name descname"><span class="pre">heat_prod_hp_wide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">production</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/heat_pump.html#heat_prod_hp_wide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.heat_pump.heat_prod_hp_wide" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Change transform the result of production into heat_prod_hp wide format with years as columns.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>production<span class="classifier">pd.DataFrame</span></dt><dd><p>Containing year, building_group, hp_source</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFRame</dt><dd><p>heat_prod_hp in wide format</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<p>The function will modify the original dataframe by adding an RV_HP column</p>
+</section>
+</dd></dl>
 
 </section>
 

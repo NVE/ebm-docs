@@ -106,13 +106,12 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm</span><span class="w"> </span><span class="kn">import</span> <span class="n">validators</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.energy_consumption</span><span class="w"> </span><span class="kn">import</span> <span class="n">calibrate_heating_systems</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span><span class="p">,</span> <span class="n">expand_building_categories</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.column_operations</span><span class="w"> </span><span class="kn">import</span> <span class="n">explode_building_category_column</span><span class="p">,</span> <span class="n">explode_building_code_column</span><span class="p">,</span> <span class="n">explode_unique_columns</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.dataframemodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyNeedYearlyImprovements</span><span class="p">,</span> <span class="n">YearlyReduction</span><span class="p">,</span> <span class="n">PolicyImprovement</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">TEKParameters</span><span class="p">,</span> <span class="n">YearRange</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.dataframemodels</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyNeedYearlyImprovements</span><span class="p">,</span> <span class="n">PolicyImprovement</span><span class="p">,</span> <span class="n">YearlyReduction</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.energy_purpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyPurpose</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.file_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileHandler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_category</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCategory</span><span class="p">,</span> <span class="n">expand_building_categories</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">TEKParameters</span><span class="p">,</span> <span class="n">YearRange</span>
-
 
 <span class="c1"># TODO:</span>
 <span class="c1"># - add method to change all strings to lower case and underscore instead of space</span>
@@ -301,6 +300,22 @@
         <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_area_new_residential_buildings">
+<a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_area_new_residential_buildings">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_area_new_residential_buildings</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get population and household size DataFrame from a file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
+<span class="sd">          &quot;area&quot;,&quot;type of building&quot;,&quot;2010&quot;,&quot;2011&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_category_area</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">df</span></div>
+
 
 
 <div class="viewcode-block" id="DatabaseManager.get_building_category_floor_area">

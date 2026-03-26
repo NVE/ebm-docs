@@ -192,7 +192,7 @@ area (m2) for each combination of building category and building_code standard.<
 </dd>
 <dt>building_code_parameters<span class="classifier">pandas.DataFrame or None, optional</span></dt><dd><p>A DataFrame containing building_code construction period definitions with columns:
 [‘building_code’, ‘building_year’, ‘period_start_year’, ‘period_end_year’].
-If None, a default TEK17 period is used (2020–2050 with building year 2025).</p>
+If None, a default TEK17 period is used (2020-2050 with building year 2025).</p>
 </dd>
 </dl>
 </section>
@@ -339,41 +339,429 @@ with the following columns:
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.building_condition_scurves">
 <span class="sig-name descname"><span class="pre">building_condition_scurves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#building_condition_scurves"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.building_condition_scurves" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Calculate yearly rate for building_condition s-curves for building_category, building_code and year.</p>
+<section id="id16">
+<h2>Parameters<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>scurve_parameters<span class="classifier">pd.DataFrame</span></dt><dd><p>Scurve parameters as define in the scurve.csv.</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h2>Returns<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Yearly accumulated scurves by building_category, building_code, and building_code</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.building_condition_accumulated_scurves">
 <span class="sig-name descname"><span class="pre">building_condition_accumulated_scurves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#building_condition_accumulated_scurves"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.building_condition_accumulated_scurves" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Calculate accumulated building_condition s-curves for building_category, building_code and year.</p>
+<section id="id18">
+<h2>Parameters<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>scurve_parameters<span class="classifier">pd.DataFrame</span></dt><dd><p>Scurve parameters as define in the scurve.csv.</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h2>Returns<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Yearly accumulated scurves by building_category, building_code, and building_code</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.multiply_s_curves_with_floor_area">
-<span class="sig-name descname"><span class="pre">multiply_s_curves_with_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_by_condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_area</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/area.html#multiply_s_curves_with_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.multiply_s_curves_with_floor_area" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">multiply_s_curves_with_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_by_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#multiply_s_curves_with_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.multiply_s_curves_with_floor_area" title="Link to this definition"></a></dt>
+<dd><p>Multiply existing area with s_curves_by_condition to figure out building condition by year.</p>
+<section id="id20">
+<h2>Parameters<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curves_by_condition<span class="classifier">pd.DataFrame</span></dt><dd><p>s_curves dataframe with building_category, building_condition and year.</p>
+</dd>
+<dt>with_area :</dt><dd><p>Total floor area for building_category and building_code.</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h2>Returns<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>yearly floor area for each building_category, building_code and building_condition</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.merge_total_area_by_year">
-<span class="sig-name descname"><span class="pre">merge_total_area_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">construction_by_building_category_yearly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_area</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/area.html#merge_total_area_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.merge_total_area_by_year" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">merge_total_area_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">construction_by_building_category_yearly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#merge_total_area_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.merge_total_area_by_year" title="Link to this definition"></a></dt>
+<dd><p>Merge Constructed area with existing area.</p>
+<section id="id22">
+<h2>Parameters<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>construction_by_building_category_yearly<span class="classifier">pd.Series</span></dt><dd><p>Floor area constructed by year with columns building_category, year.</p>
+</dd>
+<dt>existing_area<span class="classifier">pd.DataFrame</span></dt><dd><p>Existing area by year with columns building_category, year.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h2>Returns<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe with constructed and existing area</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.calculate_existing_area">
-<span class="sig-name descname"><span class="pre">calculate_existing_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_existing_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_existing_area" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">calculate_existing_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_existing_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_existing_area" title="Link to this definition"></a></dt>
+<dd><p>Calculate the existing building area over a range of years based on area parameters and building codes.</p>
+<section id="id24">
+<h2>Parameters<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>area_parameters<span class="classifier">pd.DataFrame</span></dt><dd><p>A DataFrame indexed by ‘building_category’ and ‘building_code’, containing area-related data.</p>
+</dd>
+<dt>building_code_parameters<span class="classifier">pd.DataFrame</span></dt><dd><p>A DataFrame containing at least a ‘building_code’ column, used to define valid codes.</p>
+</dd>
+<dt>years<span class="classifier">YearRange</span></dt><dd><p>A sequence of years (e.g., list, range, or array-like) over which to compute the existing area.</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h2>Returns<a class="headerlink" href="#id25" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>A DataFrame indexed by [‘building_category’, ‘building_code’, ‘year’] with merged area data,
+including all combinations of categories, codes, and years.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.construction_with_building_code">
-<span class="sig-name descname"><span class="pre">construction_with_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category_demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construction_floor_area_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#construction_with_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.construction_with_building_code" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">construction_with_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category_demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construction_floor_area_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#construction_with_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.construction_with_building_code" title="Link to this definition"></a></dt>
+<dd><p>Merge building_category demolition floor area by year with building_code.</p>
+<section id="id26">
+<h2>Parameters<a class="headerlink" href="#id26" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_category_demolition_by_year<span class="classifier">pd.Series</span></dt><dd><p>floor area demolished by year</p>
+</dd>
+<dt>building_code<span class="classifier">pd.DataFrame</span></dt><dd><p>building_code_parameters dataframe</p>
+</dd>
+<dt>construction_floor_area_by_year<span class="classifier">pd.DataFrame</span></dt><dd><p>floor area constructed by building_category and year</p>
+</dd>
+<dt>years<span class="classifier">YearRange</span></dt><dd><p>period years</p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h2>Returns<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Merged building_category demolition floor area by year with building_code</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.sum_building_category_demolition_by_year">
-<span class="sig-name descname"><span class="pre">sum_building_category_demolition_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demolition_by_year</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/area.html#sum_building_category_demolition_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.sum_building_category_demolition_by_year" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">sum_building_category_demolition_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#sum_building_category_demolition_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.sum_building_category_demolition_by_year" title="Link to this definition"></a></dt>
+<dd><p>Return sum of demolition by building_category and year.</p>
+<section id="id28">
+<h2>Parameters<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>demolition_by_year<span class="classifier">pd.Series</span></dt><dd><p>Yearly demolition with building_category, year and optional column building_code</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h2>Returns<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>Demolished floor area by building_category and year</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.calculate_demolition_floor_area_by_year">
-<span class="sig-name descname"><span class="pre">calculate_demolition_floor_area_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_demolition_floor_area_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_demolition_floor_area_by_year" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">calculate_demolition_floor_area_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">YearRange(start=2020,</span> <span class="pre">end=2050)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_demolition_floor_area_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_demolition_floor_area_by_year" title="Link to this definition"></a></dt>
+<dd><p>Calculate the demolition floor area by year multiplying area parameters and the S-curve.</p>
+<section id="id30">
+<h2>Parameters<a class="headerlink" href="#id30" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>area_parameters<span class="classifier">pandas.DataFrame</span></dt><dd><p>A multi-indexed DataFrame containing floor area data. Expected to include an ‘area’ column.
+The index should include year information to filter between 2020 and 2050.</p>
+</dd>
+<dt>s_curve_demolition<span class="classifier">pandas.Series</span></dt><dd><p>A Series representing the demolition S-curve values indexed by year.</p>
+</dd>
+<dt>years<span class="classifier">YearRange</span></dt><dd><p>YearRange of all years that will to present in demolition_by_year</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h2>Returns<a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>A Series named ‘demolition’ representing the calculated demolition floor area
+for each year between 2020 and 2050.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_commercial_construction">
+<span class="sig-name descname"><span class="pre">calculate_commercial_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_by_person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_commercial_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_commercial_construction" title="Link to this definition"></a></dt>
+<dd><p>Calculate a projection of constructed floor area by using population and floor_area_by_person.</p>
+<section id="id32">
+<h2>Parameters<a class="headerlink" href="#id32" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>population<span class="classifier">pd.Series</span></dt><dd><p>population by year</p>
+</dd>
+<dt>area_by_person<span class="classifier">pd.Series</span></dt><dd><p>float or pd.Series containing the floor area per person for the building_category</p>
+</dd>
+<dt>demolition<span class="classifier">pd.Series</span></dt><dd><p>yearly demolition to be added to the floor area.</p>
+</dd>
+</dl>
+</section>
+<section id="id33">
+<h2>Returns<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Dataframe</dt><dd><p>floor area constructed by year
+accumulated contracted floor area</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_residential_construction">
+<span class="sig-name descname"><span class="pre">calculate_residential_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">households_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_category_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_area_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">175</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">YearRange(start=2010,</span> <span class="pre">end=2050)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_residential_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_residential_construction" title="Link to this definition"></a></dt>
+<dd><p>Calculate various residential construction metrics based on population, household size, and building data.</p>
+<section id="id34">
+<h2>Parameters<a class="headerlink" href="#id34" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>households_by_year<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the total number of households by year.</p>
+</dd>
+<dt>building_category_share<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the share of each building category.</p>
+</dd>
+<dt>build_area_sum<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the accumulated building area sum.</p>
+</dd>
+<dt>average_floor_area<span class="classifier">pd.Series|int</span></dt><dd><p>Average floor area of each building of this type</p>
+</dd>
+<dt>period<span class="classifier">YearRange</span></dt><dd><p>contains start and end year for the model</p>
+</dd>
+</dl>
+</section>
+<section id="id35">
+<h2>Returns<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>A pandas DataFrame containing various residential construction metrics.</p>
+</dd>
+</dl>
+</section>
+<section id="id36">
+<h2>Notes<a class="headerlink" href="#id36" title="Link to this heading"></a></h2>
+<p>The function calculates several metrics including yearly constructed floor area, accumulated constructed floor area.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_yearly_new_building_floor_area_sum">
+<span class="sig-name descname"><span class="pre">calculate_yearly_new_building_floor_area_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yearly_new_building_floor_area_house</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_yearly_new_building_floor_area_sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_yearly_new_building_floor_area_sum" title="Link to this definition"></a></dt>
+<dd><p>Calculate the accumulated constructed floor area over the years.</p>
+<section id="id37">
+<h2>Parameters<a class="headerlink" href="#id37" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>yearly_new_building_floor_area_house<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the yearly new building floor area.</p>
+</dd>
+</dl>
+</section>
+<section id="id38">
+<h2>Returns<a class="headerlink" href="#id38" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><dl class="simple">
+<dt>A pandas Series representing the accumulated constructed floor area, named</dt><dd><p>‘accumulated_constructed_floor_area’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h2>Notes<a class="headerlink" href="#id39" title="Link to this heading"></a></h2>
+<p>The function calculates the cumulative sum of the yearly new building floor area.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_yearly_constructed_floor_area">
+<span class="sig-name descname"><span class="pre">calculate_yearly_constructed_floor_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_area_sum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_floor_area_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_yearly_constructed_floor_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_yearly_constructed_floor_area" title="Link to this definition"></a></dt>
+<dd><p>Calculate the yearly constructed floor area based on changes and demolitions.</p>
+<section id="id40">
+<h2>Parameters<a class="headerlink" href="#id40" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>build_area_sum<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the accumulated building area sum.</p>
+</dd>
+<dt>yearly_floor_area_change<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the yearly change in floor area.</p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h2>Returns<a class="headerlink" href="#id41" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the yearly constructed floor area, named ‘constructed_floor_area’.</p>
+</dd>
+</dl>
+</section>
+<section id="id42">
+<h2>Notes<a class="headerlink" href="#id42" title="Link to this heading"></a></h2>
+<p>The function calculates the yearly new building floor area by adding the yearly floor area change
+to the yearly demolished floor area. It then updates the values based on the build_area_sum index.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_yearly_floor_area_change">
+<span class="sig-name descname"><span class="pre">calculate_yearly_floor_area_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">175</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_yearly_floor_area_change"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_yearly_floor_area_change" title="Link to this definition"></a></dt>
+<dd><p>Calculate the yearly floor area change based on building changes and average floor area.</p>
+<section id="id43">
+<h2>Parameters<a class="headerlink" href="#id43" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_change<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the change in the number of buildings.</p>
+</dd>
+<dt>average_floor_area<span class="classifier">typing.Union[pd.Series, int], optional</span></dt><dd><p>The average floor area per building. Can be a pandas Series or an integer. Default is 175.</p>
+</dd>
+</dl>
+</section>
+<section id="id44">
+<h2>Returns<a class="headerlink" href="#id44" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the yearly floor area change, named ‘house_floor_area_change’.</p>
+</dd>
+</dl>
+</section>
+<section id="id45">
+<h2>Notes<a class="headerlink" href="#id45" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>The function calculates the yearly floor area change by multiplying the building change by the average floor</dt><dd><p>area.</p>
+</dd>
+</dl>
+<p>The floor area change for the first two years set to 0.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_building_growth">
+<span class="sig-name descname"><span class="pre">calculate_building_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">households_change</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_building_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_building_growth" title="Link to this definition"></a></dt>
+<dd><p>Calculate the annual growth in building categories based on household changes.</p>
+<section id="id46">
+<h2>Parameters<a class="headerlink" href="#id46" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_category_share<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the share (0 to 1 ) of each building category.</p>
+</dd>
+<dt>households_change<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the annual change in the number of households.</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h2>Returns<a class="headerlink" href="#id47" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the annual growth in building categories, named ‘building_growth’.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_household_change">
+<span class="sig-name descname"><span class="pre">calculate_household_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">households</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_household_change"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_household_change" title="Link to this definition"></a></dt>
+<dd><p>Calculate the annual change in the number of households.</p>
+<section id="id48">
+<h2>Parameters<a class="headerlink" href="#id48" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>households<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the number of households over time.</p>
+</dd>
+</dl>
+</section>
+<section id="id49">
+<h2>Returns<a class="headerlink" href="#id49" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the annual change in the number of households, named ‘household_change’.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_households_by_year">
+<span class="sig-name descname"><span class="pre">calculate_households_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">household_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_households_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_households_by_year" title="Link to this definition"></a></dt>
+<dd><p>Calculate the number of households by year based on household size and population.</p>
+<section id="id50">
+<h2>Parameters<a class="headerlink" href="#id50" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>household_size<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the average household size over time.</p>
+</dd>
+<dt>population<span class="classifier">pd.Series</span></dt><dd><p>A pandas Series representing the population over time.</p>
+</dd>
+</dl>
+</section>
+<section id="id51">
+<h2>Returns<a class="headerlink" href="#id51" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.Series</dt><dd><p>A pandas Series representing the number of households by year, named ‘households’.</p>
+</dd>
+</dl>
+</section>
+<section id="id52">
+<h2>Notes<a class="headerlink" href="#id52" title="Link to this heading"></a></h2>
+<p>The function calculates the number of households by dividing the population by the average household size.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_construction_with_demolition">
+<span class="sig-name descname"><span class="pre">calculate_construction_with_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">construction_by_building_category_and_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_construction_with_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_construction_with_demolition" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_construction">
+<span class="sig-name descname"><span class="pre">calculate_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category_demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_per_person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_construction_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_buildings_population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_buildings_category_shares</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_construction" title="Link to this definition"></a></dt>
+<dd><p>Calculate construction for different building_categories.</p>
+<section id="id53">
+<h2>Parameters<a class="headerlink" href="#id53" title="Link to this heading"></a></h2>
+<p>new_buildings_category_shares :
+new_buildings_population :
+yearly_construction_floor_area :
+area_per_person :
+building_category_demolition_by_year : pd.DataFrame</p>
+<blockquote>
+<div><p>yearly demolition for building categories</p>
+</div></blockquote>
+<dl class="simple">
+<dt>years<span class="classifier">YearRange</span></dt><dd><p>period for construction</p>
+</dd>
+</dl>
+</section>
+<section id="id54">
+<h2>Returns<a class="headerlink" href="#id54" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>dataframe with columns constructed_floor_area, accumulated_constructed_floor_area, demolished_floor_area</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.calculate_all_area">
+<span class="sig-name descname"><span class="pre">calculate_all_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area_new_residential_buildings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_per_person</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">construction_population</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_buildings_category_share</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curves_by_condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_all_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_all_area" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
