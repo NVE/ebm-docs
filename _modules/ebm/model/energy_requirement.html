@@ -98,7 +98,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for ebm.model.energy_requirement</h1><div class="highlight"><pre>
-<span></span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
@@ -167,16 +168,28 @@
     <span class="n">most_conditions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">existing_conditions</span><span class="p">())</span>
     <span class="n">model_years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
 
+    <span class="n">building_codes</span> <span class="o">=</span> <span class="n">gather_building_codes</span><span class="p">(</span><span class="n">energy_need_improvements_policy</span><span class="p">,</span> <span class="n">energy_need_original_condition</span><span class="p">,</span>
+                                           <span class="n">energy_need_yearly_reduction</span><span class="p">,</span> <span class="n">improvement_building_upgrade</span><span class="p">)</span>
+
     <span class="n">merged</span> <span class="o">=</span> <span class="n">energy_need_improvements_kwh_m2</span><span class="p">(</span>
         <span class="n">energy_need_original_condition</span><span class="o">=</span><span class="n">energy_need_original_condition</span><span class="p">,</span>
         <span class="n">reduction_per_condition</span><span class="o">=</span><span class="n">improvement_building_upgrade</span><span class="p">,</span>
         <span class="n">policy_improvement</span><span class="o">=</span><span class="n">energy_need_improvements_policy</span><span class="p">,</span>
         <span class="n">yearly_improvement</span><span class="o">=</span><span class="n">energy_need_yearly_reduction</span><span class="p">,</span>
-        <span class="n">df_years</span><span class="o">=</span><span class="n">make_df_building_category_code_purpose_yearly</span><span class="p">(</span><span class="n">model_years</span><span class="p">,</span> <span class="n">building_condition</span><span class="o">=</span><span class="n">most_conditions</span><span class="p">))</span>
+        <span class="n">df_years</span><span class="o">=</span><span class="n">make_df_building_category_code_purpose_yearly</span><span class="p">(</span><span class="n">model_years</span><span class="p">,</span> <span class="n">building_condition</span><span class="o">=</span><span class="n">most_conditions</span><span class="p">,</span> <span class="n">building_code</span><span class="o">=</span><span class="n">building_codes</span><span class="p">))</span>
 
     <span class="n">merged</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">merged</span></div>
+
+
+
+<div class="viewcode-block" id="gather_building_codes">
+<a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.gather_building_codes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gather_building_codes</span><span class="p">(</span><span class="o">*</span><span class="n">dataframes</span><span class="p">):</span>
+    <span class="n">building_codes</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">union1d</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">building_code</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dataframes</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">building_codes</span></div>
+
 
 
 <div class="viewcode-block" id="energy_need_improvements_kwh_m2">
