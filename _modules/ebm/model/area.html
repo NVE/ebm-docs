@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -516,7 +517,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">floor_area_by_condition</span> <span class="o">=</span> <span class="n">s_curves_by_condition</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">with_area</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">floor_area_forecast</span> <span class="o">=</span> <span class="n">floor_area_by_condition</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>  <span class="c1"># noqa: PD013</span>
+    <span class="n">floor_area_forecast</span> <span class="o">=</span> <span class="n">floor_area_by_condition</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>  <span class="c1"># noqa: PD013</span>
     <span class="n">floor_area_forecast</span> <span class="o">=</span> <span class="n">floor_area_forecast</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_3&#39;</span><span class="p">:</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;m2&#39;</span><span class="p">})</span>  <span class="c1"># m²</span>
     <span class="k">return</span> <span class="n">floor_area_forecast</span></div>
 
@@ -541,8 +542,12 @@
 <span class="sd">        Dataframe with constructed and existing area</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">total_area_by_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">existing_area</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year_r&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">),</span>
-                                    <span class="n">construction_by_building_category_yearly</span><span class="p">])</span>
+
+    <span class="n">total_area_by_year</span> <span class="o">=</span> <span class="p">(</span><span class="n">existing_area</span>
+                              <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year_r&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+                              <span class="o">.</span><span class="n">combine_first</span><span class="p">(</span><span class="n">construction_by_building_category_yearly</span><span class="o">.</span><span class="n">to_frame</span><span class="p">())</span>
+                              <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">total_area_by_year</span></div>
 
 
@@ -577,7 +582,7 @@
     <span class="c1"># Reindex the DataFrame to include all combinations, filling missing values with NaN</span>
     <span class="n">area</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="c1"># Optional: Fill missing values with a default, e.g., 0</span>
-    <span class="n">existing_area</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">area_parameters</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">],</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_r&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>  <span class="c1"># noqa: PD015</span>
+    <span class="n">existing_area</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">area_parameters</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">],</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_r&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>  <span class="c1"># noqa: PD015</span>
     <span class="n">existing_area</span> <span class="o">=</span> <span class="n">existing_area</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">existing_area</span></div>
 
@@ -612,7 +617,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">years</span><span class="p">:</span>
         <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="o">.</span><span class="n">from_series</span><span class="p">(</span><span class="n">building_category_demolition_by_year</span><span class="p">)</span>
 
-    <span class="n">building_code_years</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">cross_join</span><span class="p">(</span><span class="n">building_code</span><span class="p">)</span>
+    <span class="n">building_code_years</span> <span class="o">=</span> <span class="n">explode_building_code_parameters_years</span><span class="p">(</span><span class="n">building_code</span><span class="p">)</span>
 
     <span class="n">filtered_building_code_years</span> <span class="o">=</span> <span class="n">building_code_years</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;period_end_year&gt;=</span><span class="si">{</span><span class="n">years</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
@@ -631,6 +636,22 @@
     <span class="c1">#s.name = &#39;construction&#39;</span>
 
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;constructed_floor_area&#39;</span><span class="p">:</span> <span class="s1">&#39;net_construction&#39;</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="explode_building_code_parameters_years">
+<a class="viewcode-back" href="../../../modules/ebm.model.area.html#ebm.model.area.explode_building_code_parameters_years">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">explode_building_code_parameters_years</span><span class="p">(</span><span class="n">building_code_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">building_code_parameters</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">min_year</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;period_start_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">2020</span><span class="p">)</span>
+    <span class="n">max_year</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;period_end_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">period_start_year</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">period_end_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;year&gt;=</span><span class="si">{</span><span class="n">min_year</span><span class="si">}</span><span class="s1"> and year &lt;=</span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
 
 
 
@@ -988,22 +1009,122 @@
 
 <div class="viewcode-block" id="calculate_construction_with_demolition">
 <a class="viewcode-back" href="../../../modules/ebm.model.area.html#ebm.model.area.calculate_construction_with_demolition">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_construction_with_demolition</span><span class="p">(</span><span class="n">construction_by_building_category_and_year</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">demolition_floor_area_by_year</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">demolition_by_building_category</span> <span class="o">=</span> <span class="n">demolition_floor_area_by_year</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">loc</span><span class="p">[([</span><span class="s1">&#39;apartment_block&#39;</span><span class="p">,</span> <span class="s1">&#39;house&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">])]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_construction_with_demolition</span><span class="p">(</span><span class="n">construction_by_building_category_and_year</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                                           <span class="n">demolition_floor_area_by_year</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                                           <span class="n">residential_building_categories</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Combine construction and demolition data to compute rebuilt, total construction, and cumulative built area by building category, building code, and year.</span>
 
-    <span class="n">demolition_cumsum</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">=</span> <span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-    <span class="n">reconstruct_demolished</span> <span class="o">=</span> <span class="n">demolition_cumsum</span>
-    <span class="n">not_residential_index</span> <span class="o">=</span> <span class="n">reconstruct_demolished</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;building_category not in [&quot;house&quot;, &quot;apartment_block&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="sd">    The function aligns demolition floor area with construction data, applying</span>
+<span class="sd">    domain-specific timing rules:</span>
+<span class="sd">    - Residential demolition is assumed to already be aligned with construction</span>
+<span class="sd">      and is forced to zero for years 2020 and 2021.</span>
+<span class="sd">    - Non-residential demolition is shifted one year forward to align with</span>
+<span class="sd">      construction timing.</span>
 
-    <span class="n">reconstruct_demolished</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">not_residential_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">reconstruct_demolished</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-        <span class="n">not_residential_index</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="sd">    Demolition is treated as fully rebuilt (1:1), and demolition values are</span>
+<span class="sd">    broadcast across building codes within each building category.</span>
 
-    <span class="n">construction</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">construction_by_building_category_and_year</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">reconstruct_demolished</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
-    <span class="n">construction</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">construction</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;rebuilt&#39;</span><span class="p">),</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
-    <span class="n">construction</span><span class="p">[</span><span class="s1">&#39;construction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">construction</span><span class="p">[</span><span class="s1">&#39;rebuilt&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">construction</span><span class="p">[</span><span class="s1">&#39;net_construction&#39;</span><span class="p">]</span>
-    <span class="n">construction</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">construction</span><span class="p">[</span><span class="s1">&#39;net_construction_acc&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">construction</span><span class="p">[</span><span class="s1">&#39;demolition&#39;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">construction</span></div>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    construction_by_building_category_and_year : pandas.DataFrame</span>
+<span class="sd">        Construction data indexed by</span>
+<span class="sd">        ``(&#39;building_category&#39;, &#39;building_code&#39;, &#39;year&#39;)``.</span>
+<span class="sd">        Must contain the following columns:</span>
+
+<span class="sd">        - ``net_construction`` : float</span>
+<span class="sd">            Net new construction area for the given year.</span>
+<span class="sd">        - ``net_construction_acc`` : float</span>
+<span class="sd">            Cumulative net construction area up to and including the given year.</span>
+
+<span class="sd">    demolition_floor_area_by_year : pandas.Series</span>
+<span class="sd">        Demolition floor area indexed by</span>
+<span class="sd">        ``(&#39;building_category&#39;, &#39;year&#39;)``.</span>
+<span class="sd">        Values represent annual demolished area before any timing adjustments.</span>
+
+<span class="sd">    residential_building_categories : set of str, optional</span>
+<span class="sd">        Set of building categories considered residential. These categories</span>
+<span class="sd">        are exempt from the one-year demolition shift applied to non-residential</span>
+<span class="sd">        buildings. Defaults to ``{&#39;house&#39;, &#39;apartment_block&#39;}``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        DataFrame indexed by</span>
+<span class="sd">        ``(&#39;building_category&#39;, &#39;building_code&#39;, &#39;year&#39;)`` containing the</span>
+<span class="sd">        original construction data along with additional columns:</span>
+
+<span class="sd">        - ``demolition`` : float</span>
+<span class="sd">            Aligned demolition area for the given year.</span>
+<span class="sd">        - ``rebuilt`` : float</span>
+<span class="sd">            Annual rebuilt area, assumed equal to demolition.</span>
+<span class="sd">        - ``rebuilt_acc`` : float</span>
+<span class="sd">            Cumulative rebuilt area over time.</span>
+<span class="sd">        - ``construction`` : float</span>
+<span class="sd">            Total annual construction (net construction + rebuilt).</span>
+<span class="sd">        - ``area`` : float</span>
+<span class="sd">            Total cumulative built area (net construction accumulated +</span>
+<span class="sd">            rebuilt accumulated).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If required index levels or columns are missing from the input data.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Demolition values are aggregated by ``(&#39;building_category&#39;, &#39;year&#39;)``</span>
+<span class="sd">      prior to alignment.</span>
+<span class="sd">    - Demolition is merged with construction using an inner join on</span>
+<span class="sd">      ``(&#39;building_category&#39;, &#39;year&#39;)``; construction rows without corresponding</span>
+<span class="sd">      demolition data are dropped.</span>
+<span class="sd">    - For non-residential buildings, demolition in the first available year</span>
+<span class="sd">      after shifting will be ``NaN``.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_non_residential_query</span><span class="p">(</span><span class="n">residential_building_categories</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns `~building_category.isin([&quot;house&quot;,&quot;apartment_block&quot;]) `&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;~&#39;</span> <span class="o">+</span> <span class="n">make_residential_query</span><span class="p">(</span><span class="n">residential_building_categories</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_residential_query</span><span class="p">(</span><span class="n">residential_building_categories</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns `building_category.isin([&quot;house&quot;,&quot;apartment_block&quot;]) `&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;building_category.isin([&#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">&quot;&#39;</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">residential_building_categories</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;]) &#39;</span>
+    <span class="k">if</span> <span class="n">residential_building_categories</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">residential_building_categories</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;house&#39;</span><span class="p">,</span> <span class="s1">&#39;apartment_block&#39;</span><span class="p">}</span>
+    <span class="n">expected_construction_index</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">)</span>
+    <span class="n">expected_demolition_index</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">)</span>
+    <span class="n">expected_columns</span> <span class="o">=</span> <span class="s1">&#39;net_construction&#39;</span><span class="p">,</span> <span class="s1">&#39;net_construction_acc&#39;</span>
+
+    <span class="k">if</span> <span class="n">missing_levels</span> <span class="o">:=</span> <span class="p">[</span><span class="n">eci</span> <span class="k">for</span> <span class="n">eci</span> <span class="ow">in</span> <span class="n">expected_construction_index</span> <span class="k">if</span> <span class="n">eci</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">construction_by_building_category_and_year</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span><span class="p">]:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Missing required levels in construction_by_building_category_and_year (</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_levels</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing_levels</span> <span class="o">:=</span> <span class="p">[</span><span class="n">edi</span> <span class="k">for</span> <span class="n">edi</span> <span class="ow">in</span> <span class="n">expected_demolition_index</span> <span class="k">if</span> <span class="n">edi</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">demolition_floor_area_by_year</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span><span class="p">]:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Missing required levels in demolition_floor_area_by_year (</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_levels</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing_columns</span> <span class="o">:=</span> <span class="p">[</span><span class="n">ec</span> <span class="k">for</span> <span class="n">ec</span> <span class="ow">in</span> <span class="n">expected_columns</span> <span class="k">if</span> <span class="n">ec</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">construction_by_building_category_and_year</span><span class="o">.</span><span class="n">columns</span><span class="p">]:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Missing required columns in construction_by_building_category_and_year (</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_columns</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">demolition_by_building_category</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">demolition_floor_area_by_year</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;demolition&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">list</span><span class="p">(</span><span class="n">residential_building_categories</span><span class="p">),</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">]),</span> <span class="s1">&#39;demolition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c1"># not_residential buildings require shifting 1 year forward to align properly. Residential is already shifted for</span>
+    <span class="c1"># some reason. The shifting must occur before the construction area building_code is applied.</span>
+    <span class="n">not_residential</span> <span class="o">=</span> <span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+        <span class="n">make_non_residential_query</span><span class="p">(</span><span class="n">residential_building_categories</span><span class="p">))</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">not_residential</span><span class="p">,</span> <span class="s1">&#39;demolition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">demolition_by_building_category</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">])[</span><span class="s1">&#39;demolition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1">#construction_with_demolition = construction_by_building_category_and_year.merge(demolition_by_building_category, on=[&#39;building_category&#39;, &#39;year&#39;])</span>
+    <span class="n">construction_with_demolition</span> <span class="o">=</span> <span class="n">construction_by_building_category_and_year</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">demolition_by_building_category</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+    <span class="n">construction_with_demolition</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+    <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;rebuilt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;demolition&#39;</span><span class="p">]</span>
+
+    <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;rebuilt_acc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">])[</span><span class="s1">&#39;rebuilt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+    <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;construction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;rebuilt&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;net_construction&#39;</span><span class="p">]</span>
+    <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;net_construction_acc&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">construction_with_demolition</span><span class="p">[</span><span class="s1">&#39;rebuilt_acc&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">construction_with_demolition</span></div>
 
 
 
@@ -1106,12 +1227,16 @@
     <span class="n">floor_area_forecast</span> <span class="o">=</span> <span class="n">multiply_s_curves_with_floor_area</span><span class="p">(</span><span class="n">cconditions</span><span class="p">,</span> <span class="n">total_area_floor_by_year</span><span class="p">)</span>
     <span class="n">floor_area_forecast_with_s_curves</span> <span class="o">=</span> <span class="n">floor_area_forecast</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s_curves_by_condition</span><span class="p">,</span>
                                                                  <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
-    <span class="n">net_construction</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="p">[[</span><span class="s1">&#39;construction&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuilt&#39;</span><span class="p">,</span> <span class="s1">&#39;net_construction&#39;</span><span class="p">,</span> <span class="s1">&#39;net_construction_acc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">net_construction</span> <span class="o">=</span> <span class="n">construction_with_demolition</span><span class="p">[[</span><span class="s1">&#39;construction&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuilt&#39;</span><span class="p">,</span> <span class="s1">&#39;net_construction&#39;</span><span class="p">,</span> <span class="s1">&#39;net_construction_acc&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuilt_acc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">net_construction</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;original_condition&#39;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">floor_area_forecast_with_s_curves</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-        <span class="n">net_construction</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">],</span>
-        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span></div>
+        <span class="n">net_construction</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">],</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span> <span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;net_construction_acc&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuilt_acc&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">])[[</span><span class="s1">&#39;net_construction_acc&#39;</span><span class="p">,</span> <span class="s1">&#39;rebuilt_acc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
 
 </pre></div>
 
@@ -1122,7 +1247,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

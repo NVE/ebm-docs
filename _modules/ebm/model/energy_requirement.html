@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -129,9 +130,9 @@
 
 <div class="viewcode-block" id="calculate_for_building_category">
 <a class="viewcode-back" href="../../../modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.calculate_for_building_category">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
-    <span class="n">energy_need_original_condition</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_original_condition</span><span class="p">()</span>
+    <span class="n">energy_need_original_condition</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_original_condition</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
     <span class="n">improvement_building_upgrade</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_req_reduction_per_condition</span><span class="p">()</span>
     <span class="n">energy_need_improvements_policy</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_need_policy_improvement</span><span class="p">()</span>
     <span class="n">energy_need_yearly_reduction</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_energy_need_yearly_improvements</span><span class="p">()</span>
@@ -545,7 +546,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

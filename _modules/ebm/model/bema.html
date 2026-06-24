@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -109,12 +110,12 @@
     <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">RETAIL</span><span class="p">:</span> <span class="mi">301</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">OFFICE</span><span class="p">:</span> <span class="mi">302</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">KINDERGARTEN</span><span class="p">:</span> <span class="mi">303</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SCHOOL</span><span class="p">:</span> <span class="mi">304</span><span class="p">,</span>
     <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">UNIVERSITY</span><span class="p">:</span> <span class="mi">305</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOSPITAL</span><span class="p">:</span> <span class="mi">306</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">NURSING_HOME</span><span class="p">:</span> <span class="mi">307</span><span class="p">,</span>
     <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOTEL</span><span class="p">:</span> <span class="mi">308</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SPORTS</span><span class="p">:</span> <span class="mi">309</span><span class="p">,</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">CULTURE</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span>
-    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">STORAGE</span><span class="p">:</span> <span class="mi">312</span><span class="p">,</span> <span class="s1">&#39;storage&#39;</span><span class="p">:</span> <span class="mi">311</span><span class="p">,</span> <span class="n">NON_RESIDENTIAL</span><span class="p">:</span> <span class="mi">399</span><span class="p">}</span>
+    <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">STORAGE</span><span class="p">:</span> <span class="mi">312</span><span class="p">,</span> <span class="s1">&#39;storage&#39;</span><span class="p">:</span> <span class="mi">311</span><span class="p">,</span> <span class="n">NON_RESIDENTIAL</span><span class="p">:</span> <span class="mi">399</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="mi">498</span><span class="p">,</span>  <span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="mi">499</span><span class="p">}</span>
 
 <span class="n">BUILDING_CATEGORY_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_category_order</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;An immutable dict of BeMa sorting order for building_category&quot;&quot;&quot;</span>
 
-<span class="n">_building_group_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;residential&#39;</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span> <span class="s1">&#39;holiday_home&#39;</span><span class="p">:</span> <span class="mi">299</span><span class="p">,</span> <span class="s1">&#39;non_residential&#39;</span><span class="p">:</span> <span class="mi">399</span><span class="p">}</span>
+<span class="n">_building_group_order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;residential&#39;</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span> <span class="s1">&#39;holiday_home&#39;</span><span class="p">:</span> <span class="mi">299</span><span class="p">,</span> <span class="s1">&#39;non_residential&#39;</span><span class="p">:</span> <span class="mi">399</span><span class="p">,</span> <span class="s1">&#39;Residential&#39;</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span> <span class="s1">&#39;Non Residential&#39;</span><span class="p">:</span> <span class="mi">399</span><span class="p">}</span>
 
 <span class="n">BUILDING_GROUP_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_group_order</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;An immutable dict of BeMa sorting order for building_group&quot;&quot;&quot;</span>
@@ -136,8 +137,10 @@
 <span class="n">PURPOSE_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_purpose_order</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;A dict of BeMa sorting order for purpose&quot;&quot;&quot;</span>
 
-<span class="n">_building_condition_order</span> <span class="o">=</span> <span class="p">{</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">ORIGINAL_CONDITION</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">SMALL_MEASURE</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION_AND_SMALL_MEASURE</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">DEMOLITION</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">_building_condition_order</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">ORIGINAL_CONDITION</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">SMALL_MEASURE</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION_AND_SMALL_MEASURE</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">DEMOLITION</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="s1">&#39;demolished&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;existing&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;constructed&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
 
 <span class="n">BUILDING_CONDITION_ORDER</span> <span class="o">=</span> <span class="n">MappingProxyType</span><span class="p">(</span><span class="n">_building_condition_order</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;A dict of BeMa sorting order for building_condition&quot;&quot;&quot;</span>
@@ -262,7 +265,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -524,7 +525,7 @@
 <span class="sd">    projected_shares: pd.Dataframe</span>
 <span class="sd">        Dataframe must contain columns: &#39;building_category&#39;, &#39;building_code&#39;, &#39;year&#39; and &#39;heating_system_share&#39;</span>
 <span class="sd">    precision: int</span>
-<span class="sd">        Precision used for value check (with round)</span>
+<span class="sd">        Precision used for value check (with round), Defaults to 10</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
@@ -540,7 +541,7 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">invalid_shares</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Sum of TEK shares not equal to 1 for:&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">invalid_shares</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{idx}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{idx}</span><span class="s1">: </span><span class="si">{row_dict}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">row_dict</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Skipping ValueError on sum!=1.0&#39;</span><span class="p">)</span></div>
 
 
@@ -615,7 +616,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

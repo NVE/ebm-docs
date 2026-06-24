@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -136,7 +137,7 @@
 
     <span class="n">energy_use_kwh</span> <span class="o">=</span> <span class="n">e_u</span><span class="o">.</span><span class="n">building_group_energy_use_kwh</span><span class="p">(</span><span class="n">heating_systems_parameter</span><span class="p">,</span> <span class="n">total_energy_need</span><span class="p">)</span>  <span class="c1"># 📌</span>
     <span class="n">energy_use_gwh_by_building_group</span> <span class="o">=</span> <span class="n">e_u</span><span class="o">.</span><span class="n">energy_use_gwh_by_building_group</span><span class="p">(</span><span class="n">energy_use_kwh</span><span class="p">)</span>
-    <span class="n">energy_use_holiday_homes</span> <span class="o">=</span> <span class="n">extractors</span><span class="o">.</span><span class="n">extract_energy_use_holiday_homes</span><span class="p">(</span><span class="n">database_manager</span><span class="p">)</span>  <span class="c1"># 📍</span>
+    <span class="n">energy_use_holiday_homes</span> <span class="o">=</span> <span class="n">extractors</span><span class="o">.</span><span class="n">extract_energy_use_holiday_homes</span><span class="p">(</span><span class="n">database_manager</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>  <span class="c1"># 📍</span>
     <span class="n">energy_use_wide</span> <span class="o">=</span> <span class="n">transform_to_sorted_heating_systems</span><span class="p">(</span><span class="n">energy_use_gwh_by_building_group</span><span class="p">,</span> <span class="n">energy_use_holiday_homes</span><span class="p">,</span>
                                                           <span class="n">building_column</span><span class="o">=</span><span class="s1">&#39;building_group&#39;</span><span class="p">)</span>
 
@@ -214,7 +215,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

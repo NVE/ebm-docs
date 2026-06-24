@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -190,7 +191,7 @@
 <span class="sd">        create_missing_input_files</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
-        <span class="n">default_data_directory</span> <span class="o">=</span>  <span class="n">data_directory</span> <span class="o">/</span> <span class="s1">&#39;calibrated&#39;</span>
+        <span class="n">default_data_directory</span> <span class="o">=</span>  <span class="n">data_directory</span> <span class="o">/</span> <span class="s1">&#39;short_analysis_2025&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">default_data_directory</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Could not find default data directory </span><span class="si">{</span><span class="n">default_data_directory</span><span class="si">}</span><span class="s1">&#39;</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -565,7 +566,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">files_to_check</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Create input file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">create_input_file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">source_directory</span><span class="o">=</span><span class="n">source</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_input_file</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">source_directory</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="n">readme</span> <span class="o">=</span> <span class="n">source</span> <span class="o">/</span> <span class="s1">&#39;README.md&#39;</span>
+        <span class="k">if</span> <span class="n">readme</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">target_readme</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_directory</span> <span class="o">/</span> <span class="s1">&#39;README.md&#39;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">target_readme</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">readme</span><span class="p">,</span> <span class="n">target_readme</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating missing file  </span><span class="si">{</span><span class="n">target_readme</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="FileHandler.create_input_file">
@@ -644,7 +652,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

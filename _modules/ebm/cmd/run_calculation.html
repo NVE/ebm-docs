@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -309,13 +310,14 @@
 
 <div class="viewcode-block" id="calculate_heating_systems">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.calculate_heating_systems">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate heating systems projection, efficiencies and multiplies by energy_requirements for total energy use</span>
 <span class="sd">    by building_category, TEK, building_condition, purpose and heating_system.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    period :</span>
 <span class="sd">    energy_requirements : pd.DataFrame</span>
 <span class="sd">    database_manager : ebm.model.database_manager.DatabaseManager</span>
 
@@ -324,7 +326,8 @@
 <span class="sd">    pd.DataFrame</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">projection_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
+    <span class="c1"># projection_period = YearRange(2023, 2050)</span>
+    <span class="n">projection_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="n">period</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
     <span class="n">hsp</span> <span class="o">=</span> <span class="n">HeatingSystemsForecast</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">projection_period</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
     <span class="n">hf</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">calculate_forecast</span><span class="p">()</span>
     <span class="n">hf</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">pad_projection</span><span class="p">(</span><span class="n">hf</span><span class="p">,</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">))</span>
@@ -343,7 +346,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

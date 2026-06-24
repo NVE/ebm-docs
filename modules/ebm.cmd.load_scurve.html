@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.cmd.load_scurve module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.cmd.migrate module" href="ebm.cmd.migrate.html" />
+    <link rel="prev" title="ebm.cmd.initialize module" href="ebm.cmd.initialize.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_case.html">User case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/geographical_distribution.html">Geographical distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Model configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/calibrating_the_model.html">Calibrating the model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.cmd.html">ebm.cmd package</a></li>
+      <li class="breadcrumb-item active">ebm.cmd.load_scurve module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.cmd.load_scurve.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.cmd.load_scurve">
+<span id="ebm-cmd-load-scurve-module"></span><h1>ebm.cmd.load_scurve module<a class="headerlink" href="#module-ebm.cmd.load_scurve" title="Link to this heading"></a></h1>
+<p>Generate S-curves from calibrated CSV parameters.</p>
+<p>This module reads S-curve parameters from a CSV file, optionally filters them using a pandas query,
+and computes S-curves for each parameter set using the <cite>SCurve</cite> model. The results are returned as
+a combined pandas DataFrame and can optionally be saved to a CSV file.</p>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Requires Python 3.10 or later.</p></li>
+<li><p>Uses <cite>loguru</cite> for logging and <cite>pandas</cite> for data manipulation.</p></li>
+<li><p>The S-curve calculation logic is implemented in <cite>ebm.model.scurve.SCurve</cite>.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>Run the script from the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>ebm.cmd.load_scurve<span class="w"> </span>data/long_analysis_2024/s_curve.csv<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;building_category == &#39;house&#39;&quot;</span><span class="w"> </span>--output<span class="w"> </span>results.csv
+</pre></div>
+</div>
+<p>Optionally use python flag <code class="docutils literal notranslate"><span class="pre">-i</span></code> to work with the result in the python repl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-i<span class="w"> </span>ebm/cmd/load_scurve.py<span class="w"> </span>data/long_analysis_2024/s_curve.csv<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;building_category == &#39;house&#39;&quot;</span><span class="w"> </span>--output<span class="w"> </span>results.csv
+</pre></div>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>generate_scurve_dataframe(s_curve_parameters)</dt><dd><p>Generate a combined DataFrame of S-curves based on input parameters.</p>
+</dd>
+<dt>parse_arguments()</dt><dd><p>Parse command-line arguments for CSV path, query, and output file.</p>
+</dd>
+<dt>main()</dt><dd><p>Main entry point for generating S-curves.</p>
+</dd>
+</dl>
+</section>
+<section id="command-line-arguments">
+<h2>Command-Line Arguments<a class="headerlink" href="#command-line-arguments" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>scurve_csv<span class="classifier">str, optional</span></dt><dd><p>Path to the S-curve CSV file. Defaults to <code class="docutils literal notranslate"><span class="pre">data/calibrated/s_curve.csv</span></code>.</p>
+</dd>
+<dt>–query<span class="classifier">str, optional</span></dt><dd><p>Pandas query string to filter the input DataFrame.</p>
+</dd>
+<dt>–output<span class="classifier">str, optional</span></dt><dd><p>Path to save the generated S-curves as a CSV file.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>tuple of (pd.DataFrame | None, pd.DataFrame)</dt><dd><p>A tuple containing the generated S-curves DataFrame (or None if no curves were generated)
+and the original or filtered parameter DataFrame.</p>
+</dd>
+</dl>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.cmd.load_scurve.generate_scurve_dataframe">
+<span class="sig-name descname"><span class="pre">generate_scurve_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/cmd/load_scurve.html#generate_scurve_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.load_scurve.generate_scurve_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Generate a combined DataFrame of S-curves based on input parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.cmd.load_scurve.filter_s_curve_parameters">
+<span class="sig-name descname"><span class="pre">filter_s_curve_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/cmd/load_scurve.html#filter_s_curve_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.load_scurve.filter_s_curve_parameters" title="Link to this definition"></a></dt>
+<dd><p>Filter S-curve parameters using a pandas query string.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.cmd.load_scurve.parse_arguments">
+<span class="sig-name descname"><span class="pre">parse_arguments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Namespace</span></span></span><a class="reference internal" href="../_modules/ebm/cmd/load_scurve.html#parse_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.load_scurve.parse_arguments" title="Link to this definition"></a></dt>
+<dd><p>Parse command-line arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.cmd.load_scurve.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ebm/cmd/load_scurve.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.load_scurve.main" title="Link to this definition"></a></dt>
+<dd><p>Main entry point for generating S-curves.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.cmd.initialize.html" class="btn btn-neutral float-left" title="ebm.cmd.initialize module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.cmd.migrate.html" class="btn btn-neutral float-right" title="ebm.cmd.migrate module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -22,7 +22,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Geographical distribution" href="user_guide/geographical_distribution.html" />
+    <link rel="next" title="Dataset description" href="datasets/index.html" />
     <link rel="prev" title="User case" href="user_guide/user_case.html" /> 
 </head>
 
@@ -59,6 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#use-of-default-and-grouping">Use of “default” and grouping</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -130,7 +131,7 @@ Energy need per square meter for various energy purposes differentiated by build
 <p id="heating-system-efficiencies-csv">🧾 <a class="reference internal" href="#heating-system-efficiencies-csv"><span class="std std-ref">heating_system_efficiencies.csv</span></a> <br>
 Parameters of the various heating technologies. Includes load shares, efficiencies and the related energy product.</p>
 <p id="heating-system-forecast-csv">🧾 <a class="reference internal" href="#heating-system-forecast-csv"><span class="std std-ref">heating_system_forecast.csv</span></a> <br>
-Defines the rate of change in heating systems towards 2050. The change is made on a percentage basis compared to the start year. Described in more detail here <code class="xref any docutils literal notranslate"><span class="pre">Forecasting</span> <span class="pre">of</span> <span class="pre">heating</span> <span class="pre">systems</span></code>.</p>
+Defines the rate of change in heating systems towards 2050. The change is made on a percentage basis compared to the start year. Described in more detail here <a class="reference internal" href="heating_systems/index.html#heating-systems-forecast-doc"><span class="std std-ref">Forecasting</span></a>.</p>
 <p id="heating-system-initial-shares-csv">🧾 <a class="reference internal" href="#heating-system-initial-shares-csv"><span class="std std-ref">heating_system_initial_shares.csv</span></a> <br>
 Distribution of heating systems per building category and building code in the start year.</p>
 <p id="holiday-home-energy-consumption-csv">🧾 <a class="reference internal" href="#holiday-home-energy-consumption-csv"><span class="std std-ref">holiday_home_energy_consumption.csv</span></a>  <br>
@@ -285,69 +286,6 @@ Distribution keys for bioenergy (wood) and fossil fuel consumption per municipal
 - integer
 - <strong>start_year</strong> ≤ value ≤ <strong>2070</strong>
 - default 2050</p>
-<table class="docutils align-default" id="id1">
-<caption><span class="caption-text">input/energy_need_improvements.csv</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
-<thead>
-<tr class="row-odd"><th class="head"><p>building_category</p></th>
-<th class="head"><p>building_code</p></th>
-<th class="head"><p>purpose</p></th>
-<th class="head"><p>function</p></th>
-<th class="head"><p>start_year</p></th>
-<th class="head"><p>value</p></th>
-<th class="head"><p>end_year</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>default</p></td>
-<td><p>default</p></td>
-<td><p>cooling</p></td>
-<td><p>yearly_reduction</p></td>
-<td><p>2020</p></td>
-<td><p>0.0</p></td>
-<td><p>2050</p></td>
-</tr>
-<tr class="row-odd"><td><p>default</p></td>
-<td><p>default</p></td>
-<td><p>electrical_equipment</p></td>
-<td><p>yearly_reduction</p></td>
-<td><p>2021</p></td>
-<td><p>0.01</p></td>
-<td><p>2050</p></td>
-</tr>
-<tr class="row-even"><td><p>default</p></td>
-<td><p>default</p></td>
-<td><p>fans_and_pumps</p></td>
-<td><p>yearly_reduction</p></td>
-<td><p>2020</p></td>
-<td><p>0.0</p></td>
-<td><p>2050</p></td>
-</tr>
-<tr class="row-odd"><td><p>default</p></td>
-<td><p>default</p></td>
-<td><p>heating_dhw</p></td>
-<td><p>yearly_reduction</p></td>
-<td><p>2020</p></td>
-<td><p>0.0</p></td>
-<td><p>2050</p></td>
-</tr>
-<tr class="row-even"><td><p>default</p></td>
-<td><p>default</p></td>
-<td><p>lighting</p></td>
-<td><p>improvement_at_end_year</p></td>
-<td><p>2020</p></td>
-<td><p>0.55</p></td>
-<td><p>2030</p></td>
-</tr>
-<tr class="row-odd"><td><p>default</p></td>
-<td><p>default</p></td>
-<td><p>lighting</p></td>
-<td><p>yearly_reduction</p></td>
-<td><p>2031</p></td>
-<td><p>0.005</p></td>
-<td><p>2050</p></td>
-</tr>
-</tbody>
-</table>
 </div></div>
 </div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">holiday_home_stock</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">holiday_home_energy_consumption</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">year</span></code>
@@ -532,9 +470,9 @@ building code means all building codes.</p>
 <p><em>Building category</em> has two additional groups: <strong>residential</strong> and
 <strong>non-residental</strong> where <strong>residential</strong> consists of houses and apartment blocks, and <strong>non-residential</strong> are the other
 building groups. In the input constraint overview these aggregated groups are specified when available.</p>
-<p>Last Updated on 2026-04-10.</p>
+<p>Last Updated on 2026-06-24.</p>
 <blockquote>
-<div><p>Version: 1.0.9.</p>
+<div><p>Version: 1.0.10.</p>
 </div></blockquote>
 </section>
 </section>
@@ -544,13 +482,13 @@ building groups. In the input constraint overview these aggregated groups are sp
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="user_guide/user_case.html" class="btn btn-neutral float-left" title="User case" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="user_guide/geographical_distribution.html" class="btn btn-neutral float-right" title="Geographical distribution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="datasets/index.html" class="btn btn-neutral float-right" title="Dataset description" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

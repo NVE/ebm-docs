@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ebm.cmd.migrate module" href="ebm.cmd.migrate.html" />
+    <link rel="next" title="ebm.cmd.load_scurve module" href="ebm.cmd.load_scurve.html" />
     <link rel="prev" title="ebm.cmd.helpers module" href="ebm.cmd.helpers.html" /> 
 </head>
 
@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -106,6 +107,12 @@
   <section id="module-ebm.cmd.initialize">
 <span id="ebm-cmd-initialize-module"></span><h1>ebm.cmd.initialize module<a class="headerlink" href="#module-ebm.cmd.initialize" title="Link to this heading"></a></h1>
 <p>Module for setting up input, output and managing default data</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.cmd.initialize.list_available_datasets">
+<span class="sig-name descname"><span class="pre">list_available_datasets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ebm/cmd/initialize.html#list_available_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.initialize.list_available_datasets" title="Link to this definition"></a></dt>
+<dd><p>List available datasets in the default data directory.</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.cmd.initialize.create_input">
 <span class="sig-name descname"><span class="pre">create_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.file_handler.html#ebm.model.file_handler.FileHandler" title="ebm.model.file_handler.FileHandler"><span class="pre">FileHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ebm/cmd/initialize.html#create_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.cmd.initialize.create_input" title="Link to this definition"></a></dt>
@@ -207,13 +214,13 @@ source_directory : pathlib.Path, optional</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="ebm.cmd.helpers.html" class="btn btn-neutral float-left" title="ebm.cmd.helpers module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ebm.cmd.migrate.html" class="btn btn-neutral float-right" title="ebm.cmd.migrate module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ebm.cmd.load_scurve.html" class="btn btn-neutral float-right" title="ebm.cmd.load_scurve module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

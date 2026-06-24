@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Model configuration" href="configuration.html" />
-    <link rel="prev" title="Input files" href="../input_description.html" /> 
+    <link rel="prev" title="Dataset description" href="../datasets/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Geographical distribution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#additional-arguments">Additional arguments</a></li>
@@ -128,7 +129,7 @@ district heating consumption, run: <code class="docutils literal notranslate"><s
 <p>By default and without using any option, the distribution keys for electricity are calculated inside the module using electricity consumption data from 🧾 <a class="reference internal" href="../input_description.html#yearly-aggregated-elhub-data-parquet"><span class="std std-ref">yearly_aggregated_elhub_data.parquet</span></a> under <code class="docutils literal notranslate"><span class="pre">📁input</span></code>.
 If the file does not exist, the module will generate the distribution keys using Elhub API inside the module, assuming that you have
 access to Elhub data via Azure Blob Storage.</p>
-<p>The results are saved in four Excel files named 🧾 <span class="xref std std-ref">{energy-product}_use_geographically_distributed.xlsx</span> under <code class="docutils literal notranslate"><span class="pre">📁output</span></code>, where <code class="docutils literal notranslate"><span class="pre">{energy-product}</span></code> is replaced by the name of the energy product being distributed (e.g., <code class="docutils literal notranslate"><span class="pre">electricity</span></code>, <code class="docutils literal notranslate"><span class="pre">fuelwood</span></code>, <code class="docutils literal notranslate"><span class="pre">dh</span></code>, etc.).</p>
+<p>The results are saved in four Excel files named 🧾 <a class="reference internal" href="../results.html#energy-product-use-geographically-distributed-xlsx"><span class="std std-ref">{energy-product}_use_geographically_distributed.xlsx</span></a> under <code class="docutils literal notranslate"><span class="pre">📁output</span></code>, where <code class="docutils literal notranslate"><span class="pre">{energy-product}</span></code> is replaced by the name of the energy product being distributed (e.g., <code class="docutils literal notranslate"><span class="pre">electricity</span></code>, <code class="docutils literal notranslate"><span class="pre">fuelwood</span></code>, <code class="docutils literal notranslate"><span class="pre">dh</span></code>, etc.).</p>
 </section>
 <section id="additional-arguments">
 <h2>Additional arguments<a class="headerlink" href="#additional-arguments" title="Link to this heading"></a></h2>
@@ -226,14 +227,14 @@ for all years, you can run:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../input_description.html" class="btn btn-neutral float-left" title="Input files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../datasets/index.html" class="btn btn-neutral float-left" title="Dataset description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="configuration.html" class="btn btn-neutral float-right" title="Model configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

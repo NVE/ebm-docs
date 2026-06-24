@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -472,6 +473,11 @@ including all combinations of categories, codes, and years.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="ebm.model.area.explode_building_code_parameters_years">
+<span class="sig-name descname"><span class="pre">explode_building_code_parameters_years</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#explode_building_code_parameters_years"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.explode_building_code_parameters_years" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.sum_building_category_demolition_by_year">
 <span class="sig-name descname"><span class="pre">sum_building_category_demolition_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#sum_building_category_demolition_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.sum_building_category_demolition_by_year" title="Link to this definition"></a></dt>
 <dd><p>Return sum of demolition by building_category and year.</p>
@@ -728,15 +734,113 @@ to the yearly demolished floor area. It then updates the values based on the bui
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.calculate_construction_with_demolition">
-<span class="sig-name descname"><span class="pre">calculate_construction_with_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">construction_by_building_category_and_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_construction_with_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_construction_with_demolition" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">calculate_construction_with_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">construction_by_building_category_and_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demolition_floor_area_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residential_building_categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_construction_with_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_construction_with_demolition" title="Link to this definition"></a></dt>
+<dd><p>Combine construction and demolition data to compute rebuilt, total construction, and cumulative built area by building category, building code, and year.</p>
+<p>The function aligns demolition floor area with construction data, applying
+domain-specific timing rules:
+- Residential demolition is assumed to already be aligned with construction</p>
+<blockquote>
+<div><p>and is forced to zero for years 2020 and 2021.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Non-residential demolition is shifted one year forward to align with
+construction timing.</p></li>
+</ul>
+<p>Demolition is treated as fully rebuilt (1:1), and demolition values are
+broadcast across building codes within each building category.</p>
+<section id="id53">
+<h2>Parameters<a class="headerlink" href="#id53" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>construction_by_building_category_and_year<span class="classifier">pandas.DataFrame</span></dt><dd><p>Construction data indexed by
+<code class="docutils literal notranslate"><span class="pre">('building_category',</span> <span class="pre">'building_code',</span> <span class="pre">'year')</span></code>.
+Must contain the following columns:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">net_construction</span></code><span class="classifier">float</span></dt><dd><p>Net new construction area for the given year.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">net_construction_acc</span></code><span class="classifier">float</span></dt><dd><p>Cumulative net construction area up to and including the given year.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>demolition_floor_area_by_year<span class="classifier">pandas.Series</span></dt><dd><p>Demolition floor area indexed by
+<code class="docutils literal notranslate"><span class="pre">('building_category',</span> <span class="pre">'year')</span></code>.
+Values represent annual demolished area before any timing adjustments.</p>
+</dd>
+<dt>residential_building_categories<span class="classifier">set of str, optional</span></dt><dd><p>Set of building categories considered residential. These categories
+are exempt from the one-year demolition shift applied to non-residential
+buildings. Defaults to <code class="docutils literal notranslate"><span class="pre">{'house',</span> <span class="pre">'apartment_block'}</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="id54">
+<h2>Returns<a class="headerlink" href="#id54" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>DataFrame indexed by
+<code class="docutils literal notranslate"><span class="pre">('building_category',</span> <span class="pre">'building_code',</span> <span class="pre">'year')</span></code> containing the
+original construction data along with additional columns:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">demolition</span></code><span class="classifier">float</span></dt><dd><p>Aligned demolition area for the given year.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">rebuilt</span></code><span class="classifier">float</span></dt><dd><p>Annual rebuilt area, assumed equal to demolition.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">rebuilt_acc</span></code><span class="classifier">float</span></dt><dd><p>Cumulative rebuilt area over time.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">construction</span></code><span class="classifier">float</span></dt><dd><p>Total annual construction (net construction + rebuilt).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">area</span></code><span class="classifier">float</span></dt><dd><p>Total cumulative built area (net construction accumulated +
+rebuilt accumulated).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If required index levels or columns are missing from the input data.</p>
+</dd>
+</dl>
+</section>
+<section id="id55">
+<h2>Notes<a class="headerlink" href="#id55" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Demolition values are aggregated by <code class="docutils literal notranslate"><span class="pre">('building_category',</span> <span class="pre">'year')</span></code>
+prior to alignment.</p></li>
+<li><p>Demolition is merged with construction using an inner join on
+<code class="docutils literal notranslate"><span class="pre">('building_category',</span> <span class="pre">'year')</span></code>; construction rows without corresponding
+demolition data are dropped.</p></li>
+<li><p>For non-residential buildings, demolition in the first available year
+after shifting will be <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
+</ul>
+</section>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ebm.model.area.calculate_construction">
 <span class="sig-name descname"><span class="pre">calculate_construction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_category_demolition_by_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_per_person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_construction_floor_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_buildings_population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_buildings_category_shares</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/model/area.html#calculate_construction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.model.area.calculate_construction" title="Link to this definition"></a></dt>
 <dd><p>Calculate construction for different building_categories.</p>
-<section id="id53">
-<h2>Parameters<a class="headerlink" href="#id53" title="Link to this heading"></a></h2>
+<section id="id56">
+<h2>Parameters<a class="headerlink" href="#id56" title="Link to this heading"></a></h2>
 <p>new_buildings_category_shares :
 new_buildings_population :
 yearly_construction_floor_area :
@@ -750,8 +854,8 @@ building_category_demolition_by_year : pd.DataFrame</p>
 </dd>
 </dl>
 </section>
-<section id="id54">
-<h2>Returns<a class="headerlink" href="#id54" title="Link to this heading"></a></h2>
+<section id="id57">
+<h2>Returns<a class="headerlink" href="#id57" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>pd.DataFrame</dt><dd><p>dataframe with columns constructed_floor_area, accumulated_constructed_floor_area, demolished_floor_area</p>
 </dd>
@@ -777,7 +881,7 @@ building_category_demolition_by_year : pd.DataFrame</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

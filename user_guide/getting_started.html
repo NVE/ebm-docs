@@ -53,7 +53,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#quick-start-guide">Quick Start Guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-version-of-ebm-are-we-running">What version of ebm are we running?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-available-datasets">List available datasets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-an-input-directory">Create an input directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-input-from-the-default-dataset">Create input from the default dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-input-from-a-specific-dataset">Create input from a specific dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-input-from-a-specific-dataset-with-a-custom-directory-name">Create input from a specific dataset with a custom directory name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readme-md-descriptions">README.md descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-files-in-the-input-directory">List files in the input directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-the-model">Run the model</a></li>
 </ul>
 </li>
@@ -62,6 +68,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -111,7 +118,7 @@
            <div itemprop="articleBody">
              
   <section id="getting-started">
-<h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<span id="getting-started-doc"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <p>This page is a quick guide to get you started with the Energibruksmodell (EBM) model. The model is designed to calculate
 energy use in the norwegian building stock. The model is developed by the
 <a class="reference external" href="https://www.nve.no">Norwegian Water Resources and Energy Directorate (NVE)</a>.</p>
@@ -150,54 +157,112 @@ check if ebm is working properly. Open a terminal (powershell) and type:</p>
 in the example.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>These instructions are made for 1.0.9, but should work for later versions as well.</p>
+<p>These instructions are made for 1.0.10, but should work for later versions as well.</p>
 </div>
 </section>
-<section id="create-an-input-directory">
-<h3>Create an input directory<a class="headerlink" href="#create-an-input-directory" title="Link to this heading"></a></h3>
-<p>Before running the model you need to create a directory with the necessary input files. The recommended way of creating
-the input directory is to use ebm:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>--create-input
+<section id="list-available-datasets">
+<h3>List available datasets<a class="headerlink" href="#list-available-datasets" title="Link to this heading"></a></h3>
+<p>The following command lists all available input datasets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>list-input
 </pre></div>
 </div>
 <details class="expected-output admonition">
 <summary class="admonition-title">expected output</summary>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ebm</span> <span class="p">-</span><span class="n">-create-input</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">25</span> <span class="p">-</span> <span class="n">Using</span> <span class="n">data</span> <span class="n">from</span> <span class="s2">&quot;input&quot;</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">26</span> <span class="p">-</span> <span class="nb">Copy </span><span class="n">input</span> <span class="n">from</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">pyc</span><span class="p">\</span><span class="n">Energibruksmodell</span><span class="p">\</span><span class="n">ebm</span><span class="p">\</span><span class="n">data</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">26</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">directory</span> <span class="n">input</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">28</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">building_code_parameters</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">30</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">s_curve</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">33</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">population_forecast</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">35</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">new_buildings_residential</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">38</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">area_new_residential_buildings</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">42</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">area</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">45</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">energy_need_behaviour_factor</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">48</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">energy_need_original_condition</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">51</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">improvement_building_upgrade</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">54</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">energy_need_improvements</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">holiday_home_energy_consumption</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">60</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">holiday_home_stock</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">62</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">area_per_person</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">65</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_system_initial_shares</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">68</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_system_efficiencies</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">71</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">input</span><span class="p">\</span><span class="n">heating_system_forecast</span><span class="p">.</span><span class="n">csv</span>
-<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">01</span><span class="p">.</span><span class="n">71</span> <span class="p">-</span> <span class="n">Finished</span> <span class="n">creating</span> <span class="n">input</span> <span class="n">files</span> <span class="k">in</span> <span class="n">input</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="n">ebm</span> <span class="n">list-input</span>
+<span class="n">Available</span> <span class="n">datasets</span><span class="p">:</span>
+<span class="p">-</span> <span class="p">&lt;</span><span class="n">dataset</span> <span class="n">name</span> <span class="n">1</span><span class="p">&gt;:</span> <span class="p">&lt;</span><span class="n">description</span> <span class="n">of</span> <span class="n">dataset</span> <span class="n">1</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</details>
+<p>The output shows the names of the available datasets. If a dataset contains a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file with a <code class="docutils literal notranslate"><span class="pre">Description</span></code>
+section, the description will also be shown in the output.</p>
+</section>
+<section id="create-an-input-directory">
+<h3>Create an input directory<a class="headerlink" href="#create-an-input-directory" title="Link to this heading"></a></h3>
+<p>Before running the model you need to create a directory with the necessary input files. The recommended way of creating
+an input directory is to use <code class="docutils literal notranslate"><span class="pre">create-input</span></code> command.</p>
+<p><code class="docutils literal notranslate"><span class="pre">create-input</span></code> is a command at the same level as <code class="docutils literal notranslate"><span class="pre">list-input</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>list-input
+ebm<span class="w"> </span>create-input
+</pre></div>
+</div>
+<p>The command can be used with or without arguments.</p>
+</section>
+<section id="create-input-from-the-default-dataset">
+<h3>Create input from the default dataset<a class="headerlink" href="#create-input-from-the-default-dataset" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>create-input
+</pre></div>
+</div>
+<p>This creates an input directory basesd on the default dataset.</p>
+</section>
+<section id="create-input-from-a-specific-dataset">
+<h3>Create input from a specific dataset<a class="headerlink" href="#create-input-from-a-specific-dataset" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>create-input<span class="w"> </span>short_analysis_2025
+</pre></div>
+</div>
+<p>This creates an input directory based on the <cite>short_analysis_2025</cite> dataset.</p>
+</section>
+<section id="create-input-from-a-specific-dataset-with-a-custom-directory-name">
+<h3>Create input from a specific dataset with a custom directory name<a class="headerlink" href="#create-input-from-a-specific-dataset-with-a-custom-directory-name" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ebm<span class="w"> </span>create-input<span class="w"> </span>short_analysis_2025<span class="w"> </span>my-short_analysis_2025
+</pre></div>
+</div>
+<p>This creates an input directory named <code class="docutils literal notranslate"><span class="pre">my-short_analysis_2025</span></code> based on the <code class="docutils literal notranslate"><span class="pre">short_analysis_2025</span></code> dataset.</p>
+<details class="expected-output admonition">
+<summary class="admonition-title">expected output</summary>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="n">ebm</span> <span class="n">create-input</span> <span class="n">short_analysis_2025</span> <span class="n">my-short_analysis_2025</span>
+
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">55</span> <span class="p">-</span> <span class="n">Using</span> <span class="n">data</span> <span class="n">from</span> <span class="s2">&quot;input&quot;</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">55</span><span class="p">-</span> <span class="nb">Copy </span><span class="n">input</span> <span class="n">from</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">pyc</span><span class="p">\</span><span class="n">Energibruksmodell</span><span class="p">\</span><span class="n">ebm</span><span class="p">\</span><span class="n">data</span><span class="p">\</span><span class="n">short_analysis_2025</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">55</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">directory</span> <span class="n">my-short_analysis_2025</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">55</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">building_code_parameters</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">55</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">s_curve</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">55</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">population_forecast</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">56</span><span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">new_buildings_residential</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">56</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">area_new_residential_buildings</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">area</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">energy_need_behaviour_factor</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">energy_need_original_condition</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">improvement_building_upgrade</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">energy_need_improvements</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">57</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">holiday_home_energy_consumption</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">58</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">holiday_home_stock</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">58</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">area_per_person</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">58</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">heating_system_initial_shares</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">58</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">heating_system_efficiencies</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">58</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">heating_system_forecast</span><span class="p">.</span><span class="n">csv</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">59</span> <span class="p">-</span> <span class="n">Creating</span> <span class="n">missing</span> <span class="n">file</span>  <span class="n">my-short_analysis_2025</span><span class="p">\</span><span class="n">README</span><span class="p">.</span><span class="nb">md</span>
+<span class="n">0</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">.</span><span class="n">60</span> <span class="p">-</span> <span class="n">Finished</span> <span class="n">creating</span> <span class="n">input</span> <span class="n">files</span> <span class="k">in</span> <span class="n">my-short_analysis_2025</span>
 </pre></div>
 </div>
 </details>
 <p>The command creates a new directory named <code class="docutils literal notranslate"><span class="pre">input</span></code>, containing copies of all input files. By default, this directory is
 created in the current working directory. To specify a different location, use the <code class="docutils literal notranslate"><span class="pre">--input=&lt;directory</span> <span class="pre">name&gt;</span></code> option.</p>
 <p>If the directory already exists, only missing files will be copied. Existing files will not be overwritten.</p>
+<p>If the dataset contains a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file, it is copied to the created input directory. This ensures that information
+about the dataset is included together with the generated input files.</p>
+</section>
+<section id="readme-md-descriptions">
+<h3>README.md descriptions<a class="headerlink" href="#readme-md-descriptions" title="Link to this heading"></a></h3>
+<p>Dataset descriptions shown by the <code class="docutils literal notranslate"><span class="pre">ebm</span> <span class="pre">list-input</span></code> are read from the dataset’s <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file.</p>
+<p>The description should be placed under a description heading in the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file, for example:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Beskrivelse</span>
+Short description of the dataset.
+</pre></div>
+</div>
+<p>The text under this heading is read until the next heading and shown together with the dataset in <code class="docutils literal notranslate"><span class="pre">ebm</span> <span class="pre">list-input</span></code>.</p>
+</section>
+<section id="list-files-in-the-input-directory">
+<h3>List files in the input directory<a class="headerlink" href="#list-files-in-the-input-directory" title="Link to this heading"></a></h3>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">ls</span></code> to get a list of all the files in the <code class="docutils literal notranslate"><span class="pre">input</span></code> directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>input
 </pre></div>
 </div>
 <details class="expected-output admonition">
 <summary class="admonition-title">expected output</summary>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="nb">ls </span><span class="n">input</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">&gt;</span> <span class="nb">ls </span><span class="n">my-short_analysis_2025</span>
 
-     <span class="n">Directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">\</span><span class="n">input</span>
+     <span class="n">Directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Documents</span><span class="p">\</span><span class="n">my-short_analysis_2025</span>
 
 <span class="n">Mode</span>                 <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>
 <span class="p">----</span>                 <span class="p">-------------</span>         <span class="p">------</span> <span class="p">----</span>
@@ -284,8 +349,8 @@ current working directory.</p>
 </dd>
 </dl>
 </div>
-<p>Last Updated on 2026-04-10.</p>
-<p>Version: 1.0.9.</p>
+<p>Last Updated on 2026-06-24.</p>
+<p>Version: 1.0.10.</p>
 </section>
 </section>
 </section>
@@ -301,7 +366,7 @@ current working directory.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

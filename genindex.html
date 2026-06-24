@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -162,6 +163,10 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.accumulate_building_condition_rates">accumulate_building_condition_rates() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.accumulate_demolition">accumulate_demolition() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.heating_system_forecast.html#ebm.heating_system_forecast.add_existing_heating_system_shares_to_projection">add_existing_heating_system_shares_to_projection() (in module ebm.heating_system_forecast)</a>
 </li>
       <li><a href="modules/ebm.heating_system_forecast.html#ebm.heating_system_forecast.add_load_shares_and_efficiencies">add_load_shares_and_efficiencies() (in module ebm.heating_system_forecast)</a>
@@ -180,10 +185,10 @@
 </li>
       <li><a href="modules/ebm.energy_consumption.html#ebm.energy_consumption.EnergyConsumption.adjust_other">adjust_other() (EnergyConsumption method)</a>
 </li>
-      <li><a href="modules/ebm.heating_system_forecast.html#ebm.heating_system_forecast.aggregere_lik_oppvarming_fjern_0">aggregere_lik_oppvarming_fjern_0() (in module ebm.heating_system_forecast)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ebm.heating_system_forecast.html#ebm.heating_system_forecast.aggregere_lik_oppvarming_fjern_0">aggregere_lik_oppvarming_fjern_0() (in module ebm.heating_system_forecast)</a>
+</li>
       <li><a href="modules/ebm.model.heat_pump.html#ebm.model.heat_pump.air_source_heat_pump">air_source_heat_pump() (in module ebm.model.heat_pump)</a>
 </li>
       <li><a href="modules/ebm.model.energy_use.html#ebm.model.energy_use.all_purposes">all_purposes() (in module ebm.model.energy_use)</a>
@@ -334,6 +339,10 @@
 </li>
       <li><a href="modules/ebm.model.area.html#ebm.model.area.calculate_residential_construction">calculate_residential_construction() (in module ebm.model.area)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.calculate_s_curves">calculate_s_curves() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.calculate_scurves_with_building_code">calculate_scurves_with_building_code() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.construction.html#ebm.model.construction.calculate_total_floor_area">calculate_total_floor_area() (in module ebm.model.construction)</a>
 </li>
       <li><a href="modules/ebm.model.area.html#ebm.model.area.calculate_yearly_constructed_floor_area">calculate_yearly_constructed_floor_area() (in module ebm.model.area)</a>
@@ -478,6 +487,10 @@
 </li>
       <li><a href="modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory.CULTURE">CULTURE (BuildingCategory attribute)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.cumulative_renovation">cumulative_renovation() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.cumulative_small_measure">cumulative_small_measure() (in module ebm.areaforecast.s_curve)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -534,6 +547,20 @@
 </li>
       </ul></li>
       <li>
+    ebm.areaforecast
+
+      <ul>
+        <li><a href="modules/ebm.areaforecast.html#module-ebm.areaforecast">module</a>
+</li>
+      </ul></li>
+      <li>
+    ebm.areaforecast.s_curve
+
+      <ul>
+        <li><a href="modules/ebm.areaforecast.s_curve.html#module-ebm.areaforecast.s_curve">module</a>
+</li>
+      </ul></li>
+      <li>
     ebm.cmd
 
       <ul>
@@ -545,6 +572,13 @@
 
       <ul>
         <li><a href="modules/ebm.cmd.calibrate.html#module-ebm.cmd.calibrate">module</a>
+</li>
+      </ul></li>
+      <li>
+    ebm.cmd.ebmexe
+
+      <ul>
+        <li><a href="modules/ebm.cmd.ebmexe.html#module-ebm.cmd.ebmexe">module</a>
 </li>
       </ul></li>
       <li>
@@ -566,6 +600,13 @@
 
       <ul>
         <li><a href="modules/ebm.cmd.initialize.html#module-ebm.cmd.initialize">module</a>
+</li>
+      </ul></li>
+      <li>
+    ebm.cmd.load_scurve
+
+      <ul>
+        <li><a href="modules/ebm.cmd.load_scurve.html#module-ebm.cmd.load_scurve">module</a>
 </li>
       </ul></li>
       <li>
@@ -792,6 +833,8 @@
         <li><a href="modules/ebm.model.filter_scurve_params.html#module-ebm.model.filter_scurve_params">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ebm.model.filter_tek
 
@@ -799,8 +842,6 @@
         <li><a href="modules/ebm.model.filter_tek.html#module-ebm.model.filter_tek">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ebm.model.heat_pump
 
@@ -848,6 +889,13 @@
 
       <ul>
         <li><a href="modules/ebm.model.tek.html#module-ebm.model.tek">module</a>
+</li>
+      </ul></li>
+      <li>
+    ebm.saving
+
+      <ul>
+        <li><a href="modules/ebm.saving.html#module-ebm.saving">module</a>
 </li>
       </ul></li>
       <li>
@@ -921,6 +969,8 @@
 </li>
       <li><a href="modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.energy_need_improvements_kwh_m2">energy_need_improvements_kwh_m2() (in module ebm.model.energy_requirement)</a>
 </li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.energy_need_net_construction">energy_need_net_construction() (in module ebm.saving)</a>
+</li>
       <li><a href="modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.ENERGY_NEED_ORIGINAL_CONDITION">ENERGY_NEED_ORIGINAL_CONDITION (FileHandler attribute)</a>
 </li>
       <li><a href="modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.ENERGY_NEED_YEARLY_IMPROVEMENTS">ENERGY_NEED_YEARLY_IMPROVEMENTS (FileHandler attribute)</a>
@@ -969,6 +1019,8 @@
         <li><a href="modules/ebm.model.column_operations.html#ebm.model.column_operations.explode_building_code_column">(in module ebm.model.column_operations)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ebm.model.area.html#ebm.model.area.explode_building_code_parameters_years">explode_building_code_parameters_years() (in module ebm.model.area)</a>
+</li>
       <li><a href="modules/ebm.model.column_operations.html#ebm.model.column_operations.explode_column">explode_column() (in module ebm.model.column_operations)</a>
 </li>
       <li><a href="modules/ebm.model.column_operations.html#ebm.model.column_operations.explode_column_alias">explode_column_alias() (in module ebm.model.column_operations)</a>
@@ -1029,19 +1081,25 @@
 </li>
       <li><a href="modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.filter_original_condition">filter_original_condition() (in module ebm.model.energy_need_filter)</a>
 </li>
+      <li><a href="modules/ebm.cmd.load_scurve.html#ebm.cmd.load_scurve.filter_s_curve_parameters">filter_s_curve_parameters() (in module ebm.cmd.load_scurve)</a>
+</li>
       <li><a href="modules/ebm.model.filter_scurve_params.html#ebm.model.filter_scurve_params.FilterScurveParams">FilterScurveParams (class in ebm.model.filter_scurve_params)</a>
+</li>
+      <li><a href="modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek">FilterTek (class in ebm.model.filter_tek)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek">FilterTek (class in ebm.model.filter_tek)</a>
-</li>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.find_max_column_width">find_max_column_width() (in module ebm.services.spreadsheet)</a>
 </li>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.first_column">first_column() (SpreadsheetCell class method)</a>
 </li>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.first_row">first_row() (SpreadsheetCell class method)</a>
 </li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.flat_household_size">flat_household_size() (in module ebm.saving)</a>
+</li>
       <li><a href="modules/ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.EbmConfig.force_overwrite">force_overwrite (EbmConfig attribute)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.freeze_scurves_from_year">freeze_scurves_from_year() (in module ebm.areaforecast.s_curve)</a>
 </li>
       <li><a href="modules/ebm.model.dataframemodels.html#ebm.model.dataframemodels.PolicyImprovement.from_energy_need_yearly_improvements">from_energy_need_yearly_improvements() (PolicyImprovement static method)</a>
 
@@ -1066,6 +1124,8 @@
       <li><a href="modules/ebm.model.heating_systems.html#ebm.model.heating_systems.HeatingSystems.GAS">GAS (HeatingSystems attribute)</a>
 </li>
       <li><a href="modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.gather_building_codes">gather_building_codes() (in module ebm.model.energy_requirement)</a>
+</li>
+      <li><a href="modules/ebm.cmd.load_scurve.html#ebm.cmd.load_scurve.generate_scurve_dataframe">generate_scurve_dataframe() (in module ebm.cmd.load_scurve)</a>
 </li>
       <li><a href="modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_area_new_residential_buildings">get_area_new_residential_buildings() (DatabaseManager method)</a>
 </li>
@@ -1185,6 +1245,8 @@
 </li>
       <li><a href="modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_population">get_population() (FileHandler method)</a>
 </li>
+      <li><a href="modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_population_forecast_end_year">get_population_forecast_end_year() (DatabaseManager method)</a>
+</li>
       <li><a href="modules/ebm.model.scurve.html#ebm.model.scurve.SCurve.get_rates_per_year_over_building_lifetime">get_rates_per_year_over_building_lifetime() (SCurve method)</a>
 </li>
       <li><a href="modules/ebm.model.file_handler.html#ebm.model.file_handler.FileHandler.get_s_curve">get_s_curve() (FileHandler method)</a>
@@ -1255,6 +1317,8 @@
 </li>
       <li><a href="modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory.HOUSE">HOUSE (BuildingCategory attribute)</a>
 </li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.household_size">household_size() (in module ebm.saving)</a>
+</li>
       <li><a href="modules/ebm.model.heating_systems.html#ebm.model.heating_systems.HeatingSystems.HP_BIO">HP_BIO (HeatingSystems attribute)</a>
 </li>
       <li><a href="modules/ebm.model.heating_systems.html#ebm.model.heating_systems.HeatingSystems.HP_CENTRAL_HEATING">HP_CENTRAL_HEATING (HeatingSystems attribute)</a>
@@ -1311,6 +1375,8 @@
 </li>
       <li><a href="modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose.LIGHTING">LIGHTING (EnergyPurpose attribute)</a>
 </li>
+      <li><a href="modules/ebm.cmd.initialize.html#ebm.cmd.initialize.list_available_datasets">list_available_datasets() (in module ebm.cmd.initialize)</a>
+</li>
       <li><a href="modules/ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.CalibrationReader.load">load() (CalibrationReader method)</a>
 
       <ul>
@@ -1337,16 +1403,26 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/ebm.cmd.calibrate.html#ebm.cmd.calibrate.main">main() (in module ebm.cmd.calibrate)</a>
+      <li><a href="modules/ebm.saving.html#ebm.saving.m2_household_ch">m2_household_ch() (in module ebm.saving)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.main">main() (in module ebm.areaforecast.s_curve)</a>
 
       <ul>
+        <li><a href="modules/ebm.cmd.calibrate.html#ebm.cmd.calibrate.main">(in module ebm.cmd.calibrate)</a>
+</li>
+        <li><a href="modules/ebm.cmd.ebmexe.html#ebm.cmd.ebmexe.main">(in module ebm.cmd.ebmexe)</a>
+</li>
         <li><a href="modules/ebm.cmd.initialize.html#ebm.cmd.initialize.main">(in module ebm.cmd.initialize)</a>
+</li>
+        <li><a href="modules/ebm.cmd.load_scurve.html#ebm.cmd.load_scurve.main">(in module ebm.cmd.load_scurve)</a>
 </li>
         <li><a href="modules/ebm.cmd.migrate.html#ebm.cmd.migrate.main">(in module ebm.cmd.migrate)</a>
 </li>
         <li><a href="modules/ebm.cmd.pipeline.html#ebm.cmd.pipeline.main">(in module ebm.cmd.pipeline)</a>
 </li>
         <li><a href="modules/ebm.extractors.html#ebm.extractors.main">(in module ebm.extractors)</a>
+</li>
+        <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.main">(in module ebm.holiday_home_energy)</a>
 </li>
         <li><a href="modules/ebm.model.energy_need_filter.html#ebm.model.energy_need_filter.main">(in module ebm.model.energy_need_filter)</a>
 </li>
@@ -1365,6 +1441,8 @@
 </li>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.make_pretty">make_pretty() (in module ebm.services.spreadsheet)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.make_s_curve_parameters">make_s_curve_parameters() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.services.files.html#ebm.services.files.make_unique_path">make_unique_path() (in module ebm.services.files)</a>
 </li>
       <li><a href="modules/ebm.model.bema.html#ebm.model.bema.map_sort_order">map_sort_order() (in module ebm.model.bema)</a>
@@ -1374,6 +1452,8 @@
       <li><a href="modules/ebm.model.area.html#ebm.model.area.merge_building_code_and_condition">merge_building_code_and_condition() (in module ebm.model.area)</a>
 </li>
       <li><a href="modules/ebm.model.energy_requirement.html#ebm.model.energy_requirement.merge_energy_requirement_reductions">merge_energy_requirement_reductions() (in module ebm.model.energy_requirement)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.merge_s_curves_and_building_code">merge_s_curves_and_building_code() (in module ebm.areaforecast.s_curve)</a>
 </li>
       <li><a href="modules/ebm.model.area.html#ebm.model.area.merge_total_area_by_year">merge_total_area_by_year() (in module ebm.model.area)</a>
 </li>
@@ -1391,15 +1471,23 @@
       <ul>
         <li><a href="modules/ebm.html#module-ebm">ebm</a>
 </li>
+        <li><a href="modules/ebm.areaforecast.html#module-ebm.areaforecast">ebm.areaforecast</a>
+</li>
+        <li><a href="modules/ebm.areaforecast.s_curve.html#module-ebm.areaforecast.s_curve">ebm.areaforecast.s_curve</a>
+</li>
         <li><a href="modules/ebm.cmd.html#module-ebm.cmd">ebm.cmd</a>
 </li>
         <li><a href="modules/ebm.cmd.calibrate.html#module-ebm.cmd.calibrate">ebm.cmd.calibrate</a>
+</li>
+        <li><a href="modules/ebm.cmd.ebmexe.html#module-ebm.cmd.ebmexe">ebm.cmd.ebmexe</a>
 </li>
         <li><a href="modules/ebm.cmd.heating_systems_by_year.html#module-ebm.cmd.heating_systems_by_year">ebm.cmd.heating_systems_by_year</a>
 </li>
         <li><a href="modules/ebm.cmd.helpers.html#module-ebm.cmd.helpers">ebm.cmd.helpers</a>
 </li>
         <li><a href="modules/ebm.cmd.initialize.html#module-ebm.cmd.initialize">ebm.cmd.initialize</a>
+</li>
+        <li><a href="modules/ebm.cmd.load_scurve.html#module-ebm.cmd.load_scurve">ebm.cmd.load_scurve</a>
 </li>
         <li><a href="modules/ebm.cmd.migrate.html#module-ebm.cmd.migrate">ebm.cmd.migrate</a>
 </li>
@@ -1481,6 +1569,8 @@
 </li>
         <li><a href="modules/ebm.model.tek.html#module-ebm.model.tek">ebm.model.tek</a>
 </li>
+        <li><a href="modules/ebm.saving.html#module-ebm.saving">ebm.saving</a>
+</li>
         <li><a href="modules/ebm.services.html#module-ebm.services">ebm.services</a>
 </li>
         <li><a href="modules/ebm.services.files.html#module-ebm.services.files">ebm.services.files</a>
@@ -1524,6 +1614,8 @@
         <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.HolidayHomeEnergy.new_instance">(HolidayHomeEnergy static method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.normalize_scurve_conditions">normalize_scurve_conditions() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory.NURSING_HOME">NURSING_HOME (BuildingCategory attribute)</a>
 </li>
   </ul></td>
@@ -1544,6 +1636,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition.ORIGINAL_CONDITION">ORIGINAL_CONDITION (BuildingCondition attribute)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.original_condition">original_condition() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.energy_purpose.html#ebm.model.energy_purpose.EnergyPurpose.other">other() (EnergyPurpose class method)</a>
 
       <ul>
@@ -1560,6 +1654,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.heating_system_forecast.html#ebm.heating_system_forecast.HeatingSystemsForecast.pad_projection">pad_projection() (HeatingSystemsForecast static method)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.pad_s_curve_age">pad_s_curve_age() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.cmd.load_scurve.html#ebm.cmd.load_scurve.parse_arguments">parse_arguments() (in module ebm.cmd.load_scurve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.pause_building_condition_rates">pause_building_condition_rates() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.energy_use.html#ebm.model.energy_use.peak_load">peak_load() (in module ebm.model.energy_use)</a>
 </li>
       <li><a href="modules/ebm.model.dataframemodels.html#ebm.model.dataframemodels.PolicyImprovement">PolicyImprovement (class in ebm.model.dataframemodels)</a>
@@ -1574,10 +1674,10 @@
 </li>
       <li><a href="modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek.PRE_TEK49_HOUSE">PRE_TEK49_HOUSE (FilterTek attribute)</a>
 </li>
-      <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_electricity_usage">project_electricity_usage() (in module ebm.holiday_home_energy)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_electricity_usage">project_electricity_usage() (in module ebm.holiday_home_energy)</a>
+</li>
       <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_fossil_fuel_usage">project_fossil_fuel_usage() (in module ebm.holiday_home_energy)</a>
 </li>
       <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.project_fuelwood_usage">project_fuelwood_usage() (in module ebm.holiday_home_energy)</a>
@@ -1608,6 +1708,20 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.range">range() (YearRange method)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.rates_grouped_by_period">rates_grouped_by_period() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.reduced_construction_kwh">reduced_construction_kwh() (in module ebm.saving)</a>
+</li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.reduced_household_size_kwh">reduced_household_size_kwh() (in module ebm.saving)</a>
+</li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.reduction_by_year">reduction_by_year() (in module ebm.saving)</a>
+</li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.reduction_condition_kwh">reduction_condition_kwh() (in module ebm.saving)</a>
+</li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.reduction_policy_kwh">reduction_policy_kwh() (in module ebm.saving)</a>
+</li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.reduction_yearly_kwh">reduction_yearly_kwh() (in module ebm.saving)</a>
+</li>
       <li><a href="modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek.remove_building_code_suffix">remove_building_code_suffix() (FilterTek static method)</a>
 </li>
       <li><a href="modules/ebm.migrations.html#ebm.migrations.rename_columns">rename_columns() (in module ebm.migrations)</a>
@@ -1616,13 +1730,21 @@
 </li>
       <li><a href="modules/ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition.RENOVATION_AND_SMALL_MEASURE">RENOVATION_AND_SMALL_MEASURE (BuildingCondition attribute)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.renovation_and_small_measure">renovation_and_small_measure() (in module ebm.areaforecast.s_curve)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.renovation_from_small_measure">renovation_from_small_measure() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.renovation_max">renovation_max() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.replace">replace() (SpreadsheetCell method)</a>
 </li>
       <li><a href="modules/ebm.model.column_operations.html#ebm.model.column_operations.replace_column_alias">replace_column_alias() (in module ebm.model.column_operations)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek.RESIDENTIAL_BUILDING">RESIDENTIAL_BUILDING (FilterTek attribute)</a>
+</li>
+      <li><a href="modules/ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.resolve_output_directory_for_energy_use">resolve_output_directory_for_energy_use() (in module ebm.cmd.prepare_main)</a>
 </li>
       <li><a href="modules/ebm.cmd.run_calculation.html#ebm.cmd.run_calculation.result_to_horizontal_dataframe">result_to_horizontal_dataframe() (in module ebm.cmd.run_calculation)</a>
 </li>
@@ -1650,9 +1772,23 @@
 </li>
       <li><a href="modules/ebm.model.scurve.html#ebm.model.scurve.SCurve">SCurve (class in ebm.model.scurve)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_from_s_curve_parameters">scurve_from_s_curve_parameters() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_rates">scurve_rates() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_rates_to_long">scurve_rates_to_long() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_rates_with_age">scurve_rates_with_age() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.data_classes.html#ebm.model.data_classes.ScurveParameters">ScurveParameters (class in ebm.model.data_classes)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.shift_building_condition_rates">shift_building_condition_rates() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition.SMALL_MEASURE">SMALL_MEASURE (BuildingCondition attribute)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.small_measure">small_measure() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.small_measure_max">small_measure_max() (in module ebm.areaforecast.s_curve)</a>
 </li>
       <li><a href="modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.sort_heating_systems_by_energy_source">sort_heating_systems_by_energy_source() (in module ebm.model.calibrate_heating_systems)</a>
 </li>
@@ -1660,14 +1796,14 @@
 </li>
       <li><a href="modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory.SPORTS">SPORTS (BuildingCategory attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.spreadsheet_cell">spreadsheet_cell() (SpreadsheetCell method)</a>
 </li>
       <li><a href="modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell">SpreadsheetCell (class in ebm.services.spreadsheet)</a>
 </li>
       <li><a href="modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.start">start (YearRange attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.model.bema.html#ebm.model.bema.START_ROWS_CONSTRUCTION_BUILDING_CATEGORY">START_ROWS_CONSTRUCTION_BUILDING_CATEGORY (in module ebm.model.bema)</a>
 </li>
       <li><a href="modules/ebm.model.dataframemodels.html#ebm.model.dataframemodels.EnergyNeedYearlyImprovements.start_year">start_year (EnergyNeedYearlyImprovements attribute)</a>
@@ -1692,6 +1828,8 @@
 </li>
       <li><a href="modules/ebm.holiday_home_energy.html#ebm.holiday_home_energy.sum_holiday_homes">sum_holiday_homes() (in module ebm.holiday_home_energy)</a>
 </li>
+      <li><a href="modules/ebm.saving.html#ebm.saving.sum_savings_by_year">sum_savings_by_year() (in module ebm.saving)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1710,6 +1848,8 @@
 </li>
       <li><a href="modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.to_index">to_index() (YearRange method)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.total">total() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.model.calibrate_energy_requirements.html#ebm.model.calibrate_energy_requirements.CalibrationReader.transform">transform() (CalibrationReader method)</a>
 
       <ul>
@@ -1724,12 +1864,14 @@
 </li>
       <li><a href="modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.transform_by_energy_source">transform_by_energy_source() (in module ebm.model.calibrate_heating_systems)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.model.area.html#ebm.model.area.transform_construction_by_year">transform_construction_by_year() (in module ebm.model.area)</a>
 </li>
       <li><a href="modules/ebm.model.area.html#ebm.model.area.transform_cumulative_demolition_to_yearly_demolition">transform_cumulative_demolition_to_yearly_demolition() (in module ebm.model.area)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_demolition">transform_demolition() (in module ebm.areaforecast.s_curve)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ebm.model.area.html#ebm.model.area.transform_demolition_construction">transform_demolition_construction() (in module ebm.model.area)</a>
 </li>
       <li><a href="modules/ebm.model.heating_systems_share.html#ebm.model.heating_systems_share.transform_heating_systems_share_long">transform_heating_systems_share_long() (in module ebm.model.heating_systems_share)</a>
@@ -1744,11 +1886,23 @@
 </li>
       <li><a href="modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.transform_pumps">transform_pumps() (in module ebm.model.calibrate_heating_systems)</a>
 </li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_to_cumulative_demolition">transform_to_cumulative_demolition() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_to_dataframe">transform_to_dataframe() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_to_long">transform_to_long() (in module ebm.areaforecast.s_curve)</a>
+</li>
       <li><a href="modules/ebm.cmd.result_handler.html#ebm.cmd.result_handler.transform_to_sorted_heating_systems">transform_to_sorted_heating_systems() (in module ebm.cmd.result_handler)</a>
 </li>
       <li><a href="modules/ebm.model.energy_need.html#ebm.model.energy_need.transform_total_energy_need">transform_total_energy_need() (in module ebm.model.energy_need)</a>
 </li>
       <li><a href="modules/ebm.migrations.html#ebm.migrations.translate_heating_system_efficiencies">translate_heating_system_efficiencies() (in module ebm.migrations)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.translate_scurve_parameter_to_shortform">translate_scurve_parameter_to_shortform() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.trim_max_value">trim_max_value() (in module ebm.areaforecast.s_curve)</a>
+</li>
+      <li><a href="modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.trim_renovation_from_renovation_total">trim_renovation_from_renovation_total() (in module ebm.areaforecast.s_curve)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1842,7 +1996,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,0 +1,1330 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.areaforecast.s_curve &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_parameters/index.html">Building categories and building codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/calibrating_the_model.html">Calibrating the model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ebm.areaforecast.s_curve</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ebm.areaforecast.s_curve</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">Series</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.building_condition</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuildingCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.data_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">YearRange</span>
+
+
+<div class="viewcode-block" id="original_condition">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.original_condition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">original_condition</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">,</span> <span class="n">s_curve_renovation</span><span class="p">,</span>
+                       <span class="n">s_curve_renovation_and_small_measure</span><span class="p">,</span> <span class="n">s_curve_small_measure</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates buildings remaining as original condition by subtracting every other condition</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_cumulative_demolition : pandas.Series</span>
+<span class="sd">    s_curve_renovation : pandas.Series</span>
+<span class="sd">    s_curve_renovation_and_small_measure : pandas.Series</span>
+<span class="sd">    s_curve_small_measure : pandas.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        buildings remaining as original condition</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span>
+            <span class="n">s_curve_cumulative_demolition</span> <span class="o">-</span>
+            <span class="n">s_curve_renovation</span> <span class="o">-</span>
+            <span class="n">s_curve_renovation_and_small_measure</span> <span class="o">-</span>
+            <span class="n">s_curve_small_measure</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;s_curve_original_condition&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="small_measure">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.small_measure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">small_measure</span><span class="p">(</span><span class="n">s_curve_renovation_and_small_measure</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_small_measure_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the remaining small measure share by subtracting renovation and small measure values from</span>
+<span class="sd">    the total small measure curve.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_renovation_and_small_measure : Series</span>
+<span class="sd">    s_curve_small_measure_total : Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Series</span>
+<span class="sd">        s_curve_small_measure</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - This function currently does not implement logic to zero out values before the building year.</span>
+<span class="sd">    - Assumes both input Series are aligned on the index year.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ### SharesPerCondition calc_small_measure</span>
+    <span class="c1">#  - ❌   sett til 0 før byggeår</span>
+    <span class="c1"># ```python</span>
+    <span class="c1">#     construction_year = self.building_code_params[tek].building_year</span>
+    <span class="c1">#     shares.loc[self.period_index &lt;= construction_year] = 0</span>
+    <span class="c1"># ```</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">s_curve_small_measure_total</span> <span class="o">-</span> <span class="n">s_curve_renovation_and_small_measure</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;small_measure&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="renovation_and_small_measure">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.renovation_and_small_measure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">renovation_and_small_measure</span><span class="p">(</span><span class="n">s_curve_renovation</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_renovation_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the remaining renovation_and_small_measure share by subtracting renovation</span>
+<span class="sd">    from the total renovation total curve.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_renovation : pandas.Series</span>
+<span class="sd">        A time series representing the S-curve of exclusive renovation condition.</span>
+
+<span class="sd">    s_curve_renovation_total : pandas.Series</span>
+<span class="sd">        A time series representing the total S-curve for the total renovation condition.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        A time series representing the difference between the total and renovation-only S-curves.</span>
+<span class="sd">        Values before the building year should be set to 0 (not yet implemented).</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - This function currently does not implement logic to zero out values before the building year.</span>
+<span class="sd">    - Assumes both input Series are aligned on index year.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># ### SharesPerCondition calc_renovation_and_small_measure</span>
+    <span class="c1">#  - ❌ Sett til 0 før byggeår</span>
+
+    <span class="k">return</span> <span class="n">s_curve_renovation_total</span> <span class="o">-</span> <span class="n">s_curve_renovation</span></div>
+
+
+
+<div class="viewcode-block" id="trim_renovation_from_renovation_total">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.trim_renovation_from_renovation_total">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">trim_renovation_from_renovation_total</span><span class="p">(</span><span class="n">s_curve_renovation</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span>
+                                          <span class="n">s_curve_renovation_max</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span>
+                                          <span class="n">s_curve_renovation_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span>
+                                          <span class="n">scurve_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjust the renovation S-curve by incorporating values from the total renovation curve</span>
+<span class="sd">    where the total share is less than the maximum renovation share.</span>
+
+<span class="sd">    This function identifies time points where the total S-curve (`scurve_total`) is less than</span>
+<span class="sd">    the maximum renovation S-curve (`s_curve_renovation_max`). For those points, it replaces</span>
+<span class="sd">    the corresponding values in `s_curve_renovation` with values from `s_curve_renovation_total`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_renovation : pandas.Series</span>
+<span class="sd">        The original renovation S-curve to be adjusted.</span>
+
+<span class="sd">    s_curve_renovation_max : pandas.Series</span>
+<span class="sd">        The maximum allowed values for the renovation S-curve.</span>
+
+<span class="sd">    s_curve_renovation_total : pandas.Series</span>
+<span class="sd">        The total renovation S-curve including all measures.</span>
+
+<span class="sd">    scurve_total : pandas.Series</span>
+<span class="sd">        The actual total S-curve values to compare against the max renovation curve.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        The adjusted renovation S-curve with values merged from the total renovation curve</span>
+<span class="sd">        where the total share is less than the maximum renovation share.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Assumes all input Series are aligned on the index year.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">adjusted_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">scurve_total</span> <span class="o">&lt;</span> <span class="n">s_curve_renovation_max</span><span class="p">,</span>
+                               <span class="n">s_curve_renovation_total</span><span class="p">,</span>
+                               <span class="n">s_curve_renovation</span><span class="p">)</span>
+    <span class="n">trimmed_renovation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">adjusted_values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">s_curve_renovation</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;renovation&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">trimmed_renovation</span></div>
+
+
+
+<div class="viewcode-block" id="renovation_from_small_measure">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.renovation_from_small_measure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">renovation_from_small_measure</span><span class="p">(</span><span class="n">s_curve_renovation_max</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_small_measure_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the renovation S-curve by subtracting small measures from the max renovation curve.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_renovation_max : pandas.Series</span>
+<span class="sd">        The maximum yearly values for the renovation S-curve.</span>
+
+<span class="sd">    s_curve_small_measure_total : pandas.Series</span>
+<span class="sd">        The yearly total S-curve for small measures.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        The resulting renovation S-curve with values clipped at 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># ## small_measure and renovation to scurve_small_measure_total, RN</span>
+    <span class="c1"># ## SharesPerCondition calc_renovation</span>
+    <span class="c1">#</span>
+    <span class="c1">#  - ❌ Ser ut som det er edge case for byggeår.</span>
+    <span class="c1">#  - ❌ Årene før byggeår må settes til 0 for scurve_renovation?</span>
+    <span class="n">s_curve_renovation</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_curve_renovation_max</span> <span class="o">-</span> <span class="n">s_curve_small_measure_total</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s_curve_renovation</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;s_curve_renovation&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="total">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.total">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="n">s_curve_renovation_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_small_measure_total</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the yearly sum of renovation and small_measure</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_renovation_total : pandas.Series</span>
+<span class="sd">    s_curve_small_measure_total : pandas.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        yearly sum of renovation and small_measure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">s_curve_small_measure_total</span> <span class="o">+</span> <span class="n">s_curve_renovation_total</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;s_curve_total&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="trim_max_value">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.trim_max_value">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">trim_max_value</span><span class="p">(</span><span class="n">s_curve_cumulative_small_measure</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_small_measure_max</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span><span class="n">Series</span><span class="p">:</span>
+    <span class="n">s_curve_cumulative_small_measure_max</span> <span class="o">=</span> <span class="n">s_curve_cumulative_small_measure</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">s_curve_small_measure_max</span><span class="p">,</span> <span class="nb">min</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s_curve_cumulative_small_measure_max</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="small_measure_max">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.small_measure_max">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">small_measure_max</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_small_measure_never_share</span><span class="p">:</span> <span class="n">Series</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the maximum possible value for small_measure condition</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_cumulative_demolition : pandas.Series</span>
+<span class="sd">    s_curve_small_measure_never_share : pandas.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        Yearly maximum possible value for small_measure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">s_curve_cumulative_demolition</span> <span class="o">-</span> <span class="n">s_curve_small_measure_never_share</span></div>
+
+
+
+<div class="viewcode-block" id="renovation_max">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.renovation_max">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">renovation_max</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_renovation_never_share</span><span class="p">:</span> <span class="n">Series</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the maximum possible value for renovation condition</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_cumulative_demolition : pandas.Series</span>
+<span class="sd">    s_curve_renovation_never_share : pandas.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        Yearly maximum possible value for renovation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">s_curve_cumulative_demolition</span> <span class="o">-</span> <span class="n">s_curve_renovation_never_share</span></div>
+
+
+
+<div class="viewcode-block" id="cumulative_renovation">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.cumulative_renovation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cumulative_renovation</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the  yearly cumulative sum of renovation condition.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curves_with_building_code : pandas.Series</span>
+<span class="sd">    years : pandas.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        cumulative sum of renovation</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    NaN values are replaced by float 0.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">s_curves_with_building_code</span><span class="o">.</span><span class="n">renovation_acc</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">year_range</span><span class="p">))]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cumulative_small_measure">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.cumulative_small_measure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cumulative_small_measure</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the  yearly cumulative sum of small_measure condition.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curves_with_building_code : pandas.Series</span>
+<span class="sd">    years : YearRange</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        cumulative sum of small_measure</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    NaN values are replaced by float 0.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s_curve_cumulative_small_measure</span> <span class="o">=</span> <span class="n">s_curves_with_building_code</span><span class="o">.</span><span class="n">small_measure_acc</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">year_range</span><span class="p">))]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s_curve_cumulative_small_measure</span></div>
+
+
+
+<div class="viewcode-block" id="transform_demolition">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_demolition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">transform_demolition</span><span class="p">(</span><span class="n">demolition</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter yearly demolition for years</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    demolition : pandas.Series</span>
+<span class="sd">    years : YearRange</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    demolition for years</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">demolition</span><span class="o">.</span><span class="n">demolition</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">year_range</span><span class="p">))]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="transform_to_cumulative_demolition">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_to_cumulative_demolition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">transform_to_cumulative_demolition</span><span class="p">(</span><span class="n">cumulative_demolition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span><span class="n">YearRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filter yearly cumulative demolition for years</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cumulative_demolition : pandas.DataFrame</span>
+<span class="sd">    years : YearRange</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        cumulative demolition for years</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s_curve_cumulative_demolition</span> <span class="o">=</span> <span class="n">cumulative_demolition</span><span class="o">.</span><span class="n">demolition_acc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">year_range</span><span class="p">))]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s_curve_cumulative_demolition</span></div>
+
+
+
+<div class="viewcode-block" id="pad_s_curve_age">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.pad_s_curve_age">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pad_s_curve_age</span><span class="p">(</span><span class="n">s_curves</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">scurve_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform scurve_parameters with s_curve to never_share.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curves : pandas.DataFrame</span>
+<span class="sd">    scurve_parameters : pandas.DataFrame</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Age is padded from -max age to 0</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">max_age</span> <span class="o">=</span> <span class="n">s_curves</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">df_never_share</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="c1"># noinspection PyTypeChecker</span>
+        <span class="p">[(</span><span class="n">row</span><span class="o">.</span><span class="n">building_category</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">condition</span> <span class="o">+</span> <span class="s1">&#39;_never_share&#39;</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">never_share</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">max_age</span><span class="p">,</span> <span class="n">max_age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span>
+         <span class="n">scurve_parameters</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()],</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;scurve&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df_never_share</span></div>
+
+
+
+<div class="viewcode-block" id="scurve_from_s_curve_parameters">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_from_s_curve_parameters">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">scurve_from_s_curve_parameters</span><span class="p">(</span><span class="n">scurve_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create scurve new dataframe from scurve_parameters using ebm.model.area.building_condition_scurves and</span>
+<span class="sd">        ebm.model.area.building_condition_accumulated_scurves</span>
+
+<span class="sd">    Each row represent a building_category and building_condition at a certain age.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scurve_parameters : pandas.DataFrame</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Filters out age greater than 130 when last_age is not 150 for backwards compatability. Subject to change.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">scurve_rates</span><span class="p">(</span><span class="n">translate_scurve_parameter_to_shortform</span><span class="p">(</span><span class="n">scurve_parameters</span><span class="p">))</span>
+    <span class="n">df_age</span> <span class="o">=</span> <span class="n">scurve_rates_with_age</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">scurve_rates_to_long</span><span class="p">(</span><span class="n">df_age</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;age&lt;=130 or last_age==150&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="accumulate_demolition">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.accumulate_demolition">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">accumulate_demolition</span><span class="p">(</span><span class="n">s_curves_long</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sets demolition in year 0 (2020) to 0.0 and sums up the yearly demolition using years</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curves_long : pandas.DataFrame</span>
+<span class="sd">    years : YearRange</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">demolition_acc</span> <span class="o">=</span> <span class="n">s_curves_long</span>
+    <span class="n">demolition_acc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">demolition_acc</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;year&lt;=</span><span class="si">{</span><span class="n">years</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;demolition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">demolition_acc</span><span class="p">[</span><span class="s1">&#39;demolition_acc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">demolition_acc</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">])[[</span><span class="s1">&#39;demolition&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()[</span>
+        <span class="p">[</span><span class="s1">&#39;demolition&#39;</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">demolition_acc</span></div>
+
+
+<span class="c1"># noinspection PyTypeChecker</span>
+<div class="viewcode-block" id="merge_s_curves_and_building_code">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.merge_s_curves_and_building_code">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_s_curves_and_building_code</span><span class="p">(</span><span class="n">s_curves</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_never_share</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">building_code_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cross merge s_curves and df_never_share with all building_code in building_code_parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curves : pandas.DataFrame</span>
+<span class="sd">    df_never_share : pandas.DataFrame</span>
+<span class="sd">    building_code_parameters : pandas.DataFrame</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s_curves</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">s_curves</span><span class="p">,</span> <span class="n">df_never_share</span><span class="p">])</span>
+
+    <span class="n">s_curves_by_building_code</span> <span class="o">=</span> <span class="n">s_curves</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">building_code_parameters</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span>
+    <span class="n">s_curves_by_building_code</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curves_by_building_code</span><span class="p">[</span><span class="s1">&#39;building_year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">s_curves_by_building_code</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+    <span class="n">s_curves_long</span> <span class="o">=</span> <span class="n">s_curves_by_building_code</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">],</span>
+                                          <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_condition&#39;</span><span class="p">],</span>
+                                          <span class="n">values</span><span class="o">=</span><span class="s1">&#39;scurve&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">s_curves_long</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_curves_long</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">s_curves_long</span></div>
+
+
+
+<div class="viewcode-block" id="rates_grouped_by_period">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.rates_grouped_by_period">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rates_grouped_by_period</span><span class="p">(</span><span class="n">rates</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span>
+    <span class="n">rates</span><span class="p">[</span><span class="n">rates</span> <span class="o">!=</span> <span class="n">rates</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;share&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">rates</span><span class="p">[</span><span class="n">rates</span> <span class="o">!=</span> <span class="n">rates</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;share&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="s1">&#39;end_age&#39;</span><span class="p">})[</span><span class="s1">&#39;end_age&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;end_age&#39;</span><span class="p">,</span> <span class="s1">&#39;share&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="s1">&#39;start_age&#39;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">end_age</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">start_age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1">#.assign(period=lambda x: [&#39;early_years&#39;, &#39;pre_rush&#39;, &#39;rush&#39;, &#39;post_rush&#39;, &#39;last_years&#39;][:len(x)])</span>
+    <span class="c1">#.assign(period=lambda x: [&#39;early_years&#39;, &#39;pre_rush&#39;, &#39;rush&#39;, &#39;post_rush&#39;, &#39;last_years&#39;][:len(x)])</span>
+<span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="transform_to_dataframe">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_to_dataframe">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">transform_to_dataframe</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_original_condition</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_renovation</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span>
+                           <span class="n">s_curve_renovation_and_small_measure</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_small_measure</span><span class="p">:</span> <span class="n">Series</span><span class="p">,</span> <span class="n">s_curve_demolition</span><span class="p">:</span> <span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a pandas DataFrame from the parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_cumulative_demolition : pandas.Series</span>
+<span class="sd">    s_curve_original_condition : pandas.Series</span>
+<span class="sd">    s_curve_renovation : pandas.Series</span>
+<span class="sd">    s_curve_renovation_and_small_measure : pandas.Series</span>
+<span class="sd">    s_curve_small_measure : pandas.Series</span>
+<span class="sd">    s_curve_demolition : pandas.Series</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s_curves_by_condition</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;original_condition&#39;</span><span class="p">:</span> <span class="n">s_curve_original_condition</span><span class="p">,</span>
+        <span class="s1">&#39;demolition&#39;</span><span class="p">:</span> <span class="n">s_curve_cumulative_demolition</span><span class="p">,</span>
+        <span class="s1">&#39;small_measure&#39;</span><span class="p">:</span> <span class="n">s_curve_small_measure</span><span class="p">,</span>
+        <span class="s1">&#39;renovation&#39;</span><span class="p">:</span> <span class="n">s_curve_renovation</span><span class="p">,</span>
+        <span class="s1">&#39;renovation_and_small_measure&#39;</span><span class="p">:</span> <span class="n">s_curve_renovation_and_small_measure</span><span class="p">,</span>
+        <span class="s1">&#39;s_curve_demolition&#39;</span><span class="p">:</span> <span class="n">s_curve_demolition</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">s_curves_by_condition</span></div>
+
+
+
+<div class="viewcode-block" id="transform_to_long">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.transform_to_long">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">transform_to_long</span><span class="p">(</span><span class="n">s_curves_by_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curves_by_condition : pandas.DataFrame </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        transformed to long, on condition for each row</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df_long</span> <span class="o">=</span> <span class="n">s_curves_by_condition</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;s_curve&#39;</span><span class="p">)</span>
+
+    <span class="n">df_long</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">df_long</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_s_curves">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.calculate_s_curves">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_s_curves</span><span class="p">(</span><span class="n">scurve_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                       <span class="n">building_code_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                       <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span>
+                       <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">|</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="s1">&#39;s_curves_with_building_code&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">s_curves_with_building_code</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;s_curves_with_building_code&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">s_curves_with_building_code</span> <span class="o">=</span> <span class="n">calculate_scurves_with_building_code</span><span class="p">(</span><span class="n">building_code_parameters</span><span class="p">,</span> <span class="n">scurve_parameters</span><span class="p">,</span> <span class="n">years</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">normalize_scurve_conditions</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="o">=</span><span class="n">s_curves_with_building_code</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="normalize_scurve_conditions">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.normalize_scurve_conditions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_scurve_conditions</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="p">,</span> <span class="n">years</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">s_curves_with_demolition_acc</span> <span class="o">=</span> <span class="n">accumulate_demolition</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+    <span class="n">s_curve_demolition</span> <span class="o">=</span> <span class="n">s_curves_with_building_code</span><span class="o">.</span><span class="n">demolition</span>
+    <span class="n">s_curve_cumulative_demolition</span> <span class="o">=</span> <span class="n">transform_to_cumulative_demolition</span><span class="p">(</span><span class="n">s_curves_with_demolition_acc</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+    <span class="n">s_curve_renovation_never_share</span> <span class="o">=</span> <span class="n">s_curves_with_building_code</span><span class="o">.</span><span class="n">renovation_never_share</span>
+    <span class="n">s_curve_small_measure_never_share</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;small_measure_never_share&#39;</span><span class="p">,</span>
+                                                   <span class="n">s_curves_with_building_code</span><span class="o">.</span><span class="n">small_measure_never_share</span><span class="p">)</span>
+    <span class="n">s_curve_cumulative_small_measure</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cumulative_small_measure&#39;</span><span class="p">,</span>
+                                                  <span class="n">cumulative_small_measure</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="p">,</span> <span class="n">years</span><span class="p">))</span>
+    <span class="n">s_curve_cumulative_renovation</span> <span class="o">=</span> <span class="n">cumulative_renovation</span><span class="p">(</span><span class="n">s_curves_with_building_code</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+    <span class="n">s_curve_renovation_max</span> <span class="o">=</span> <span class="n">renovation_max</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">,</span> <span class="n">s_curve_renovation_never_share</span><span class="p">)</span>
+    <span class="n">s_curve_small_measure_max</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;s_curve_small_measure_max&#39;</span><span class="p">,</span> <span class="n">small_measure_max</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">,</span>
+                                                                                          <span class="n">s_curve_small_measure_never_share</span><span class="p">))</span>
+    <span class="n">s_curve_small_measure_total</span> <span class="o">=</span> <span class="n">trim_max_value</span><span class="p">(</span><span class="n">s_curve_cumulative_small_measure</span><span class="p">,</span> <span class="n">s_curve_small_measure_max</span><span class="p">)</span>
+    <span class="n">s_curve_renovation_total</span> <span class="o">=</span> <span class="n">trim_max_value</span><span class="p">(</span><span class="n">s_curve_cumulative_renovation</span><span class="p">,</span> <span class="n">s_curve_renovation_max</span><span class="p">)</span>
+    <span class="n">scurve_total</span> <span class="o">=</span> <span class="n">total</span><span class="p">(</span><span class="n">s_curve_renovation_total</span><span class="p">,</span> <span class="n">s_curve_small_measure_total</span><span class="p">)</span>
+    <span class="n">s_curve_renovation_from_small_measure</span> <span class="o">=</span> <span class="n">renovation_from_small_measure</span><span class="p">(</span><span class="n">s_curve_renovation_max</span><span class="p">,</span>
+                                                                          <span class="n">s_curve_small_measure_total</span><span class="p">)</span>
+    <span class="n">s_curve_renovation</span> <span class="o">=</span> <span class="n">trim_renovation_from_renovation_total</span><span class="p">(</span><span class="n">s_curve_renovation</span><span class="o">=</span><span class="n">s_curve_renovation_from_small_measure</span><span class="p">,</span>
+                                                               <span class="n">s_curve_renovation_max</span><span class="o">=</span><span class="n">s_curve_renovation_max</span><span class="p">,</span>
+                                                               <span class="n">s_curve_renovation_total</span><span class="o">=</span><span class="n">s_curve_renovation_total</span><span class="p">,</span>
+                                                               <span class="n">scurve_total</span><span class="o">=</span><span class="n">scurve_total</span><span class="p">)</span>
+    <span class="n">s_curve_renovation_and_small_measure</span> <span class="o">=</span> <span class="n">renovation_and_small_measure</span><span class="p">(</span><span class="n">s_curve_renovation</span><span class="p">,</span> <span class="n">s_curve_renovation_total</span><span class="p">)</span>
+    <span class="n">s_curve_small_measure</span> <span class="o">=</span> <span class="n">small_measure</span><span class="p">(</span><span class="n">s_curve_renovation_and_small_measure</span><span class="p">,</span> <span class="n">s_curve_small_measure_total</span><span class="p">)</span>
+    <span class="n">s_curve_original_condition</span> <span class="o">=</span> <span class="n">original_condition</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">,</span> <span class="n">s_curve_renovation</span><span class="p">,</span>
+                                                    <span class="n">s_curve_renovation_and_small_measure</span><span class="p">,</span>
+                                                    <span class="n">s_curve_small_measure</span><span class="p">)</span>
+    <span class="n">s_curves_by_condition</span> <span class="o">=</span> <span class="n">transform_to_dataframe</span><span class="p">(</span><span class="n">s_curve_cumulative_demolition</span><span class="p">,</span>
+                                                   <span class="n">s_curve_original_condition</span><span class="p">,</span>
+                                                   <span class="n">s_curve_renovation</span><span class="p">,</span>
+                                                   <span class="n">s_curve_renovation_and_small_measure</span><span class="p">,</span>
+                                                   <span class="n">s_curve_small_measure</span><span class="p">,</span>
+                                                   <span class="n">s_curve_demolition</span><span class="p">)</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;original_condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_original_condition</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;demolition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_cumulative_demolition</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;small_measure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_small_measure</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;renovation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_renovation</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;renovation_and_small_measure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_renovation_and_small_measure</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span>
+        <span class="s1">&#39;s_curve_sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_original_condition</span> <span class="o">+</span> <span class="n">s_curve_cumulative_demolition</span> <span class="o">+</span> <span class="n">s_curve_small_measure</span> <span class="o">+</span> <span class="n">s_curve_renovation</span> <span class="o">+</span> <span class="n">s_curve_renovation_and_small_measure</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_demolition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_demolition</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_cumulative_demolition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_cumulative_demolition</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_small_measure_total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_small_measure_total</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_small_measure_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_small_measure_max</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_cumulative_small_measure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_cumulative_small_measure</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_small_measure_never_share&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_small_measure_never_share</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;scurve_total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scurve_total</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_renovation_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_renovation_max</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_cumulative_renovation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_cumulative_renovation</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;s_curve_renovation_total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_renovation_total</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;renovation_never_share&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curve_renovation_never_share</span>
+    <span class="n">s_curves_by_condition</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_curves_with_building_code</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+    <span class="c1"># s_curves_by_condition.to_excel(&#39;output\s_curves_by_condition.xlsx&#39;, merge_cells=False)</span>
+    <span class="k">return</span> <span class="n">s_curves_by_condition</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_scurves_with_building_code">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.calculate_scurves_with_building_code">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_scurves_with_building_code</span><span class="p">(</span><span class="n">building_code_parameters</span><span class="p">,</span> <span class="n">scurve_parameters</span><span class="p">,</span> <span class="n">years</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Transform s_curve_parameters into long form with each row representing a building_condition at a certain age</span>
+    <span class="n">s_curves</span> <span class="o">=</span> <span class="n">scurve_from_s_curve_parameters</span><span class="p">(</span><span class="n">scurve_parameters</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;replace_s_curves&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replace_s_curves&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">replace_s_curves</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replace_s_curves&#39;</span><span class="p">)</span>
+        <span class="n">actual_index</span> <span class="o">=</span> <span class="n">replace_s_curves</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span>
+        <span class="k">if</span> <span class="n">actual_index</span> <span class="o">!=</span> <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">]:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Expected index (building_category, age, building_condition). Got: (</span><span class="si">{</span><span class="n">actual_index</span><span class="si">}</span><span class="s1">)&#39;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;scurve&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">replace_s_curves</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">msg</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Expected column &quot;scurve&quot; in replace_s_curves. Got: (</span><span class="si">{</span><span class="n">replace_s_curves</span><span class="o">.</span><span class="n">columns</span><span class="si">}</span><span class="s1">)&#39;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Replacing s_curves </span><span class="si">{index}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">actual_index</span><span class="p">)</span>
+        <span class="n">s_curves</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">replace_s_curves</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;scurve&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replace_s_curves</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">replace_s_curves</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;scurve&#39;</span><span class="p">]</span>
+    <span class="n">df_never_share</span> <span class="o">=</span> <span class="n">pad_s_curve_age</span><span class="p">(</span><span class="n">s_curves</span><span class="p">,</span> <span class="n">scurve_parameters</span><span class="p">)</span>
+    <span class="n">s_curves_with_building_code</span> <span class="o">=</span> <span class="n">merge_s_curves_and_building_code</span><span class="p">(</span><span class="n">s_curves</span><span class="p">,</span> <span class="n">df_never_share</span><span class="p">,</span> <span class="n">building_code_parameters</span><span class="p">)</span>
+    <span class="n">s_curves_with_building_code</span> <span class="o">=</span> <span class="n">s_curves_with_building_code</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">years</span><span class="p">])]</span>
+    <span class="k">return</span> <span class="n">s_curves_with_building_code</span></div>
+
+
+
+<div class="viewcode-block" id="make_s_curve_parameters">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.make_s_curve_parameters">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_s_curve_parameters</span><span class="p">(</span><span class="n">earliest_age</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">average_age</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">last_age</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rush_years</span><span class="p">:</span> <span class="nb">int</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rush_share</span><span class="p">:</span> <span class="nb">float</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">never_share</span><span class="p">:</span> <span class="nb">float</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">building_lifetime</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">130</span><span class="p">,</span>  <span class="n">building_category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">earliest_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">earliest_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;earliest_age&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">average_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">average_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;average_age&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">last_age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">last_age</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;last_age&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rush_share</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">rush_share</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;rush_share&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">never_share</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected value above zero for </span><span class="si">{</span><span class="n">never_share</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;never_share&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Illegal value for </span><span class="si">{</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">pre_rush_years</span> <span class="o">=</span> <span class="p">(</span><span class="n">average_age</span> <span class="o">-</span> <span class="n">earliest_age</span> <span class="o">-</span> <span class="p">(</span><span class="n">rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">pre_rush_years</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;average_age=</span><span class="si">{</span><span class="n">average_age</span><span class="si">}</span><span class="s1">, leaves no room for a pre rush period&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="n">post_rush_years</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_age</span> <span class="o">-</span> <span class="n">average_age</span> <span class="o">-</span> <span class="p">(</span><span class="n">rush_years</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">post_rush_years</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;last_age=</span><span class="si">{</span><span class="n">last_age</span><span class="si">}</span><span class="s1">, leaves no room for a post rush period&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span>
+        <span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="n">building_category</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">:</span> <span class="n">condition</span><span class="p">,</span>
+        <span class="s1">&#39;earliest_age_for_measure&#39;</span><span class="p">:</span> <span class="n">earliest_age</span><span class="p">,</span> <span class="s1">&#39;average_age_for_measure&#39;</span><span class="p">:</span> <span class="n">average_age</span><span class="p">,</span>
+        <span class="s1">&#39;rush_period_years&#39;</span><span class="p">:</span> <span class="n">rush_years</span><span class="p">,</span> <span class="s1">&#39;last_age_for_measure&#39;</span><span class="p">:</span> <span class="n">last_age</span><span class="p">,</span> <span class="s1">&#39;rush_share&#39;</span><span class="p">:</span> <span class="n">rush_share</span><span class="p">,</span>
+        <span class="s1">&#39;never_share&#39;</span><span class="p">:</span> <span class="n">never_share</span><span class="p">}],</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="translate_scurve_parameter_to_shortform">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.translate_scurve_parameter_to_shortform">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">translate_scurve_parameter_to_shortform</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;condition&#39;</span><span class="p">:</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;earliest_age_for_measure&#39;</span><span class="p">:</span> <span class="s1">&#39;earliest_age&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;average_age_for_measure&#39;</span><span class="p">:</span> <span class="s1">&#39;average_age&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rush_period_years&#39;</span><span class="p">:</span> <span class="s1">&#39;rush_period&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;last_age_for_measure&#39;</span><span class="p">:</span> <span class="s1">&#39;last_age&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rush_share&#39;</span><span class="p">:</span> <span class="s1">&#39;rush_share&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;never_share&#39;</span><span class="p">:</span> <span class="s1">&#39;never_share&#39;</span><span class="p">,</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="scurve_rates_to_long">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_rates_to_long">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">scurve_rates_to_long</span><span class="p">(</span><span class="n">scurve_rates</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">share</span> <span class="o">=</span> <span class="n">scurve_rates</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">share</span> <span class="o">=</span> <span class="n">share</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rate&#39;</span><span class="p">:</span> <span class="s1">&#39;scurve&#39;</span><span class="p">})</span>
+
+    <span class="n">share_acc</span> <span class="o">=</span> <span class="n">scurve_rates</span><span class="o">.</span><span class="n">rate_acc</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">share_acc</span><span class="o">.</span><span class="n">building_condition</span> <span class="o">=</span> <span class="n">share_acc</span><span class="o">.</span><span class="n">building_condition</span> <span class="o">+</span> <span class="s1">&#39;_acc&#39;</span>
+    <span class="n">share_acc</span> <span class="o">=</span> <span class="n">share_acc</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rate_acc&#39;</span><span class="p">:</span> <span class="s1">&#39;scurve&#39;</span><span class="p">})</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">share</span><span class="p">,</span> <span class="n">share_acc</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="scurve_rates_with_age">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_rates_with_age">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">scurve_rates_with_age</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="c1"># Define age range</span>
+    <span class="n">max_age</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">total_span</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">130</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">ages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_age</span><span class="p">)</span>  <span class="c1"># 1 to 129</span>
+
+    <span class="c1"># Expand DataFrame for each age</span>
+    <span class="n">df_expanded</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ages</span><span class="p">))]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_expanded</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_expanded</span>
+
+    <span class="c1"># Compute rates using new column names</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pre_rush_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_share&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;never_share&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="mf">0.5</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earliest_age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_period&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_share&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_period&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;post_rush_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_share&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;never_share&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="mf">0.5</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;last_age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_period&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Determine rate for each age</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earliest_age&#39;</span><span class="p">],</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_period&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;average_age&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_period&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;last_age&#39;</span><span class="p">],</span>
+    <span class="p">]</span>
+
+    <span class="n">choices</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pre_rush_rate&#39;</span><span class="p">],</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rush_rate&#39;</span><span class="p">],</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;post_rush_rate&#39;</span><span class="p">],</span>
+    <span class="p">]</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="c1"># Compute cumulative sum of rates by category and condition</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rate_acc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">])[[</span><span class="s1">&#39;rate&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+    <span class="c1"># Reset index and set multi-index</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="scurve_rates">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.scurve_rates">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">scurve_rates</span><span class="p">(</span><span class="n">s_curve_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate s-curve rate from dataframe.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_parameters : pd.DataFrame</span>
+<span class="sd">        A pandas dataframe with average_age, earliest_age, rush_period, last_age, rush_share and never_share</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        With columns rate, total_share indexed by building_category, building_condition and age</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">post_start_age</span><span class="o">=</span><span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">average_age</span> <span class="o">+</span> <span class="p">(</span><span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">rush_period</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">pre_end_age</span><span class="o">=</span><span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">average_age</span> <span class="o">-</span> <span class="p">(</span><span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">rush_period</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">pre_start_age</span><span class="o">=</span><span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">earliest_age</span><span class="p">,</span>
+        <span class="n">pre_period</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pre_end_age</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">pre_start_age</span><span class="p">,</span>
+        <span class="n">post_end_age</span><span class="o">=</span><span class="n">s_curve_parameters</span><span class="o">.</span><span class="n">last_age</span><span class="p">,</span>
+        <span class="n">post_period</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">post_end_age</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">post_start_age</span><span class="p">,</span>
+        <span class="n">total_span</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">earliest_age</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">pre_period</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">rush_period</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">post_period</span><span class="p">,</span>
+        <span class="n">rush_rate</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">rush_share</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">rush_period</span><span class="p">,</span>
+        <span class="n">measure_share</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">never_share</span><span class="p">,</span>
+        <span class="n">remaining_share</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">never_share</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">rush_share</span><span class="p">),</span>
+        <span class="n">pre_share</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">remaining_share</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">pre_rate</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pre_share</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">pre_period</span><span class="p">,</span>
+        <span class="n">post_share</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">remaining_share</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">post_rate</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">post_share</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">post_period</span><span class="p">,</span>
+        <span class="n">total_share</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">pre_share</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">rush_share</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">post_share</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">never_share</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="pause_building_condition_rates">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.pause_building_condition_rates">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pause_building_condition_rates</span><span class="p">(</span><span class="n">s_curve_building_code</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                                   <span class="n">period</span><span class="p">:</span> <span class="n">YearRange</span><span class="o">|</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span><span class="o">|</span><span class="nb">int</span><span class="p">,</span>
+                                   <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply a pause (deferral) to selected building condition rates and accumulate the results.</span>
+
+<span class="sd">    This function is a convenience wrapper that first shifts the specified building</span>
+<span class="sd">    condition rate columns forward in time for a given pause period—simulating a</span>
+<span class="sd">    deferral of activity—and then recomputes cumulative (running) totals using</span>
+<span class="sd">    ``accumulate_building_condition_rates``.</span>
+
+<span class="sd">    Internally, it applies two operations:</span>
+
+<span class="sd">    1. ``shift_building_condition_rates``:</span>
+<span class="sd">       Shifts selected condition rate columns forward by the length of the</span>
+<span class="sd">       pause period for all years greater than or equal to ``period.start``,</span>
+<span class="sd">       within each group of the first two index levels.</span>
+<span class="sd">    2. ``accumulate_building_condition_rates``:</span>
+<span class="sd">       Recomputes cumulative totals for the condition rate columns and their</span>
+<span class="sd">       corresponding accumulator columns.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_building_code : pandas.DataFrame</span>
+<span class="sd">        A DataFrame indexed by a MultiIndex with at least three levels,</span>
+<span class="sd">        where index level 2 represents the year. Must contain the condition</span>
+<span class="sd">        rate columns referenced in ``conditions`` and the accumulator columns</span>
+<span class="sd">        required by ``accumulate_building_condition_rates``.</span>
+<span class="sd">    period : YearRange | tuple[int, int] | int</span>
+<span class="sd">        The period defining the pause:</span>
+<span class="sd">        - If a ``tuple[int, int]``: interpreted as (start_year, end_year), inclusive.</span>
+<span class="sd">        - If an ``int``: treated as the pause start year, with the end year taken</span>
+<span class="sd">          as the maximum year present in the DataFrame.</span>
+<span class="sd">        - If a ``YearRange``: used directly.</span>
+<span class="sd">        The pause length is determined as the number of years in ``period``.</span>
+<span class="sd">    conditions : list[str] or None, default None</span>
+<span class="sd">        Column names representing the building condition rates to pause.</span>
+<span class="sd">        If ``None``, defaults to:</span>
+<span class="sd">        ``[&#39;small_measure&#39;, &#39;renovation&#39;, &#39;demolition&#39;]``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        A DataFrame where:</span>
+<span class="sd">        - Values in the selected condition columns have been shifted forward</span>
+<span class="sd">          according to the pause period.</span>
+<span class="sd">        - Accumulator columns have been updated to reflect the new running totals.</span>
+<span class="sd">        The presence and structure of the columns match the output of</span>
+<span class="sd">        ``accumulate_building_condition_rates``.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - This function does not mutate the input DataFrame; it returns a new one.</span>
+<span class="sd">    - All shifting is done within each group of the first two index levels.</span>
+<span class="sd">    - Years are expected to be integers.</span>
+<span class="sd">    - See ``shift_building_condition_rates`` and</span>
+<span class="sd">      ``accumulate_building_condition_rates`` for detailed behavior of the</span>
+<span class="sd">      underlying operations.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Pause condition rates starting from 2028 and recompute accumulations:</span>
+
+<span class="sd">    &gt;&gt;&gt; out = pause_building_condition_rates(df, period=2028)</span>
+
+<span class="sd">    Pause explicitly from 2026 through 2029:</span>
+
+<span class="sd">    &gt;&gt;&gt; out = pause_building_condition_rates(df, period=YearRange(2026, 2029))</span>
+
+<span class="sd">    Pause only renovation rates:</span>
+
+<span class="sd">    &gt;&gt;&gt; out = pause_building_condition_rates(</span>
+<span class="sd">    ...     df, period=(2025, 2027), conditions=[&#39;renovation&#39;]</span>
+<span class="sd">    ... )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">s_curve_building_code</span>
+            <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">shift_building_condition_rates</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">accumulate_building_condition_rates</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="shift_building_condition_rates">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.shift_building_condition_rates">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">shift_building_condition_rates</span><span class="p">(</span><span class="n">s_curve_building_code</span><span class="p">:</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                                   <span class="n">period</span><span class="p">:</span> <span class="n">YearRange</span><span class="o">|</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span><span class="o">|</span><span class="nb">int</span><span class="p">,</span>
+                                   <span class="n">conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shift building condition rates over a given period forward in time.</span>
+
+<span class="sd">    This function takes a copy of the input DataFrame and, for the specified building conditions,</span>
+<span class="sd">    shifts values occurring from `period.start` onwards by the length of the period</span>
+<span class="sd">    (i.e., the number of years in `period`). The shift is done within each group</span>
+<span class="sd">    defined by the first two levels of the index. Newly created gaps are filled with 0.</span>
+
+<span class="sd">    The intended use is to simulate a pause (deferral) in certain building-related</span>
+<span class="sd">    condition rates (e.g., small measures, renovation, demolition) for a span of years,</span>
+<span class="sd">    and resume them after the pause by moving the corresponding values forward.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    s_curve_building_code : pandas.DataFrame</span>
+<span class="sd">        A DataFrame indexed by a MultiIndex with **at least three levels** where the</span>
+<span class="sd">        third level (index level number 2) is an integer year. The DataFrame must contain</span>
+<span class="sd">        columns whose names match those provided in `conditions`. The function</span>
+<span class="sd">        operates on a copy of this DataFrame and does not mutate the original.</span>
+<span class="sd">    period : YearRange | tuple[int, int] | int</span>
+<span class="sd">        The pause period:</span>
+<span class="sd">        - If a `tuple[int, int]`, it is interpreted as `(start_year, end_year)` inclusive.</span>
+<span class="sd">          The start will be clamped up to the minimum year present in the DataFrame.</span>
+<span class="sd">        - If an `int`, it is treated as the start year; the end year is set to the</span>
+<span class="sd">          maximum year present in the DataFrame. The start will be clamped up to</span>
+<span class="sd">          the minimum year present in the DataFrame.</span>
+<span class="sd">    conditions : list[str] | None, default None</span>
+<span class="sd">        Column names representing the building condition rates to pause. If `None`, defaults to</span>
+<span class="sd">        `[&#39;small_measure&#39;, &#39;renovation&#39;, &#39;demolition&#39;]`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        A new DataFrame (copy of the input) where, for rows with year &gt;= `period.start`</span>
+<span class="sd">        and columns listed in `conditions`, values are shifted **forward** by the pause length</span>
+<span class="sd">        within each group of the first two index levels. Any values shifted beyond the</span>
+<span class="sd">        available years are dropped by the shift operation, and any newly introduced</span>
+<span class="sd">        gaps in the target slice are filled with 0.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If `period` is not a `YearRange`, an `int`, or a valid `(start_year, end_year)` tuple</span>
+<span class="sd">        where `start_year &lt;= end_year`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The function assumes:</span>
+<span class="sd">      * The DataFrame index has a third level (at position 2) representing the year.</span>
+<span class="sd">      * Years are integers and sortable.</span>
+<span class="sd">      * The columns listed in `conditions` exist in the DataFrame.</span>
+<span class="sd">    - The operation:</span>
+<span class="sd">      1. Determines the effective `YearRange` for the pause, clamping the start</span>
+<span class="sd">         to the minimum year in the data if needed.</span>
+<span class="sd">      2. Computes `pause_length = len(period)`.</span>
+<span class="sd">      3. For `year &gt;= period.start`, shifts the `conditions` columns by `pause_length`</span>
+<span class="sd">         **within each group of the first two index levels**.</span>
+<span class="sd">      4. Fills `NaN` introduced by the shift with 0 in the affected slice.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Suppose `df` has a MultiIndex `(region, building_code, year)` and includes</span>
+<span class="sd">    columns `&#39;small_measure&#39;`, `&#39;renovation&#39;`, and `&#39;demolition&#39;`.</span>
+
+<span class="sd">    Pause from 2028 through the max available year:</span>
+<span class="sd">    &gt;&gt;&gt; out = shift_building_condition_rates(df, period=2028)</span>
+
+<span class="sd">    Pause explicitly from 2026 to 2029 (inclusive):</span>
+<span class="sd">    &gt;&gt;&gt; out = shift_building_condition_rates(df, period=(2026, 2029))</span>
+
+<span class="sd">    Using a custom set of conditions:</span>
+<span class="sd">    &gt;&gt;&gt; out = shift_building_condition_rates(df, period=(2025, 2027),</span>
+<span class="sd">    ...                                      conditions=[&#39;renovation&#39;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cr</span> <span class="o">=</span> <span class="n">s_curve_building_code</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">year_level_num</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">minimum_year</span> <span class="o">=</span> <span class="n">cr</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">year_level_num</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="n">maximum_year</span> <span class="o">=</span> <span class="n">cr</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">year_level_num</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">minimum_year</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">maximum_year</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">period</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> \
+            <span class="n">period</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">period</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># noqa: PLR2004</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">minimum_year</span><span class="p">),</span> <span class="n">period</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">YearRange</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Illegal value in period `</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="s1">`. YearRange or int expected.&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">conditions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small_measure&#39;</span><span class="p">,</span> <span class="s1">&#39;renovation&#39;</span><span class="p">,</span> <span class="s1">&#39;demolition&#39;</span><span class="p">]</span>
+
+    <span class="c1"># To avoid any indexing issues, period start is set to minimum year when lower</span>
+    <span class="k">if</span> <span class="n">period</span><span class="o">.</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">minimum_year</span><span class="p">:</span>
+        <span class="n">period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">minimum_year</span><span class="p">,</span> <span class="n">period</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+    <span class="n">pause_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+
+    <span class="n">shifted_cr</span> <span class="o">=</span> <span class="n">cr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">period</span><span class="o">.</span><span class="n">start</span><span class="p">:],</span> <span class="n">conditions</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">pause_length</span><span class="p">)</span>
+    <span class="n">cr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">period</span><span class="o">.</span><span class="n">start</span><span class="p">:],</span> <span class="n">conditions</span><span class="p">]</span> <span class="o">=</span> <span class="n">shifted_cr</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cr</span></div>
+
+
+
+<div class="viewcode-block" id="accumulate_building_condition_rates">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.accumulate_building_condition_rates">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">accumulate_building_condition_rates</span><span class="p">(</span><span class="n">building_condition_rates</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Accumulate annual building condition rates into running totals per building category and code.</span>
+
+<span class="sd">    This function takes a DataFrame indexed by a MultiIndex with at least three levels,</span>
+<span class="sd">    where the third level (index level 2) represents the year. For three predefined</span>
+<span class="sd">    condition columns—``small_measure``, ``renovation``, and ``demolition``—it computes</span>
+<span class="sd">    cumulative sums across years within each group of the first two index levels.</span>
+
+<span class="sd">    The accumulation uses temporary columns:</span>
+<span class="sd">    - For the first year (hard‑coded as 2020), values are taken from the corresponding</span>
+<span class="sd">      ``*_acc`` accumulator columns (defaulting to 0 where missing).</span>
+<span class="sd">    - For all later years (from 2021 onward), values are taken from the annual</span>
+<span class="sd">      condition rate columns.</span>
+<span class="sd">    These temporary values are cumulatively summed per group, and the resulting</span>
+<span class="sd">    running totals populate the ``*_acc`` columns.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    building_condition_rates : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with a MultiIndex where index level 2 is an integer year.</span>
+<span class="sd">        Must contain the columns:</span>
+<span class="sd">        ``&#39;small_measure&#39;``, ``&#39;renovation&#39;``, ``&#39;demolition&#39;``,</span>
+<span class="sd">        and their accumulator counterparts:</span>
+<span class="sd">        ``&#39;small_measure_acc&#39;``, ``&#39;renovation_acc&#39;``, ``&#39;demolition_acc&#39;``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        A DataFrame containing only the six columns:</span>
+<span class="sd">        ``[&#39;small_measure&#39;, &#39;renovation&#39;, &#39;demolition&#39;,</span>
+<span class="sd">           &#39;small_measure_acc&#39;, &#39;renovation_acc&#39;, &#39;demolition_acc&#39;]``.</span>
+<span class="sd">        The accumulator columns contain cumulative sums over years within each</span>
+<span class="sd">        group of index levels 0 and 1.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The function does **not** modify the input DataFrame; it works on a copy.</span>
+<span class="sd">    - The first year is assumed to be **2020**.</span>
+<span class="sd">    - Accumulators for 2020 come from the existing ``*_acc`` columns.</span>
+<span class="sd">    - From 2021 onward, annual values from the condition columns are used for accumulation.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Given a MultiIndex of (region, building_code, year):</span>
+
+<span class="sd">    &gt;&gt;&gt; out = accumulate_building_condition_rates(df)</span>
+<span class="sd">    &gt;&gt;&gt; out.columns</span>
+<span class="sd">    Index([&#39;small_measure&#39;, &#39;renovation&#39;, &#39;demolition&#39;,</span>
+<span class="sd">           &#39;small_measure_acc&#39;, &#39;renovation_acc&#39;, &#39;demolition_acc&#39;], dtype=&#39;object&#39;)</span>
+
+<span class="sd">    The returned accumulator columns represent cumulative totals per</span>
+<span class="sd">    (region, building_code) across increasing years.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">building_condition_rates</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">first_year</span> <span class="o">=</span> <span class="mi">2020</span>
+    <span class="n">next_year</span> <span class="o">=</span> <span class="mi">2021</span>
+
+    <span class="n">condition_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;small_measure&#39;</span><span class="p">,</span> <span class="s1">&#39;renovation&#39;</span><span class="p">,</span> <span class="s1">&#39;demolition&#39;</span><span class="p">]</span>
+    <span class="n">acc_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bc</span><span class="si">}</span><span class="s1">_acc&#39;</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">condition_columns</span><span class="p">]</span>
+    <span class="n">temp_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bc</span><span class="si">}</span><span class="s1">ac&#39;</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">condition_columns</span><span class="p">]</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">first_year</span><span class="p">),</span> <span class="n">temp_columns</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">first_year</span><span class="p">),</span> <span class="n">acc_columns</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">next_year</span><span class="p">:],</span> <span class="n">temp_columns</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">next_year</span><span class="p">:],</span> <span class="n">condition_columns</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">acc_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])[</span><span class="n">temp_columns</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">condition_columns</span> <span class="o">+</span> <span class="n">acc_columns</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="freeze_scurves_from_year">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.freeze_scurves_from_year">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">freeze_scurves_from_year</span><span class="p">(</span><span class="n">s_curves</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+                             <span class="n">years</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">YearRange</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+                             <span class="n">condition_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Freeze building condition rate columns over a specified year range and resume the original trajectory after the freeze with a forward time shift.</span>
+
+<span class="sd">    This function operates on a MultiIndex DataFrame where the year is at index</span>
+<span class="sd">    level 2. For the specified freeze period (inclusive), the values of the</span>
+<span class="sd">    condition columns (as defined by ``list(BuildingCondition)``) are set equal to</span>
+<span class="sd">    their values at the first freeze year (``start``). For the years following</span>
+<span class="sd">    the freeze period, the original (unfrozen) time series is continued but</span>
+<span class="sd">    shifted forward by the length of the freeze, preserving the trajectory shape</span>
+<span class="sd">    while delaying it in time.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    condition_columns :</span>
+<span class="sd">    s_curves : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with a MultiIndex row index. The **year must be at level 2**</span>
+<span class="sd">        of the index. The DataFrame must contain one column for each member of</span>
+<span class="sd">        ``BuildingCondition`` (e.g., an Enum listing condition rate columns).</span>
+<span class="sd">    years : int or YearRange or tuple of (int, int)</span>
+<span class="sd">        Specification of the freeze period.</span>
+
+<span class="sd">        - If ``YearRange``: uses ``[years.start, years.end]`` (inclusive).</span>
+<span class="sd">          ``start`` is clamped to the minimum year present in the DataFrame.</span>
+<span class="sd">        - If ``int``: interpreted as ``start=years`` (clamped to the minimum year)</span>
+<span class="sd">          and ``end = max_year`` present in the DataFrame.</span>
+<span class="sd">        - If ``(start, end)`` tuple: uses the inclusive range after validating</span>
+<span class="sd">          that ``start &lt;= end`` and clamping ``start`` to the minimum year.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        A copy of ``s_curves`` where:</span>
+<span class="sd">        - For all index keys, the condition columns in ``[start, end]`` are set to</span>
+<span class="sd">          their values at ``year == start`` (i.e., frozen).</span>
+<span class="sd">        - For years ``&gt; end``, the original (unfrozen) values are applied but shifted</span>
+<span class="sd">          forward by ``(end - start)`` years to avoid a discontinuity.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If ``years`` is not a supported type (``YearRange``, ``int``, or 2-tuple of</span>
+<span class="sd">        ``int`` with ``start &lt;= end``).</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The function assumes the year is at index level 2 and uses</span>
+<span class="sd">      ``pd.IndexSlice[:, :, ...]`` to select by year range.</span>
+<span class="sd">    - Only columns listed in ``list(BuildingCondition)`` are modified; other</span>
+<span class="sd">      columns remain unchanged.</span>
+<span class="sd">    - The freezing is inclusive of both ``start`` and ``end`` years.</span>
+<span class="sd">    - Post-freeze continuation uses:</span>
+
+<span class="sd">      ``post_freeze_rates.shift(end - start).iloc[1:]``</span>
+
+<span class="sd">      to align the shifted series; this implicitly drops the first shifted row to</span>
+<span class="sd">      guard against misalignment. If you require stricter alignment guarantees,</span>
+<span class="sd">      consider reindexing by explicit year keys instead of relying on</span>
+<span class="sd">      ``.iloc[1:]``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Freeze from a specific year to the end of the dataset:</span>
+
+<span class="sd">    &gt;&gt;&gt; df_frozen = freeze_scurves_from_year(s_curves, 2022)</span>
+
+<span class="sd">    Freeze across an explicit range:</span>
+
+<span class="sd">    &gt;&gt;&gt; df_frozen = freeze_scurves_from_year(s_curves, (2021, 2023))</span>
+
+<span class="sd">    Freeze using a YearRange object:</span>
+
+<span class="sd">    &gt;&gt;&gt; rng = YearRange(start=2020, end=2022)</span>
+<span class="sd">    &gt;&gt;&gt; df_frozen = freeze_scurves_from_year(s_curves, rng)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Copy the input DataFrame to avoid mutating the caller data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">s_curves</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Identify year column and first year</span>
+    <span class="n">year_level_num</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">minimum_year</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">year_level_num</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+    <span class="c1"># Convert arguments to YearRange. Raise error when unable to do so.</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">YearRange</span><span class="p">):</span>
+        <span class="n">freeze_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">years</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">minimum_year</span><span class="p">),</span> <span class="n">years</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="n">maximum_year</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">year_level_num</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">freeze_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">minimum_year</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">maximum_year</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)</span><span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># noqa: PLR2004</span>
+        <span class="n">freeze_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">minimum_year</span><span class="p">),</span> <span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Illegal value in years `</span><span class="si">{</span><span class="n">years</span><span class="si">}</span><span class="s1">`. YearRange or int expected.&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># Save freeze rates and post freeze rates</span>
+    <span class="n">condition_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">BuildingCondition</span><span class="p">)</span> <span class="k">if</span> <span class="n">condition_columns</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">condition_columns</span>
+    <span class="n">freeze_rates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">freeze_period</span><span class="o">.</span><span class="n">start</span><span class="p">]][</span><span class="n">condition_columns</span><span class="p">]</span>
+    <span class="n">post_freeze_rates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">freeze_period</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]][</span><span class="n">condition_columns</span><span class="p">]</span>
+
+    <span class="c1"># Apply freeze rate on columns for the freeze perioder</span>
+    <span class="n">freeze_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">freeze_period</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">freeze_period</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">freeze_index</span><span class="p">,</span> <span class="n">condition_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">freeze_rates</span>
+
+    <span class="c1"># Set post freeze rates</span>
+    <span class="n">post_freeze_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">freeze_period</span><span class="o">.</span><span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">post_freeze_index</span><span class="p">,</span> <span class="n">condition_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_freeze_rates</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">freeze_period</span><span class="o">.</span><span class="n">end</span> <span class="o">-</span> <span class="n">freeze_period</span><span class="o">.</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/ebm.areaforecast.s_curve.html#ebm.areaforecast.s_curve.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>  <span class="c1"># noqa: PLC0415</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate all scurves from data/s_curve.csv&#39;</span><span class="p">)</span>
+    <span class="n">scurve_parameters_csv_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data/original/s_curve.csv&#39;</span>
+    <span class="n">scurve_parameters_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">scurve_parameters_csv_path</span><span class="p">)</span>
+
+    <span class="n">df_scurve_rates</span> <span class="o">=</span> <span class="n">scurve_rates</span><span class="p">(</span><span class="n">translate_scurve_parameter_to_shortform</span><span class="p">(</span><span class="n">scurve_parameters_csv</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_scurve_rates</span><span class="p">)</span>
+
+    <span class="n">rates_with_age</span> <span class="o">=</span> <span class="n">scurve_rates_with_age</span><span class="p">(</span><span class="n">df_scurve_rates</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rates_with_age</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">scurve_rates_to_long</span><span class="p">(</span><span class="n">rates_with_age</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

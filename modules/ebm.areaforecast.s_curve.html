@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebm.areaforecast.s_curve module &mdash; EBM - Energibruksmodell  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=9ed7352e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebm.cmd package" href="ebm.cmd.html" />
+    <link rel="prev" title="ebm.areaforecast package" href="ebm.areaforecast.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBM - Energibruksmodell
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_the_model.html">About EBM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/user_case.html">User case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/geographical_distribution.html">Geographical distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/configuration.html">Model configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Functionality</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_description/index.html">Model Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building_parameters/index.html">Building categories and building codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../area/index.html">Area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_need/index.html">Energy need</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heating_systems/index.html">Heating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../energy_use/index.html">Energy use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geographical_distribution/index.html">Geographical distribution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/calibrating_the_model.html">Calibrating the model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBM - Energibruksmodell</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="ebm.html">ebm package</a></li>
+          <li class="breadcrumb-item"><a href="ebm.areaforecast.html">ebm.areaforecast package</a></li>
+      <li class="breadcrumb-item active">ebm.areaforecast.s_curve module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/ebm.areaforecast.s_curve.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-ebm.areaforecast.s_curve">
+<span id="ebm-areaforecast-s-curve-module"></span><h1>ebm.areaforecast.s_curve module<a class="headerlink" href="#module-ebm.areaforecast.s_curve" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.original_condition">
+<span class="sig-name descname"><span class="pre">original_condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_and_small_measure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#original_condition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.original_condition" title="Link to this definition"></a></dt>
+<dd><p>Calculates buildings remaining as original condition by subtracting every other condition</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_renovation : pandas.Series
+s_curve_renovation_and_small_measure : pandas.Series
+s_curve_small_measure : pandas.Series</p>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>buildings remaining as original condition</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.small_measure">
+<span class="sig-name descname"><span class="pre">small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_and_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.small_measure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the remaining small measure share by subtracting renovation and small measure values from
+the total small measure curve.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>s_curve_renovation_and_small_measure : Series
+s_curve_small_measure_total : Series</p>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Series</dt><dd><p>s_curve_small_measure</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This function currently does not implement logic to zero out values before the building year.</p></li>
+<li><p>Assumes both input Series are aligned on the index year.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.renovation_and_small_measure">
+<span class="sig-name descname"><span class="pre">renovation_and_small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#renovation_and_small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.renovation_and_small_measure" title="Link to this definition"></a></dt>
+<dd><p>Calculates the remaining renovation_and_small_measure share by subtracting renovation
+from the total renovation total curve.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_renovation<span class="classifier">pandas.Series</span></dt><dd><p>A time series representing the S-curve of exclusive renovation condition.</p>
+</dd>
+<dt>s_curve_renovation_total<span class="classifier">pandas.Series</span></dt><dd><p>A time series representing the total S-curve for the total renovation condition.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>A time series representing the difference between the total and renovation-only S-curves.
+Values before the building year should be set to 0 (not yet implemented).</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h2>Notes<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This function currently does not implement logic to zero out values before the building year.</p></li>
+<li><p>Assumes both input Series are aligned on index year.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.trim_renovation_from_renovation_total">
+<span class="sig-name descname"><span class="pre">trim_renovation_from_renovation_total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scurve_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#trim_renovation_from_renovation_total"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.trim_renovation_from_renovation_total" title="Link to this definition"></a></dt>
+<dd><p>Adjust the renovation S-curve by incorporating values from the total renovation curve
+where the total share is less than the maximum renovation share.</p>
+<p>This function identifies time points where the total S-curve (<cite>scurve_total</cite>) is less than
+the maximum renovation S-curve (<cite>s_curve_renovation_max</cite>). For those points, it replaces
+the corresponding values in <cite>s_curve_renovation</cite> with values from <cite>s_curve_renovation_total</cite>.</p>
+<section id="id6">
+<h2>Parameters<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_renovation<span class="classifier">pandas.Series</span></dt><dd><p>The original renovation S-curve to be adjusted.</p>
+</dd>
+<dt>s_curve_renovation_max<span class="classifier">pandas.Series</span></dt><dd><p>The maximum allowed values for the renovation S-curve.</p>
+</dd>
+<dt>s_curve_renovation_total<span class="classifier">pandas.Series</span></dt><dd><p>The total renovation S-curve including all measures.</p>
+</dd>
+<dt>scurve_total<span class="classifier">pandas.Series</span></dt><dd><p>The actual total S-curve values to compare against the max renovation curve.</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h2>Returns<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>The adjusted renovation S-curve with values merged from the total renovation curve
+where the total share is less than the maximum renovation share.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Notes<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Assumes all input Series are aligned on the index year.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.renovation_from_small_measure">
+<span class="sig-name descname"><span class="pre">renovation_from_small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#renovation_from_small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.renovation_from_small_measure" title="Link to this definition"></a></dt>
+<dd><p>Calculate the renovation S-curve by subtracting small measures from the max renovation curve.</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_renovation_max<span class="classifier">pandas.Series</span></dt><dd><p>The maximum yearly values for the renovation S-curve.</p>
+</dd>
+<dt>s_curve_small_measure_total<span class="classifier">pandas.Series</span></dt><dd><p>The yearly total S-curve for small measures.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>The resulting renovation S-curve with values clipped at 0</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.total">
+<span class="sig-name descname"><span class="pre">total</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_total</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#total"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.total" title="Link to this definition"></a></dt>
+<dd><p>Calculates the yearly sum of renovation and small_measure</p>
+<section id="id11">
+<h2>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>s_curve_renovation_total : pandas.Series
+s_curve_small_measure_total : pandas.Series</p>
+</section>
+<section id="id12">
+<h2>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>yearly sum of renovation and small_measure</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.trim_max_value">
+<span class="sig-name descname"><span class="pre">trim_max_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#trim_max_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.trim_max_value" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.small_measure_max">
+<span class="sig-name descname"><span class="pre">small_measure_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure_never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#small_measure_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.small_measure_max" title="Link to this definition"></a></dt>
+<dd><p>Calculates the maximum possible value for small_measure condition</p>
+<section id="id13">
+<h2>Parameters<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_small_measure_never_share : pandas.Series</p>
+</section>
+<section id="id14">
+<h2>Returns<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>Yearly maximum possible value for small_measure</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.renovation_max">
+<span class="sig-name descname"><span class="pre">renovation_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#renovation_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.renovation_max" title="Link to this definition"></a></dt>
+<dd><p>Calculates the maximum possible value for renovation condition</p>
+<section id="id15">
+<h2>Parameters<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_renovation_never_share : pandas.Series</p>
+</section>
+<section id="id16">
+<h2>Returns<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>Yearly maximum possible value for renovation</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.cumulative_renovation">
+<span class="sig-name descname"><span class="pre">cumulative_renovation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_with_building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#cumulative_renovation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.cumulative_renovation" title="Link to this definition"></a></dt>
+<dd><p>Return the  yearly cumulative sum of renovation condition.</p>
+<section id="id17">
+<h2>Parameters<a class="headerlink" href="#id17" title="Link to this heading"></a></h2>
+<p>s_curves_with_building_code : pandas.Series
+years : pandas.Series</p>
+</section>
+<section id="id18">
+<h2>Returns<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>cumulative sum of renovation</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h2>Notes<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<p>NaN values are replaced by float 0.0</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.cumulative_small_measure">
+<span class="sig-name descname"><span class="pre">cumulative_small_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_with_building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#cumulative_small_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.cumulative_small_measure" title="Link to this definition"></a></dt>
+<dd><p>Return the  yearly cumulative sum of small_measure condition.</p>
+<section id="id20">
+<h2>Parameters<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
+<p>s_curves_with_building_code : pandas.Series
+years : YearRange</p>
+</section>
+<section id="id21">
+<h2>Returns<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>cumulative sum of small_measure</p>
+</dd>
+</dl>
+</section>
+<section id="id22">
+<h2>Notes<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<p>NaN values are replaced by float 0.0</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.transform_demolition">
+<span class="sig-name descname"><span class="pre">transform_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#transform_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.transform_demolition" title="Link to this definition"></a></dt>
+<dd><p>Filter yearly demolition for years
+Parameters
+———-
+demolition : pandas.Series
+years : YearRange</p>
+<section id="id23">
+<h2>Returns<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<p>demolition for years</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.transform_to_cumulative_demolition">
+<span class="sig-name descname"><span class="pre">transform_to_cumulative_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#transform_to_cumulative_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.transform_to_cumulative_demolition" title="Link to this definition"></a></dt>
+<dd><p>Filter yearly cumulative demolition for years
+Parameters
+———-
+cumulative_demolition : pandas.DataFrame
+years : YearRange</p>
+<section id="id24">
+<h2>Returns<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.Series</dt><dd><p>cumulative demolition for years</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.pad_s_curve_age">
+<span class="sig-name descname"><span class="pre">pad_s_curve_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#pad_s_curve_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.pad_s_curve_age" title="Link to this definition"></a></dt>
+<dd><p>Transform scurve_parameters with s_curve to never_share.
+Parameters
+———-
+s_curves : pandas.DataFrame
+scurve_parameters : pandas.DataFrame</p>
+<section id="id25">
+<h2>Returns<a class="headerlink" href="#id25" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+<section id="id26">
+<h2>Notes<a class="headerlink" href="#id26" title="Link to this heading"></a></h2>
+<p>Age is padded from -max age to 0</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.scurve_from_s_curve_parameters">
+<span class="sig-name descname"><span class="pre">scurve_from_s_curve_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#scurve_from_s_curve_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.scurve_from_s_curve_parameters" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Create scurve new dataframe from scurve_parameters using ebm.model.area.building_condition_scurves and</dt><dd><p>ebm.model.area.building_condition_accumulated_scurves</p>
+</dd>
+</dl>
+<p>Each row represent a building_category and building_condition at a certain age.</p>
+<section id="id27">
+<h2>Parameters<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
+<p>scurve_parameters : pandas.DataFrame</p>
+</section>
+<section id="id28">
+<h2>Notes<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<p>Filters out age greater than 130 when last_age is not 150 for backwards compatability. Subject to change.</p>
+</section>
+<section id="id29">
+<h2>Returns<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.accumulate_demolition">
+<span class="sig-name descname"><span class="pre">accumulate_demolition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_long</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#accumulate_demolition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.accumulate_demolition" title="Link to this definition"></a></dt>
+<dd><p>Sets demolition in year 0 (2020) to 0.0 and sums up the yearly demolition using years</p>
+<section id="id30">
+<h2>Parameters<a class="headerlink" href="#id30" title="Link to this heading"></a></h2>
+<p>s_curves_long : pandas.DataFrame
+years : YearRange</p>
+</section>
+<section id="id31">
+<h2>Returns<a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.merge_s_curves_and_building_code">
+<span class="sig-name descname"><span class="pre">merge_s_curves_and_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#merge_s_curves_and_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.merge_s_curves_and_building_code" title="Link to this definition"></a></dt>
+<dd><p>Cross merge s_curves and df_never_share with all building_code in building_code_parameters</p>
+<section id="id32">
+<h2>Parameters<a class="headerlink" href="#id32" title="Link to this heading"></a></h2>
+<p>s_curves : pandas.DataFrame
+df_never_share : pandas.DataFrame
+building_code_parameters : pandas.DataFrame</p>
+</section>
+<section id="id33">
+<h2>Returns<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.rates_grouped_by_period">
+<span class="sig-name descname"><span class="pre">rates_grouped_by_period</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#rates_grouped_by_period"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.rates_grouped_by_period" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.transform_to_dataframe">
+<span class="sig-name descname"><span class="pre">transform_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_cumulative_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_original_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_renovation_and_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_small_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_curve_demolition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#transform_to_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.transform_to_dataframe" title="Link to this definition"></a></dt>
+<dd><p>Creates a pandas DataFrame from the parameters</p>
+<section id="id34">
+<h2>Parameters<a class="headerlink" href="#id34" title="Link to this heading"></a></h2>
+<p>s_curve_cumulative_demolition : pandas.Series
+s_curve_original_condition : pandas.Series
+s_curve_renovation : pandas.Series
+s_curve_renovation_and_small_measure : pandas.Series
+s_curve_small_measure : pandas.Series
+s_curve_demolition : pandas.Series</p>
+</section>
+<section id="id35">
+<h2>Returns<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
+<p>pandas.DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.transform_to_long">
+<span class="sig-name descname"><span class="pre">transform_to_long</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_by_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#transform_to_long"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.transform_to_long" title="Link to this definition"></a></dt>
+<dd><section id="id36">
+<h2>Parameters<a class="headerlink" href="#id36" title="Link to this heading"></a></h2>
+<p>s_curves_by_condition : pandas.DataFrame</p>
+</section>
+<section id="id37">
+<h2>Returns<a class="headerlink" href="#id37" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>transformed to long, on condition for each row</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.calculate_s_curves">
+<span class="sig-name descname"><span class="pre">calculate_s_curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#calculate_s_curves"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.calculate_s_curves" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.normalize_scurve_conditions">
+<span class="sig-name descname"><span class="pre">normalize_scurve_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves_with_building_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#normalize_scurve_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.normalize_scurve_conditions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.calculate_scurves_with_building_code">
+<span class="sig-name descname"><span class="pre">calculate_scurves_with_building_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_code_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scurve_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#calculate_scurves_with_building_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.calculate_scurves_with_building_code" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.make_s_curve_parameters">
+<span class="sig-name descname"><span class="pre">make_s_curve_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">earliest_age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rush_years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rush_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">never_share</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_lifetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">130</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">building_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unknown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unknown'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#make_s_curve_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.make_s_curve_parameters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.translate_scurve_parameter_to_shortform">
+<span class="sig-name descname"><span class="pre">translate_scurve_parameter_to_shortform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#translate_scurve_parameter_to_shortform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.translate_scurve_parameter_to_shortform" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.scurve_rates_to_long">
+<span class="sig-name descname"><span class="pre">scurve_rates_to_long</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scurve_rates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#scurve_rates_to_long"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.scurve_rates_to_long" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.scurve_rates_with_age">
+<span class="sig-name descname"><span class="pre">scurve_rates_with_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#scurve_rates_with_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.scurve_rates_with_age" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.scurve_rates">
+<span class="sig-name descname"><span class="pre">scurve_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#scurve_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.scurve_rates" title="Link to this definition"></a></dt>
+<dd><p>Calculate s-curve rate from dataframe.</p>
+<section id="id38">
+<h2>Parameters<a class="headerlink" href="#id38" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>s_curve_parameters<span class="classifier">pd.DataFrame</span></dt><dd><p>A pandas dataframe with average_age, earliest_age, rush_period, last_age, rush_share and never_share</p>
+</dd>
+</dl>
+</section>
+<section id="id39">
+<h2>Returns<a class="headerlink" href="#id39" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>With columns rate, total_share indexed by building_category, building_condition and age</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.pause_building_condition_rates">
+<span class="sig-name descname"><span class="pre">pause_building_condition_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#pause_building_condition_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.pause_building_condition_rates" title="Link to this definition"></a></dt>
+<dd><p>Apply a pause (deferral) to selected building condition rates and accumulate the results.</p>
+<p>This function is a convenience wrapper that first shifts the specified building
+condition rate columns forward in time for a given pause period—simulating a
+deferral of activity—and then recomputes cumulative (running) totals using
+<code class="docutils literal notranslate"><span class="pre">accumulate_building_condition_rates</span></code>.</p>
+<p>Internally, it applies two operations:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shift_building_condition_rates</span></code>:
+Shifts selected condition rate columns forward by the length of the
+pause period for all years greater than or equal to <code class="docutils literal notranslate"><span class="pre">period.start</span></code>,
+within each group of the first two index levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">accumulate_building_condition_rates</span></code>:
+Recomputes cumulative totals for the condition rate columns and their
+corresponding accumulator columns.</p></li>
+</ol>
+<section id="id40">
+<h2>Parameters<a class="headerlink" href="#id40" title="Link to this heading"></a></h2>
+<dl>
+<dt>s_curve_building_code<span class="classifier">pandas.DataFrame</span></dt><dd><p>A DataFrame indexed by a MultiIndex with at least three levels,
+where index level 2 represents the year. Must contain the condition
+rate columns referenced in <code class="docutils literal notranslate"><span class="pre">conditions</span></code> and the accumulator columns
+required by <code class="docutils literal notranslate"><span class="pre">accumulate_building_condition_rates</span></code>.</p>
+</dd>
+<dt>period<span class="classifier">YearRange | tuple[int, int] | int</span></dt><dd><p>The period defining the pause:
+- If a <code class="docutils literal notranslate"><span class="pre">tuple[int,</span> <span class="pre">int]</span></code>: interpreted as (start_year, end_year), inclusive.
+- If an <code class="docutils literal notranslate"><span class="pre">int</span></code>: treated as the pause start year, with the end year taken</p>
+<blockquote>
+<div><p>as the maximum year present in the DataFrame.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>If a <code class="docutils literal notranslate"><span class="pre">YearRange</span></code>: used directly.</p></li>
+</ul>
+<p>The pause length is determined as the number of years in <code class="docutils literal notranslate"><span class="pre">period</span></code>.</p>
+</dd>
+<dt>conditions<span class="classifier">list[str] or None, default None</span></dt><dd><p>Column names representing the building condition rates to pause.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to:
+<code class="docutils literal notranslate"><span class="pre">['small_measure',</span> <span class="pre">'renovation',</span> <span class="pre">'demolition']</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h2>Returns<a class="headerlink" href="#id41" title="Link to this heading"></a></h2>
+<dl>
+<dt>pandas.DataFrame</dt><dd><p>A DataFrame where:
+- Values in the selected condition columns have been shifted forward</p>
+<blockquote>
+<div><p>according to the pause period.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Accumulator columns have been updated to reflect the new running totals.</p></li>
+</ul>
+<p>The presence and structure of the columns match the output of
+<code class="docutils literal notranslate"><span class="pre">accumulate_building_condition_rates</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="id42">
+<h2>Notes<a class="headerlink" href="#id42" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This function does not mutate the input DataFrame; it returns a new one.</p></li>
+<li><p>All shifting is done within each group of the first two index levels.</p></li>
+<li><p>Years are expected to be integers.</p></li>
+<li><p>See <code class="docutils literal notranslate"><span class="pre">shift_building_condition_rates</span></code> and
+<code class="docutils literal notranslate"><span class="pre">accumulate_building_condition_rates</span></code> for detailed behavior of the
+underlying operations.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>Pause condition rates starting from 2028 and recompute accumulations:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">pause_building_condition_rates</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">2028</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pause explicitly from 2026 through 2029:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">pause_building_condition_rates</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">YearRange</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">2029</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Pause only renovation rates:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">pause_building_condition_rates</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2027</span><span class="p">),</span> <span class="n">conditions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;renovation&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.shift_building_condition_rates">
+<span class="sig-name descname"><span class="pre">shift_building_condition_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curve_building_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#shift_building_condition_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.shift_building_condition_rates" title="Link to this definition"></a></dt>
+<dd><p>Shift building condition rates over a given period forward in time.</p>
+<p>This function takes a copy of the input DataFrame and, for the specified building conditions,
+shifts values occurring from <cite>period.start</cite> onwards by the length of the period
+(i.e., the number of years in <cite>period</cite>). The shift is done within each group
+defined by the first two levels of the index. Newly created gaps are filled with 0.</p>
+<p>The intended use is to simulate a pause (deferral) in certain building-related
+condition rates (e.g., small measures, renovation, demolition) for a span of years,
+and resume them after the pause by moving the corresponding values forward.</p>
+<section id="id43">
+<h2>Parameters<a class="headerlink" href="#id43" title="Link to this heading"></a></h2>
+<dl>
+<dt>s_curve_building_code<span class="classifier">pandas.DataFrame</span></dt><dd><p>A DataFrame indexed by a MultiIndex with <strong>at least three levels</strong> where the
+third level (index level number 2) is an integer year. The DataFrame must contain
+columns whose names match those provided in <cite>conditions</cite>. The function
+operates on a copy of this DataFrame and does not mutate the original.</p>
+</dd>
+<dt>period<span class="classifier">YearRange | tuple[int, int] | int</span></dt><dd><p>The pause period:
+- If a <cite>tuple[int, int]</cite>, it is interpreted as <cite>(start_year, end_year)</cite> inclusive.</p>
+<blockquote>
+<div><p>The start will be clamped up to the minimum year present in the DataFrame.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>If an <cite>int</cite>, it is treated as the start year; the end year is set to the
+maximum year present in the DataFrame. The start will be clamped up to
+the minimum year present in the DataFrame.</p></li>
+</ul>
+</dd>
+<dt>conditions<span class="classifier">list[str] | None, default None</span></dt><dd><p>Column names representing the building condition rates to pause. If <cite>None</cite>, defaults to
+<cite>[‘small_measure’, ‘renovation’, ‘demolition’]</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="id44">
+<h2>Returns<a class="headerlink" href="#id44" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>A new DataFrame (copy of the input) where, for rows with year &gt;= <cite>period.start</cite>
+and columns listed in <cite>conditions</cite>, values are shifted <strong>forward</strong> by the pause length
+within each group of the first two index levels. Any values shifted beyond the
+available years are dropped by the shift operation, and any newly introduced
+gaps in the target slice are filled with 0.</p>
+</dd>
+</dl>
+</section>
+<section id="raises">
+<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If <cite>period</cite> is not a <cite>YearRange</cite>, an <cite>int</cite>, or a valid <cite>(start_year, end_year)</cite> tuple
+where <cite>start_year &lt;= end_year</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="id45">
+<h2>Notes<a class="headerlink" href="#id45" title="Link to this heading"></a></h2>
+<ul>
+<li><p>The function assumes:
+* The DataFrame index has a third level (at position 2) representing the year.
+* Years are integers and sortable.
+* The columns listed in <cite>conditions</cite> exist in the DataFrame.</p></li>
+<li><p>The operation:
+1. Determines the effective <cite>YearRange</cite> for the pause, clamping the start</p>
+<blockquote>
+<div><p>to the minimum year in the data if needed.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Computes <cite>pause_length = len(period)</cite>.</p></li>
+<li><p>For <cite>year &gt;= period.start</cite>, shifts the <cite>conditions</cite> columns by <cite>pause_length</cite>
+<strong>within each group of the first two index levels</strong>.</p></li>
+<li><p>Fills <cite>NaN</cite> introduced by the shift with 0 in the affected slice.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="id46">
+<h2>Examples<a class="headerlink" href="#id46" title="Link to this heading"></a></h2>
+<p>Suppose <cite>df</cite> has a MultiIndex <cite>(region, building_code, year)</cite> and includes
+columns <cite>‘small_measure’</cite>, <cite>‘renovation’</cite>, and <cite>‘demolition’</cite>.</p>
+<p>Pause from 2028 through the max available year:
+&gt;&gt;&gt; out = shift_building_condition_rates(df, period=2028)</p>
+<p>Pause explicitly from 2026 to 2029 (inclusive):
+&gt;&gt;&gt; out = shift_building_condition_rates(df, period=(2026, 2029))</p>
+<p>Using a custom set of conditions:
+&gt;&gt;&gt; out = shift_building_condition_rates(df, period=(2025, 2027),
+…                                      conditions=[‘renovation’])</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.accumulate_building_condition_rates">
+<span class="sig-name descname"><span class="pre">accumulate_building_condition_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">building_condition_rates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#accumulate_building_condition_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.accumulate_building_condition_rates" title="Link to this definition"></a></dt>
+<dd><p>Accumulate annual building condition rates into running totals per building category and code.</p>
+<p>This function takes a DataFrame indexed by a MultiIndex with at least three levels,
+where the third level (index level 2) represents the year. For three predefined
+condition columns—<code class="docutils literal notranslate"><span class="pre">small_measure</span></code>, <code class="docutils literal notranslate"><span class="pre">renovation</span></code>, and <code class="docutils literal notranslate"><span class="pre">demolition</span></code>—it computes
+cumulative sums across years within each group of the first two index levels.</p>
+<p>The accumulation uses temporary columns:
+- For the first year (hard‑coded as 2020), values are taken from the corresponding</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">*_acc</span></code> accumulator columns (defaulting to 0 where missing).</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>For all later years (from 2021 onward), values are taken from the annual
+condition rate columns.</p></li>
+</ul>
+<p>These temporary values are cumulatively summed per group, and the resulting
+running totals populate the <code class="docutils literal notranslate"><span class="pre">*_acc</span></code> columns.</p>
+<section id="id47">
+<h2>Parameters<a class="headerlink" href="#id47" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>building_condition_rates<span class="classifier">pandas.DataFrame</span></dt><dd><p>Input DataFrame with a MultiIndex where index level 2 is an integer year.
+Must contain the columns:
+<code class="docutils literal notranslate"><span class="pre">'small_measure'</span></code>, <code class="docutils literal notranslate"><span class="pre">'renovation'</span></code>, <code class="docutils literal notranslate"><span class="pre">'demolition'</span></code>,
+and their accumulator counterparts:
+<code class="docutils literal notranslate"><span class="pre">'small_measure_acc'</span></code>, <code class="docutils literal notranslate"><span class="pre">'renovation_acc'</span></code>, <code class="docutils literal notranslate"><span class="pre">'demolition_acc'</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="id48">
+<h2>Returns<a class="headerlink" href="#id48" title="Link to this heading"></a></h2>
+<dl>
+<dt>pandas.DataFrame</dt><dd><p>A DataFrame containing only the six columns:
+<a href="#id49"><span class="problematic" id="id50">``</span></a>[‘small_measure’, ‘renovation’, ‘demolition’,</p>
+<blockquote>
+<div><p>‘small_measure_acc’, ‘renovation_acc’, ‘demolition_acc’]``.</p>
+</div></blockquote>
+<p>The accumulator columns contain cumulative sums over years within each
+group of index levels 0 and 1.</p>
+</dd>
+</dl>
+</section>
+<section id="id51">
+<h2>Notes<a class="headerlink" href="#id51" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The function does <strong>not</strong> modify the input DataFrame; it works on a copy.</p></li>
+<li><p>The first year is assumed to be <strong>2020</strong>.</p></li>
+<li><p>Accumulators for 2020 come from the existing <code class="docutils literal notranslate"><span class="pre">*_acc</span></code> columns.</p></li>
+<li><p>From 2021 onward, annual values from the condition columns are used for accumulation.</p></li>
+</ul>
+</section>
+<section id="id52">
+<h2>Examples<a class="headerlink" href="#id52" title="Link to this heading"></a></h2>
+<p>Given a MultiIndex of (region, building_code, year):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">accumulate_building_condition_rates</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">Index([&#39;small_measure&#39;, &#39;renovation&#39;, &#39;demolition&#39;,</span>
+<span class="go">       &#39;small_measure_acc&#39;, &#39;renovation_acc&#39;, &#39;demolition_acc&#39;], dtype=&#39;object&#39;)</span>
+</pre></div>
+</div>
+<p>The returned accumulator columns represent cumulative totals per
+(region, building_code) across increasing years.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.freeze_scurves_from_year">
+<span class="sig-name descname"><span class="pre">freeze_scurves_from_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_curves</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="ebm.model.data_classes.html#ebm.model.data_classes.YearRange" title="ebm.model.data_classes.YearRange"><span class="pre">YearRange</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition_columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#freeze_scurves_from_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.freeze_scurves_from_year" title="Link to this definition"></a></dt>
+<dd><p>Freeze building condition rate columns over a specified year range and resume the original trajectory after the freeze with a forward time shift.</p>
+<p>This function operates on a MultiIndex DataFrame where the year is at index
+level 2. For the specified freeze period (inclusive), the values of the
+condition columns (as defined by <code class="docutils literal notranslate"><span class="pre">list(BuildingCondition)</span></code>) are set equal to
+their values at the first freeze year (<code class="docutils literal notranslate"><span class="pre">start</span></code>). For the years following
+the freeze period, the original (unfrozen) time series is continued but
+shifted forward by the length of the freeze, preserving the trajectory shape
+while delaying it in time.</p>
+<section id="id53">
+<h2>Parameters<a class="headerlink" href="#id53" title="Link to this heading"></a></h2>
+<p>condition_columns :
+s_curves : pandas.DataFrame</p>
+<blockquote>
+<div><p>Input DataFrame with a MultiIndex row index. The <strong>year must be at level 2</strong>
+of the index. The DataFrame must contain one column for each member of
+<code class="docutils literal notranslate"><span class="pre">BuildingCondition</span></code> (e.g., an Enum listing condition rate columns).</p>
+</div></blockquote>
+<dl class="simple">
+<dt>years<span class="classifier">int or YearRange or tuple of (int, int)</span></dt><dd><p>Specification of the freeze period.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">YearRange</span></code>: uses <code class="docutils literal notranslate"><span class="pre">[years.start,</span> <span class="pre">years.end]</span></code> (inclusive).
+<code class="docutils literal notranslate"><span class="pre">start</span></code> is clamped to the minimum year present in the DataFrame.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">int</span></code>: interpreted as <code class="docutils literal notranslate"><span class="pre">start=years</span></code> (clamped to the minimum year)
+and <code class="docutils literal notranslate"><span class="pre">end</span> <span class="pre">=</span> <span class="pre">max_year</span></code> present in the DataFrame.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">end)</span></code> tuple: uses the inclusive range after validating
+that <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">&lt;=</span> <span class="pre">end</span></code> and clamping <code class="docutils literal notranslate"><span class="pre">start</span></code> to the minimum year.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="id54">
+<h2>Returns<a class="headerlink" href="#id54" title="Link to this heading"></a></h2>
+<dl>
+<dt>pandas.DataFrame</dt><dd><p>A copy of <code class="docutils literal notranslate"><span class="pre">s_curves</span></code> where:
+- For all index keys, the condition columns in <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end]</span></code> are set to</p>
+<blockquote>
+<div><p>their values at <code class="docutils literal notranslate"><span class="pre">year</span> <span class="pre">==</span> <span class="pre">start</span></code> (i.e., frozen).</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>For years <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">end</span></code>, the original (unfrozen) values are applied but shifted
+forward by <code class="docutils literal notranslate"><span class="pre">(end</span> <span class="pre">-</span> <span class="pre">start)</span></code> years to avoid a discontinuity.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="id55">
+<h2>Raises<a class="headerlink" href="#id55" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">years</span></code> is not a supported type (<code class="docutils literal notranslate"><span class="pre">YearRange</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, or 2-tuple of
+<code class="docutils literal notranslate"><span class="pre">int</span></code> with <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">&lt;=</span> <span class="pre">end</span></code>).</p>
+</dd>
+</dl>
+</section>
+<section id="id56">
+<h2>Notes<a class="headerlink" href="#id56" title="Link to this heading"></a></h2>
+<ul>
+<li><p>The function assumes the year is at index level 2 and uses
+<code class="docutils literal notranslate"><span class="pre">pd.IndexSlice[:,</span> <span class="pre">:,</span> <span class="pre">...]</span></code> to select by year range.</p></li>
+<li><p>Only columns listed in <code class="docutils literal notranslate"><span class="pre">list(BuildingCondition)</span></code> are modified; other
+columns remain unchanged.</p></li>
+<li><p>The freezing is inclusive of both <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> years.</p></li>
+<li><p>Post-freeze continuation uses:</p>
+<p><code class="docutils literal notranslate"><span class="pre">post_freeze_rates.shift(end</span> <span class="pre">-</span> <span class="pre">start).iloc[1:]</span></code></p>
+<p>to align the shifted series; this implicitly drops the first shifted row to
+guard against misalignment. If you require stricter alignment guarantees,
+consider reindexing by explicit year keys instead of relying on
+<code class="docutils literal notranslate"><span class="pre">.iloc[1:]</span></code>.</p>
+</li>
+</ul>
+</section>
+<section id="id57">
+<h2>Examples<a class="headerlink" href="#id57" title="Link to this heading"></a></h2>
+<p>Freeze from a specific year to the end of the dataset:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_frozen</span> <span class="o">=</span> <span class="n">freeze_scurves_from_year</span><span class="p">(</span><span class="n">s_curves</span><span class="p">,</span> <span class="mi">2022</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Freeze across an explicit range:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_frozen</span> <span class="o">=</span> <span class="n">freeze_scurves_from_year</span><span class="p">(</span><span class="n">s_curves</span><span class="p">,</span> <span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">2023</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Freeze using a YearRange object:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_frozen</span> <span class="o">=</span> <span class="n">freeze_scurves_from_year</span><span class="p">(</span><span class="n">s_curves</span><span class="p">,</span> <span class="n">rng</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebm.areaforecast.s_curve.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ebm/areaforecast/s_curve.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ebm.areaforecast.s_curve.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebm.areaforecast.html" class="btn btn-neutral float-left" title="ebm.areaforecast package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebm.cmd.html" class="btn btn-neutral float-right" title="ebm.cmd package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

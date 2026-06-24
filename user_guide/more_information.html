@@ -50,6 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -508,9 +509,11 @@ ebm<span class="w"> </span>heating-systems<span class="w"> </span>output/heating
 </section>
 <section id="holiday-homes-energy-consumption">
 <h3>7. Holiday homes energy consumption<a class="headerlink" href="#holiday-homes-energy-consumption" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the default command, where the output file is energy-use-vertical.xlsx located</span>
-<span class="c1"># in the output directory</span>
-ebm<span class="w"> </span>energy-use<span class="w"> </span>output/energy-use-vertical.xlsx
+<p>For the <code class="docutils literal notranslate"><span class="pre">energy-use</span></code> step the output argument is treated as a <strong>directory</strong>.
+Multiple report files (<code class="docutils literal notranslate"><span class="pre">area.xlsx</span></code>, <code class="docutils literal notranslate"><span class="pre">energy_use.xlsx</span></code>, etc.) will be written there.
+If the directory does not exist it will be created automatically.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The default command writes several report files to the output directory</span>
+ebm<span class="w"> </span>energy-use<span class="w"> </span>output
 </pre></div>
 </div>
 <table class="docutils align-default" id="id7">
@@ -553,11 +556,11 @@ ebm<span class="w"> </span>energy-use<span class="w"> </span>output/energy-use-v
 <h3>8. Example case<a class="headerlink" href="#example-case" title="Link to this heading"></a></h3>
 <p>If the user wants to run the program with input files located in another directory, for instance the “calibration” directory, the user can use the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will run the program with input files located in the &quot;calibration&quot; directory</span>
-ebm<span class="w"> </span>--input<span class="w"> </span>calibration<span class="w"> </span>energy-use<span class="w"> </span>output/energy-use.xlsx
+ebm<span class="w"> </span>--input<span class="w"> </span>calibration<span class="w"> </span>energy-use<span class="w"> </span>output
 </pre></div>
 </div>
-<p>Last Updated on 2026-04-10.</p>
-<p>Version: 1.0.9.</p>
+<p>Last Updated on 2026-06-24.</p>
+<p>Version: 1.0.10.</p>
 </section>
 </section>
 </section>
@@ -570,7 +573,7 @@ ebm<span class="w"> </span>--input<span class="w"> </span>calibration<span class
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -173,7 +174,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.model.calibrate_heating_systems.html#ebm.model.calibrate_heating_systems.load_heating_systems">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">load_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">heating_systems</span> <span class="o">=</span> <span class="n">calculate_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="o">=</span><span class="n">energy_requirements</span><span class="p">,</span>
-                                                <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">)</span>
+                                                <span class="n">database_manager</span><span class="o">=</span><span class="n">database_manager</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">heating_systems</span></div>
 
@@ -327,7 +328,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -134,7 +135,7 @@
 <div class="viewcode-block" id="extract_energy_need">
 <a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.extract_energy_need">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_energy_need</span><span class="p">(</span><span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">energy_need</span> <span class="o">=</span> <span class="n">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="o">=</span><span class="n">dm</span><span class="p">)</span>
+    <span class="n">energy_need</span> <span class="o">=</span> <span class="n">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="o">=</span><span class="n">dm</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
 
     <span class="n">energy_need</span> <span class="o">=</span> <span class="n">energy_need</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
 
@@ -145,7 +146,7 @@
 <div class="viewcode-block" id="extract_heating_systems_forecast">
 <a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.extract_heating_systems_forecast">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_heating_systems_forecast</span><span class="p">(</span><span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">forecast_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
+    <span class="n">forecast_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="n">years</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
     <span class="n">hsp</span> <span class="o">=</span> <span class="n">HeatingSystemsForecast</span><span class="o">.</span><span class="n">new_instance</span><span class="p">(</span><span class="n">forecast_period</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">calculate_forecast</span><span class="p">()</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">hsp</span><span class="o">.</span><span class="n">pad_projection</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2022</span><span class="p">))</span>
@@ -157,8 +158,14 @@
 
 <div class="viewcode-block" id="extract_energy_use_holiday_homes">
 <a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.extract_energy_use_holiday_homes">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_energy_use_holiday_homes</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">transform_holiday_homes_to_horizontal</span><span class="p">(</span><span class="n">calculate_energy_use</span><span class="p">(</span><span class="n">database_manager</span><span class="p">))</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_energy_use_holiday_homes</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">years</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Using default years </span><span class="si">{years}</span><span class="s1"> for energy_use_holiday_homes&#39;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+        <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Using years=</span><span class="si">{years}</span><span class="s1"> for energy_use_holiday_homes&#39;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">transform_holiday_homes_to_horizontal</span><span class="p">(</span><span class="n">calculate_energy_use</span><span class="p">(</span><span class="n">database_manager</span><span class="p">),</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="s1">&#39;building_group&#39;</span><span class="p">})</span>
     <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">energy_source</span><span class="o">==</span><span class="s1">&#39;Elektrisitet&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Electricity&#39;</span>
     <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">energy_source</span><span class="o">==</span><span class="s1">&#39;fossil&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Fossil&#39;</span>
@@ -205,7 +212,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

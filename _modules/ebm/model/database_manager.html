@@ -49,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../results.html">Result files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/user_case.html">User case</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../input_description.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Dataset description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/geographical_distribution.html">Geographical distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/configuration.html">Model configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/troubleshooting.html">Troubleshooting</a></li>
@@ -283,6 +284,31 @@
         <span class="k">return</span> <span class="n">new_buildings_population</span></div>
 
 
+
+<div class="viewcode-block" id="DatabaseManager.get_population_forecast_end_year">
+<a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_population_forecast_end_year">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_population_forecast_end_year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the maximum year from the population forecast data</span>
+
+<span class="sd">        This method extracts the highest value from the &#39;year&#39; level</span>
+<span class="sd">        of the MultiIndex in the construction population dataset.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            The maximum year available in the population forecast data.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the population forecast index does not contain a &#39;year&#39; level.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">construction_population</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_construction_population</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">construction_population</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></div>
+
+
+
 <div class="viewcode-block" id="DatabaseManager.get_new_buildings_category_share">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_new_buildings_category_share">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_new_buildings_category_share</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -392,7 +418,7 @@
 
 <div class="viewcode-block" id="DatabaseManager.get_energy_req_original_condition">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_energy_req_original_condition">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_req_original_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_req_original_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year_range</span><span class="p">:</span> <span class="n">YearRange</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get dataframe with energy requirement (kWh/m^2) for floor area in original condition. The result will be</span>
 <span class="sd">            calibrated using the dataframe from DatabaseManger.get_calibrate_heating_rv</span>
@@ -403,8 +429,10 @@
 <span class="sd">            Dataframe containing energy requirement (kWh/m^2) for floor area in original condition,</span>
 <span class="sd">            per building category and purpose.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Using default year 2020 -&gt; 2050&#39;</span><span class="p">)</span>
-        <span class="n">building_purpose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_building_purpose</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">))</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Using default year 2020 -&gt; 2050 (not critical)&#39;</span><span class="p">)</span>
+        <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span> <span class="k">if</span> <span class="n">year_range</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">year_range</span>
+
+        <span class="n">building_purpose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_building_purpose</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
             <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
         <span class="n">building_purpose</span> <span class="o">=</span> <span class="n">building_purpose</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_condition&#39;</span><span class="p">])</span>
@@ -609,7 +637,6 @@
 </div>
 
 
-
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">db</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">()</span>
     <span class="n">building_category</span> <span class="o">=</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOUSE</span>
@@ -625,7 +652,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, The Norwegian Water Resources and Energy Directorate (NVE).</p>
+    <p>&#169; Copyright 2026, The Norwegian Water Resources and Energy Directorate (NVE).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
