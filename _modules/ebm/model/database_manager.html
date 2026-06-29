@@ -147,7 +147,10 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">file_handler</span> <span class="k">if</span> <span class="n">file_handler</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">FileHandler</span><span class="p">()</span></div>
 
-    
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;self.file_handler=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="si">}</span><span class="s1">&#39;</span>
+
 <div class="viewcode-block" id="DatabaseManager.get_building_code_list">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_building_code_list">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_building_code_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
