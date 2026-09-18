@@ -122,23 +122,23 @@
 <div class="viewcode-block" id="DatabaseManager">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DatabaseManager</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Manages database operations.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="c1"># Column names</span>
-    <span class="n">COL_TEK</span> <span class="o">=</span> <span class="s1">&#39;building_code&#39;</span>
-    <span class="n">COL_TEK_BUILDING_YEAR</span> <span class="o">=</span> <span class="s1">&#39;building_year&#39;</span>
-    <span class="n">COL_TEK_START_YEAR</span> <span class="o">=</span> <span class="s1">&#39;period_start_year&#39;</span>
-    <span class="n">COL_TEK_END_YEAR</span> <span class="o">=</span> <span class="s1">&#39;period_end_year&#39;</span>
-    <span class="n">COL_BUILDING_CATEGORY</span> <span class="o">=</span> <span class="s1">&#39;building_category&#39;</span>
-    <span class="n">COL_BUILDING_CONDITION</span> <span class="o">=</span> <span class="s1">&#39;building_condition&#39;</span>
-    <span class="n">COL_AREA</span> <span class="o">=</span> <span class="s1">&#39;area&#39;</span>
-    <span class="n">COL_ENERGY_REQUIREMENT_PURPOSE</span> <span class="o">=</span> <span class="s1">&#39;purpose&#39;</span>
-    <span class="n">COL_ENERGY_REQUIREMENT_VALUE</span> <span class="o">=</span> <span class="s1">&#39;kwh_m2&#39;</span>
-    <span class="n">COL_HEATING_REDUCTION</span> <span class="o">=</span> <span class="s1">&#39;reduction_share&#39;</span>
+    <span class="n">COL_TEK</span> <span class="o">=</span> <span class="s1">'building_code'</span>
+    <span class="n">COL_TEK_BUILDING_YEAR</span> <span class="o">=</span> <span class="s1">'building_year'</span>
+    <span class="n">COL_TEK_START_YEAR</span> <span class="o">=</span> <span class="s1">'period_start_year'</span>
+    <span class="n">COL_TEK_END_YEAR</span> <span class="o">=</span> <span class="s1">'period_end_year'</span>
+    <span class="n">COL_BUILDING_CATEGORY</span> <span class="o">=</span> <span class="s1">'building_category'</span>
+    <span class="n">COL_BUILDING_CONDITION</span> <span class="o">=</span> <span class="s1">'building_condition'</span>
+    <span class="n">COL_AREA</span> <span class="o">=</span> <span class="s1">'area'</span>
+    <span class="n">COL_ENERGY_REQUIREMENT_PURPOSE</span> <span class="o">=</span> <span class="s1">'purpose'</span>
+    <span class="n">COL_ENERGY_REQUIREMENT_VALUE</span> <span class="o">=</span> <span class="s1">'kwh_m2'</span>
+    <span class="n">COL_HEATING_REDUCTION</span> <span class="o">=</span> <span class="s1">'reduction_share'</span>
 
-    <span class="n">DEFAULT_VALUE</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
+    <span class="n">DEFAULT_VALUE</span> <span class="o">=</span> <span class="s1">'default'</span>
 
 <div class="viewcode-block" id="DatabaseManager.__init__">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.__init__">[docs]</a>
@@ -149,17 +149,17 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;self.file_handler=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'self.file_handler=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="si">}</span><span class="s1">'</span>
 
 <div class="viewcode-block" id="DatabaseManager.get_building_code_list">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_building_code_list">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_building_code_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get a list of building_code.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - building_code_list (list): List of building_code.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">building_code_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_code</span><span class="p">()</span>
         <span class="n">building_code_list</span> <span class="o">=</span> <span class="n">building_code_id</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">COL_TEK</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">building_code_list</span></div>
@@ -168,7 +168,7 @@
 <div class="viewcode-block" id="DatabaseManager.make_building_purpose">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.make_building_purpose">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">make_building_purpose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns a dataframe of all combinations building_categories, teks, original_condition, purposes</span>
 <span class="sd">        and optionally years.</span>
 
@@ -179,16 +179,16 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pd.DataFrame</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_building_code_list</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">EnergyPurpose</span><span class="p">]</span>
-        <span class="n">column_headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">]</span>
+        <span class="n">column_headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'building_condition'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">years</span><span class="p">:</span>
             <span class="n">columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
-            <span class="n">column_headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+            <span class="n">column_headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">bc</span><span class="p">,</span> <span class="n">tek</span><span class="p">,</span> <span class="n">purpose</span><span class="p">,</span> <span class="o">*</span><span class="n">year</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">columns</span><span class="p">):</span>
-            <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span><span class="p">,</span> <span class="n">tek</span><span class="p">,</span> <span class="s1">&#39;original_condition&#39;</span><span class="p">,</span> <span class="n">purpose</span><span class="p">]</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span><span class="p">,</span> <span class="n">tek</span><span class="p">,</span> <span class="s1">'original_condition'</span><span class="p">,</span> <span class="n">purpose</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">years</span><span class="p">:</span>
                 <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">year</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
@@ -199,14 +199,14 @@
 <div class="viewcode-block" id="DatabaseManager.get_building_codes">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_building_codes">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_building_codes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieve building_code_parameters</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Pandas Dataframe containing building_code with parameters</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">building_code_params_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_code</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">building_code_params_df</span></div>
 
@@ -215,7 +215,7 @@
 <div class="viewcode-block" id="DatabaseManager.get_building_code_params">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_building_code_params">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_building_code_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">building_code_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieve building_codeparameters for a list of building_code.</span>
 
 <span class="sd">        This method fetches building_codeparameters for each building_codeID in the provided list,</span>
@@ -230,7 +230,7 @@
 <span class="sd">        - building_code_params (dict): Dictionary where each key is a building_codeID and each value</span>
 <span class="sd">                            is a TEKParameters dataclass instance containing the </span>
 <span class="sd">                            parameters for that building_codeID.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">building_code_params</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">building_code_params_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_code</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">building_code_list</span><span class="p">:</span>
@@ -261,12 +261,12 @@
 <div class="viewcode-block" id="DatabaseManager.get_scurve_params">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_scurve_params">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_scurve_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get input dataframe with S-curve parameters/assumptions.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - scurve_params (pd.DataFrame): DataFrame with S-curve parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">scurve_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_s_curve</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">scurve_params</span></div>
 
@@ -274,16 +274,16 @@
 <div class="viewcode-block" id="DatabaseManager.get_construction_population">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_construction_population">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_construction_population</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get construction population DataFrame.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
 <span class="sd">          year population household_size</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">new_buildings_population</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_construction_population</span><span class="p">()</span>
-        <span class="n">new_buildings_population</span><span class="p">[</span><span class="s2">&quot;household_size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_buildings_population</span><span class="p">[</span><span class="s1">&#39;household_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
-        <span class="n">new_buildings_population</span> <span class="o">=</span> <span class="n">new_buildings_population</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+        <span class="n">new_buildings_population</span><span class="p">[</span><span class="s2">"household_size"</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_buildings_population</span><span class="p">[</span><span class="s1">'household_size'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float64'</span><span class="p">)</span>
+        <span class="n">new_buildings_population</span> <span class="o">=</span> <span class="n">new_buildings_population</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_buildings_population</span></div>
 
 
@@ -291,9 +291,9 @@
 <div class="viewcode-block" id="DatabaseManager.get_population_forecast_end_year">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_population_forecast_end_year">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_population_forecast_end_year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the maximum year from the population forecast data</span>
+<span class="w">        </span><span class="sd">"""Retrieve the maximum year from the population forecast data</span>
 
-<span class="sd">        This method extracts the highest value from the &#39;year&#39; level</span>
+<span class="sd">        This method extracts the highest value from the 'year' level</span>
 <span class="sd">        of the MultiIndex in the construction population dataset.</span>
 
 <span class="sd">        Returns</span>
@@ -304,18 +304,18 @@
 <span class="sd">        Raises</span>
 <span class="sd">        ------</span>
 <span class="sd">        ValueError</span>
-<span class="sd">            If the population forecast index does not contain a &#39;year&#39; level.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">            If the population forecast index does not contain a 'year' level.</span>
+<span class="sd">        """</span>
 
         <span class="n">construction_population</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_construction_population</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">construction_population</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="n">construction_population</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span></div>
 
 
 
 <div class="viewcode-block" id="DatabaseManager.get_new_buildings_category_share">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_new_buildings_category_share">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_new_buildings_category_share</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get building category share by year as a DataFrame.</span>
 
 <span class="sd">        The number can be used in conjunction with number of households to calculate total number</span>
@@ -323,24 +323,24 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - new_buildings_category_share (pd.DataFrame): Dataframe containing population numbers</span>
-<span class="sd">          &quot;year&quot;, &quot;Andel nye småhus&quot;, &quot;Andel nye leiligheter&quot;, &quot;Areal nye småhus&quot;, &quot;Areal nye leiligheter&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">          "year", "Andel nye småhus", "Andel nye leiligheter", "Areal nye småhus", "Areal nye leiligheter"</span>
+<span class="sd">        """</span>
         <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_construction_building_category_share</span><span class="p">()</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">df</span></div>
 
 
 <div class="viewcode-block" id="DatabaseManager.get_area_new_residential_buildings">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_area_new_residential_buildings">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_area_new_residential_buildings</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get population and household size DataFrame from a file.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
-<span class="sd">          &quot;area&quot;,&quot;type of building&quot;,&quot;2010&quot;,&quot;2011&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">          "area","type of building","2010","2011"</span>
+<span class="sd">        """</span>
         <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_category_area</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">df</span></div>
@@ -350,13 +350,13 @@
 <div class="viewcode-block" id="DatabaseManager.get_building_category_floor_area">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_building_category_floor_area">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_building_category_floor_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get population and household size DataFrame from a file.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - construction_population (pd.DataFrame): Dataframe containing population numbers</span>
-<span class="sd">          &quot;area&quot;,&quot;type of building&quot;,&quot;2010&quot;,&quot;2011&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">          "area","type of building","2010","2011"</span>
+<span class="sd">        """</span>
         <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_building_category_area</span><span class="p">()</span>
 
         <span class="n">building_category_floor_area</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">building_category</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -368,7 +368,7 @@
 <div class="viewcode-block" id="DatabaseManager.get_area_parameters">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_area_parameters">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_area_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get total area (m^2) per building category and TEK.</span>
 
 <span class="sd">        Parameters:</span>
@@ -377,7 +377,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">        - area_parameters (pd.DataFrame): Dataframe containing total area (m^2) per</span>
 <span class="sd">                                          building category and TEK.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">area_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_area_parameters</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">area_params</span></div>
 
@@ -385,7 +385,7 @@
 <div class="viewcode-block" id="DatabaseManager.get_area_start_year">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_area_start_year">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_area_start_year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="n">BuildingCategory</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieve total floor area in the model start year for each TEK within a building category.</span>
 
 <span class="sd">        Returns</span>
@@ -393,17 +393,17 @@
 <span class="sd">        dict</span>
 <span class="sd">            A dictionary where:</span>
 <span class="sd">            - keys are `BuildingCategory` objects derived from the building category string.</span>
-<span class="sd">            - values are `pandas.Series` with the &#39;tek&#39; column as the index and the corresponding</span>
-<span class="sd">              &#39;area&#39; column as the values.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">            - values are `pandas.Series` with the 'tek' column as the index and the corresponding</span>
+<span class="sd">              'area' column as the values.</span>
+<span class="sd">        """</span>
         <span class="n">area_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_area_parameters</span><span class="p">()</span>
         
         <span class="n">area_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">building_category</span> <span class="ow">in</span> <span class="n">area_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">COL_BUILDING_CATEGORY</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
             <span class="n">area_building_category</span> <span class="o">=</span> <span class="n">area_data</span><span class="p">[</span><span class="n">area_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">COL_BUILDING_CATEGORY</span><span class="p">]</span> <span class="o">==</span> <span class="n">building_category</span><span class="p">]</span>
             <span class="n">area_series</span> <span class="o">=</span> <span class="n">area_building_category</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">COL_TEK</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">COL_AREA</span><span class="p">]</span>
-            <span class="n">area_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;tek&quot;</span>
-            <span class="n">area_series</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BuildingCategory</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span><span class="si">}</span><span class="s2">_area&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">area_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"tek"</span>
+            <span class="n">area_series</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BuildingCategory</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span><span class="si">}</span><span class="s2">_area"</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             
             <span class="n">area_dict</span><span class="p">[</span><span class="n">BuildingCategory</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">building_category</span><span class="p">)]</span> <span class="o">=</span> <span class="n">area_series</span>
 
@@ -422,7 +422,7 @@
 <div class="viewcode-block" id="DatabaseManager.get_energy_req_original_condition">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_energy_req_original_condition">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_req_original_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year_range</span><span class="p">:</span> <span class="n">YearRange</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get dataframe with energy requirement (kWh/m^2) for floor area in original condition. The result will be</span>
 <span class="sd">            calibrated using the dataframe from DatabaseManger.get_calibrate_heating_rv</span>
 
@@ -431,34 +431,34 @@
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Dataframe containing energy requirement (kWh/m^2) for floor area in original condition,</span>
 <span class="sd">            per building category and purpose.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Using default year 2020 -&gt; 2050 (not critical)&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Using default year 2020 -&gt; 2050 (not critical)'</span><span class="p">)</span>
         <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span> <span class="k">if</span> <span class="n">year_range</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">year_range</span>
 
         <span class="n">building_purpose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_building_purpose</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">],</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
-        <span class="n">building_purpose</span> <span class="o">=</span> <span class="n">building_purpose</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_condition&#39;</span><span class="p">])</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_energy_req_original_condition</span><span class="p">()[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">]]</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explode_unique_columns</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">building_code</span><span class="o">==</span><span class="s1">&#39;TEK21&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Detected TEK21 in </span><span class="si">{filename}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">ENERGY_NEED_ORIGINAL_CONDITION</span><span class="p">)</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+        <span class="n">building_purpose</span> <span class="o">=</span> <span class="n">building_purpose</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'building_condition'</span><span class="p">])</span>
+        <span class="n">ff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_energy_req_original_condition</span><span class="p">()[[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'kwh_m2'</span><span class="p">]]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">explode_unique_columns</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">building_code</span><span class="o">==</span><span class="s1">'TEK21'</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'Detected TEK21 in </span><span class="si">{filename}</span><span class="s1">'</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">ENERGY_NEED_ORIGINAL_CONDITION</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
-        <span class="n">df</span> <span class="o">=</span> <span class="n">building_purpose</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">building_purpose</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
 
-        <span class="n">behaviour_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_behaviour_factor</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+        <span class="n">behaviour_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_behaviour_factor</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">])</span>
 
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">behaviour_factor</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">behaviour_factor</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
 
-        <span class="n">heating_rv_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_calibrate_heating_rv</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">heating_rv_factor</span>
+        <span class="n">heating_rv_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_calibrate_heating_rv</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">])</span><span class="o">.</span><span class="n">heating_rv_factor</span>
 
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;heating_rv_factor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heating_rv_factor</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;heating_rv_factor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;heating_rv_factor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;uncalibrated_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;calibrated_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">heating_rv_factor</span> <span class="o">*</span> <span class="n">df</span><span class="o">.</span><span class="n">kwh_m2</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">calibrated_kwh_m2</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="s1">&#39;calibrated_kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">calibrated_kwh_m2</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kwh_m2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;calibrated_kwh_m2&#39;</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'heating_rv_factor'</span><span class="p">]</span> <span class="o">=</span> <span class="n">heating_rv_factor</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'heating_rv_factor'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'heating_rv_factor'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'uncalibrated_kwh_m2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'kwh_m2'</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'calibrated_kwh_m2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">heating_rv_factor</span> <span class="o">*</span> <span class="n">df</span><span class="o">.</span><span class="n">kwh_m2</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">calibrated_kwh_m2</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="s1">'calibrated_kwh_m2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">calibrated_kwh_m2</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="s1">'kwh_m2'</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">'kwh_m2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'calibrated_kwh_m2'</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></div>
 
 
@@ -466,7 +466,7 @@
 <div class="viewcode-block" id="DatabaseManager.get_energy_req_reduction_per_condition">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_energy_req_reduction_per_condition">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_req_reduction_per_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get dataframe with shares for reducing the energy requirement of the different building conditions. This</span>
 <span class="sd">        function calls explode_unique_columns to expand building_category and TEK as necessary.</span>
 
@@ -475,19 +475,19 @@
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Dataframe containing energy requirement reduction shares for the different building conditions, </span>
 <span class="sd">            per building category, TEK and purpose.        </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">reduction_per_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_energy_req_reduction_per_condition</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">reduction_per_condition</span><span class="p">[</span><span class="n">reduction_per_condition</span><span class="o">.</span><span class="n">building_code</span><span class="o">==</span><span class="s1">&#39;TEK21&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Detected TEK21 in </span><span class="si">{filename}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">IMPROVEMENT_BUILDING_UPGRADE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">reduction_per_condition</span><span class="p">[</span><span class="n">reduction_per_condition</span><span class="o">.</span><span class="n">building_code</span><span class="o">==</span><span class="s1">'TEK21'</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'Detected TEK21 in </span><span class="si">{filename}</span><span class="s1">'</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">IMPROVEMENT_BUILDING_UPGRADE</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">explode_unique_columns</span><span class="p">(</span><span class="n">reduction_per_condition</span><span class="p">,</span>
-                                           <span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">])</span></div>
+                                           <span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'building_condition'</span><span class="p">])</span></div>
 
     
 <div class="viewcode-block" id="DatabaseManager.get_energy_need_yearly_improvements">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_energy_need_yearly_improvements">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_need_yearly_improvements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get dataframe with yearly efficiency rates for energy need improvements. This</span>
 <span class="sd">        function calls explode_unique_columns to expand building_category and TEK as necessary.</span>
 
@@ -499,7 +499,7 @@
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Dataframe containing yearly efficiency rates (%) for energy need improvements,</span>
 <span class="sd">            per building category, tek and purpose.        </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">yearly_improvements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_energy_need_yearly_improvements</span><span class="p">()</span>
         <span class="n">improvements</span> <span class="o">=</span> <span class="n">EnergyNeedYearlyImprovements</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">yearly_improvements</span><span class="p">)</span>
         <span class="n">eny</span> <span class="o">=</span> <span class="n">YearlyReduction</span><span class="o">.</span><span class="n">from_energy_need_yearly_improvements</span><span class="p">(</span><span class="n">improvements</span><span class="p">)</span>
@@ -509,7 +509,7 @@
 <div class="viewcode-block" id="DatabaseManager.get_energy_need_policy_improvement">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_energy_need_policy_improvement">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_energy_need_policy_improvement</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get dataframe with total energy need improvement in a period related to a policy. This</span>
 <span class="sd">        function calls explode_unique_columns to expand building_category and TEK as necessary.</span>
 
@@ -518,7 +518,7 @@
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Dataframe containing total energy need improvement (%) in a policy period,</span>
 <span class="sd">            per building category, tek and purpose.        </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">en_improvements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_energy_need_yearly_improvements</span><span class="p">()</span>
         <span class="n">improvements</span> <span class="o">=</span> <span class="n">EnergyNeedYearlyImprovements</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">en_improvements</span><span class="p">)</span>
         <span class="n">enp</span> <span class="o">=</span> <span class="n">PolicyImprovement</span><span class="o">.</span><span class="n">from_energy_need_yearly_improvements</span><span class="p">(</span><span class="n">improvements</span><span class="p">)</span>
@@ -528,43 +528,43 @@
 <div class="viewcode-block" id="DatabaseManager.get_holiday_home_fuelwood_consumption">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_holiday_home_fuelwood_consumption">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_holiday_home_fuelwood_consumption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_energy_consumption</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s2">&quot;fuelwood&quot;</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_energy_consumption</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)[</span><span class="s2">"fuelwood"</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">df</span></div>
 
     
 <div class="viewcode-block" id="DatabaseManager.get_holiday_home_fossilfuel_consumption">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_holiday_home_fossilfuel_consumption">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_holiday_home_fossilfuel_consumption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_energy_consumption</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s2">&quot;fossilfuel&quot;</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_energy_consumption</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)[</span><span class="s2">"fossilfuel"</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">df</span></div>
 
 
 <div class="viewcode-block" id="DatabaseManager.get_holiday_home_electricity_consumption">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_holiday_home_electricity_consumption">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_holiday_home_electricity_consumption</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_energy_consumption</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s2">&quot;electricity&quot;</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_energy_consumption</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)[</span><span class="s2">"electricity"</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">df</span></div>
 
 
 <div class="viewcode-block" id="DatabaseManager.get_holiday_home_by_year">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_holiday_home_by_year">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_holiday_home_by_year</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_by_year</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_holiday_home_by_year</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'year'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DatabaseManager.get_calibrate_heating_rv">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_calibrate_heating_rv">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_calibrate_heating_rv</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
         <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_calibrate_heating_rv</span><span class="p">()</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">expand_building_categories</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">unique_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;heating_rv_factor&#39;</span><span class="p">]]</span></div>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">expand_building_categories</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">unique_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'heating_rv_factor'</span><span class="p">]]</span></div>
 
 
 <div class="viewcode-block" id="DatabaseManager.get_calibrate_heating_systems">
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_calibrate_heating_systems">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_calibrate_heating_systems</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_calibrate_heating_systems</span><span class="p">()</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">expand_building_categories</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">unique_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;from&#39;</span><span class="p">])</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">expand_building_categories</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">unique_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="s1">'from'</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">df</span></div>
 
 
@@ -572,7 +572,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.model.database_manager.html#ebm.model.database_manager.DatabaseManager.get_area_per_person">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_area_per_person</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                             <span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return area_per_person as a pd.Series</span>
 
 <span class="sd">        Parameters</span>
@@ -583,9 +583,9 @@
 <span class="sd">        -------</span>
 <span class="sd">        pd.Series</span>
 <span class="sd">            float values indexed by building_category, (year)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">get_area_per_person</span><span class="p">()</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;building_category&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'building_category'</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">building_category</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">area_per_person</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">building_category</span><span class="p">]</span>
@@ -640,7 +640,7 @@
 </div>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">db</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">()</span>
     <span class="n">building_category</span> <span class="o">=</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOUSE</span>
 

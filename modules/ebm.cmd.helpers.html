@@ -148,8 +148,8 @@ unless overridden by the <cite>LOG_DIRECTORY</cite> environment variable.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">configure_json_log</span><span class="p">(</span><span class="s2">&quot;logs&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;LOG_DIRECTORY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TRUE&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">configure_json_log</span><span class="p">(</span><span class="s2">"logs"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"LOG_DIRECTORY"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"TRUE"</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">configure_json_log</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -216,12 +216,12 @@ to suppress DEBUG logs from the ‘ebm.model.file_handler’ logger.</p>
 <section id="id4">
 <h2>Examples<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>Open a file specified as a string:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_file</span><span class="p">(</span><span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">open_file</span><span class="p">(</span><span class="s2">"/path/to/file.txt"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Open a file using a <cite>pathlib.Path</cite> object:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">open_file</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">open_file</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"/path/to/file.txt"</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>

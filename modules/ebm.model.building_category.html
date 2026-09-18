@@ -309,14 +309,14 @@ Tokens may contain arbitrary casing; they are normalized to lowercase.</p>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">collapse_building_category</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;house+apartment_block&quot;</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collapse_building_category</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"house+apartment_block"</span><span class="p">]))</span>
 <span class="go">0    residential</span>
 <span class="go">dtype: object</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collapse_building_category</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;culture+hospital+hotel+kindergarten+nursing_home+office+retail&quot;</span>
-<span class="gp">... </span>     <span class="s2">&quot;+school+sports+storage_repairs+university&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">"culture+hospital+hotel+kindergarten+nursing_home+office+retail"</span>
+<span class="gp">... </span>     <span class="s2">"+school+sports+storage_repairs+university"</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">))</span>
 <span class="go">0    non_residential</span>
 <span class="go">dtype: object</span>

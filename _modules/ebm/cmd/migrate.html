@@ -115,7 +115,7 @@
 <div class="viewcode-block" id="migrate_directories">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.migrate.html#ebm.cmd.migrate.migrate_directories">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">migrate_directories</span><span class="p">(</span><span class="n">directories</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">|</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Migrates and validates a list of input directories.</span>
 
 <span class="sd">    Parameters</span>
@@ -126,7 +126,7 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">directories</span><span class="p">):</span>
         <span class="n">migrate_directory</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div>
@@ -136,7 +136,7 @@
 <div class="viewcode-block" id="migrate_directory">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.migrate.html#ebm.cmd.migrate.migrate_directory">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">migrate_directory</span><span class="p">(</span><span class="n">directory</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Migrates and validates a single input directory.</span>
 
 <span class="sd">    Applies the `translate_heating_system_efficiencies` migration and validates</span>
@@ -150,9 +150,9 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Open </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Open </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="n">migrate_input_directory</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">migration</span><span class="o">=</span><span class="n">translate_heating_system_efficiencies</span><span class="p">)</span>
     <span class="n">FileHandler</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">validate_input_files</span><span class="p">()</span></div>
 
@@ -161,7 +161,7 @@
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.migrate.html#ebm.cmd.migrate.main">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Main entry point for the migration script.</span>
 
 <span class="sd">    Loads environment variables, configures logging, creates missing input files,</span>
@@ -170,36 +170,36 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">load_environment_from_dotenv</span><span class="p">()</span>
-    <span class="n">configure_loglevel</span><span class="p">(</span><span class="n">log_format</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LOG_FORMAT&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="n">configure_loglevel</span><span class="p">(</span><span class="n">log_format</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'LOG_FORMAT'</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="vm">__file__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Starting </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="vm">__file__</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Migrate and validate EBM input directories.&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;directories&quot;</span><span class="p">,</span>
-                        <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List of input directories to migrate. If omitted, uses EBM_INPUT_DIRECTORY environment variable.&quot;</span><span class="p">)</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"Migrate and validate EBM input directories."</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">"directories"</span><span class="p">,</span>
+                        <span class="n">nargs</span><span class="o">=</span><span class="s2">"*"</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">"List of input directories to migrate. If omitted, uses EBM_INPUT_DIRECTORY environment variable."</span><span class="p">)</span>
 
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
-    <span class="n">directories</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">directories</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EBM_INPUT_DIRECTORY&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">directories</span> <span class="ow">or</span> <span class="n">directories</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No input directories provided via CLI or EBM_INPUT_DIRECTORY.&#39;</span><span class="p">)</span>
+    <span class="n">directories</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">directories</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'EBM_INPUT_DIRECTORY'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">directories</span> <span class="ow">or</span> <span class="n">directories</span> <span class="o">==</span> <span class="p">[</span><span class="s1">''</span><span class="p">]:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'No input directories provided via CLI or EBM_INPUT_DIRECTORY.'</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="c1">#new_fh = FileHandler(directory=&#39;t3192_input&#39;)</span>
+    <span class="c1">#new_fh = FileHandler(directory='t3192_input')</span>
     <span class="c1">#new_fh.create_missing_input_files()</span>
 
-    <span class="c1">#migration_directories = [&#39;../Energibruksmodell/tests/ebm/data/kalibrert&#39;, &#39;t3192_input&#39;, &#39;t2734_input&#39;,</span>
-    <span class="c1">#                         &#39;../Energibruksmodell/ebm/data&#39;]</span>
+    <span class="c1">#migration_directories = ['../Energibruksmodell/tests/ebm/data/kalibrert', 't3192_input', 't2734_input',</span>
+    <span class="c1">#                         '../Energibruksmodell/ebm/data']</span>
 
     <span class="n">migrate_directories</span><span class="p">(</span><span class="n">directories</span><span class="p">)</span></div>
 
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 

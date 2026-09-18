@@ -110,22 +110,22 @@
 <div class="viewcode-block" id="FilterTek">
 <a class="viewcode-back" href="../../../modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FilterTek</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Utility class for filtering TEK lists and parameters. </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">CATEGORY_APARTMENT</span> <span class="o">=</span> <span class="s1">&#39;apartment_block&#39;</span>
-    <span class="n">CATEGORY_HOUSE</span> <span class="o">=</span> <span class="s1">&#39;house&#39;</span>
-    <span class="n">COMMERCIAL_BUILDING</span> <span class="o">=</span> <span class="s1">&#39;COM&#39;</span>
-    <span class="n">RESIDENTIAL_BUILDING</span> <span class="o">=</span> <span class="s1">&#39;RES&#39;</span>
-    <span class="n">PRE_TEK49_APARTMENT</span> <span class="o">=</span> <span class="s1">&#39;PRE_TEK49_RES_1950&#39;</span>
-    <span class="n">PRE_TEK49_HOUSE</span> <span class="o">=</span> <span class="s1">&#39;PRE_TEK49_RES_1940&#39;</span>
+    <span class="n">CATEGORY_APARTMENT</span> <span class="o">=</span> <span class="s1">'apartment_block'</span>
+    <span class="n">CATEGORY_HOUSE</span> <span class="o">=</span> <span class="s1">'house'</span>
+    <span class="n">COMMERCIAL_BUILDING</span> <span class="o">=</span> <span class="s1">'COM'</span>
+    <span class="n">RESIDENTIAL_BUILDING</span> <span class="o">=</span> <span class="s1">'RES'</span>
+    <span class="n">PRE_TEK49_APARTMENT</span> <span class="o">=</span> <span class="s1">'PRE_TEK49_RES_1950'</span>
+    <span class="n">PRE_TEK49_HOUSE</span> <span class="o">=</span> <span class="s1">'PRE_TEK49_RES_1940'</span>
 
 <div class="viewcode-block" id="FilterTek.get_filtered_list">
 <a class="viewcode-back" href="../../../modules/ebm.model.filter_tek.html#ebm.model.filter_tek.FilterTek.get_filtered_list">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_filtered_list</span><span class="p">(</span><span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="p">,</span> <span class="n">building_code_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Filters the provided TEK list based on the building category.</span>
 
 <span class="sd">        Parameters:</span>
@@ -134,7 +134,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">        - filtered_building_code_list (List[str]): Filtered list of TEK strings.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">residential_building_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">FilterTek</span><span class="o">.</span><span class="n">CATEGORY_APARTMENT</span><span class="p">,</span> <span class="n">FilterTek</span><span class="o">.</span><span class="n">CATEGORY_HOUSE</span><span class="p">]</span>
         
         <span class="k">if</span> <span class="n">building_category</span> <span class="ow">in</span> <span class="n">residential_building_list</span><span class="p">:</span>
@@ -160,7 +160,7 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_filtered_params</span><span class="p">(</span><span class="n">building_code_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
                             <span class="n">building_code_params</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TEKParameters</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TEKParameters</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Filters the TEK parameters to include only those relevant to the provided TEK list.</span>
 
 <span class="sd">        This method takes a dictionary of TEK parameters and filters it to include only </span>
@@ -176,7 +176,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">        - filtered_building_code_params (Dict[str, TEKParameters]): A dictionary containing only the TEK parameters</span>
 <span class="sd">                                                        for the TEKs present in the `building_code_list`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">filtered_building_code_params</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">tek</span> <span class="ow">in</span> <span class="n">building_code_list</span><span class="p">:</span>
             <span class="n">filtered_building_code_params</span><span class="p">[</span><span class="n">tek</span><span class="p">]</span> <span class="o">=</span> <span class="n">building_code_params</span><span class="p">[</span><span class="n">tek</span><span class="p">]</span>    
@@ -191,40 +191,40 @@
                   <span class="n">new_building_code_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                   <span class="n">old_building_code_names</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
                   <span class="n">aggregates</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Merge rows in a DataFrame based on specified &#39;tek&#39; names and aggregate their values.</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Merge rows in a DataFrame based on specified 'tek' names and aggregate their values.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        df : pd.DataFrame</span>
 <span class="sd">            The input DataFrame with a MultiIndex.</span>
 <span class="sd">        new_building_code_name : str</span>
-<span class="sd">            The new &#39;tek&#39; name to assign to the merged rows.</span>
+<span class="sd">            The new 'tek' name to assign to the merged rows.</span>
 <span class="sd">        old_building_code_names : typing.List[str]</span>
-<span class="sd">            A list of &#39;tek&#39; names to be merged.</span>
+<span class="sd">            A list of 'tek' names to be merged.</span>
 <span class="sd">        aggregates : typing.Dict[str, str], optional</span>
 <span class="sd">            A dictionary specifying the aggregation functions for each column.</span>
 <span class="sd">            If not provided, default aggregations will be used:</span>
-<span class="sd">            {&#39;tek&#39;: &#39;max&#39;, &#39;m2&#39;: &#39;first&#39;, &#39;kwh_m2&#39;: &#39;mean&#39;, &#39;energy_requirement&#39;: &#39;sum&#39;}.</span>
+<span class="sd">            {'tek': 'max', 'm2': 'first', 'kwh_m2': 'mean', 'energy_requirement': 'sum'}.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pd.DataFrame</span>
-<span class="sd">            The DataFrame with the specified &#39;tek&#39; rows merged and aggregated.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">            The DataFrame with the specified 'tek' rows merged and aggregated.</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`df` should be a pandas DataFrame.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"`df` should be a pandas DataFrame."</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">old_building_code_names</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`old_building_code_names` should be a list of strings.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"`old_building_code_names` should be a list of strings."</span><span class="p">)</span>
 
         <span class="c1"># Apply default aggregates if the parameter is empty</span>
-        <span class="n">aggregates</span> <span class="o">=</span> <span class="n">aggregates</span> <span class="ow">or</span> <span class="p">{</span><span class="s1">&#39;building_code&#39;</span><span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">:</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_requirement&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">}</span>
-        <span class="n">building_code_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">tek</span> <span class="k">for</span> <span class="n">tek</span> <span class="ow">in</span> <span class="n">old_building_code_names</span> <span class="k">if</span> <span class="n">tek</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;building_code&#39;</span><span class="p">)]</span>
+        <span class="n">aggregates</span> <span class="o">=</span> <span class="n">aggregates</span> <span class="ow">or</span> <span class="p">{</span><span class="s1">'building_code'</span><span class="p">:</span> <span class="s1">'max'</span><span class="p">,</span> <span class="s1">'m2'</span><span class="p">:</span> <span class="s1">'first'</span><span class="p">,</span> <span class="s1">'kwh_m2'</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'energy_requirement'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">}</span>
+        <span class="n">building_code_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">tek</span> <span class="k">for</span> <span class="n">tek</span> <span class="ow">in</span> <span class="n">old_building_code_names</span> <span class="k">if</span> <span class="n">tek</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">'building_code'</span><span class="p">)]</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">building_code_values</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">df</span>
 
-        <span class="n">level_values</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;building_category&#39;</span><span class="p">)</span>
+        <span class="n">level_values</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">'building_category'</span><span class="p">)</span>
         <span class="n">building_categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">bc</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">BuildingCategory</span> <span class="k">if</span> <span class="n">bc</span><span class="o">.</span><span class="n">is_residential</span><span class="p">()</span> <span class="ow">and</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">level_values</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">building_categories</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">df</span>
@@ -233,16 +233,16 @@
                 <span class="p">(</span><span class="n">building_categories</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">))]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
         <span class="n">building_code_to_merge</span> <span class="o">=</span> <span class="n">residential</span><span class="p">[</span><span class="n">residential</span><span class="o">.</span><span class="n">building_code</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">building_code_values</span><span class="p">)]</span>
-        <span class="n">agg_building_code</span> <span class="o">=</span> <span class="n">building_code_to_merge</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;purpose&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">aggregates</span><span class="p">)</span>
+        <span class="n">agg_building_code</span> <span class="o">=</span> <span class="n">building_code_to_merge</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">,</span>
+                                           <span class="s1">'building_condition'</span><span class="p">,</span>
+                                           <span class="s1">'purpose'</span><span class="p">,</span>
+                                           <span class="s1">'year'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">aggregates</span><span class="p">)</span>
         <span class="n">agg_building_code</span> <span class="o">=</span> <span class="n">agg_building_code</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
-        <span class="n">agg_building_code</span><span class="p">[</span><span class="s1">&#39;building_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_building_code_name</span>
+        <span class="n">agg_building_code</span><span class="p">[</span><span class="s1">'building_code'</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_building_code_name</span>
         <span class="n">rows_to_remove</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">building_code_values</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">))]</span><span class="o">.</span><span class="n">index</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">rows_to_remove</span><span class="p">)</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">agg_building_code</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span>  <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">])])</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">agg_building_code</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'building_condition'</span><span class="p">,</span>  <span class="s1">'year'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">])])</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">df</span></div>
@@ -255,9 +255,9 @@
         <span class="c1"># Convert MultiIndex to DataFrame</span>
         <span class="n">index_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-        <span class="n">key_name</span> <span class="o">=</span> <span class="s1">&#39;tek&#39;</span> <span class="k">if</span> <span class="s1">&#39;tek&#39;</span> <span class="ow">in</span> <span class="n">index_df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;building_code&#39;</span>
-        <span class="c1"># Remove &#39;_RES&#39; from &#39;tek&#39; values</span>
-        <span class="n">index_df</span><span class="p">[</span><span class="n">key_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="n">key_name</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">suffix</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">key_name</span> <span class="o">=</span> <span class="s1">'tek'</span> <span class="k">if</span> <span class="s1">'tek'</span> <span class="ow">in</span> <span class="n">index_df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">else</span> <span class="s1">'building_code'</span>
+        <span class="c1"># Remove '_RES' from 'tek' values</span>
+        <span class="n">index_df</span><span class="p">[</span><span class="n">key_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_df</span><span class="p">[</span><span class="n">key_name</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">suffix</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 
         <span class="c1"># Set the modified DataFrame back to MultiIndex</span>
         <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_frame</span><span class="p">(</span><span class="n">index_df</span><span class="p">)</span>

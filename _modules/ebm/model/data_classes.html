@@ -135,7 +135,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange">[docs]</a>
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">YearRange</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A class to represent a period model with a start and end year.</span>
 
 <span class="sd">    Attributes</span>
@@ -155,7 +155,7 @@
 <span class="sd">        Returns an iterator over the years in the period.</span>
 <span class="sd">    range() -&gt; tuple of int:</span>
 <span class="sd">        Returns a tuple of years from start to end (inclusive).</span>
-<span class="sd">    subset(offset: int = 0, length: int = -1) -&gt; &#39;YearRange&#39;:</span>
+<span class="sd">    subset(offset: int = 0, length: int = -1) -&gt; 'YearRange':</span>
 <span class="sd">        Creates a subset YearRange of this year range.</span>
 <span class="sd">    to_index() -&gt; pd.Index:</span>
 <span class="sd">        Converts the year_range to a pandas Index.</span>
@@ -164,7 +164,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    Slice pandas DataFrame with YearRange.</span>
 
-<span class="sd">    &gt;&gt;&gt; df = pd.DataFrame(data=[&#39;first&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;last&#39;],</span>
+<span class="sd">    &gt;&gt;&gt; df = pd.DataFrame(data=['first', 'b', 'c', 'd', 'last'],</span>
 <span class="sd">    ...                   index=[2010, 2011, 2012, 2013, 2014])</span>
 <span class="sd">    &gt;&gt;&gt; years = YearRange(2011, 2013)</span>
 <span class="sd">    &gt;&gt;&gt; df.loc[years]</span>
@@ -174,22 +174,22 @@
 <span class="sd">    2013  d</span>
 <span class="sd">    &gt;&gt;&gt;</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">start</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">end</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">year_range</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initializes the years attribute after the object is created.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Start year </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1"> cannot be greater than end year </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;year_range&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">())</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Start year </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1"> cannot be greater than end year </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'year_range'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">())</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;YearRange(start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'YearRange(start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">)'</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -198,35 +198,35 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generator</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns an iterator over the years in the period.</span>
 
 <span class="sd">        Yields</span>
 <span class="sd">        ------</span>
 <span class="sd">        int</span>
 <span class="sd">            The next year in the period.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">y</span>
 
 <div class="viewcode-block" id="YearRange.range">
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.range">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns a tuple of years from start to end for use with indexes and such.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        tuple of int</span>
 <span class="sd">            Tuple containing all years in sequence from start to end (inclusive).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="YearRange.subset">
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.subset">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;YearRange&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'YearRange'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Creates a subset YearRange of this year range.</span>
 
 <span class="sd">        Parameters</span>
@@ -254,11 +254,11 @@
 <span class="sd">        &gt;&gt;&gt; YearRange(2010, 2016).subset(3)</span>
 <span class="sd">        YearRange(start=2013, end=2016, year_range=(2013, 2014, 2015, 2016))</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">offset</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Offset cannot be negative: </span><span class="si">{</span><span class="n">offset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Offset cannot be negative: </span><span class="si">{</span><span class="n">offset</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">offset</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Offset is out of range: </span><span class="si">{</span><span class="n">offset</span><span class="si">=}</span><span class="s1"> &gt;= </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Offset is out of range: </span><span class="si">{</span><span class="n">offset</span><span class="si">=}</span><span class="s1"> &gt;= </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
         <span class="n">start_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">offset</span>
         <span class="n">last_year</span> <span class="o">=</span> <span class="n">start_year</span> <span class="o">+</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">start_year</span> <span class="o">+</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span>
         <span class="k">return</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">last_year</span><span class="p">)</span></div>
@@ -266,42 +266,42 @@
 
 <div class="viewcode-block" id="YearRange.to_index">
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.to_index">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">to_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Converts the year_range to a pandas Index.</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, optional</span>
-<span class="sd">            name of the index. Default: &#39;name&#39;</span>
+<span class="sd">            name of the index. Default: 'name'</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pd.Index</span>
 <span class="sd">            Pandas Index object containing the years in the range.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="YearRange.to_dataframe">
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.to_dataframe">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">to_dataframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_dataframe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Converts the year_range to a pandas DataFrame.</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, optional</span>
-<span class="sd">            name of the column. Default: &#39;year&#39;</span>
+<span class="sd">            name of the column. Default: 'year'</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Pandas Dataframe object containing the years in the range in the column year.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="YearRange.cross_join">
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.cross_join">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cross_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Join every row in df with every year in a YearRange</span>
 
 <span class="sd">        Parameters</span>
@@ -313,23 +313,23 @@
 <span class="sd">        -------</span>
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            Pandas Dataframe containing the original dataframe and a year column</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
-                        <span class="n">right</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">),</span>
-                        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;cross&#39;</span><span class="p">)</span></div>
+                        <span class="n">right</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'year'</span><span class="p">),</span>
+                        <span class="n">how</span><span class="o">=</span><span class="s1">'cross'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="YearRange.from_series">
 <a class="viewcode-back" href="../../../modules/ebm.model.data_classes.html#ebm.model.data_classes.YearRange.from_series">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_series</span><span class="p">(</span><span class="n">s</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'year'</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span></div>
+        <span class="k">return</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns a pandas Index object for the specified slice of the year range.</span>
 
 <span class="sd">        Parameters</span>
@@ -341,13 +341,13 @@
 <span class="sd">        -------</span>
 <span class="sd">        pd.Index</span>
 <span class="sd">            A pandas Index object containing the specified years.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">[</span><span class="n">key</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">[</span><span class="n">key</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year_range</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid key type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid key type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span></div>
 
 </pre></div>
 

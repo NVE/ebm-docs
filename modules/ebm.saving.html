@@ -169,14 +169,14 @@ may become negative. Validate upstream if needed.</p></li>
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="gp">... </span>    <span class="s2">&quot;kwh_m2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">120.0</span><span class="p">,</span> <span class="mf">95.5</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="s2">&quot;m2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">2500.0</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="s2">&quot;net_construction_m2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">200.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">100.0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">"kwh_m2"</span><span class="p">:</span> <span class="p">[</span><span class="mf">120.0</span><span class="p">,</span> <span class="mf">95.5</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">"m2"</span><span class="p">:</span> <span class="p">[</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">2500.0</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">"net_construction_m2"</span><span class="p">:</span> <span class="p">[</span><span class="mf">200.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">100.0</span><span class="p">],</span>
 <span class="gp">... </span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reduced_construction_kwh</span><span class="p">(</span><span class="n">df</span><span class="p">)[[</span>
-<span class="gp">... </span>    <span class="s2">&quot;original_construction_kwh&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;reduced_construction_kwh&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s2">&quot;net_construction_kwh&quot;</span>
+<span class="gp">... </span>    <span class="s2">"original_construction_kwh"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"reduced_construction_kwh"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"net_construction_kwh"</span>
 <span class="gp">... </span><span class="p">]]</span>
 <span class="go">   original_construction_kwh  reduced_construction_kwh  net_construction_kwh</span>
 <span class="go">0                    120000.0                  96000.0                           24000.0</span>

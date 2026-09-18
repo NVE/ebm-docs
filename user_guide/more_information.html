@@ -159,7 +159,7 @@ positional<span class="w"> </span>arguments:
 <span class="w">                            </span>automatically.
 <span class="w">  </span>output_file<span class="w">           </span>The<span class="w"> </span>location<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>written.<span class="w"> </span>default:<span class="w"> </span>output<span class="se">\e</span>bm_output.xlsx
 <span class="w">                            </span>If<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span>the<span class="w"> </span>program<span class="w"> </span>will<span class="w"> </span>terminate<span class="w"> </span>without<span class="w"> </span>overwriting.
-<span class="w">                            </span>Use<span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>console<span class="w"> </span>instead
+<span class="w">                            </span>Use<span class="w"> </span><span class="s2">"-"</span><span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>console<span class="w"> </span>instead
 
 options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -175,7 +175,7 @@ options:
 <span class="w">  </span>--force,<span class="w"> </span>-f<span class="w">           </span>Write<span class="w"> </span>to<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>it<span class="w"> </span>already<span class="w"> </span>exists
 <span class="w">  </span>--open,<span class="w"> </span>-o<span class="w">            </span>Open<span class="w"> </span>&lt;filename&gt;<span class="w"> </span>with<span class="w"> </span>default<span class="w"> </span>application<span class="w"> </span>after<span class="w"> </span>writing.<span class="w"> </span><span class="o">(</span>Usually<span class="w"> </span>Excel<span class="o">)</span>
 <span class="w">  </span>--csv-delimiter<span class="w"> </span>CSV_DELIMITER,<span class="w"> </span>--delimiter<span class="w"> </span>CSV_DELIMITER,<span class="w"> </span>-e<span class="w"> </span>CSV_DELIMITER
-<span class="w">                        </span>A<span class="w"> </span>single<span class="w"> </span>character<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>separating<span class="w"> </span>columns<span class="w"> </span>when<span class="w"> </span>writing<span class="w"> </span>csv.<span class="w"> </span>Default:<span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span>Special<span class="w"> </span>characters<span class="w"> </span>like<span class="w"> </span><span class="p">;</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>quoted<span class="w"> </span><span class="s2">&quot;;&quot;</span>
+<span class="w">                        </span>A<span class="w"> </span>single<span class="w"> </span>character<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>separating<span class="w"> </span>columns<span class="w"> </span>when<span class="w"> </span>writing<span class="w"> </span>csv.<span class="w"> </span>Default:<span class="w"> </span><span class="s2">","</span><span class="w"> </span>Special<span class="w"> </span>characters<span class="w"> </span>like<span class="w"> </span><span class="p">;</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>quoted<span class="w"> </span><span class="s2">";"</span>
 <span class="w">  </span>--create-input
 <span class="w">                        </span>Create<span class="w"> </span>input<span class="w"> </span>directory<span class="w"> </span>containing<span class="w"> </span>all<span class="w"> </span>required<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>working<span class="w"> </span>directory
 <span class="w">  </span>--horizontal-years,<span class="w"> </span>--horizontal,<span class="w"> </span>--horisontal
@@ -555,12 +555,12 @@ ebm<span class="w"> </span>energy-use<span class="w"> </span>output
 <section id="example-case">
 <h3>8. Example case<a class="headerlink" href="#example-case" title="Link to this heading"></a></h3>
 <p>If the user wants to run the program with input files located in another directory, for instance the “calibration” directory, the user can use the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will run the program with input files located in the &quot;calibration&quot; directory</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This command will run the program with input files located in the "calibration" directory</span>
 ebm<span class="w"> </span>--input<span class="w"> </span>calibration<span class="w"> </span>energy-use<span class="w"> </span>output
 </pre></div>
 </div>
-<p>Last Updated on 2026-08-11.</p>
-<p>Version: 1.1.0.</p>
+<p>Last Updated on 2026-09-18.</p>
+<p>Version: 1.1.1.</p>
 </section>
 </section>
 </section>

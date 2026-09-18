@@ -114,30 +114,30 @@
 <div class="viewcode-block" id="load_environment_from_dotenv">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.helpers.html#ebm.cmd.helpers.load_environment_from_dotenv">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">load_environment_from_dotenv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Load environment variables from a .env file located in the current working directory.</span>
 
 <span class="sd">    If a .env file is found, its contents are loaded into the environment.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">env_file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">find_dotenv</span><span class="p">(</span><span class="n">usecwd</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">env_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s1">&#39;Loading environment from </span><span class="si">{env_file}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">env_file</span><span class="o">=</span><span class="n">env_file</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s1">'Loading environment from </span><span class="si">{env_file}</span><span class="s1">'</span><span class="p">,</span> <span class="n">env_file</span><span class="o">=</span><span class="n">env_file</span><span class="p">)</span>
         <span class="n">load_dotenv</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;.env not found in </span><span class="si">{</span><span class="n">env_file</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">env_file</span><span class="o">=</span><span class="n">env_file</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span></div>
+        <span class="n">logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">'.env not found in </span><span class="si">{</span><span class="n">env_file</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">env_file</span><span class="o">=</span><span class="n">env_file</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span></div>
 
 
 
 <div class="viewcode-block" id="configure_json_log">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.helpers.html#ebm.cmd.helpers.configure_json_log">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">configure_json_log</span><span class="p">(</span><span class="n">log_directory</span><span class="p">:</span> <span class="nb">str</span><span class="o">|</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Configure JSON logging using the `loguru` logger.</span>
 
 <span class="sd">    This function sets up structured JSON logging to a file, with the log file path</span>
 <span class="sd">    determined by the `LOG_DIRECTORY` environment variable or the provided `log_directory` argument.</span>
-<span class="sd">    If `LOG_DIRECTORY` is set to &#39;TRUE&#39;, the default directory &#39;log&#39; is used.</span>
-<span class="sd">    If it is set to &#39;FALSE&#39;, logging is skipped.</span>
+<span class="sd">    If `LOG_DIRECTORY` is set to 'TRUE', the default directory 'log' is used.</span>
+<span class="sd">    If it is set to 'FALSE', logging is skipped.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -149,8 +149,8 @@
 <span class="sd">    ---------------------</span>
 <span class="sd">    LOG_DIRECTORY : str</span>
 <span class="sd">        Overrides the `log_directory` argument when set. Special values:</span>
-<span class="sd">        - &#39;TRUE&#39;: uses default directory &#39;log&#39;</span>
-<span class="sd">        - &#39;FALSE&#39;: disables logging</span>
+<span class="sd">        - 'TRUE': uses default directory 'log'</span>
+<span class="sd">        - 'FALSE': disables logging</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -160,87 +160,87 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; configure_json_log(&quot;logs&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; os.environ[&quot;LOG_DIRECTORY&quot;] = &quot;TRUE&quot;</span>
+<span class="sd">    &gt;&gt;&gt; configure_json_log("logs")</span>
+<span class="sd">    &gt;&gt;&gt; os.environ["LOG_DIRECTORY"] = "TRUE"</span>
 
 <span class="sd">    &gt;&gt;&gt; configure_json_log(False)</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">log_directory</span><span class="p">:</span>
         <span class="k">return</span>
 
     <span class="n">script_name</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">file_stem</span> <span class="o">=</span> <span class="n">script_name</span><span class="o">.</span><span class="n">stem</span> <span class="k">if</span> <span class="n">script_name</span><span class="o">.</span><span class="n">stem</span><span class="o">!=</span><span class="s1">&#39;__main__&#39;</span> <span class="k">else</span> <span class="n">script_name</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="n">script_name</span><span class="o">.</span><span class="n">stem</span>
-    <span class="k">if</span> <span class="s1">&#39;PYTEST_CURRENT_TEST&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYTEST_CURRENT_TEST&#39;</span><span class="p">):</span>
-        <span class="n">pytest_current_test</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYTEST_CURRENT_TEST&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;::&#39;</span><span class="p">)</span>
-        <span class="n">file_stem</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">pytest_current_test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="n">pytest_current_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;(call)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">file_stem</span> <span class="o">=</span> <span class="n">script_name</span><span class="o">.</span><span class="n">stem</span> <span class="k">if</span> <span class="n">script_name</span><span class="o">.</span><span class="n">stem</span><span class="o">!=</span><span class="s1">'__main__'</span> <span class="k">else</span> <span class="n">script_name</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="n">script_name</span><span class="o">.</span><span class="n">stem</span>
+    <span class="k">if</span> <span class="s1">'PYTEST_CURRENT_TEST'</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'PYTEST_CURRENT_TEST'</span><span class="p">):</span>
+        <span class="n">pytest_current_test</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'PYTEST_CURRENT_TEST'</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'::'</span><span class="p">)</span>
+        <span class="n">file_stem</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">pytest_current_test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span> <span class="n">pytest_current_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'(call)'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-    <span class="n">env_log_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LOG_DIRECTORY&#39;</span><span class="p">,</span> <span class="n">log_directory</span><span class="p">)</span>
+    <span class="n">env_log_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'LOG_DIRECTORY'</span><span class="p">,</span> <span class="n">log_directory</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">env_log_directory</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="n">env_log_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;log&#39;</span>
-    <span class="n">log_to_json</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">env_log_directory</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;FALSE&#39;</span>
-    <span class="n">env_log_directory</span> <span class="o">=</span> <span class="n">env_log_directory</span> <span class="k">if</span> <span class="n">log_to_json</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">env_log_directory</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">else</span> <span class="s1">&#39;log&#39;</span>
+        <span class="n">env_log_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">'log'</span>
+    <span class="n">log_to_json</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">env_log_directory</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">!=</span><span class="s1">'FALSE'</span>
+    <span class="n">env_log_directory</span> <span class="o">=</span> <span class="n">env_log_directory</span> <span class="k">if</span> <span class="n">log_to_json</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">env_log_directory</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">'TRUE'</span> <span class="k">else</span> <span class="s1">'log'</span>
 
     <span class="k">if</span> <span class="n">log_to_json</span><span class="p">:</span>
         <span class="n">log_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">env_log_directory</span> <span class="k">if</span> <span class="n">env_log_directory</span> <span class="k">else</span> <span class="n">log_directory</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">log_directory</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LOG_DIRECTORY=</span><span class="si">{</span><span class="n">log_directory</span><span class="si">}</span><span class="s1"> is a file. Skipping json logging&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">'LOG_DIRECTORY=</span><span class="si">{</span><span class="n">log_directory</span><span class="si">}</span><span class="s1"> is a file. Skipping json logging'</span><span class="p">)</span>
             <span class="k">return</span>
         <span class="n">log_directory</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="n">log_start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">log_start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s1">&#39;seconds&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">log_filename</span> <span class="o">=</span> <span class="n">log_directory</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.json&#39;</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">log_start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s1">'seconds'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">':'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+        <span class="n">log_filename</span> <span class="o">=</span> <span class="n">log_directory</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.json'</span>
         <span class="k">if</span> <span class="n">log_filename</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
-            <span class="n">log_start_milliseconds</span> <span class="o">=</span> <span class="n">log_start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s1">&#39;milliseconds&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-            <span class="n">log_filename</span> <span class="o">=</span> <span class="n">log_filename</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">log_start_milliseconds</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">log_start_milliseconds</span> <span class="o">=</span> <span class="n">log_start</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">timespec</span><span class="o">=</span><span class="s1">'milliseconds'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">':'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+            <span class="n">log_filename</span> <span class="o">=</span> <span class="n">log_filename</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">file_stem</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">log_start_milliseconds</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Logging json to </span><span class="si">{</span><span class="n">log_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log_filename</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LOG_LEVEL_JSON&#39;</span><span class="p">,</span> <span class="s1">&#39;TRACE&#39;</span><span class="p">),</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Logging json to </span><span class="si">{</span><span class="n">log_filename</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log_filename</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'LOG_LEVEL_JSON'</span><span class="p">,</span> <span class="s1">'TRACE'</span><span class="p">),</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;argv=</span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'argv=</span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Skipping json log. LOG_DIRECTORY is undefined.&#39;</span><span class="p">)</span></div>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Skipping json log. LOG_DIRECTORY is undefined.'</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="configure_loglevel">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.helpers.html#ebm.cmd.helpers.configure_loglevel">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">configure_loglevel</span><span class="p">(</span><span class="n">log_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">configure_loglevel</span><span class="p">(</span><span class="n">log_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'INFO'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Configure the loguru logger with a specified log level and format.</span>
 
 <span class="sd">    By default, sets the log level to INFO unless either:</span>
-<span class="sd">    - The &#39;--debug&#39; flag is present in the command-line arguments (`sys.argv`), or</span>
-<span class="sd">    - The environment variable DEBUG is set to &#39;TRUE&#39; (case-insensitive).</span>
+<span class="sd">    - The '--debug' flag is present in the command-line arguments (`sys.argv`), or</span>
+<span class="sd">    - The environment variable DEBUG is set to 'TRUE' (case-insensitive).</span>
 
 <span class="sd">    If debug mode is enabled, the log level is set to DEBUG and a filter is applied</span>
-<span class="sd">    to suppress DEBUG logs from the &#39;ebm.model.file_handler&#39; logger.</span>
+<span class="sd">    to suppress DEBUG logs from the 'ebm.model.file_handler' logger.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    log_format : str, optional</span>
 <span class="sd">        Custom format string for log messages. If not provided, the default format is used.</span>
 <span class="sd">    level : str, optional</span>
-<span class="sd">        Default log level to use when debug mode is not active. Defaults to &#39;INFO&#39;.</span>
+<span class="sd">        Default log level to use when debug mode is not active. Defaults to 'INFO'.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    None</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="n">level</span><span class="p">}</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'level'</span><span class="p">:</span> <span class="n">level</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">log_format</span><span class="p">:</span>
-        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">log_format</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">'format'</span><span class="p">]</span> <span class="o">=</span> <span class="n">log_format</span>
 
     <span class="c1"># Accessing sys.argv directly since we want to figure out the log level before loading arguments with arg_parser.</span>
     <span class="c1"># Debug level may also be conveyed through environment variables, so read that from environ as well.</span>
-    <span class="k">if</span> <span class="s1">&#39;--debug&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;TRUE&#39;</span><span class="p">:</span>
-        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;DEBUG&#39;</span>
+    <span class="k">if</span> <span class="s1">'--debug'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'DEBUG'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'TRUE'</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">'level'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'DEBUG'</span>
 
     <span class="n">logger</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
-               <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="ow">not</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ebm.model.file_handler&#39;</span> <span class="ow">and</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">),</span>
+               <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="ow">not</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ebm.model.file_handler'</span> <span class="ow">and</span> <span class="n">f</span><span class="p">[</span><span class="s1">'level'</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'DEBUG'</span><span class="p">),</span>
                <span class="o">**</span><span class="n">options</span><span class="p">)</span></div>
 
 
@@ -248,7 +248,7 @@
 <div class="viewcode-block" id="open_file">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.helpers.html#ebm.cmd.helpers.open_file">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">open_file</span><span class="p">(</span><span class="n">file_to_open</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Open a file or directory using the default application based on the operating system.</span>
 
 <span class="sd">    This function attempts to open a file or directory by delegating to platform-specific utilities:</span>
@@ -277,25 +277,25 @@
 <span class="sd">    --------</span>
 <span class="sd">    Open a file specified as a string:</span>
 
-<span class="sd">    &gt;&gt;&gt; open_file(&quot;/path/to/file.txt&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; open_file("/path/to/file.txt")</span>
 
 <span class="sd">    Open a file using a `pathlib.Path` object:</span>
 
 <span class="sd">    &gt;&gt;&gt; from pathlib import Path</span>
-<span class="sd">    &gt;&gt;&gt; open_file(Path(&quot;/path/to/file.txt&quot;))</span>
+<span class="sd">    &gt;&gt;&gt; open_file(Path("/path/to/file.txt"))</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Open </span><span class="si">{</span><span class="n">file_to_open</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Open </span><span class="si">{</span><span class="n">file_to_open</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"Windows"</span><span class="p">:</span>
         <span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">file_to_open</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>  <span class="c1"># macOS</span>
-        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="n">file_to_open</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"Darwin"</span><span class="p">:</span>  <span class="c1"># macOS</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">"open"</span><span class="p">,</span> <span class="n">file_to_open</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># Linux and other Unix-like systems</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;xdg-open is not available on this system. Unable to open file.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">"xdg-open"</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"xdg-open is not available on this system. Unable to open file."</span><span class="p">)</span>
             <span class="k">return</span>
-        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_to_open</span><span class="p">])</span></div>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">"xdg-open"</span><span class="p">,</span> <span class="n">file_to_open</span><span class="p">])</span></div>
 
 
 </pre></div>

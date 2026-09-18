@@ -115,7 +115,7 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_missing_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Attempts to create an enum member from a given value by normalizing the string.</span>
 
 <span class="sd">        This method is called when a value is not found in the enumeration. It converts the input value </span>
@@ -130,26 +130,26 @@
 
 <span class="sd">        Raises:</span>
 <span class="sd">        - ValueError: If no matching enum member is found.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">'_'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span> <span class="s1">'_'</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">member</span>
-        <span class="k">return</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No such building condition: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'No such building condition: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span>
 
 <div class="viewcode-block" id="BuildingCondition.get_scruve_condition_list">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition.get_scruve_condition_list">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_scruve_condition_list</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieves a list with the building conditions used in S-curve calculations (in lower case). </span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
 <span class="sd">        - condition_list (list[str]): list of building conditions</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">condition_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">BuildingCondition</span><span class="o">.</span><span class="n">SMALL_MEASURE</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">RENOVATION</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">DEMOLITION</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">condition_list</span></div>
 
@@ -158,12 +158,12 @@
 <a class="viewcode-back" href="../../../modules/ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition.get_full_condition_list">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_full_condition_list</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Retrieves a list with all building conditions (in lower case).</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
 <span class="sd">        - condition_list (list[str]): list of building conditions </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">condition_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">condition</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">condition</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">BuildingCondition</span><span class="p">)]</span>
         <span class="k">return</span> <span class="n">condition_list</span></div>
 
@@ -171,20 +171,20 @@
 <div class="viewcode-block" id="BuildingCondition.existing_conditions">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_condition.html#ebm.model.building_condition.BuildingCondition.existing_conditions">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">existing_conditions</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="s1">&#39;BuildingCondition&#39;</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">existing_conditions</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="s1">'BuildingCondition'</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns all BuildingCondition except demolition</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">            Iterable of all BuildingCondition except demolition</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">yield from</span> <span class="p">(</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">BuildingCondition</span> <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="n">BuildingCondition</span><span class="o">.</span><span class="n">DEMOLITION</span><span class="p">)</span></div>
 </div>
 
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">building_condition</span> <span class="ow">in</span> <span class="n">BuildingCondition</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">building_condition</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">building_condition</span><span class="p">))</span>

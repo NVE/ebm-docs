@@ -117,7 +117,7 @@
                           <span class="n">s_curves_by_condition</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
                           <span class="n">building_code_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">area_parameters</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
                           <span class="n">database_manager</span><span class="p">:</span><span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Calculating area by condition&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Calculating area by condition'</span><span class="p">)</span>
 
     <span class="n">area_per_person</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_area_per_person</span><span class="p">()</span>
     <span class="n">area_new_residential_buildings</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_area_new_residential_buildings</span><span class="p">()</span>
@@ -137,7 +137,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_energy_need</span><span class="p">(</span><span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">energy_need</span> <span class="o">=</span> <span class="n">calculate_for_building_category</span><span class="p">(</span><span class="n">database_manager</span><span class="o">=</span><span class="n">dm</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
 
-    <span class="n">energy_need</span> <span class="o">=</span> <span class="n">energy_need</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;building_code&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span> <span class="s1">&#39;building_condition&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+    <span class="n">energy_need</span> <span class="o">=</span> <span class="n">energy_need</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'building_code'</span><span class="p">,</span> <span class="s1">'purpose'</span><span class="p">,</span> <span class="s1">'building_condition'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">energy_need</span></div>
 
@@ -160,15 +160,15 @@
 <a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.extract_energy_use_holiday_homes">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_energy_use_holiday_homes</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">,</span> <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">years</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Using default years </span><span class="si">{years}</span><span class="s1"> for energy_use_holiday_homes&#39;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Using default years </span><span class="si">{years}</span><span class="s1"> for energy_use_holiday_homes'</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
         <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Using years=</span><span class="si">{years}</span><span class="s1"> for energy_use_holiday_homes&#39;</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Using years=</span><span class="si">{years}</span><span class="s1"> for energy_use_holiday_homes'</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
 
     <span class="n">df</span> <span class="o">=</span> <span class="n">transform_holiday_homes_to_horizontal</span><span class="p">(</span><span class="n">calculate_energy_use</span><span class="p">(</span><span class="n">database_manager</span><span class="p">),</span> <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="s1">&#39;building_group&#39;</span><span class="p">})</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">energy_source</span><span class="o">==</span><span class="s1">&#39;Elektrisitet&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Electricity&#39;</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">energy_source</span><span class="o">==</span><span class="s1">&#39;fossil&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Fossil&#39;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'building_category'</span><span class="p">:</span> <span class="s1">'building_group'</span><span class="p">})</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">energy_source</span><span class="o">==</span><span class="s1">'Elektrisitet'</span><span class="p">,</span> <span class="s1">'energy_source'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Electricity'</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">energy_source</span><span class="o">==</span><span class="s1">'fossil'</span><span class="p">,</span> <span class="s1">'energy_source'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Fossil'</span>
     <span class="k">return</span> <span class="n">df</span></div>
 
 
@@ -177,7 +177,7 @@
 <a class="viewcode-back" href="../../modules/ebm.extractors.html#ebm.extractors.main">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.file_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileHandler</span>   <span class="c1"># noqa: I001, PLC0415</span>
-    <span class="n">fh</span> <span class="o">=</span> <span class="n">FileHandler</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">fh</span> <span class="o">=</span> <span class="n">FileHandler</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">'input'</span><span class="p">)</span>
     <span class="n">dm</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
     <span class="n">years</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
 
@@ -201,7 +201,7 @@
 
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 

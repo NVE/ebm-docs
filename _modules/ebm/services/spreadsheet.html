@@ -122,7 +122,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell">[docs]</a>
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">SpreadsheetCell</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A class to represent a cell in a spreadsheet.</span>
 
 <span class="sd">    Attributes</span>
@@ -137,8 +137,8 @@
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
 <span class="sd">    spreadsheet_cell() -&gt; str</span>
-<span class="sd">        Returns the cell&#39;s address in A1 notation.</span>
-<span class="sd">    replace(**kwargs) -&gt; &#39;SpreadsheetCell&#39;</span>
+<span class="sd">        Returns the cell's address in A1 notation.</span>
+<span class="sd">    replace(**kwargs) -&gt; 'SpreadsheetCell'</span>
 <span class="sd">        Returns a new SpreadsheetCell with updated attributes.</span>
 <span class="sd">    first_row(cell_range) -&gt; tuple</span>
 <span class="sd">        Returns the first row of cells in the given range.</span>
@@ -146,7 +146,7 @@
 <span class="sd">        Returns the first column of cells in the given range.</span>
 <span class="sd">    submatrix(cell_range) -&gt; tuple</span>
 <span class="sd">        Returns the submatrix excluding the first row and column.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">column</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">row</span><span class="p">:</span> <span class="nb">int</span>
@@ -155,21 +155,21 @@
 <div class="viewcode-block" id="SpreadsheetCell.spreadsheet_cell">
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.spreadsheet_cell">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">spreadsheet_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the cell&#39;s address in A1 notation.</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Returns the cell's address in A1 notation.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        str</span>
-<span class="sd">            The cell&#39;s address in A1 notation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">get_column_letter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">)</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="si">}</span><span class="s1">&#39;</span></div>
+<span class="sd">            The cell's address in A1 notation.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">get_column_letter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">)</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="si">}</span><span class="s1">'</span></div>
 
 
 <div class="viewcode-block" id="SpreadsheetCell.replace">
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.replace">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;SpreadsheetCell&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'SpreadsheetCell'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns a new SpreadsheetCell with updated attributes.</span>
 
 <span class="sd">        Parameters</span>
@@ -181,7 +181,7 @@
 <span class="sd">        -------</span>
 <span class="sd">        SpreadsheetCell</span>
 <span class="sd">            A new SpreadsheetCell with updated attributes.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
@@ -189,7 +189,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.first_row">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">first_row</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cell_range</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the first row of cells in the given range.</span>
 
 <span class="sd">        Parameters</span>
@@ -201,7 +201,7 @@
 <span class="sd">        -------</span>
 <span class="sd">        tuple</span>
 <span class="sd">            A tuple of SpreadsheetCell objects representing the first row.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">table</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cols_from_range</span><span class="p">(</span><span class="n">cell_range</span><span class="p">))</span>
         <span class="n">first_row</span> <span class="o">=</span> <span class="p">[</span><span class="n">coordinate_to_tuple</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">table</span><span class="p">]</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">SpreadsheetCell</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">cell</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="n">cell</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">first_row</span><span class="p">)</span></div>
@@ -211,7 +211,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.first_column">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">first_column</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cell_range</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the first column of cells in the given range.</span>
 
 <span class="sd">        Parameters</span>
@@ -223,7 +223,7 @@
 <span class="sd">        -------</span>
 <span class="sd">        tuple</span>
 <span class="sd">            A tuple of SpreadsheetCell objects representing the first column.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">table</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cols_from_range</span><span class="p">(</span><span class="n">cell_range</span><span class="p">))</span>
         <span class="n">first_column</span> <span class="o">=</span> <span class="p">[</span><span class="n">coordinate_to_tuple</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">SpreadsheetCell</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">cell</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">row</span><span class="o">=</span><span class="n">cell</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">first_column</span><span class="p">)</span></div>
@@ -233,7 +233,7 @@
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.SpreadsheetCell.submatrix">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">submatrix</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cell_range</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the submatrix excluding the first row and column.</span>
 
 <span class="sd">        Parameters</span>
@@ -248,7 +248,7 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        the_range = &quot;A1:C3&quot;</span>
+<span class="sd">        the_range = "A1:C3"</span>
 <span class="sd">        submatrix = SpreadsheetCell.submatrix(the_range)</span>
 <span class="sd">        for cell in submatrix:</span>
 <span class="sd">            print(cell.spreadsheet_cell(), cell.column, cell.row)</span>
@@ -257,7 +257,7 @@
 <span class="sd">        C2 3 2</span>
 <span class="sd">        B3 2 3</span>
 <span class="sd">        C3 3 3</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">table</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cols_from_range</span><span class="p">(</span><span class="n">cell_range</span><span class="p">))</span>
         <span class="n">first_column</span> <span class="o">=</span> <span class="p">[</span><span class="n">coordinate_to_tuple</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
         <span class="n">first_row</span> <span class="o">=</span> <span class="p">[</span><span class="n">coordinate_to_tuple</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">cols</span> <span class="ow">in</span> <span class="n">table</span><span class="p">]</span>
@@ -275,24 +275,24 @@
 
 <div class="viewcode-block" id="iter_cells">
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.iter_cells">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">iter_cells</span><span class="p">(</span><span class="n">first_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="n">left_padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generator</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Returns spreadsheet column names from A up to ZZ</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iter_cells</span><span class="p">(</span><span class="n">first_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'E'</span><span class="p">,</span> <span class="n">left_padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generator</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">""" Returns spreadsheet column names from A up to ZZ</span>
 <span class="sd">        Parameters:</span>
 <span class="sd">        - first_column Letter of the first column to return. Default (E)</span>
 <span class="sd">        - left_padding Padding added in front of single letter columns. Default empty</span>
 <span class="sd">        Returns:</span>
 <span class="sd">        - Generator supplying a column name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">first_column</span><span class="p">:</span>
         <span class="n">first_index</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">elif</span> <span class="n">first_column</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected first_column </span><span class="si">{</span><span class="n">first_column</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Expected first_column </span><span class="si">{</span><span class="n">first_column</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_column</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected first_column of length 1 was: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">first_column</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Expected first_column of length 1 was: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">first_column</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">first_index</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">first_column</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">[</span><span class="n">first_index</span><span class="p">:]:</span>
-        <span class="k">yield</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">left_padding</span><span class="si">}{</span><span class="n">cell</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">yield</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">left_padding</span><span class="si">}{</span><span class="n">cell</span><span class="si">}</span><span class="s1">'</span>
     <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="k">yield</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span></div>
 
@@ -301,15 +301,15 @@
 <div class="viewcode-block" id="detect_format_from_values">
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.detect_format_from_values">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">detect_format_from_values</span><span class="p">(</span><span class="n">col_name</span><span class="p">,</span> <span class="n">col_values</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-    <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">''</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">):</span>
-        <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">&#39;#,##0.00&#39;</span>
+        <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'#,##0.00'</span>
         <span class="k">if</span> <span class="n">col_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">1000.0</span><span class="p">:</span>
-            <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">&#39;# ##0&#39;</span>
+            <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'# ##0'</span>
         <span class="k">elif</span> <span class="mf">1.0</span> <span class="o">&gt;=</span> <span class="n">col_values</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">:</span>
-            <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">&#39;0.00%&#39;</span>
+            <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'0.00%'</span>
     <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">):</span>
-        <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">&#39;#,##0&#39;</span>
+        <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'#,##0'</span>
 
     <span class="k">return</span> <span class="n">cell_format</span></div>
 
@@ -323,13 +323,13 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">cell_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
-                <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">'n'</span><span class="p">:</span>
                     <span class="n">thousands</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1_000_000_0000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
-                    <span class="n">cell_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">thousands</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">cell_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">thousands</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">cell_length</span> <span class="o">&gt;</span> <span class="n">max_length</span><span class="p">:</span>
                     <span class="n">max_length</span> <span class="o">=</span> <span class="n">cell_length</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">IgnoredError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Got error f</span><span class="si">{</span><span class="n">cell</span><span class="o">.</span><span class="n">column_letter</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Got error f</span><span class="si">{</span><span class="n">cell</span><span class="o">.</span><span class="n">column_letter</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
             <span class="k">pass</span>
     <span class="k">return</span> <span class="n">max_length</span></div>
@@ -340,14 +340,14 @@
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.add_top_row_filter">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">add_top_row_filter</span><span class="p">(</span><span class="n">workbook_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">|</span><span class="nb">str</span><span class="o">|</span><span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">workbook</span><span class="p">:</span> <span class="n">Workbook</span><span class="o">|</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sheet_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">workbook_file</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">workbook_file</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;add_top_row_filter require either workbook_file or workbook&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'add_top_row_filter require either workbook_file or workbook'</span><span class="p">)</span>
 
     <span class="n">wb</span> <span class="o">=</span> <span class="n">workbook</span> <span class="k">if</span> <span class="n">workbook</span> <span class="k">else</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">workbook_file</span><span class="p">)</span>
 
     <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheetnames</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">sheet_names</span> <span class="k">else</span> <span class="n">sheet_names</span>
     <span class="k">for</span> <span class="n">worksheet</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
         <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">worksheet</span><span class="p">]</span>
-        <span class="n">top_row</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;A1:</span><span class="si">{</span><span class="n">get_column_letter</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">max_column</span><span class="p">)</span><span class="si">}{</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">top_row</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'A1:</span><span class="si">{</span><span class="n">get_column_letter</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">max_column</span><span class="p">)</span><span class="si">}{</span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span>
         <span class="n">ws</span><span class="o">.</span><span class="n">auto_filter</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">top_row</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">workbook</span> <span class="ow">and</span> <span class="n">workbook_file</span><span class="p">:</span>
@@ -360,18 +360,18 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">make_pretty</span><span class="p">(</span><span class="n">workbook_name</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">|</span><span class="nb">str</span><span class="p">):</span>
     <span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">workbook_name</span><span class="p">)</span>
 
-    <span class="n">header_font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Source Sans Pro&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;ffffff&quot;</span><span class="p">)</span>
-    <span class="n">body_font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Source Sans Pro&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;000000&quot;</span><span class="p">)</span>
+    <span class="n">header_font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Source Sans Pro'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"ffffff"</span><span class="p">)</span>
+    <span class="n">body_font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'Source Sans Pro'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"000000"</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheetnames</span><span class="p">:</span>
         <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
         <span class="c1"># Freeze the top row</span>
-        <span class="n">ws</span><span class="o">.</span><span class="n">freeze_panes</span> <span class="o">=</span> <span class="n">ws</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">]</span>
+        <span class="n">ws</span><span class="o">.</span><span class="n">freeze_panes</span> <span class="o">=</span> <span class="n">ws</span><span class="p">[</span><span class="s1">'A2'</span><span class="p">]</span>
 
         <span class="c1"># Define the fill color</span>
-        <span class="n">header_fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="n">start_color</span><span class="o">=</span><span class="s1">&#39;c8102e&#39;</span><span class="p">,</span> <span class="n">end_color</span><span class="o">=</span><span class="s1">&#39;c8102e&#39;</span><span class="p">,</span> <span class="n">fill_type</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
-        <span class="n">odd_fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="n">start_color</span><span class="o">=</span><span class="s1">&#39;ffd8de&#39;</span><span class="p">,</span> <span class="n">end_color</span><span class="o">=</span><span class="s1">&#39;ffd8de&#39;</span><span class="p">,</span> <span class="n">fill_type</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
-        <span class="n">even_fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="n">start_color</span><span class="o">=</span><span class="s1">&#39;ffebee&#39;</span><span class="p">,</span> <span class="n">end_color</span><span class="o">=</span><span class="s1">&#39;ffebee&#39;</span><span class="p">,</span> <span class="n">fill_type</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+        <span class="n">header_fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="n">start_color</span><span class="o">=</span><span class="s1">'c8102e'</span><span class="p">,</span> <span class="n">end_color</span><span class="o">=</span><span class="s1">'c8102e'</span><span class="p">,</span> <span class="n">fill_type</span><span class="o">=</span><span class="s1">'solid'</span><span class="p">)</span>
+        <span class="n">odd_fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="n">start_color</span><span class="o">=</span><span class="s1">'ffd8de'</span><span class="p">,</span> <span class="n">end_color</span><span class="o">=</span><span class="s1">'ffd8de'</span><span class="p">,</span> <span class="n">fill_type</span><span class="o">=</span><span class="s1">'solid'</span><span class="p">)</span>
+        <span class="n">even_fill</span> <span class="o">=</span> <span class="n">PatternFill</span><span class="p">(</span><span class="n">start_color</span><span class="o">=</span><span class="s1">'ffebee'</span><span class="p">,</span> <span class="n">end_color</span><span class="o">=</span><span class="s1">'ffebee'</span><span class="p">,</span> <span class="n">fill_type</span><span class="o">=</span><span class="s1">'solid'</span><span class="p">)</span>
 
         <span class="c1"># Apply the fill color to the header row</span>
         <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
@@ -382,9 +382,9 @@
                 <span class="k">continue</span>
             <span class="k">for</span> <span class="n">column_number</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
                 <span class="n">cell</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">body_font</span>
-        <span class="n">even_rule</span> <span class="o">=</span> <span class="n">FormulaRule</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MOD(ROW(),2)=0&#39;</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="n">even_fill</span><span class="p">)</span>
-        <span class="n">odd_rule</span> <span class="o">=</span> <span class="n">FormulaRule</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MOD(ROW(),2)=1&#39;</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="n">odd_fill</span><span class="p">)</span>
-        <span class="n">worksheet_range</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;A2:</span><span class="si">{</span><span class="n">get_column_letter</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">max_column</span><span class="p">)</span><span class="si">}{</span><span class="n">ws</span><span class="o">.</span><span class="n">max_row</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">even_rule</span> <span class="o">=</span> <span class="n">FormulaRule</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="p">[</span><span class="s1">'MOD(ROW(),2)=0'</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="n">even_fill</span><span class="p">)</span>
+        <span class="n">odd_rule</span> <span class="o">=</span> <span class="n">FormulaRule</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="p">[</span><span class="s1">'MOD(ROW(),2)=1'</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="n">odd_fill</span><span class="p">)</span>
+        <span class="n">worksheet_range</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'A2:</span><span class="si">{</span><span class="n">get_column_letter</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">max_column</span><span class="p">)</span><span class="si">}{</span><span class="n">ws</span><span class="o">.</span><span class="n">max_row</span><span class="si">}</span><span class="s1">'</span>
         <span class="c1"># logger.error(worksheet_range)</span>
         <span class="n">ws</span><span class="o">.</span><span class="n">conditional_formatting</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">worksheet_range</span><span class="p">,</span> <span class="n">odd_rule</span><span class="p">)</span>
         <span class="n">ws</span><span class="o">.</span><span class="n">conditional_formatting</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">worksheet_range</span><span class="p">,</span> <span class="n">even_rule</span><span class="p">)</span>
@@ -394,30 +394,30 @@
             <span class="n">ws</span><span class="o">.</span><span class="n">column_dimensions</span><span class="p">[</span><span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">column_letter</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">adjusted_width</span> <span class="o">+</span> <span class="mf">1.5</span>
             <span class="c1"># Skipping first row, assuming it is a header for now.</span>
             <span class="n">first_column_value</span> <span class="o">=</span> <span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">]</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">'n'</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
                 <span class="n">max_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-                <span class="n">number_format</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                <span class="n">number_format</span> <span class="o">=</span> <span class="s1">''</span>
                 <span class="k">if</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
-                    <span class="c1">#cell.number_format = &#39;#,##0.00;[Red]-#,##0.00;0&#39;</span>
-                    <span class="n">number_format</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;_-* #,##0_-;[Red]\-* #,##0_-;_-* &quot;-&quot;??_-;_-@_-&#39;</span>
+                    <span class="c1">#cell.number_format = '#,##0.00;[Red]-#,##0.00;0'</span>
+                    <span class="n">number_format</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'_-* #,##0_-;[Red]\-* #,##0_-;_-* "-"??_-;_-@_-'</span>
                 <span class="k">elif</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mf">1.0</span> <span class="ow">and</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="c1"># number_format = &#39;0%&#39;</span>
-                    <span class="n">number_format</span> <span class="o">=</span> <span class="s1">&#39;0.000&#39;</span>
+                    <span class="c1"># number_format = '0%'</span>
+                    <span class="n">number_format</span> <span class="o">=</span> <span class="s1">'0.000'</span>
                 <span class="k">elif</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mf">1.0</span> <span class="ow">and</span> <span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=-</span><span class="mf">1.0</span><span class="p">:</span>
-                    <span class="n">number_format</span> <span class="o">=</span> <span class="s1">&#39;0.000&#39;</span>
+                    <span class="n">number_format</span> <span class="o">=</span> <span class="s1">'0.000'</span>
 
                 <span class="k">if</span> <span class="n">number_format</span><span class="p">:</span>
                     <span class="k">for</span> <span class="n">row_number</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
                         <span class="k">if</span> <span class="n">row_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">'year'</span><span class="p">:</span>
                                 <span class="k">break</span>
                             <span class="k">continue</span>
                         <span class="k">if</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">cell</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">cell</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">'n'</span><span class="p">:</span>
                                 <span class="n">cell</span><span class="o">.</span><span class="n">number_format</span> <span class="o">=</span> <span class="n">number_format</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="n">cell</span><span class="o">.</span><span class="n">number_format</span> <span class="o">=</span> <span class="s2">&quot;@&quot;</span>
+                            <span class="n">cell</span><span class="o">.</span><span class="n">number_format</span> <span class="o">=</span> <span class="s2">"@"</span>
 
 
     <span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">workbook_name</span><span class="p">)</span></div>

@@ -113,7 +113,7 @@
     <span class="n">new_path</span> <span class="o">=</span> <span class="n">path</span>
 
     <span class="k">while</span> <span class="n">new_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-        <span class="n">new_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">new_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">new_path</span></div>
@@ -129,18 +129,18 @@
 
     <span class="n">access</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">W_OK</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">access</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Permission denied: </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">. The file is not writable.&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Permission denied: </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">. The file is not writable.'</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="c1"># It is not enough to check that the file is writable in Windows. We must also check that it is possible to open</span>
     <span class="c1"># the file</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">output_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">output_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'a'</span><span class="p">):</span>
             <span class="k">pass</span>
     <span class="k">except</span> <span class="ne">PermissionError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
         <span class="c1"># Unable to open a file that is reported as writable by the operating system. In that case it is a good chance</span>
         <span class="c1"># that the file is already open. Error log our assumption and return False</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;. Is the file already open?&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'. Is the file already open?'</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span></div>
 

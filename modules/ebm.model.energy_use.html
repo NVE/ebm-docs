@@ -227,13 +227,13 @@ depending on <cite>efficiency_kwh</cite>’s implementation.</p></li>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># energy_need columns (example):</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#  &#39;energy_requirement&#39;, &#39;kwh_m2&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ['building_category', 'building_code', 'purpose', 'year',</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#  'energy_requirement', 'kwh_m2']</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># efficiency_factor columns (example):</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># [&#39;building_category&#39;, &#39;building_code&#39;, &#39;purpose&#39;, &#39;year&#39;,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#  &#39;heating_system_share&#39;, &#39;load_share&#39;, &#39;load_efficiency&#39;, &#39;efficiency_factor&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">energy_use_kwh</span><span class="p">(</span><span class="n">energy_need</span><span class="p">,</span> <span class="n">efficiency_factor</span><span class="p">,</span> <span class="n">energy_column</span><span class="o">=</span><span class="s1">&#39;energy_requirement&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">[[</span><span class="s1">&#39;kwh&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ['building_category', 'building_code', 'purpose', 'year',</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#  'heating_system_share', 'load_share', 'load_efficiency', 'efficiency_factor']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">energy_use_kwh</span><span class="p">(</span><span class="n">energy_need</span><span class="p">,</span> <span class="n">efficiency_factor</span><span class="p">,</span> <span class="n">energy_column</span><span class="o">=</span><span class="s1">'energy_requirement'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">[[</span><span class="s1">'kwh'</span><span class="p">,</span> <span class="s1">'kwh_m2'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

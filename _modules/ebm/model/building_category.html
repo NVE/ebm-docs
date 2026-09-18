@@ -105,8 +105,8 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 
-<span class="n">RESIDENTIAL</span> <span class="o">=</span> <span class="s1">&#39;residential&#39;</span>
-<span class="n">NON_RESIDENTIAL</span> <span class="o">=</span> <span class="s1">&#39;non_residential&#39;</span>
+<span class="n">RESIDENTIAL</span> <span class="o">=</span> <span class="s1">'residential'</span>
+<span class="n">NON_RESIDENTIAL</span> <span class="o">=</span> <span class="s1">'non_residential'</span>
 
 
 <div class="viewcode-block" id="MyEnumType">
@@ -121,28 +121,28 @@
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory">[docs]</a>
 <span class="nd">@unique</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">BuildingCategory</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">MyEnumType</span><span class="p">):</span>
-    <span class="n">HOUSE</span> <span class="o">=</span> <span class="s1">&#39;house&#39;</span>
-    <span class="n">APARTMENT_BLOCK</span> <span class="o">=</span> <span class="s1">&#39;apartment_block&#39;</span>
-    <span class="n">KINDERGARTEN</span> <span class="o">=</span> <span class="s1">&#39;kindergarten&#39;</span>
-    <span class="n">SCHOOL</span> <span class="o">=</span> <span class="s1">&#39;school&#39;</span>
-    <span class="n">UNIVERSITY</span> <span class="o">=</span> <span class="s1">&#39;university&#39;</span>
-    <span class="n">OFFICE</span> <span class="o">=</span> <span class="s1">&#39;office&#39;</span>
-    <span class="n">RETAIL</span> <span class="o">=</span> <span class="s1">&#39;retail&#39;</span>
-    <span class="n">HOTEL</span> <span class="o">=</span> <span class="s1">&#39;hotel&#39;</span>
-    <span class="n">HOSPITAL</span> <span class="o">=</span> <span class="s1">&#39;hospital&#39;</span>
-    <span class="n">NURSING_HOME</span> <span class="o">=</span> <span class="s1">&#39;nursing_home&#39;</span>
-    <span class="n">CULTURE</span> <span class="o">=</span> <span class="s1">&#39;culture&#39;</span>
-    <span class="n">SPORTS</span> <span class="o">=</span> <span class="s1">&#39;sports&#39;</span>
-    <span class="n">STORAGE</span> <span class="o">=</span> <span class="s1">&#39;storage_repairs&#39;</span>
+    <span class="n">HOUSE</span> <span class="o">=</span> <span class="s1">'house'</span>
+    <span class="n">APARTMENT_BLOCK</span> <span class="o">=</span> <span class="s1">'apartment_block'</span>
+    <span class="n">KINDERGARTEN</span> <span class="o">=</span> <span class="s1">'kindergarten'</span>
+    <span class="n">SCHOOL</span> <span class="o">=</span> <span class="s1">'school'</span>
+    <span class="n">UNIVERSITY</span> <span class="o">=</span> <span class="s1">'university'</span>
+    <span class="n">OFFICE</span> <span class="o">=</span> <span class="s1">'office'</span>
+    <span class="n">RETAIL</span> <span class="o">=</span> <span class="s1">'retail'</span>
+    <span class="n">HOTEL</span> <span class="o">=</span> <span class="s1">'hotel'</span>
+    <span class="n">HOSPITAL</span> <span class="o">=</span> <span class="s1">'hospital'</span>
+    <span class="n">NURSING_HOME</span> <span class="o">=</span> <span class="s1">'nursing_home'</span>
+    <span class="n">CULTURE</span> <span class="o">=</span> <span class="s1">'culture'</span>
+    <span class="n">SPORTS</span> <span class="o">=</span> <span class="s1">'sports'</span>
+    <span class="n">STORAGE</span> <span class="o">=</span> <span class="s1">'storage_repairs'</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span>
 
 <div class="viewcode-block" id="BuildingCategory.yearly_construction_floor_area">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory.yearly_construction_floor_area">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">yearly_construction_floor_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Using static yearly_construction_floor_area&#39;</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;yearly_construction_floor_area does not support category </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (yet)&#39;</span><span class="p">)</span></div>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">'Using static yearly_construction_floor_area'</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'yearly_construction_floor_area does not support category </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (yet)'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BuildingCategory.is_residential">
@@ -160,8 +160,8 @@
 <div class="viewcode-block" id="BuildingCategory.from_string">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.BuildingCategory.from_string">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">from_string</span><span class="p">(</span><span class="n">category_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;BuildingCategory&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an enum object from category name</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_string</span><span class="p">(</span><span class="n">category_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'BuildingCategory'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create an enum object from category name</span>
 <span class="sd">        Args:</span>
 <span class="sd">            category_name (str)</span>
 
@@ -170,41 +170,41 @@
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: category_name not found in BuildingCategory</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">search</span> <span class="o">=</span> <span class="n">category_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">search</span> <span class="o">=</span> <span class="n">category_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">building_category</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">search</span> <span class="o">==</span> <span class="n">building_category</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">search</span> <span class="o">==</span> <span class="n">building_category</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span> <span class="s1">''</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">building_category</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No such building category </span><span class="si">{</span><span class="n">category_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'No such building category </span><span class="si">{</span><span class="n">category_name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span></div>
 </div>
 
 
 <div class="viewcode-block" id="from_norsk">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.from_norsk">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">from_norsk</span><span class="p">(</span><span class="n">norsk</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BuildingCategory</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;småhus&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'småhus'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOUSE</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;leilighet&#39;</span><span class="p">,</span> <span class="s1">&#39;boligblokk&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="ow">in</span> <span class="p">(</span><span class="s1">'leilighet'</span><span class="p">,</span> <span class="s1">'boligblokk'</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">APARTMENT_BLOCK</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;barnehage&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'barnehage'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">KINDERGARTEN</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;kontor&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'kontor'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">OFFICE</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;skole&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'skole'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SCHOOL</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;universitet&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'universitet'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">UNIVERSITY</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;sykehjem&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'sykehjem'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">NURSING_HOME</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;sykehus&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'sykehus'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOSPITAL</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;hotell&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'hotell'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">HOTEL</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;idrettsbygg&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'idrettsbygg'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">SPORTS</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;forretningsbygg&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'forretningsbygg'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">RETAIL</span>
-    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;kulturbygg&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">norsk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'kulturbygg'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">CULTURE</span>
     <span class="k">return</span> <span class="n">BuildingCategory</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">norsk</span><span class="p">)</span></div>
 
@@ -213,31 +213,31 @@
 <div class="viewcode-block" id="expand_building_category">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.expand_building_category">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">expand_building_category</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">        Expand a row of data based on the building category into multiple rows,</span>
 <span class="sd">        each representing a specific sub-category of either residential or non-residential buildings.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        row : pd.Series</span>
-<span class="sd">            A pandas Series containing the data for a single row, including a &#39;building_category&#39; field.</span>
+<span class="sd">            A pandas Series containing the data for a single row, including a 'building_category' field.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        pd.DataFrame</span>
 <span class="sd">            A DataFrame with expanded rows for each sub-category of the building category.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">BuildingCategory</span><span class="p">:</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">]</span> <span class="ow">in</span> <span class="n">BuildingCategory</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()])</span>
-    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">NON_RESIDENTIAL</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">]</span> <span class="o">==</span> <span class="n">NON_RESIDENTIAL</span><span class="p">:</span>
         <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">BuildingCategory</span> <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">is_non_residential</span><span class="p">()]</span>
-    <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">RESIDENTIAL</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">]</span> <span class="o">==</span> <span class="n">RESIDENTIAL</span><span class="p">:</span>
         <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">BuildingCategory</span> <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">is_residential</span><span class="p">()]</span>
 
-    <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;building_category&#39;</span><span class="p">}</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">'building_category'</span><span class="p">}</span>
 
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-        <span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="n">categories</span><span class="p">,</span>
+        <span class="s1">'building_category'</span><span class="p">:</span> <span class="n">categories</span><span class="p">,</span>
         <span class="o">**</span><span class="n">values</span>
     <span class="p">})</span></div>
 
@@ -247,7 +247,7 @@
 <div class="viewcode-block" id="expand_building_categories">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.expand_building_categories">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">expand_building_categories</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">unique_columns</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Transform input dataframe so that building_category within groups (residential/non-residential) are unpacked</span>
 <span class="sd">    into all containing categories. Duplicates categories are removed. Specific categories with values area</span>
 <span class="sd">    preferred over category groups when there is a conflict.</span>
@@ -256,15 +256,15 @@
 <span class="sd">    ----------</span>
 <span class="sd">    df : pandas.core.frame.DataFrame</span>
 <span class="sd">    unique_columns : str</span>
-<span class="sd">        list of column names that should be treated as joint unique. default: [&#39;building_category&#39;]</span>
+<span class="sd">        list of column names that should be treated as joint unique. default: ['building_category']</span>
 
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pandas.core.frame.DataFrame</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">unique_columns</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">unique_columns</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">unique_columns</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">'last'</span><span class="p">)</span>
     <span class="n">groups</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">building_category</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">RESIDENTIAL</span><span class="p">,</span> <span class="n">NON_RESIDENTIAL</span><span class="p">])]</span>
     <span class="n">specific</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">building_category</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">groups</span><span class="o">.</span><span class="n">building_category</span><span class="p">)]</span>
 
@@ -279,11 +279,11 @@
 <div class="viewcode-block" id="collapse_building_category">
 <a class="viewcode-back" href="../../../modules/ebm.model.building_category.html#ebm.model.building_category.collapse_building_category">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">collapse_building_category</span><span class="p">(</span><span class="n">building_category</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Replace building category labels with building group labels where appropriate.</span>
 
 <span class="sd">    This function takes a pandas Series containing building category strings</span>
-<span class="sd">    separated by either &quot;+&quot; or &quot;,&quot;. It normalizes token case, applies a set of</span>
+<span class="sd">    separated by either "+" or ",". It normalizes token case, applies a set of</span>
 <span class="sd">    category‑collapse rules, and returns a new Series with collapsed category</span>
 <span class="sd">    labels.</span>
 
@@ -299,7 +299,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    building_category : pd.Series</span>
 <span class="sd">        Series of building category strings. Each value must be a</span>
-<span class="sd">            string containing tokens separated by either ``&quot;+&quot;`` or `&quot;,&quot;``.</span>
+<span class="sd">            string containing tokens separated by either ``"+"`` or `","``.</span>
 <span class="sd">            Tokens may contain arbitrary casing; they are normalized to lowercase.</span>
 
 <span class="sd">    Returns</span>
@@ -310,33 +310,33 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
-<span class="sd">    &gt;&gt;&gt; collapse_building_category(pd.Series([&quot;house+apartment_block&quot;]))</span>
+<span class="sd">    &gt;&gt;&gt; collapse_building_category(pd.Series(["house+apartment_block"]))</span>
 <span class="sd">    0    residential</span>
 <span class="sd">    dtype: object</span>
 
 <span class="sd">    &gt;&gt;&gt; collapse_building_category(pd.Series(</span>
-<span class="sd">    ...     [&quot;culture+hospital+hotel+kindergarten+nursing_home+office+retail&quot;</span>
-<span class="sd">    ...      &quot;+school+sports+storage_repairs+university&quot;]</span>
+<span class="sd">    ...     ["culture+hospital+hotel+kindergarten+nursing_home+office+retail"</span>
+<span class="sd">    ...      "+school+sports+storage_repairs+university"]</span>
 <span class="sd">    ... ))</span>
 <span class="sd">    0    non_residential</span>
 <span class="sd">    dtype: object</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="n">split_token</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span> <span class="k">if</span> <span class="s1">&#39;+&#39;</span> <span class="ow">in</span> <span class="n">val</span> <span class="k">else</span> <span class="s1">&#39;,&#39;</span>
+        <span class="n">split_token</span> <span class="o">=</span> <span class="s1">'+'</span> <span class="k">if</span> <span class="s1">'+'</span> <span class="ow">in</span> <span class="n">val</span> <span class="k">else</span> <span class="s1">','</span>
         <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">split_token</span><span class="p">)]</span>
         <span class="n">to_remove</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">to_add</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="k">if</span> <span class="s1">&#39;apartment_block&#39;</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;house&#39;</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
-            <span class="n">to_remove</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;apartment_block&#39;</span><span class="p">)</span>
-            <span class="n">to_remove</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;house&#39;</span><span class="p">)</span>
-            <span class="n">to_add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;residential&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">{</span><span class="s1">&#39;culture&#39;</span><span class="p">,</span> <span class="s1">&#39;hospital&#39;</span><span class="p">,</span> <span class="s1">&#39;hotel&#39;</span><span class="p">,</span> <span class="s1">&#39;kindergarten&#39;</span><span class="p">,</span> <span class="s1">&#39;nursing_home&#39;</span><span class="p">,</span> <span class="s1">&#39;office&#39;</span><span class="p">,</span> <span class="s1">&#39;retail&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;sports&#39;</span><span class="p">,</span> <span class="s1">&#39;storage_repairs&#39;</span><span class="p">,</span> <span class="s1">&#39;university&#39;</span><span class="p">}</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
-            <span class="n">to_add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;non_residential&#39;</span><span class="p">)</span>
-            <span class="n">to_remove</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;culture&#39;</span><span class="p">,</span> <span class="s1">&#39;hospital&#39;</span><span class="p">,</span> <span class="s1">&#39;hotel&#39;</span><span class="p">,</span> <span class="s1">&#39;kindergarten&#39;</span><span class="p">,</span> <span class="s1">&#39;nursing_home&#39;</span><span class="p">,</span> <span class="s1">&#39;office&#39;</span><span class="p">,</span> <span class="s1">&#39;retail&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;sports&#39;</span><span class="p">,</span> <span class="s1">&#39;storage_repairs&#39;</span><span class="p">,</span> <span class="s1">&#39;university&#39;</span><span class="p">})</span>
-        <span class="k">if</span> <span class="p">{</span><span class="s1">&#39;residential&#39;</span><span class="p">,</span> <span class="s1">&#39;non_residential&#39;</span><span class="p">}</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">to_add</span><span class="p">):</span>
-            <span class="n">to_add</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;residential&#39;</span><span class="p">)</span>
-            <span class="n">to_add</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;non_residential&#39;</span><span class="p">)</span>
-            <span class="n">to_add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">'apartment_block'</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">'house'</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+            <span class="n">to_remove</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'apartment_block'</span><span class="p">)</span>
+            <span class="n">to_remove</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'house'</span><span class="p">)</span>
+            <span class="n">to_add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'residential'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">{</span><span class="s1">'culture'</span><span class="p">,</span> <span class="s1">'hospital'</span><span class="p">,</span> <span class="s1">'hotel'</span><span class="p">,</span> <span class="s1">'kindergarten'</span><span class="p">,</span> <span class="s1">'nursing_home'</span><span class="p">,</span> <span class="s1">'office'</span><span class="p">,</span> <span class="s1">'retail'</span><span class="p">,</span> <span class="s1">'school'</span><span class="p">,</span> <span class="s1">'sports'</span><span class="p">,</span> <span class="s1">'storage_repairs'</span><span class="p">,</span> <span class="s1">'university'</span><span class="p">}</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+            <span class="n">to_add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'non_residential'</span><span class="p">)</span>
+            <span class="n">to_remove</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'culture'</span><span class="p">,</span> <span class="s1">'hospital'</span><span class="p">,</span> <span class="s1">'hotel'</span><span class="p">,</span> <span class="s1">'kindergarten'</span><span class="p">,</span> <span class="s1">'nursing_home'</span><span class="p">,</span> <span class="s1">'office'</span><span class="p">,</span> <span class="s1">'retail'</span><span class="p">,</span> <span class="s1">'school'</span><span class="p">,</span> <span class="s1">'sports'</span><span class="p">,</span> <span class="s1">'storage_repairs'</span><span class="p">,</span> <span class="s1">'university'</span><span class="p">})</span>
+        <span class="k">if</span> <span class="p">{</span><span class="s1">'residential'</span><span class="p">,</span> <span class="s1">'non_residential'</span><span class="p">}</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">to_add</span><span class="p">):</span>
+            <span class="n">to_add</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">'residential'</span><span class="p">)</span>
+            <span class="n">to_add</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">'non_residential'</span><span class="p">)</span>
+            <span class="n">to_add</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'default'</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">split_token</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">to_add</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">to_remove</span><span class="p">])</span>
 

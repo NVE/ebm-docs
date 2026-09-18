@@ -105,34 +105,34 @@
 <div class="viewcode-block" id="default_calibrate_heating_rv">
 <a class="viewcode-back" href="../../../modules/ebm.model.defaults.html#ebm.model.defaults.default_calibrate_heating_rv">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">default_calibrate_heating_rv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a default dataframe for heating_rv calibration. The factor is set to 1.0 (no change)</span>
+<span class="w">    </span><span class="sd">"""Creates a default dataframe for heating_rv calibration. The factor is set to 1.0 (no change)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.DataFrame</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-        <span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;non_residential&#39;</span><span class="p">,</span> <span class="s1">&#39;residential&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;purpose&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;heating_rv&#39;</span><span class="p">,</span> <span class="s1">&#39;heating_rv&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;heating_rv_factor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]})</span>
+        <span class="s1">'building_category'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'non_residential'</span><span class="p">,</span> <span class="s1">'residential'</span><span class="p">],</span>
+        <span class="s1">'purpose'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'heating_rv'</span><span class="p">,</span> <span class="s1">'heating_rv'</span><span class="p">],</span>
+        <span class="s1">'heating_rv_factor'</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]})</span>
     <span class="k">return</span> <span class="n">df</span></div>
 
 
 <div class="viewcode-block" id="default_calibrate_energy_consumption">
 <a class="viewcode-back" href="../../../modules/ebm.model.defaults.html#ebm.model.defaults.default_calibrate_energy_consumption">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">default_calibrate_energy_consumption</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Creates an empty dataframe for energy consumption calibration.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.DataFrame</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-        <span class="s1">&#39;building_category&#39;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">&#39;factor&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="s1">'building_category'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">'to'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">'from'</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">'factor'</span><span class="p">:</span> <span class="p">[]}</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span></div>
 

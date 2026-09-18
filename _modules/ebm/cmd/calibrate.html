@@ -99,7 +99,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for ebm.cmd.calibrate</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoReturn</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -125,7 +126,7 @@
                     <span class="n">calibration_year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                     <span class="n">area_forecast</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                     <span class="n">write_to_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Calculate calibrated heating system.</span>
 
 <span class="sd">    Parameters</span>
@@ -139,41 +140,64 @@
 <span class="sd">    -------</span>
 <span class="sd">    pandas.core.frame.DataFrame</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">load_dotenv</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.env&#39;</span><span class="p">))</span>
+<span class="sd">    """</span>
+    <span class="n">load_dotenv</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">'.env'</span><span class="p">))</span>
 
     <span class="n">input_directory</span> <span class="o">=</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">file_handler</span><span class="o">.</span><span class="n">input_directory</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using input directory &quot;</span><span class="si">{</span><span class="n">input_directory</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Extract area forecast&#39;</span><span class="p">)</span>
-    <span class="n">area_forecast</span> <span class="o">=</span> <span class="n">load_area_forecast</span><span class="p">(</span><span class="n">database_manager</span><span class="p">)</span> <span class="k">if</span> <span class="n">area_forecast</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">area_forecast</span>
-    <span class="k">if</span> <span class="n">write_to_output</span><span class="p">:</span>
-        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">area_forecast</span><span class="p">[</span><span class="n">area_forecast</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">calibration_year</span><span class="p">],</span> <span class="s1">&#39;area_forecast&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Using input directory "</span><span class="si">{</span><span class="n">input_directory</span><span class="si">}</span><span class="s1">"'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Extract area forecast'</span><span class="p">)</span>
+    <span class="n">model_period</span> <span class="o">=</span> <span class="n">load_model_period</span><span class="p">(</span><span class="n">database_manager</span><span class="p">)</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Extract energy requirements&#39;</span><span class="p">)</span>
-    <span class="n">energy_requirements</span> <span class="o">=</span> <span class="n">load_energy_need</span><span class="p">(</span><span class="n">area_forecast</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">write_to_output</span><span class="p">:</span>
-        <span class="n">en_req</span> <span class="o">=</span> <span class="n">energy_requirements</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">calibration_year</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-            <span class="n">by</span><span class="o">=</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">map_sort_order</span><span class="p">))</span>
-        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">en_req</span><span class="p">,</span> <span class="s1">&#39;energy_requirements&#39;</span><span class="p">)</span>
-        <span class="n">grouped</span> <span class="o">=</span> <span class="n">en_req</span><span class="p">[[</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="s1">&#39;m2&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_requirement&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
-            <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;building_category&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;m2&#39;</span><span class="p">:</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;kwh_m2&#39;</span><span class="p">:</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;energy_requirement&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
-        <span class="n">grouped</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;building_category&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">map_sort_order</span><span class="p">))</span>
-        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">grouped</span><span class="p">,</span> <span class="s1">&#39;energy_requirements_sum&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">model_period</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;</span> <span class="n">calibration_year</span> <span class="o">&gt;</span> <span class="n">model_period</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'Calibration year </span><span class="si">{</span><span class="n">calibration_year</span><span class="si">}</span><span class="s1"> is outside model years </span><span class="si">{</span><span class="n">model_period</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">model_period</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">'</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Extract heating systems&#39;</span><span class="p">)</span>
-    <span class="n">heating_systems</span> <span class="o">=</span> <span class="n">load_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">)</span>
+    <span class="n">area_forecast</span> <span class="o">=</span> <span class="n">load_area_forecast</span><span class="p">(</span><span class="n">database_manager</span><span class="p">,</span> <span class="n">model_period</span><span class="p">)</span> <span class="k">if</span> <span class="n">area_forecast</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">area_forecast</span>
     <span class="k">if</span> <span class="n">write_to_output</span><span class="p">:</span>
-        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">heating_systems</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">calibration_year</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">),</span> <span class="s1">&#39;heating_systems&#39;</span><span class="p">)</span>
+        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">area_forecast</span><span class="p">[</span><span class="n">area_forecast</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">calibration_year</span><span class="p">],</span> <span class="s1">'area_forecast'</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Extract energy requirements'</span><span class="p">)</span>
+    <span class="n">energy_requirements</span> <span class="o">=</span> <span class="n">load_energy_need</span><span class="p">(</span><span class="n">area_forecast</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">,</span> <span class="n">model_period</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">write_to_output</span><span class="p">:</span>
+        <span class="n">en_req</span> <span class="o">=</span> <span class="n">energy_requirements</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">calibration_year</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">'year'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="n">by</span><span class="o">=</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">map_sort_order</span><span class="p">))</span>
+        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">en_req</span><span class="p">,</span> <span class="s1">'energy_requirements'</span><span class="p">)</span>
+        <span class="n">grouped</span> <span class="o">=</span> <span class="n">en_req</span><span class="p">[[</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="s1">'m2'</span><span class="p">,</span> <span class="s1">'kwh_m2'</span><span class="p">,</span> <span class="s1">'energy_requirement'</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+            <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">'building_category'</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'m2'</span><span class="p">:</span> <span class="s1">'first'</span><span class="p">,</span> <span class="s1">'kwh_m2'</span><span class="p">:</span> <span class="s1">'first'</span><span class="p">,</span> <span class="s1">'energy_requirement'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">})</span>
+        <span class="n">grouped</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'building_category'</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">map_sort_order</span><span class="p">))</span>
+        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">grouped</span><span class="p">,</span> <span class="s1">'energy_requirements_sum'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">'sum'</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">'Extract heating systems'</span><span class="p">)</span>
+    <span class="n">heating_systems</span> <span class="o">=</span> <span class="n">load_heating_systems</span><span class="p">(</span><span class="n">energy_requirements</span><span class="p">,</span> <span class="n">database_manager</span><span class="p">,</span> <span class="n">model_period</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">write_to_output</span><span class="p">:</span>
+        <span class="n">write_dataframe</span><span class="p">(</span><span class="n">heating_systems</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">calibration_year</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">'year'</span><span class="p">),</span> <span class="s1">'heating_systems'</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">heating_systems</span></div>
 
 
 
+<div class="viewcode-block" id="load_model_period">
+<a class="viewcode-back" href="../../../modules/ebm.cmd.calibrate.html#ebm.cmd.calibrate.load_model_period">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_model_period</span><span class="p">(</span><span class="n">database_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">YearRange</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_ebm_year</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">start_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">start_year</span>
+
+    <span class="n">start_year</span> <span class="o">=</span> <span class="n">load_ebm_year</span><span class="p">(</span><span class="s1">'EBM_START_YEAR'</span><span class="p">,</span> <span class="mi">2020</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">2020</span>
+    <span class="n">end_year</span> <span class="o">=</span> <span class="n">load_ebm_year</span><span class="p">(</span><span class="s1">'EBM_END_YEAR'</span><span class="p">,</span> <span class="n">database_manager</span><span class="o">.</span><span class="n">get_population_forecast_end_year</span><span class="p">())</span> <span class="ow">or</span> <span class="mi">2050</span>
+    <span class="n">model_period</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model_period</span></div>
+
+
+
+
+
+
 <div class="viewcode-block" id="write_dataframe">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.calibrate.html#ebm.cmd.calibrate.write_dataframe">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">write_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'dataframe'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'Sheet1'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Write dataframe df to excel spreadsheet.</span>
 
 <span class="sd">    Notes</span>
@@ -182,27 +206,27 @@
 <span class="sd">     - If the file exists a number will be added to the filename</span>
 <span class="sd">     - The file will be written to the subdirectory `output`</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">output_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">'output'</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">output_directory</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Writing </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> to file&#39;</span><span class="p">)</span>
-        <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_directory</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.xlsx&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Writing </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> to file'</span><span class="p">)</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_directory</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.xlsx'</span>
         <span class="n">output_file</span> <span class="o">=</span> <span class="n">make_unique_path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
         <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">merge_cells</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wrote </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1"> ! </span><span class="si">{</span><span class="n">sheet_name</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">sheet_name</span><span class="o">!=</span><span class="s2">&quot;Sheet1&quot;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Wrote </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1"> ! </span><span class="si">{</span><span class="n">sheet_name</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">sheet_name</span><span class="o">!=</span><span class="s2">"Sheet1"</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot write to </span><span class="si">{</span><span class="n">output_directory</span><span class="si">}</span><span class="s1">. Directory does not exists&#39;</span><span class="p">)</span></div>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Cannot write to </span><span class="si">{</span><span class="n">output_directory</span><span class="si">}</span><span class="s1">. Directory does not exists'</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.calibrate.html#ebm.cmd.calibrate.main">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Running calibrate as a script is not supported&#39;</span><span class="p">)</span></div>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">'Running calibrate as a script is not supported'</span><span class="p">)</span></div>
 
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 

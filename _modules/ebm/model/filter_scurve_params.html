@@ -110,21 +110,21 @@
 <div class="viewcode-block" id="FilterScurveParams">
 <a class="viewcode-back" href="../../../modules/ebm.model.filter_scurve_params.html#ebm.model.filter_scurve_params.FilterScurveParams">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FilterScurveParams</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A utility class for filtering S-curve parameters based on building category and condition.</span>
 
 <span class="sd">    This class provides a static method to filter a DataFrame containing S-curve parameters, </span>
 <span class="sd">    extracting the relevant data for a specific building category and set of conditions.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">COL_BUILDING_CATEGORY</span> <span class="o">=</span> <span class="s1">&#39;building_category&#39;</span>
-    <span class="n">COL_BUILDING_CONDITION</span> <span class="o">=</span> <span class="s1">&#39;condition&#39;</span>
-    <span class="n">COL_EARLIEST_AGE</span> <span class="o">=</span> <span class="s1">&#39;earliest_age_for_measure&#39;</span>
-    <span class="n">COL_AVERAGE_AGE</span> <span class="o">=</span> <span class="s1">&#39;average_age_for_measure&#39;</span>
-    <span class="n">COL_LAST_AGE</span> <span class="o">=</span> <span class="s1">&#39;last_age_for_measure&#39;</span>
-    <span class="n">COL_RUSH_YEARS</span> <span class="o">=</span> <span class="s1">&#39;rush_period_years&#39;</span>
-    <span class="n">COL_RUSH_SHARE</span> <span class="o">=</span> <span class="s1">&#39;rush_share&#39;</span>
-    <span class="n">COL_NEVER_SHARE</span> <span class="o">=</span> <span class="s1">&#39;never_share&#39;</span>
+    <span class="n">COL_BUILDING_CATEGORY</span> <span class="o">=</span> <span class="s1">'building_category'</span>
+    <span class="n">COL_BUILDING_CONDITION</span> <span class="o">=</span> <span class="s1">'condition'</span>
+    <span class="n">COL_EARLIEST_AGE</span> <span class="o">=</span> <span class="s1">'earliest_age_for_measure'</span>
+    <span class="n">COL_AVERAGE_AGE</span> <span class="o">=</span> <span class="s1">'average_age_for_measure'</span>
+    <span class="n">COL_LAST_AGE</span> <span class="o">=</span> <span class="s1">'last_age_for_measure'</span>
+    <span class="n">COL_RUSH_YEARS</span> <span class="o">=</span> <span class="s1">'rush_period_years'</span>
+    <span class="n">COL_RUSH_SHARE</span> <span class="o">=</span> <span class="s1">'rush_share'</span>
+    <span class="n">COL_NEVER_SHARE</span> <span class="o">=</span> <span class="s1">'never_share'</span>
 
 <div class="viewcode-block" id="FilterScurveParams.filter">
 <a class="viewcode-back" href="../../../modules/ebm.model.filter_scurve_params.html#ebm.model.filter_scurve_params.FilterScurveParams.filter">[docs]</a>
@@ -132,7 +132,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">building_category</span><span class="p">:</span> <span class="n">BuildingCategory</span><span class="p">,</span>
                <span class="n">scurve_condition_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
                <span class="n">scurve_params</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ScurveParameters</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Filters S-curve parameters by building category and condition.</span>
 
 <span class="sd">        This method filters a DataFrame containing S-curve parameters to extract data specific to </span>
@@ -152,12 +152,12 @@
 
 <span class="sd">        Raises:</span>
 <span class="sd">        - KeyError: If the provided building category is not found in the S-curve parameters DataFrame.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">filtered_scurve_params</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">condition</span> <span class="ow">in</span> <span class="n">scurve_condition_list</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">scurve_params</span><span class="o">.</span><span class="n">building_category</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Unknown building_category &quot;</span><span class="si">{}</span><span class="s1">&quot; encountered when setting up scurve parameters&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s1">'Unknown building_category "</span><span class="si">{}</span><span class="s1">" encountered when setting up scurve parameters'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">building_category</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
             <span class="c1"># Filter dataframe on building category and condition</span>

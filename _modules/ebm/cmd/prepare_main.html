@@ -99,7 +99,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for ebm.cmd.prepare_main</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Utility functions for __main__&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""Utility functions for __main__"""</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
@@ -116,7 +116,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.model.enums</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReturnCode</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ebm.services.files</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_is_writable</span>
 
-<span class="n">TEK</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;PRE_TEK49</span>
+<span class="n">TEK</span> <span class="o">=</span> <span class="s2">"""PRE_TEK49</span>
 <span class="s2">PRE_TEK49</span>
 <span class="s2">TEK49</span>
 <span class="s2">TEK69</span>
@@ -125,22 +125,22 @@
 <span class="s2">TEK07</span>
 <span class="s2">TEK10</span>
 <span class="s2">TEK17</span>
-<span class="s2">TEK21&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="s2">TEK21"""</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="EbmConfig">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.EbmConfig">[docs]</a>
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">EbmConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prototype for an argument or configuation class to be used by main. Its purpose is improved readability.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Prototype for an argument or configuation class to be used by main. Its purpose is improved readability."""</span>
     <span class="n">default_input</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">calibration_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2023</span>
     <span class="n">years</span><span class="p">:</span> <span class="n">YearRange</span> <span class="o">=</span> <span class="n">YearRange</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2050</span><span class="p">)</span>
-    <span class="n">output_directory</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
-    <span class="n">input_directory</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+    <span class="n">output_directory</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">'output'</span><span class="p">)</span>
+    <span class="n">input_directory</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">'input'</span><span class="p">)</span>
     <span class="n">force_overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">open_after_writing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">csv_delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
+    <span class="n">csv_delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">','</span>
     <span class="n">always_open</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">write_to_disk</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
 
@@ -153,7 +153,7 @@
 <div class="viewcode-block" id="make_arguments">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.make_arguments">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">make_arguments</span><span class="p">(</span><span class="n">program_name</span><span class="p">,</span> <span class="n">default_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Create and parse command-line arguments for the area forecast calculation.</span>
 
 <span class="sd">    Parameters</span>
@@ -173,86 +173,86 @@
 <span class="sd">    The function sets up an argument parser with various options including version, debug mode,</span>
 <span class="sd">    filename, force write, open file after writing, CSV delimiter, building categories,</span>
 <span class="sd">    creating default input, start year, and end year.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">default_building_categories</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">BuildingCategory</span><span class="p">)]</span>
 
     <span class="n">arg_parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="n">program_name</span><span class="p">,</span>
-                                         <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Calculate EBM energy use </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                                         <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Calculate EBM energy use </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span>
                                          <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span>
                                          <span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">program_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--debug&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Run in debug mode. (Extra information written to stdout)&#39;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
-                            <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;area-forecast&#39;</span><span class="p">,</span>
-                                     <span class="s1">&#39;energy-requirements&#39;</span><span class="p">,</span>
-                                     <span class="s1">&#39;heating-systems&#39;</span><span class="p">,</span>
-                                     <span class="s1">&#39;energy-use&#39;</span><span class="p">,</span>
-                                     <span class="s1">&#39;list-input&#39;</span><span class="p">,</span>
-                                     <span class="s1">&#39;create-input&#39;</span><span class="p">],</span>
-                            <span class="n">default</span><span class="o">=</span><span class="s1">&#39;energy-use&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--version'</span><span class="p">,</span> <span class="s1">'-v'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'version'</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">program_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--debug'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'Run in debug mode. (Extra information written to stdout)'</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'step'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span>
+                            <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">'area-forecast'</span><span class="p">,</span>
+                                     <span class="s1">'energy-requirements'</span><span class="p">,</span>
+                                     <span class="s1">'heating-systems'</span><span class="p">,</span>
+                                     <span class="s1">'energy-use'</span><span class="p">,</span>
+                                     <span class="s1">'list-input'</span><span class="p">,</span>
+                                     <span class="s1">'create-input'</span><span class="p">],</span>
+                            <span class="n">default</span><span class="o">=</span><span class="s1">'energy-use'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">"""</span>
 <span class="s2">The calculation step you want to run. The steps are sequential. Any prerequisite to the chosen step will run </span>
 <span class="s2">    automatically.</span>
 <span class="s2">list-input: List available input datasets bundled with ebm.</span>
-<span class="s2">create-input: Create input directory containing all required files in the current working directory.&quot;&quot;&quot;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;output_file&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_path</span><span class="p">,</span>
+<span class="s2">create-input: Create input directory containing all required files in the current working directory."""</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'output_file'</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_path</span><span class="p">,</span>
                             <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span>
-                                <span class="sa">f</span><span class="s1">&#39;&#39;&#39;The location of the output to be written. default: </span><span class="si">{</span><span class="n">default_path</span><span class="si">}</span>
+                                <span class="sa">f</span><span class="s1">'''The location of the output to be written. default: </span><span class="si">{</span><span class="n">default_path</span><span class="si">}</span>
 <span class="s1">    For energy-use, this is treated as an output directory and multiple files will be written there.</span>
 <span class="s1">    For other steps, this is treated as a single output file.</span>
 <span class="s1">    If the file already exists the program will terminate without overwriting.</span>
-<span class="s1">    Use &quot;-&quot; to output to the console instead. This is not supported for energy-use.</span>
-<span class="s1">    For create-input, this is the dataset name (e.g. calibrated).&#39;&#39;&#39;</span><span class="p">))</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;create_input_dir&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="s1">    Use "-" to output to the console instead. This is not supported for energy-use.</span>
+<span class="s1">    For create-input, this is the dataset name (e.g. calibrated).'''</span><span class="p">))</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'create_input_dir'</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span>
-<span class="w">                                </span><span class="sd">&#39;&#39;&#39;The location of the input directory to be created. default: current working directory</span>
-<span class="sd">                                &#39;&#39;&#39;</span><span class="p">))</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--categories&#39;</span><span class="p">,</span> <span class="s1">&#39;--building-categories&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span>
-                            <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_building_categories</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="w">                                </span><span class="sd">'''The location of the input directory to be created. default: current working directory</span>
+<span class="sd">                                '''</span><span class="p">))</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--categories'</span><span class="p">,</span> <span class="s1">'--building-categories'</span><span class="p">,</span> <span class="s1">'-c'</span><span class="p">,</span>
+                            <span class="n">nargs</span><span class="o">=</span><span class="s1">'*'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_building_categories</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
 <span class="s2">                                   One or more of the following building categories: </span>
-<span class="s2">                                       </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">default_building_categories</span><span class="p">)</span><span class="si">}</span><span class="s2">. </span>
-<span class="s2">                                       The default is to use all categories.&quot;&quot;&quot;</span>
+<span class="s2">                                       </span><span class="si">{</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">default_building_categories</span><span class="p">)</span><span class="si">}</span><span class="s2">. </span>
+<span class="s2">                                       The default is to use all categories."""</span>
                                                  <span class="p">))</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--input&#39;</span><span class="p">,</span> <span class="s1">&#39;--input-directory&#39;</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span>
-                            <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--input'</span><span class="p">,</span> <span class="s1">'--input-directory'</span><span class="p">,</span> <span class="s1">'-i'</span><span class="p">,</span>
+                            <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span>
                             <span class="nb">type</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span>
-                            <span class="n">default</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EBM_INPUT_DIRECTORY&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">)),</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;path to the directory with input files&#39;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--force&#39;</span><span class="p">,</span> <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Write to &lt;filename&gt; even if it already exists&#39;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--open&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Open output file(s) automatically when finished writing. (Usually Excel)&#39;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--csv-delimiter&#39;</span><span class="p">,</span> <span class="s1">&#39;--delimiter&#39;</span><span class="p">,</span> <span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;A single character to be used for separating columns when writing csv. &#39;</span> <span class="o">+</span>
-                                 <span class="s1">&#39;Default: &quot;,&quot; Special characters like ; should be quoted &quot;;&quot;&#39;</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--create-input&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">Create input directory containing all required files in the current working directory&#39;&#39;&#39;</span><span class="p">)</span>
+                            <span class="n">default</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'EBM_INPUT_DIRECTORY'</span><span class="p">,</span> <span class="s1">'input'</span><span class="p">)),</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'path to the directory with input files'</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--force'</span><span class="p">,</span> <span class="s1">'-f'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'Write to &lt;filename&gt; even if it already exists'</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--open'</span><span class="p">,</span> <span class="s1">'-o'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'Open output file(s) automatically when finished writing. (Usually Excel)'</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--csv-delimiter'</span><span class="p">,</span> <span class="s1">'--delimiter'</span><span class="p">,</span> <span class="s1">'-e'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'A single character to be used for separating columns when writing csv. '</span> <span class="o">+</span>
+                                 <span class="s1">'Default: "," Special characters like ; should be quoted ";"'</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--create-input'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'''</span>
+<span class="s1">Create input directory containing all required files in the current working directory'''</span><span class="p">)</span>
 
-    <span class="n">data_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+    <span class="n">data_directory</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">'data'</span>
     <span class="n">available_datasets</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">data_directory</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">is_dir</span><span class="p">())</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--dataset&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                            <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;DATASET&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span><span class="se">\</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--dataset'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">metavar</span><span class="o">=</span><span class="s1">'DATASET'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span><span class="se">\</span>
 <span class="s1">The built-in dataset to use when creating input with --create-input.</span>
-<span class="s1">Available datasets: </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_datasets</span><span class="p">)</span><span class="si">}</span><span class="s1">.</span>
+<span class="s1">Available datasets: </span><span class="si">{</span><span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_datasets</span><span class="p">)</span><span class="si">}</span><span class="s1">.</span>
 <span class="s1">Default: calibrated.</span>
-<span class="s1">Use `list-input` to list available datasets.&#39;&#39;&#39;</span><span class="p">))</span>
+<span class="s1">Use `list-input` to list available datasets.'''</span><span class="p">))</span>
 
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--migrate&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--migrate'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
 
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--start-year&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-                            <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EBM_START_YEAR&#39;</span><span class="p">,</span> <span class="mi">2020</span><span class="p">),</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--start-year'</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                            <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'EBM_START_YEAR'</span><span class="p">,</span> <span class="mi">2020</span><span class="p">),</span>
                             <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--end-year&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
-                            <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EBM_END_YEAR&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--end-year'</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">'?'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                            <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'EBM_END_YEAR'</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
                             <span class="n">help</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">SUPPRESS</span><span class="p">)</span>
 
-    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--horizontal-years&#39;</span><span class="p">,</span> <span class="s1">&#39;--horizontal&#39;</span><span class="p">,</span> <span class="s1">&#39;--horisontal&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-                            <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Show years horizontal (left to right)&#39;</span><span class="p">)</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--horizontal-years'</span><span class="p">,</span> <span class="s1">'--horizontal'</span><span class="p">,</span> <span class="s1">'--horisontal'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">'store_true'</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s1">'Show years horizontal (left to right)'</span><span class="p">)</span>
 
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">arg_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">arguments</span></div>
@@ -262,22 +262,22 @@
 <div class="viewcode-block" id="resolve_output_directory_for_energy_use">
 <a class="viewcode-back" href="../../../modules/ebm.cmd.prepare_main.html#ebm.cmd.prepare_main.resolve_output_directory_for_energy_use">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">resolve_output_directory_for_energy_use</span><span class="p">(</span><span class="n">output_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a directory path for energy-use output.</span>
+<span class="w">    </span><span class="sd">"""Return a directory path for energy-use output.</span>
 
 <span class="sd">    energy-use always writes multiple files, so file-like paths and console output</span>
 <span class="sd">    are rejected to avoid silently guessing the destination.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">output_path</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;energy-use does not support writing output to the console&#39;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">output_path</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'-'</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'energy-use does not support writing output to the console'</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">output_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">output_path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">output_path</span>
-        <span class="k">raise</span> <span class="ne">NotADirectoryError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;energy-use output must be a directory, got file: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotADirectoryError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'energy-use output must be a directory, got file: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">output_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotADirectoryError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;energy-use output must be a directory path, not a file-like path: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="sa">f</span><span class="s1">'energy-use output must be a directory path, not a file-like path: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">'</span>
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">output_path</span></div>
@@ -289,8 +289,8 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">check_output_file_status</span><span class="p">(</span><span class="n">output_file</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span>
                              <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                              <span class="n">default_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                             <span class="n">program_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;ebm&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReturnCode</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+                             <span class="n">program_name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'ebm'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ReturnCode</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Checks if the output file exists and that it is writable. If force is true the output_file will be opened for</span>
 <span class="sd">    appending. A permission denied at that point is an indication that the file is already open by another process.</span>
 
@@ -309,19 +309,19 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ReturnCode</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">default_path</span> <span class="o">=</span> <span class="n">default_path</span> <span class="k">if</span> <span class="n">default_path</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;output/ebm_output.xlsx&#39;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">default_path</span> <span class="o">=</span> <span class="n">default_path</span> <span class="k">if</span> <span class="n">default_path</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">'output/ebm_output.xlsx'</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">output_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="n">output_file</span> <span class="o">!=</span> <span class="n">default_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">force</span><span class="p">:</span>
         <span class="c1"># If the file already exists and is not the default, display error and exit unless --force was used.</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">. already exists.&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    You can overwrite the </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">. by using --force: </span><span class="si">{</span><span class="n">program_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="si">}</span><span class="s2"> --force</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s1">. already exists.'</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">    You can overwrite the </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">. by using --force: </span><span class="si">{</span><span class="n">program_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="si">}</span><span class="s2"> --force</span>
+<span class="s2">    """</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
               <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ReturnCode</span><span class="o">.</span><span class="n">FILE_EXISTS</span>
-    <span class="k">if</span> <span class="n">output_file</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;-&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">file_is_writable</span><span class="p">(</span><span class="n">output_file</span><span class="p">):</span>
-        <span class="c1"># logger.error(f&#39;{output_file} is not writable&#39;)</span>
+    <span class="k">if</span> <span class="n">output_file</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">'-'</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">file_is_writable</span><span class="p">(</span><span class="n">output_file</span><span class="p">):</span>
+        <span class="c1"># logger.error(f'{output_file} is not writable')</span>
         <span class="k">return</span> <span class="n">ReturnCode</span><span class="o">.</span><span class="n">FILE_NOT_ACCESSIBLE</span>
     <span class="k">return</span> <span class="n">ReturnCode</span><span class="o">.</span><span class="n">OK</span></div>
 

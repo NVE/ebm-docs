@@ -624,7 +624,7 @@ underlying operations.</p></li>
 </div>
 <p>Pause only renovation rates:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">pause_building_condition_rates</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">df</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2027</span><span class="p">),</span> <span class="n">conditions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;renovation&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">df</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">2027</span><span class="p">),</span> <span class="n">conditions</span><span class="o">=</span><span class="p">[</span><span class="s1">'renovation'</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -777,8 +777,8 @@ group of index levels 0 and 1.</p>
 <p>Given a MultiIndex of (region, building_code, year):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">accumulate_building_condition_rates</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">columns</span>
-<span class="go">Index([&#39;small_measure&#39;, &#39;renovation&#39;, &#39;demolition&#39;,</span>
-<span class="go">       &#39;small_measure_acc&#39;, &#39;renovation_acc&#39;, &#39;demolition_acc&#39;], dtype=&#39;object&#39;)</span>
+<span class="go">Index(['small_measure', 'renovation', 'demolition',</span>
+<span class="go">       'small_measure_acc', 'renovation_acc', 'demolition_acc'], dtype='object')</span>
 </pre></div>
 </div>
 <p>The returned accumulator columns represent cumulative totals per
