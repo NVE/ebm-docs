@@ -109,6 +109,11 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.api.types</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="n">is_float_dtype</span><span class="p">,</span>
+<span class="n">is_integer_dtype</span><span class="p">,</span>
+<span class="p">)</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">openpyxl</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_workbook</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openpyxl.cell</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cell</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openpyxl.formatting.rule</span><span class="w"> </span><span class="kn">import</span> <span class="n">FormulaRule</span>
@@ -302,13 +307,14 @@
 <a class="viewcode-back" href="../../../modules/ebm.services.spreadsheet.html#ebm.services.spreadsheet.detect_format_from_values">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">detect_format_from_values</span><span class="p">(</span><span class="n">col_name</span><span class="p">,</span> <span class="n">col_values</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
     <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">''</span>
-    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">):</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="k">if</span> <span class="n">is_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
         <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'#,##0.00'</span>
         <span class="k">if</span> <span class="n">col_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">1000.0</span><span class="p">:</span>
             <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'# ##0'</span>
         <span class="k">elif</span> <span class="mf">1.0</span> <span class="o">&gt;=</span> <span class="n">col_values</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">:</span>
             <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'0.00%'</span>
-    <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="n">is_integer_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
         <span class="n">cell_format</span> <span class="o">=</span> <span class="s1">'#,##0'</span>
 
     <span class="k">return</span> <span class="n">cell_format</span></div>
