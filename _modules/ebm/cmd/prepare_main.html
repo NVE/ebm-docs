@@ -209,6 +209,24 @@
                             <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span>
 <span class="w">                                </span><span class="sd">'''The location of the input directory to be created. default: current working directory</span>
 <span class="sd">                                '''</span><span class="p">))</span>
+    <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">'--output-format'</span><span class="p">,</span>
+        <span class="s1">'-F'</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">'pretty'</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span>
+            <span class="s1">'pretty'</span><span class="p">,</span>
+            <span class="s1">'xlsx'</span><span class="p">,</span>
+            <span class="s1">'csv'</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="s2">"""Output file format for step energy-use.</span>
+<span class="s2">            Choices: </span>
+<span class="s2">             - pretty: Excel with style and filters </span>
+<span class="s2">             - xlsx: Plain Excel format </span>
+<span class="s2">             - csv: Comma-separated values format (CSV). See also --csv-delimiter</span>
+<span class="s2">             default: pretty</span>
+<span class="s2">        """</span><span class="p">)</span>
+    <span class="p">)</span>
     <span class="n">arg_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--categories'</span><span class="p">,</span> <span class="s1">'--building-categories'</span><span class="p">,</span> <span class="s1">'-c'</span><span class="p">,</span>
                             <span class="n">nargs</span><span class="o">=</span><span class="s1">'*'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_building_categories</span><span class="p">,</span>
                             <span class="n">help</span><span class="o">=</span><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
